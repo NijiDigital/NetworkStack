@@ -1,0 +1,36 @@
+{
+  "name": "NetworkStack",
+  "version": "0.0.1",
+  "summary": "A Swift request manager framework using reactive programming",
+  "homepage": "https://github.com/NijiDigital/NetworkStack",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Niji": ""
+  },
+  "social_media_url": "https://twitter.com/niji_digital",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://github.com/NijiDigital/NetworkStack.git",
+    "tag": "0.0.1"
+  },
+  "source_files": "Sources/**/*.swift",
+  "ios": {
+    "frameworks": "MobileCoreServices"
+  },
+  "dependencies": {
+    "Alamofire": [
+      "~> 4.0"
+    ],
+    "RxSwift": [
+      "~> 3.0"
+    ],
+    "KeychainAccess": [
+      "~> 3.0"
+    ]
+  }
+}

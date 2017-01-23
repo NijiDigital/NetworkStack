@@ -1,0 +1,23 @@
+source "https://github.com/CocoaPods/Specs.git"
+
+platform :ios, '8.0'
+use_frameworks!
+
+# Common Pods
+#----------------------
+def common_core_pods  
+  pod 'NDNetworkStack', :path => '../'
+end
+
+# Target-Specific Pods
+#----------------------
+
+target 'NetworkStack' do
+  common_core_pods    
+end
+
+
+target 'NetworkStackTests' do
+  common_core_pods
+  pod 'OHHTTPStubs'
+end
