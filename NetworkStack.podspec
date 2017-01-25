@@ -1,18 +1,18 @@
 Pod::Spec.new do |s|
 
-  s.name         = "NDNetworkStack"
-  s.version      = "0.1.0"
+  s.name         = "NetworkStack"
+  s.version      = "0.1.1"
   s.summary      = "A Swift network request manager framework using reactive programming"
 
-  s.homepage     = "https://github.com/NijiDigital/NDNetworkStack"
+  s.homepage     = "https://github.com/NijiDigital/NetworkStack"
   s.license      = { :type => "Apache 2", :file => "LICENSE" }
 
   s.authors            = { "Niji" => "" }
   s.social_media_url   = "https://twitter.com/niji_digital"
 
-  s.ios.deployment_target = "8.0"  
+  s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/NijiDigital/NDNetworkStack.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/NijiDigital/NetworkStack.git", :tag => s.version.to_s }
   
   s.source_files = 'Sources/**/*.swift'
 

@@ -279,7 +279,7 @@ SOFTWARE.
 			<key>License</key>
 			<string>Apache 2</string>
 			<key>Title</key>
-			<string>NDNetworkStack</string>
+			<string>NetworkStack</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

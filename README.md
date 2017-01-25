@@ -1,6 +1,6 @@
-# NDNetworkStack
+# NetworkStack
 
-NDNetworkStack is an networking library wrapping Alamofire, Rx, OAuth and replay mechanism in a reactive abstract API
+NetworkStack is an networking library wrapping Alamofire, Rx, OAuth and replay mechanism in a reactive abstract API
 
 ## License
 

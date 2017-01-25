@@ -1,6 +1,0 @@
-framework module NDNetworkStack {
-  umbrella header "NDNetworkStack-umbrella.h"
-
-  export *
-  module * { export * }
-}

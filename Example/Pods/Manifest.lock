@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.2.0)
   - KeychainAccess (3.0.1)
-  - NDNetworkStack (0.1.0):
+  - NetworkStack (0.1.1):
     - Alamofire (~> 4.0)
     - KeychainAccess (~> 3.0)
     - RxSwift (~> 3.0)
@@ -21,20 +21,20 @@ PODS:
   - RxSwift (3.1.0)
 
 DEPENDENCIES:
-  - NDNetworkStack (from `../`)
+  - NetworkStack (from `../`)
   - OHHTTPStubs
 
 EXTERNAL SOURCES:
-  NDNetworkStack:
+  NetworkStack:
     :path: ../
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
-  NDNetworkStack: 5685567b731269c5d3db67c95089af8308971584
+  NetworkStack: 00017160ac524f271045e71d13510e96b3e13ed0
   OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
 
-PODFILE CHECKSUM: a1dd5532477c920c4e10f71fa227ca345e79352f
+PODFILE CHECKSUM: 524051faf16132d2b32de76ed8c979e6bb010c3d
 
 COCOAPODS: 1.1.1
