@@ -19,16 +19,16 @@
 import Foundation
 import Alamofire
 
-final class UploadRequestParameters: BaseRequestParameters {
+public final class UploadRequestParameters: BaseRequestParameters {
   
-  var uploadFiles: [UploadRequestParametersFile]
+  public var uploadFiles: [UploadRequestParametersFile]
   
-  init(method: Alamofire.HTTPMethod = .post,
-       route: Routable,
-       needsAuthorization: Bool = true,
-       uploadFiles: [UploadRequestParametersFile],
-       parameters: Alamofire.Parameters? = nil,
-       headers: Alamofire.HTTPHeaders? = nil) {
+  public init(method: Alamofire.HTTPMethod = .post,
+              route: Routable,
+              needsAuthorization: Bool = true,
+              uploadFiles: [UploadRequestParametersFile],
+              parameters: Alamofire.Parameters? = nil,
+              headers: Alamofire.HTTPHeaders? = nil) {
     self.uploadFiles = uploadFiles
     
     super.init(method: method,

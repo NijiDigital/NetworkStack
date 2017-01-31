@@ -19,15 +19,15 @@
 import Foundation
 import Alamofire
 
-final class RequestParameters: BaseRequestParameters {
-  var parametersEncoding: Alamofire.ParameterEncoding = JSONEncoding.default
+public final class RequestParameters: BaseRequestParameters {
+  public var parametersEncoding: Alamofire.ParameterEncoding = JSONEncoding.default
   
-  init(method: Alamofire.HTTPMethod,
-       route: Routable,
-       needsAuthorization: Bool = false,
-       parameters: Alamofire.Parameters? = nil,
-       parametersEncoding: Alamofire.ParameterEncoding = JSONEncoding.default,
-       headers: Alamofire.HTTPHeaders? = nil) {
+  public init(method: Alamofire.HTTPMethod,
+              route: Routable,
+              needsAuthorization: Bool = false,
+              parameters: Alamofire.Parameters? = nil,
+              parametersEncoding: Alamofire.ParameterEncoding = JSONEncoding.default,
+              headers: Alamofire.HTTPHeaders? = nil) {
     
     self.parametersEncoding = parametersEncoding
     

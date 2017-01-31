@@ -19,7 +19,7 @@
 import Foundation
 import Alamofire
 
-struct SessionManagerFactory {
+public struct SessionManagerFactory {
   
   // MARK: Request session manager
   

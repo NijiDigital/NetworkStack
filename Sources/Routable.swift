@@ -18,6 +18,6 @@
 
 import Foundation
 
-protocol Routable {
+public protocol Routable {
   var path: String { get }
 }
