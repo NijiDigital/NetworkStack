@@ -504,7 +504,7 @@ extension NetworkStack {
     guard let accessToken = self.keychainService.accessToken, self.keychainService.isAccessTokenValid else {
       return nil
     }
-    return "bearer \(accessToken)"
+    return "Bearer \(accessToken)"
   }
   
   public func clearToken() {
