@@ -20,12 +20,12 @@ import Foundation
 import RxSwift
 import Alamofire
 
-class NetworkStack {
+public final class NetworkStack {
   
   // MARK: - Type aliases
   
-  typealias AskCredentialHandler = (() -> Observable<Void>)
-  typealias RenewTokenHandler = (() -> Observable<Void>)
+  public typealias AskCredentialHandler = (() -> Observable<Void>)
+  public typealias RenewTokenHandler = (() -> Observable<Void>)
   
   // MARK: - Properties
   
@@ -37,11 +37,11 @@ class NetworkStack {
   fileprivate var requestManager: Alamofire.SessionManager
   
   fileprivate var askCredentialHandler: AskCredentialHandler?
-  var renewTokenHandler: RenewTokenHandler?
+  public var renewTokenHandler: RenewTokenHandler?
   
   // MARK: - Setup
   
-  init(baseURL: String,
+  public init(baseURL: String,
        keychainService: KeychainService,
        requestManager: Alamofire.SessionManager = Alamofire.SessionManager(),
        uploadManager: SessionManager? = nil,
@@ -58,7 +58,7 @@ class NetworkStack {
 // MARK: - Cancellation
 extension NetworkStack {
   
-  func disconnect() -> Observable<Void> {
+  public func disconnect() -> Observable<Void> {
     return self.cancelAllRequest()
     .map({ [unowned self] () -> Void in
       return self.clearToken()
@@ -115,7 +115,7 @@ extension NetworkStack {
 // MARK: - Request building
 extension NetworkStack {
   
-  func request(method: Alamofire.HTTPMethod,
+  public func request(method: Alamofire.HTTPMethod,
                route: Routable,
                needsAuthorization: Bool = false,
                parameters: Alamofire.Parameters? = nil,
@@ -382,7 +382,7 @@ extension NetworkStack {
     }
   }
   
-  func sendBackgroundUploadRequest(uploadRequestParameters: UploadRequestParameters) -> Observable<URLSessionTask> {
+  public func sendBackgroundUploadRequest(uploadRequestParameters: UploadRequestParameters) -> Observable<URLSessionTask> {
     return Observable.create({ [unowned self] (observer) -> Disposable in
       
       guard let requestURL = self.requestURL(uploadRequestParameters.route) else {
@@ -454,7 +454,7 @@ extension NetworkStack {
 // MARK: - Data request
 extension NetworkStack {
   
-  func sendRequestWithDataResponse(requestParameters: RequestParameters,
+  public func sendRequestWithDataResponse(requestParameters: RequestParameters,
                                    queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<(HTTPURLResponse, Data)> {
     let responseSerializer = DataRequest.dataResponseSerializer()
     return self.sendRequest(requestParameters: requestParameters,
@@ -462,7 +462,7 @@ extension NetworkStack {
                             responseSerializer: responseSerializer)
   }
   
-  func sendUploadRequestWithDataResponse(uploadRequestParameters: UploadRequestParameters,
+  public func sendUploadRequestWithDataResponse(uploadRequestParameters: UploadRequestParameters,
                                          queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<(HTTPURLResponse, Data)> {
     let responseSerializer = DataRequest.dataResponseSerializer()
     return self.sendUploadRequest(uploadRequestParameters: uploadRequestParameters,
@@ -479,7 +479,7 @@ extension NetworkStack {
     return DataRequest.jsonResponseSerializer(options: jsonOption)
   }
   
-  func sendRequestWithJSONResponse(requestParameters: RequestParameters,
+  public func sendRequestWithJSONResponse(requestParameters: RequestParameters,
                                    queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<(HTTPURLResponse, Any)> {
     let responseSerializer = self.defaultJSONResponseSerializer()
     return self.sendRequest(requestParameters: requestParameters,
@@ -487,7 +487,7 @@ extension NetworkStack {
                             responseSerializer: responseSerializer)
   }
   
-  func sendUploadRequestWithJSONResponse(uploadRequestParameters: UploadRequestParameters,
+  public func sendUploadRequestWithJSONResponse(uploadRequestParameters: UploadRequestParameters,
                                          queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<(HTTPURLResponse, Any)> {
     let responseSerializer = self.defaultJSONResponseSerializer()
     return self.sendUploadRequest(uploadRequestParameters: uploadRequestParameters,
@@ -504,31 +504,31 @@ extension NetworkStack {
     guard let accessToken = self.keychainService.accessToken, self.keychainService.isAccessTokenValid else {
       return nil
     }
-    return "bearer \(accessToken)"
+    return "Bearer \(accessToken)"
   }
   
-  func clearToken() {
+  public func clearToken() {
     self.keychainService.accessToken = nil
     self.keychainService.refreshToken = nil
     self.keychainService.expirationInterval = nil
   }
   
-  func updateToken(token: String, refreshToken: String? = nil, expiresIn: TimeInterval? = nil) {
+  public func updateToken(token: String, refreshToken: String? = nil, expiresIn: TimeInterval? = nil) {
     self.keychainService.accessToken = token
     self.keychainService.refreshToken = refreshToken
     self.keychainService.expirationInterval = expiresIn
   }
   
   // Returns true if token is expired, and the app should show the authentication view
-  func isTokenExpired() -> Bool {
+  public func isTokenExpired() -> Bool {
     return self.keychainService.isAccessTokenValid == false
   }
   
-  func currentAccessToken() -> String? {
+  public func currentAccessToken() -> String? {
     return self.keychainService.accessToken
   }
   
-  func currentRefreshToken() -> String? {
+  public func currentRefreshToken() -> String? {
     return self.keychainService.refreshToken
   }
 }

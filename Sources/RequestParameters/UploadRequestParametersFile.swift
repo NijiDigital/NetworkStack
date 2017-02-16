@@ -18,23 +18,23 @@
 
 import Foundation
 
-struct UploadRequestParametersFile {
-  let fileURL: URL
-  let parameterName: String
-  let fileName: String
-  let mimeType: String
+public struct UploadRequestParametersFile {
+  public let fileURL: URL
+  public let parameterName: String
+  public let fileName: String
+  public let mimeType: String
   
-  init(fileURL: URL,
-       parameterName: String,
-       fileName: String,
-       mimeType: String) {
+  public init(fileURL: URL,
+              parameterName: String,
+              fileName: String,
+              mimeType: String) {
     self.fileURL = fileURL
     self.parameterName = parameterName
     self.fileName = fileName
     self.mimeType = mimeType
   }
   
-  init(fileURL: URL, parameterName: String) {
+  public init(fileURL: URL, parameterName: String) {
     self.init(fileURL: fileURL,
               parameterName: parameterName,
               fileName: fileURL.lastPathComponent,

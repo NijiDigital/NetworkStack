@@ -19,7 +19,7 @@
 import KeychainAccess
 import RxSwift
 
-class KeychainService {
+open class KeychainService {
   
   // MARK: Constants
   
@@ -30,22 +30,22 @@ class KeychainService {
   // MARK: Properties
   
   private let keychain: Keychain
-  let serviceType: String
+  public let serviceType: String
   
   // MARK: Setup
   
-  init(serviceType: String) {
+  public init(serviceType: String) {
     self.serviceType = serviceType
     self.keychain = Keychain(service: serviceType)
   }    
   
-  func removeAll() throws {
+  public func removeAll() throws {
     try self.keychain.removeAll()
   }
   
   // MARK: OAuth
   
-  var accessToken: String? {
+  public var accessToken: String? {
     get {
       return self.keychain[accessTokenKey]
     }
@@ -54,7 +54,7 @@ class KeychainService {
     }
   }
 
-  var refreshToken: String? {
+  public var refreshToken: String? {
     get {
         return self.keychain[refreshTokenKey]
     }
@@ -63,7 +63,7 @@ class KeychainService {
     }
   }
   
-  var expirationInterval: TimeInterval? {
+  public var expirationInterval: TimeInterval? {
     get {
       guard let intervalValue = self.keychain[expirationDateKey] else {
         return nil
@@ -79,11 +79,11 @@ class KeychainService {
     }
   }
   
-  var isAccessTokenValid: Bool {
+  public var isAccessTokenValid: Bool {
     return self.accessToken != nil
   }
   
-  var isRefreshTokenValid: Bool {
+  public var isRefreshTokenValid: Bool {
     return self.refreshToken != nil
   }
 }

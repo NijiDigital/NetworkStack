@@ -18,7 +18,7 @@
 
 import Foundation
 
-enum NetworkStackError: Error {
+public enum NetworkStackError: Error {
   /// No internet, roaming off, data not allowed, call active, …
   case noInternet(error: Error)
   /// DNS Lookup failed, Host unreachable, …

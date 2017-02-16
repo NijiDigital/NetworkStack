@@ -19,7 +19,7 @@
 import Foundation
 import MobileCoreServices
 
-struct MimeTypeHelper {
+public struct MimeTypeHelper {
   
   static func mimeType(forFileURL fileURL: URL) -> String {
     return self.mimeType(forFileExtension: fileURL.pathExtension)

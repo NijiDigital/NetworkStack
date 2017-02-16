@@ -19,14 +19,14 @@
 import Foundation
 import Alamofire
 
-class BaseRequestParameters {
-  var method: Alamofire.HTTPMethod
-  var route: Routable
-  var needsAuthorization: Bool
-  var parameters: Alamofire.Parameters? = nil
-  var headers: Alamofire.HTTPHeaders?
+public class BaseRequestParameters {
+  public var method: Alamofire.HTTPMethod
+  public var route: Routable
+  public var needsAuthorization: Bool
+  public var parameters: Alamofire.Parameters? = nil
+  public var headers: Alamofire.HTTPHeaders?
   
-  init(method: Alamofire.HTTPMethod,
+  public init(method: Alamofire.HTTPMethod,
        route: Routable,
        needsAuthorization: Bool = false,
        parameters: Alamofire.Parameters? = nil,
