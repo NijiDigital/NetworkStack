@@ -496,7 +496,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8450CF56D4B84F9C19D8A268 /* Pods-NetworkStackTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = NetworkStackTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -511,7 +510,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E84E6F92D37569C98BCA69B /* Pods-NetworkStackTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = NetworkStackTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
