@@ -1,6 +1,6 @@
 {
   "name": "NetworkStack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "A Swift network request manager framework using reactive programming",
   "homepage": "https://github.com/NijiDigital/NetworkStack",
   "license": {
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/NijiDigital/NetworkStack.git",
-    "tag": "0.1.1"
+    "tag": "0.1.2"
   },
   "source_files": "Sources/**/*.swift",
   "ios": {
