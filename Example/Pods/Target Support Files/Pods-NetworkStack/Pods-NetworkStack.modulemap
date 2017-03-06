@@ -1,6 +1,0 @@
-framework module Pods_NetworkStack {
-  umbrella header "Pods-NetworkStack-umbrella.h"
-
-  export *
-  module * { export * }
-}
