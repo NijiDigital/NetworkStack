@@ -5,19 +5,19 @@ use_frameworks!
 
 # Common Pods
 #----------------------
-def common_core_pods  
+def common_core_pods
   pod 'NetworkStack', :path => '../'
 end
 
 # Target-Specific Pods
 #----------------------
 
-target 'NetworkStack' do
-  common_core_pods    
+target 'NetworkStackDemo' do
+  common_core_pods
 end
 
 
-target 'NetworkStackTests' do
+target 'NetworkStackDemoTests' do
   common_core_pods
   pod 'OHHTTPStubs'
 end
