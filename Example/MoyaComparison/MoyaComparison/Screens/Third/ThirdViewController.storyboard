@@ -11,7 +11,7 @@
         <!--Third View Controller-->
         <scene sceneID="Utl-IF-BQF">
             <objects>
-                <viewController restorationIdentifier="ThirdViewController" storyboardIdentifier="ThirdViewController" id="ZKR-ed-nI3" customClass="ThirdViewController" customModule="NetworkStackExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ThirdViewController" storyboardIdentifier="ThirdViewController" id="ZKR-ed-nI3" customClass="ThirdViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pxh-y8-wEQ"/>
                         <viewControllerLayoutGuide type="bottom" id="qKk-6X-zPV"/>

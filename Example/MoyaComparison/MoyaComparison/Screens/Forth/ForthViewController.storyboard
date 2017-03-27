@@ -11,7 +11,7 @@
         <!--Forth View Controller-->
         <scene sceneID="5LD-l2-tr4">
             <objects>
-                <viewController storyboardIdentifier="ForthViewController" id="pfc-E1-Kc9" customClass="ForthViewController" customModule="NetworkStackExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForthViewController" id="pfc-E1-Kc9" customClass="ForthViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qNy-r2-bjb"/>
                         <viewControllerLayoutGuide type="bottom" id="ywp-ZE-sFK"/>

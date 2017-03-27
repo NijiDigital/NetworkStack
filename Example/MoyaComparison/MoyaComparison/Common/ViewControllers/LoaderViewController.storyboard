@@ -11,7 +11,7 @@
         <!--Loader View Controller-->
         <scene sceneID="Y1q-FW-yAS">
             <objects>
-                <viewController storyboardIdentifier="LoaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rRa-mJ-wGh" customClass="LoaderViewController" customModule="NetworkStackExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rRa-mJ-wGh" customClass="LoaderViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PBV-Xi-C3J"/>
                         <viewControllerLayoutGuide type="bottom" id="A0Y-18-ubD"/>

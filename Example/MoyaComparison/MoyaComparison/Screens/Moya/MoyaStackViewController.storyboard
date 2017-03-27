@@ -11,7 +11,7 @@
         <!--Moya Stack View Controller-->
         <scene sceneID="cFp-Mj-xAU">
             <objects>
-                <viewController restorationIdentifier="MoyaStackViewController" storyboardIdentifier="MoyaStackViewController" id="WHM-OY-lW3" customClass="MoyaStackViewController" customModule="NetworkStackExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MoyaStackViewController" storyboardIdentifier="MoyaStackViewController" id="WHM-OY-lW3" customClass="MoyaStackViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qtU-Ki-SBy"/>
                         <viewControllerLayoutGuide type="bottom" id="zYp-7F-CiO"/>

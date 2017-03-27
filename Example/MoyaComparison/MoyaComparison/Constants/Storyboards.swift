@@ -45,18 +45,18 @@ enum StoryboardScene {
   enum ForthViewController: String, StoryboardSceneType {
     static let storyboardName = "ForthViewController"
 
-    static func initialViewController() -> NetworkStackExample.ForthViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? NetworkStackExample.ForthViewController else {
+    static func initialViewController() -> MoyaComparison.ForthViewController {
+      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.ForthViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
       return vc
     }
 
     case forthViewControllerScene = "ForthViewController"
-    static func instantiateForthViewController() -> NetworkStackExample.ForthViewController {
-      guard let vc = StoryboardScene.ForthViewController.forthViewControllerScene.viewController() as? NetworkStackExample.ForthViewController
+    static func instantiateForthViewController() -> MoyaComparison.ForthViewController {
+      guard let vc = StoryboardScene.ForthViewController.forthViewControllerScene.viewController() as? MoyaComparison.ForthViewController
       else {
-        fatalError("ViewController 'ForthViewController' is not of the expected class NetworkStackExample.ForthViewController.")
+        fatalError("ViewController 'ForthViewController' is not of the expected class MoyaComparison.ForthViewController.")
       }
       return vc
     }
@@ -67,18 +67,18 @@ enum StoryboardScene {
   enum LoaderViewController: String, StoryboardSceneType {
     static let storyboardName = "LoaderViewController"
 
-    static func initialViewController() -> NetworkStackExample.LoaderViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? NetworkStackExample.LoaderViewController else {
+    static func initialViewController() -> MoyaComparison.LoaderViewController {
+      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.LoaderViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
       return vc
     }
 
     case loaderViewControllerScene = "LoaderViewController"
-    static func instantiateLoaderViewController() -> NetworkStackExample.LoaderViewController {
-      guard let vc = StoryboardScene.LoaderViewController.loaderViewControllerScene.viewController() as? NetworkStackExample.LoaderViewController
+    static func instantiateLoaderViewController() -> MoyaComparison.LoaderViewController {
+      guard let vc = StoryboardScene.LoaderViewController.loaderViewControllerScene.viewController() as? MoyaComparison.LoaderViewController
       else {
-        fatalError("ViewController 'LoaderViewController' is not of the expected class NetworkStackExample.LoaderViewController.")
+        fatalError("ViewController 'LoaderViewController' is not of the expected class MoyaComparison.LoaderViewController.")
       }
       return vc
     }
@@ -89,18 +89,18 @@ enum StoryboardScene {
   enum MoyaStackViewController: String, StoryboardSceneType {
     static let storyboardName = "MoyaStackViewController"
 
-    static func initialViewController() -> NetworkStackExample.MoyaStackViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? NetworkStackExample.MoyaStackViewController else {
+    static func initialViewController() -> MoyaComparison.MoyaStackViewController {
+      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.MoyaStackViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
       return vc
     }
 
     case moyaStackViewControllerScene = "MoyaStackViewController"
-    static func instantiateMoyaStackViewController() -> NetworkStackExample.MoyaStackViewController {
-      guard let vc = StoryboardScene.MoyaStackViewController.moyaStackViewControllerScene.viewController() as? NetworkStackExample.MoyaStackViewController
+    static func instantiateMoyaStackViewController() -> MoyaComparison.MoyaStackViewController {
+      guard let vc = StoryboardScene.MoyaStackViewController.moyaStackViewControllerScene.viewController() as? MoyaComparison.MoyaStackViewController
       else {
-        fatalError("ViewController 'MoyaStackViewController' is not of the expected class NetworkStackExample.MoyaStackViewController.")
+        fatalError("ViewController 'MoyaStackViewController' is not of the expected class MoyaComparison.MoyaStackViewController.")
       }
       return vc
     }
@@ -108,18 +108,18 @@ enum StoryboardScene {
   enum NijiStackViewController: String, StoryboardSceneType {
     static let storyboardName = "NijiStackViewController"
 
-    static func initialViewController() -> NetworkStackExample.NijiStackViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? NetworkStackExample.NijiStackViewController else {
+    static func initialViewController() -> MoyaComparison.NijiStackViewController {
+      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.NijiStackViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
       return vc
     }
 
     case nijiStackViewControllerScene = "NijiStackViewController"
-    static func instantiateNijiStackViewController() -> NetworkStackExample.NijiStackViewController {
-      guard let vc = StoryboardScene.NijiStackViewController.nijiStackViewControllerScene.viewController() as? NetworkStackExample.NijiStackViewController
+    static func instantiateNijiStackViewController() -> MoyaComparison.NijiStackViewController {
+      guard let vc = StoryboardScene.NijiStackViewController.nijiStackViewControllerScene.viewController() as? MoyaComparison.NijiStackViewController
       else {
-        fatalError("ViewController 'NijiStackViewController' is not of the expected class NetworkStackExample.NijiStackViewController.")
+        fatalError("ViewController 'NijiStackViewController' is not of the expected class MoyaComparison.NijiStackViewController.")
       }
       return vc
     }
@@ -127,18 +127,18 @@ enum StoryboardScene {
   enum ThirdViewController: String, StoryboardSceneType {
     static let storyboardName = "ThirdViewController"
 
-    static func initialViewController() -> NetworkStackExample.ThirdViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? NetworkStackExample.ThirdViewController else {
+    static func initialViewController() -> MoyaComparison.ThirdViewController {
+      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.ThirdViewController else {
         fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
       }
       return vc
     }
 
     case thirdViewControllerScene = "ThirdViewController"
-    static func instantiateThirdViewController() -> NetworkStackExample.ThirdViewController {
-      guard let vc = StoryboardScene.ThirdViewController.thirdViewControllerScene.viewController() as? NetworkStackExample.ThirdViewController
+    static func instantiateThirdViewController() -> MoyaComparison.ThirdViewController {
+      guard let vc = StoryboardScene.ThirdViewController.thirdViewControllerScene.viewController() as? MoyaComparison.ThirdViewController
       else {
-        fatalError("ViewController 'ThirdViewController' is not of the expected class NetworkStackExample.ThirdViewController.")
+        fatalError("ViewController 'ThirdViewController' is not of the expected class MoyaComparison.ThirdViewController.")
       }
       return vc
     }

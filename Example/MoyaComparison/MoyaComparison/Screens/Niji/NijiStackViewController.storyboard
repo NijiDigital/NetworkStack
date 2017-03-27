@@ -11,7 +11,7 @@
         <!--Niji Stack View Controller-->
         <scene sceneID="twf-ep-J5T">
             <objects>
-                <viewController restorationIdentifier="NijiStackViewController" storyboardIdentifier="NijiStackViewController" id="9D4-yG-0qX" customClass="NijiStackViewController" customModule="NetworkStackExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="NijiStackViewController" storyboardIdentifier="NijiStackViewController" id="9D4-yG-0qX" customClass="NijiStackViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gyg-yj-yWZ"/>
                         <viewControllerLayoutGuide type="bottom" id="eAp-tL-glM"/>
