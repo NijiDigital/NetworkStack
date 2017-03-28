@@ -31,7 +31,7 @@ extension CustomAPI {
       return "/videos"
     case .delVideo(let identifier):
       return "/videos/\(identifier)"
-    case .uploadVideoDocument(let identifier):
+    case .uploadVideoDocument(let identifier, _):
       return "/videos/\(identifier)/document"
     }
   }

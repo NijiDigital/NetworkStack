@@ -25,7 +25,7 @@ enum CustomAPI: TargetType {
   case putVideo(video: Video)
   case postVideo(video: Video)
   case delVideo(identifier: Int)
-  case uploadVideoDocument(identifier: Int)
+  case uploadVideoDocument(identifier: Int, fileURL: URL)
 }
 
 extension CustomAPI {
@@ -40,8 +40,7 @@ extension CustomAPI {
 
 extension CustomAPI {
   public var task: Task {
-    if case .uploadVideoDocument(let identifier) = self {
-      let fileURL: URL = URL(string: "\(identifier)")!
+    if case .uploadVideoDocument(_, let fileURL) = self {
       let uploadType = UploadType.file(fileURL)
       return .upload(uploadType)
     }
