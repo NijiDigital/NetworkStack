@@ -20,8 +20,16 @@ import RxSwift
 import Alamofire
 
 struct AuthenticationWebService {
+  // MARK: properties
   var webServices: WebServices
+  
+  // MARK: Public Func
   func authent(user: String, password: String) -> Observable<Void> {
+    
+    // set refreshToken when you launch authent WS
+    self.webServices.userNetworkStack.renewTokenHandler = {
+      return self.refreshToken()
+    }
     
     return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.authent(user: user, password: password))
       .flatMap({ (_, json: Any) -> Observable<Authorization> in
