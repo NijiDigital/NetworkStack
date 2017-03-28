@@ -24,23 +24,14 @@ struct NijiVideoWebService: VideoWebService {
   var webServices: WebServices
   
   func fetchAllVideos() -> Observable<[Video]> {
-    let requestParameters = RequestParameters(method: .get,
-                                              route: Route.videos(),
-                                              needsAuthorization: false,
-                                              parametersEncoding: URLEncoding.default)
-    
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllVideos())
       .flatMap({ (_, json: Any) -> Observable<[Video]> in
         return self.webServices.serializationSwiftyJSON.parse(objects: json)
       })
   }
   
   func fetchVideo(identifier: Int) -> Observable<Video> {
-    let requestParameters = RequestParameters(method: .get,
-                                              route: Route.video(identifier: identifier),
-                                              needsAuthorization: false,
-                                              parametersEncoding: URLEncoding.default)
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchVideo(identifier: identifier))
       .flatMap({ (_, json: Any) -> Observable<Video> in
         return self.webServices.serializationSwiftyJSON.parse(object: json)
       })
@@ -52,13 +43,7 @@ struct NijiVideoWebService: VideoWebService {
       logger.error(.webServiceClient, "Failed to parse video : \(error)")
       return Observable.error(error)
     }
-    let parameters: Alamofire.Parameters = json
-    let requestParameters = RequestParameters(method: .put,
-                                              route: Route.video(identifier: video.identifier),
-                                              needsAuthorization: false,
-                                              parameters: parameters,
-                                              parametersEncoding: URLEncoding.httpBody)
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateVideo(identifier: video.identifier, parameters: json))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })
@@ -70,24 +55,14 @@ struct NijiVideoWebService: VideoWebService {
       logger.error(.webServiceClient, "Failed to parse video : \(error)")
       return Observable.error(error)
     }
-    let parameters: Alamofire.Parameters = json
-    let requestParameters = RequestParameters(method: .post,
-                                              route: Route.videos(),
-                                              needsAuthorization: false,
-                                              parameters: parameters,
-                                              parametersEncoding: URLEncoding.httpBody)
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addVideo(parameters: json))
       .flatMap({ (_, json: Any) -> Observable<Video> in
         return self.webServices.serializationSwiftyJSON.parse(object: json)
       })
   }
   
   func deleteVideo(identifier: Int) -> Observable<Void> {
-    let requestParameters = RequestParameters(method: .delete,
-                                              route: Route.video(identifier: identifier),
-                                              needsAuthorization: false,
-                                              parametersEncoding: URLEncoding.default)
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.deleteVideo(identifier: identifier))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })

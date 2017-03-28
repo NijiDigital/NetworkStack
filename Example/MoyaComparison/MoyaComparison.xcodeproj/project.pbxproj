@@ -18,6 +18,7 @@
 		6DC269B51E8AE7BD000A5A5A /* NijiVideoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269AF1E8AE7BD000A5A5A /* NijiVideoWebService.swift */; };
 		6DC269B61E8AE7BD000A5A5A /* UserWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269B01E8AE7BD000A5A5A /* UserWebServices.swift */; };
 		6DC269B71E8AE7BD000A5A5A /* VideoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269B11E8AE7BD000A5A5A /* VideoWebService.swift */; };
+		6DC269B91E8AFAD7000A5A5A /* RequestParameters+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269B81E8AFAD7000A5A5A /* RequestParameters+Video.swift */; };
 		6DF771CD1E8989FD0051C8AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */; };
 		6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714F1E8989FD0051C8AB /* VideoCell.swift */; };
 		6DF771D01E8989FD0051C8AB /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771501E8989FD0051C8AB /* VideoCell.xib */; };
@@ -116,6 +117,7 @@
 		6DC269AF1E8AE7BD000A5A5A /* NijiVideoWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NijiVideoWebService.swift; sourceTree = "<group>"; };
 		6DC269B01E8AE7BD000A5A5A /* UserWebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWebServices.swift; sourceTree = "<group>"; };
 		6DC269B11E8AE7BD000A5A5A /* VideoWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoWebService.swift; sourceTree = "<group>"; };
+		6DC269B81E8AFAD7000A5A5A /* RequestParameters+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestParameters+Video.swift"; sourceTree = "<group>"; };
 		6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DF7714F1E8989FD0051C8AB /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		6DF771501E8989FD0051C8AB /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF771B61E8989FD0051C8AB /* RequestParameters+Authent.swift */,
+				6DC269B81E8AFAD7000A5A5A /* RequestParameters+Video.swift */,
 			);
 			path = RequestParameters;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				6DF772271E8989FD0051C8AB /* BarButtonItemFactory.swift in Sources */,
 				6DF771E01E8989FD0051C8AB /* MoyaTabCoordinator.swift in Sources */,
 				6DF7721E1E8989FD0051C8AB /* SerializationServiceError.swift in Sources */,
+				6DC269B91E8AFAD7000A5A5A /* RequestParameters+Video.swift in Sources */,
 				6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */,
 				6DF771F11E8989FD0051C8AB /* User+ObjectMapper.swift in Sources */,
 				6DF771E31E8989FD0051C8AB /* TabsCoordinator.swift in Sources */,
