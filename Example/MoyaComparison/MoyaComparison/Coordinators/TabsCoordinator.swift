@@ -17,6 +17,13 @@
 import Foundation
 import UIKit
 
+enum TabsName: String {
+  case niji = "Niji"
+  case moya = "Moya"
+  case third
+  case forth
+}
+
 final class TabsCoordinator: Coordinator {
   
   // MARK: - Private Properties
@@ -29,7 +36,7 @@ final class TabsCoordinator: Coordinator {
   private struct TabsCoordinators {
     let niji: NijiTabCoordinator
     let moya: MoyaTabCoordinator
-    func all() -> [Coordinator] { return [niji, moya /*, third, forth*/] }
+    func all() -> [Coordinator] { return [niji, moya] }
   }
   
   private lazy var coordinators: TabsCoordinators = TabsCoordinators(

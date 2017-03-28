@@ -28,7 +28,7 @@ final class MoyaTabCoordinator: Coordinator {
   // MARK: - Init
   init(webServiceClient: WebServiceClient) {
     self.webServiceClient = webServiceClient
-    self.navigationController.tabBarItem = UITabBarItem(title: "Moya", image: Asset.iconMoya.image, tag: 2)
+    self.navigationController.tabBarItem = UITabBarItem(title: TabsName.moya.rawValue, image: Asset.iconMoya.image, tag: 2)
     self.navigationController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
     self.navigationController.setupBlackNavigationBar()
     start()
