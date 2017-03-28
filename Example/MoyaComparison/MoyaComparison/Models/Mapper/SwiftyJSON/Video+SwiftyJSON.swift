@@ -48,17 +48,11 @@ extension Video {
 
 struct SwiftyTransformer {
   static func dateTransform(value: String, json: JSON) -> Date? {
-    let formatter = DateFormatter()
-    formatter.locale = Locale(identifier: "en_US_POSIX")
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-    return formatter.date(from: value)
+    return DateFormatter.iso8601Formatter.date(from: value)
   }
   
-  static func dateTransform(date: Date) -> String {
-    let formatter = DateFormatter()
-    formatter.locale = Locale(identifier: "en_US_POSIX")
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-    return formatter.string(from: date)
+  static func dateTransform(date: Date?) -> String {
+    return DateFormatter.iso8601Formatter.string(from: date ?? Date())
   }
   
   static func arrayVideoTransform<T: Swifty>(json: JSON) -> T {

@@ -32,4 +32,17 @@ extension Video {
     let relatedVideosSandbox: [Video] = try decoder.decode(Relationships.relatedVideos.rawValue)
     self.relatedVideos.append(objectsIn: relatedVideosSandbox)
   }
+  
+  func toJSON() throws -> Any {
+    return try JSONEncoder.create({ (encoder: JSONEncoder) in
+      try encoder.encode(self.identifier, key: Attributes.identifier.rawValue)
+      try encoder.encode(self.title, key: Attributes.title.rawValue)
+      try encoder.encode(self.creationDate, key: Attributes.creationDate.rawValue, transformer: JSONTransformers.StringToDate)
+      try encoder.encode(self.likeCounts, key: Attributes.likeCounts.rawValue)
+      try encoder.encode(self.hasSponsors.value, key: Attributes.hasSponsors.rawValue)
+      try encoder.encode(self.statusCode.value, key: Attributes.statusCode.rawValue)
+      let relatedVideosSandbox: [Video] = Array(self.relatedVideos)
+      try encoder.encode(relatedVideosSandbox, key: Relationships.relatedVideos.rawValue)
+    })
+  }
 }

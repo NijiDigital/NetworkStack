@@ -22,15 +22,15 @@ final class Video: Object, MultipleJSONConformance {
   
   enum Attributes: String {
     case identifier = "id"
-    case title = "title"
-    case creationDate = "creationDate"
-    case likeCounts = "likeCounts"
-    case hasSponsors = "hasSponsors"
-    case statusCode = "statusCode"
+    case title
+    case creationDate
+    case likeCounts
+    case hasSponsors
+    case statusCode
   }
   
   enum Relationships: String {
-    case relatedVideos = "relatedVideos"
+    case relatedVideos
   }
 
   // MARK: Attributes

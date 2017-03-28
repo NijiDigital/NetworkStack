@@ -138,7 +138,7 @@
 		6DF7717F1E8989FD0051C8AB /* Authorization+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6DF771801E8989FD0051C8AB /* User+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6DF771811E8989FD0051C8AB /* Video+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+SwiftyJSON.swift"; sourceTree = "<group>"; };
-		6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleJSONConformance.swift; sourceTree = "<group>"; };
+		6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleJSONConformance.swift; path = ../MultipleJSONConformance.swift; sourceTree = "<group>"; };
 		6DF771841E8989FD0051C8AB /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		6DF771851E8989FD0051C8AB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6DF771881E8989FD0051C8AB /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -367,7 +367,6 @@
 			children = (
 				6DF771731E8989FD0051C8AB /* CRUD */,
 				6DF771751E8989FD0051C8AB /* Mapper */,
-				6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */,
 				6DF771831E8989FD0051C8AB /* POJO */,
 				6DF771861E8989FD0051C8AB /* Realm */,
 			);
@@ -384,6 +383,7 @@
 		6DF771751E8989FD0051C8AB /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
+				6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */,
 				6DF771761E8989FD0051C8AB /* JSONCodable */,
 				6DF7717A1E8989FD0051C8AB /* ObjectMapper */,
 				6DF7717E1E8989FD0051C8AB /* SwiftyJSON */,

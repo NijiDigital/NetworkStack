@@ -23,12 +23,4 @@ extension Authorization {
     self.expirationDate = json[JSONKeys.expirationDate.rawValue].doubleValue
     self.refreshToken = json[JSONKeys.refreshToken.rawValue].stringValue
   }
-  
-  func toJSON() -> JSON {
-    var json: JSON = JSON(dictionaryLiteral: [])
-    json[JSONKeys.token.rawValue].string = self.token
-    json[JSONKeys.expirationDate.rawValue].double = self.expirationDate
-    json[JSONKeys.refreshToken.rawValue].string = self.refreshToken
-    return json
-  }
 }
