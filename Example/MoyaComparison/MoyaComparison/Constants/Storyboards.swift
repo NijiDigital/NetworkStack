@@ -105,25 +105,6 @@ enum StoryboardScene {
       return vc
     }
   }
-  enum NijiStackViewController: String, StoryboardSceneType {
-    static let storyboardName = "NijiStackViewController"
-
-    static func initialViewController() -> MoyaComparison.NijiStackViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.NijiStackViewController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return vc
-    }
-
-    case nijiStackViewControllerScene = "NijiStackViewController"
-    static func instantiateNijiStackViewController() -> MoyaComparison.NijiStackViewController {
-      guard let vc = StoryboardScene.NijiStackViewController.nijiStackViewControllerScene.viewController() as? MoyaComparison.NijiStackViewController
-      else {
-        fatalError("ViewController 'NijiStackViewController' is not of the expected class MoyaComparison.NijiStackViewController.")
-      }
-      return vc
-    }
-  }
   enum ThirdViewController: String, StoryboardSceneType {
     static let storyboardName = "ThirdViewController"
 
@@ -139,6 +120,25 @@ enum StoryboardScene {
       guard let vc = StoryboardScene.ThirdViewController.thirdViewControllerScene.viewController() as? MoyaComparison.ThirdViewController
       else {
         fatalError("ViewController 'ThirdViewController' is not of the expected class MoyaComparison.ThirdViewController.")
+      }
+      return vc
+    }
+  }
+  enum VideosViewController: String, StoryboardSceneType {
+    static let storyboardName = "VideosViewController"
+
+    static func initialViewController() -> MoyaComparison.VideosViewController {
+      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.VideosViewController else {
+        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
+      }
+      return vc
+    }
+
+    case videosViewControllerScene = "VideosViewController"
+    static func instantiateVideosViewController() -> MoyaComparison.VideosViewController {
+      guard let vc = StoryboardScene.VideosViewController.videosViewControllerScene.viewController() as? MoyaComparison.VideosViewController
+      else {
+        fatalError("ViewController 'VideosViewController' is not of the expected class MoyaComparison.VideosViewController.")
       }
       return vc
     }

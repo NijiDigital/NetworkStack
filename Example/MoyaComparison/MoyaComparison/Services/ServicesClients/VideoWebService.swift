@@ -19,7 +19,6 @@ import RxSwift
 
 protocol webService {
   var webServices: WebServices { get set }
-  init(webServices: WebServices)
 }
 
 protocol VideoWebService: webService {

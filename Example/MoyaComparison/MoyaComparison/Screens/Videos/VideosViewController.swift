@@ -18,7 +18,7 @@ import UIKit
 import Reusable
 import RxSwift
 
-final class NijiStackViewController: UIViewController, StoryboardBased {
+final class VideosViewController: UIViewController, StoryboardBased {
   
   // MARK: - Private Properties
   private var webservice: WebServiceClient?
@@ -38,8 +38,8 @@ final class NijiStackViewController: UIViewController, StoryboardBased {
   }
   
   // MARK: - Instance
-  public static func instance(webService: WebServiceClient?, dataStore: VideoDataStore) -> NijiStackViewController {
-    let controller = NijiStackViewController.instantiate()
+  public static func instance(webService: WebServiceClient?, dataStore: VideoDataStore) -> VideosViewController {
+    let controller = VideosViewController.instantiate()
     controller.webservice = webService
     controller.dataStore = dataStore
     return controller
@@ -78,14 +78,14 @@ final class NijiStackViewController: UIViewController, StoryboardBased {
   }
 }
 
-extension NijiStackViewController: VideoDataStoreDelegate {
+extension VideosViewController: VideoDataStoreDelegate {
   func fetched(videos: [Video]) {
     self.videos = videos
     self.tableView.reloadData()
   }
   
   func added(video: Video) {
-    self.videos.insert(video, at: 0)
+    self.videos.insert(video, at: self.videos.endIndex)
     self.tableView.reloadData()
   }
   
@@ -101,7 +101,7 @@ extension NijiStackViewController: VideoDataStoreDelegate {
   }
 }
 
-extension NijiStackViewController: UITableViewDelegate {
+extension VideosViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
   }
@@ -119,7 +119,7 @@ extension NijiStackViewController: UITableViewDelegate {
   }
 }
 
-extension NijiStackViewController: UITableViewDataSource {
+extension VideosViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return videos.count
   }
@@ -130,7 +130,9 @@ extension NijiStackViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: VideoCell = self.tableView.dequeueReusableCell(for: indexPath)
-    cell.setup(video: self.videos[indexPath.row])
+    if let video = self.videos[safe: indexPath.row] {
+      cell.setup(video: video)
+    }
     return cell
   }
 }

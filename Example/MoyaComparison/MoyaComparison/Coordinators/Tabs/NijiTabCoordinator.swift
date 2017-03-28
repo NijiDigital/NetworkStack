@@ -49,7 +49,7 @@ final class NijiTabCoordinator: Coordinator {
   
   fileprivate func moveToNijiStack() {
     let dataStore = VideoDataStore(webService: self.webServiceClient.clients.niji)
-    let controller = NijiStackViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
+    let controller = VideosViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
     self.navigationController.setViewControllers([controller], animated: true)
   }
 }

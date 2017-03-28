@@ -49,7 +49,7 @@ final class MoyaTabCoordinator: Coordinator {
   
   fileprivate func moveToMoyaStack() {
     let dataStore = VideoDataStore(webService: self.webServiceClient.clients.moya)
-    let controller = NijiStackViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
+    let controller = VideosViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
     self.navigationController.setViewControllers([controller], animated: true)
   }
 }
