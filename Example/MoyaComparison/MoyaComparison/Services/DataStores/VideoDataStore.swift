@@ -35,16 +35,6 @@ struct VideoDataStore {
     self.webService = webService
   }
   
-  func fakeNijiVideoToAdd() -> Video {
-    let video = Video()
-    video.title = "Moya NetworkStack"
-    video.creationDate = Date()
-    video.hasSponsors.value = true
-    video.likeCounts = 10000
-    video.statusCode.value = 10
-    return video
-  }
-  
   func fetchVideos() {
     self.webService?.fetchAllVideos()
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -64,7 +54,10 @@ struct VideoDataStore {
   }
   
   func addVideo() {
-    let video = fakeNijiVideoToAdd()
+    guard let video = webService?.fakeVideoToAdd() else {
+      logger.error(.webServiceClient, "Failed to create fake video !")
+      return
+    }
     self.webService?.addVideo(video: video)
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
       .observeOn(MainScheduler.instance)

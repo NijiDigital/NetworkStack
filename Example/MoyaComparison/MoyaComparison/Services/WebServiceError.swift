@@ -16,6 +16,7 @@
 
 import Foundation
 
+/// Error enum for web services
 public enum WebServiceError: Error {
   case unexpectedJSONFormat(json: Any)
   case unexpectedObjectFormat(object: Any)

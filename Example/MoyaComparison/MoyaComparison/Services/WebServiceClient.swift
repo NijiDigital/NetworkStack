@@ -19,6 +19,7 @@ import NetworkStack
 import RxSwift
 import Moya
 
+/// WebServices is a struct to centralize serialization and network stack
 struct WebServices {
   let serializationJSONCodable: SerializationServiceJSONCodable
   let serializationSwiftyJSON: SerializationServiceSwiftyJSON
@@ -28,6 +29,7 @@ struct WebServices {
   let customAPIProvider: RxMoyaProvider<CustomAPI>
 }
 
+/// ServiceClients is a struct to centralize web services client split in several structs
 struct ServiceClients {
   let niji: NijiVideoWebService
   let moya: MoyaVideoWebService
@@ -35,6 +37,7 @@ struct ServiceClients {
   let authent: AuthenticationWebService
 }
 
+/// WebServiceClient is an entry point for webServices stack and clients
 struct WebServiceClient {
   internal let clients: ServiceClients
 }

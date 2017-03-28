@@ -19,7 +19,7 @@ import JSONCodable
 import ObjectMapper
 import SwiftyJSON
 
-/// To use Generics for parsing with SwiftyJSON
+/// Swifty protocol to use Generics for parsing with SwiftyJSON
 protocol Swifty {
   init(json: JSON)
   func toJSON() -> JSON
@@ -31,6 +31,8 @@ extension Swifty {
   }
 }
 
+/// MultipleJSONConformance protocol is conformance of JSONCodable, Mappable, Swifty protocols
 protocol MultipleJSONConformance: JSONCodable, Mappable, Swifty {}
 
+/// DualJSONConformance protocol is conformance of JSONCodable, Swifty protocols
 protocol DualJSONConformance: JSONCodable, Swifty {}

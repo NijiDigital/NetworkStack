@@ -167,7 +167,7 @@
 		6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+parameters.swift"; sourceTree = "<group>"; };
 		6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+parametersEncoding.swift"; sourceTree = "<group>"; };
 		6DF771B11E8989FD0051C8AB /* CustomAPI+path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+path.swift"; sourceTree = "<group>"; };
-		6DF771B21E8989FD0051C8AB /* CustomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAPI.swift; sourceTree = "<group>"; };
+		6DF771B21E8989FD0051C8AB /* CustomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAPI.swift; path = MoyaComparison/Services/API/CustomAPI.swift; sourceTree = SOURCE_ROOT; };
 		6DF771B41E8989FD0051C8AB /* VideoDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDataStore.swift; sourceTree = "<group>"; };
 		6DF771B61E8989FD0051C8AB /* RequestParameters+Authent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestParameters+Authent.swift"; sourceTree = "<group>"; };
 		6DF771B71E8989FD0051C8AB /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
@@ -269,11 +269,11 @@
 		6DC269AB1E8AE7BD000A5A5A /* ServicesClients */ = {
 			isa = PBXGroup;
 			children = (
-				6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebService.swift */,
+				6DC269B11E8AE7BD000A5A5A /* VideoWebService.swift */,
 				6DC269AE1E8AE7BD000A5A5A /* MoyaVideoWebService.swift */,
 				6DC269AF1E8AE7BD000A5A5A /* NijiVideoWebService.swift */,
+				6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebService.swift */,
 				6DC269B01E8AE7BD000A5A5A /* UserWebServices.swift */,
-				6DC269B11E8AE7BD000A5A5A /* VideoWebService.swift */,
 			);
 			path = ServicesClients;
 			sourceTree = "<group>";
@@ -348,8 +348,8 @@
 		6DF7715F1E8989FD0051C8AB /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				6DF771611E8989FD0051C8AB /* AppCoordinator.swift */,
 				6DF771621E8989FD0051C8AB /* Coordinator.swift */,
+				6DF771611E8989FD0051C8AB /* AppCoordinator.swift */,
 				6DF771681E8989FD0051C8AB /* TabsCoordinator.swift */,
 				6DF771631E8989FD0051C8AB /* Tabs */,
 			);
@@ -535,7 +535,6 @@
 			isa = PBXGroup;
 			children = (
 				6DF771AD1E8989FD0051C8AB /* CustomAPI */,
-				6DF771B21E8989FD0051C8AB /* CustomAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -543,6 +542,7 @@
 		6DF771AD1E8989FD0051C8AB /* CustomAPI */ = {
 			isa = PBXGroup;
 			children = (
+				6DF771B21E8989FD0051C8AB /* CustomAPI.swift */,
 				6DF771AE1E8989FD0051C8AB /* CustomAPI+method.swift */,
 				6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */,
 				6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */,

@@ -19,7 +19,7 @@ import UIKit
 
 final class TabsCoordinator: Coordinator {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   internal var baseViewController: BaseViewController
   internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
@@ -29,24 +29,21 @@ final class TabsCoordinator: Coordinator {
   private struct TabsCoordinators {
     let niji: NijiTabCoordinator
     let moya: MoyaTabCoordinator
-//    let third: ThirdTabCoordinator
-//    let forth: ForthTabCoordinator
     func all() -> [Coordinator] { return [niji, moya /*, third, forth*/] }
   }
   
   private lazy var coordinators: TabsCoordinators = TabsCoordinators(
     niji: NijiTabCoordinator(webServiceClient: self.webServiceClient),
     moya: MoyaTabCoordinator(webServiceClient: self.webServiceClient)
-//    third: ThirdTabCoordinator(webServiceClient: self.webServiceClient),
-//    forth: ForthTabCoordinator(webServiceClient: self.webServiceClient)
   )
   
-  // MARK: init
+  // MARK: - Init
   init(baseController: BaseViewController, webServiceClient: WebServiceClient) {
     self.baseViewController = baseController
     self.webServiceClient = webServiceClient
   }
   
+  // MARK: - Public Funcs
   func start() {
     self.tabBarController.viewControllers = coordinators.all().map({ $0.navigationController })
     self.tabBarController.tabBar.setupBlackTabBar()

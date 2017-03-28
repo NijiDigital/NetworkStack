@@ -92,4 +92,14 @@ struct NijiVideoWebService: VideoWebService {
         return Observable.empty()
       })
   }
+  
+  func fakeVideoToAdd() -> Video {
+    let video = Video()
+    video.title = "NetworkStack by Niji"
+    video.creationDate = Date()
+    video.hasSponsors.value = true
+    video.likeCounts = 10000
+    video.statusCode.value = 10
+    return video
+  }
 }

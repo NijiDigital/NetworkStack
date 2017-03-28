@@ -19,13 +19,13 @@ import UIKit
 
 final class MoyaTabCoordinator: Coordinator {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   internal var baseViewController = BaseViewController()
   internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
   private let webServiceClient: WebServiceClient
   
-  // MARK: init
+  // MARK: - Init
   init(webServiceClient: WebServiceClient) {
     self.webServiceClient = webServiceClient
     self.navigationController.tabBarItem = UITabBarItem(title: "Moya", image: nil, tag: 2)
@@ -34,24 +34,27 @@ final class MoyaTabCoordinator: Coordinator {
     start()
   }
   
+  // MARK: - Public Funcs
   func start() {
     self.moveToLoader()
   }
   
   func stop() {}
   
-  // MARK: private funcs
+  // MARK: - Private Funcs
   private func moveToLoader() {
     let controller = LoaderViewController.instance(actions: self)
     self.navigationController.setViewControllers([controller], animated: true)
   }
   
   fileprivate func moveToMoyaStack() {
-    let controller = MoyaStackViewController.instance(webService: self.webServiceClient)
+    let dataStore = VideoDataStore(webService: self.webServiceClient.clients.moya)
+    let controller = NijiStackViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
     self.navigationController.setViewControllers([controller], animated: true)
   }
 }
 
+// MARK: - LoaderViewControllerActions
 extension MoyaTabCoordinator: LoaderViewControllerActions {
   func didFinishLoad() {
     self.moveToMoyaStack()

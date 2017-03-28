@@ -19,13 +19,13 @@ import UIKit
 
 final class NijiTabCoordinator: Coordinator {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   internal var baseViewController = BaseViewController()
   internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
   private let webServiceClient: WebServiceClient
   
-  // MARK: init
+  // MARK: - Init
   init(webServiceClient: WebServiceClient) {
     self.webServiceClient = webServiceClient
     self.navigationController.tabBarItem = UITabBarItem(title: "Niji", image: Asset.iconNetworkstack.image, tag: 1)
@@ -34,13 +34,14 @@ final class NijiTabCoordinator: Coordinator {
     start()
   }
   
+  // MARK: - Public Funcs
   func start() {
     self.moveToLoader()
   }
   
   func stop() {}
   
-  // MARK: private funcs
+  // MARK: - Private Funcs
   private func moveToLoader() {
     let controller = LoaderViewController.instance(actions: self)
     self.navigationController.setViewControllers([controller], animated: true)
@@ -53,6 +54,7 @@ final class NijiTabCoordinator: Coordinator {
   }
 }
 
+// MARK: - LoaderViewControllerActions
 extension NijiTabCoordinator: LoaderViewControllerActions {
   func didFinishLoad() {
     self.moveToNijiStack()

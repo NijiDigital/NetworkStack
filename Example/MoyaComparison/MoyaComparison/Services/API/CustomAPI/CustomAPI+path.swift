@@ -27,8 +27,8 @@ extension CustomAPI {
       return "/videos/\(identifier)"
     case .putVideo(let video):
       return "/videos/\(video.identifier)"
-    case .postVideo(let video):
-      return "/videos/\(video.identifier)"
+    case .postVideo(_):
+      return "/videos"
     case .delVideo(let identifier):
       return "/videos/\(identifier)"
     case .uploadVideoDocument(let identifier):

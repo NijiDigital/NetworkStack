@@ -50,9 +50,19 @@ struct MoyaVideoWebService: VideoWebService {
   }
   
   func deleteVideo(identifier: Int) -> Observable<Void> {
-    return self.webServices.customAPIProvider.request(CustomAPI.getVideo(identifier: identifier)).asObservable()
+    return self.webServices.customAPIProvider.request(CustomAPI.delVideo(identifier: identifier)).asObservable()
       .flatMap({ _ -> Observable<Void> in
         return Observable.empty()
       })
+  }
+  
+  func fakeVideoToAdd() -> Video {
+    let video = Video()
+    video.title = "Moya network stack"
+    video.creationDate = Date()
+    video.hasSponsors.value = true
+    video.likeCounts = 10000
+    video.statusCode.value = 10
+    return video
   }
 }

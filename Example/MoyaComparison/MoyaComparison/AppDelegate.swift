@@ -19,10 +19,10 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  // MARK: public properties
+  // MARK: - Public Properties
   var window: UIWindow?
   
-  // MARK: private properties
+  // MARK: - Private Properties
   private var appCoordinator: AppCoordinator?
   private var baseViewController: BaseViewController {
     let baseController = BaseViewController()
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return baseController
   }
 
-  // MARK: life cycle
+  // MARK: - Life Cycle
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     self.appCoordinator = AppCoordinator(baseController: self.baseViewController)
     self.appCoordinator?.start()

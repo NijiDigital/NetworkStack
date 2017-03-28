@@ -19,13 +19,13 @@ import UIKit
 
 final class ThirdTabCoordinator: Coordinator {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   internal var baseViewController = BaseViewController()
   internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
   private let webServiceClient: WebServiceClient
   
-  // MARK: init
+  // MARK: - Init
   init(webServiceClient: WebServiceClient) {
     self.webServiceClient = webServiceClient
     self.baseViewController.tabBarItem = UITabBarItem(title: "Third", image: nil, tag: 3)
@@ -33,13 +33,14 @@ final class ThirdTabCoordinator: Coordinator {
     start()
   }
   
+  // MARK: - Public Funcs
   func start() {
     self.moveToLoader()
   }
   
   func stop() {}
   
-  // MARK: private funcs
+  // MARK: - Private Funcs
   private func moveToLoader() {
     let controller = LoaderViewController.instance(actions: self)
     self.baseViewController.addViewController(controller, method: .replaceRoot)
@@ -51,6 +52,7 @@ final class ThirdTabCoordinator: Coordinator {
   }
 }
 
+// MARK: - LoaderViewControllerActions
 extension ThirdTabCoordinator: LoaderViewControllerActions {
   func didFinishLoad() {
     self.moveToThird()

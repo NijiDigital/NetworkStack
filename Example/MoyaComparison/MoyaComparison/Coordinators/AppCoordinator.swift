@@ -21,24 +21,24 @@ import Moya
 
 final class AppCoordinator: Coordinator {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   private var webServiceClient: WebServiceClient?
   internal var baseViewController: BaseViewController
   internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
   
-  // MARK: init
+  // MARK: - Init
   init(baseController: BaseViewController) {
     self.baseViewController = baseController
     self.initWebServiceClient()
   }
   
-  // MARK: public funcs
+  // MARK: - Public Funcs
   func start() {
     self.startTabBar()
   }
   
-  // MARK: private funcs
+  // MARK: - Private Funcs
   private func initWebServiceClient() {
     let userBaseURL: String = Environment.baseURL + Environment.apiVersion
     let videoBaseURL: String = Environment.baseURL + Environment.apiVersion
@@ -71,6 +71,5 @@ final class AppCoordinator: Coordinator {
       self.childCoordinators.append(coordinator)
       coordinator.start()
     }
-//    self.baseViewController.addViewController(controller, method: .replaceRoot)
   }
 }

@@ -28,4 +28,5 @@ protocol VideoWebService: webService {
   func updateVideo(video: Video) -> Observable<Void>
   func addVideo(video: Video) -> Observable<Video>
   func deleteVideo(identifier: Int) -> Observable<Void>
+  func fakeVideoToAdd() -> Video
 }

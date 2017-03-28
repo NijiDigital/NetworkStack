@@ -20,10 +20,17 @@ import RxSwift
 import Alamofire
 
 struct AuthenticationWebService {
-  // MARK: properties
+  // MARK: - Properties
   var webServices: WebServices
   
-  // MARK: Public Func
+  // MARK: - Public Func
+  /// Authentication method with Basic auth (user and password will be encoded like that ````base64(user:password)````) and Bearer service
+  /// for all next requests that you need Authorization header. In this method you have an init about refresh token handler.
+  ///
+  /// - Parameters:
+  ///   - user: user identifier for authentication
+  ///   - password: user password for authentication
+  /// - Returns: Observable of Void because network stack save into Keychain token, refreshToken and expirationDate
   func authent(user: String, password: String) -> Observable<Void> {
     
     // set refreshToken when you launch authent WS
@@ -42,7 +49,11 @@ struct AuthenticationWebService {
       })
   }
   
-  func refreshToken() -> Observable<Void> {
+  // MARK: - Private Funcs
+  /// This private func is used to refresh token by NetworkStack. This method is called above, inside renewTokenHandler: computed property
+  ///
+  /// - Returns: Observable of Void because network stack handle token and refreshToken update
+  private func refreshToken() -> Observable<Void> {
     guard let refreshToken = self.webServices.userNetworkStack.currentRefreshToken() else {
       return Observable.error(WebServiceError.missingMandatoryValue(valueInfo: "refreshToken"))
     }
