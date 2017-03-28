@@ -37,14 +37,14 @@ extension RequestParameters {
   }
   
   public static func addUser(parameters: Alamofire.Parameters) -> RequestParameters {
-    return RequestParameters(method: .delete,
+    return RequestParameters(method: .post,
                              route: Route.users(),
                              parameters: parameters,
                              parametersEncoding: URLEncoding.httpBody)
   }
   
   public static func deleteUser(identifier: Int) -> RequestParameters {
-    return RequestParameters(method: .post,
+    return RequestParameters(method: .delete,
                              route: Route.user(identifier: identifier))
   }
 }
