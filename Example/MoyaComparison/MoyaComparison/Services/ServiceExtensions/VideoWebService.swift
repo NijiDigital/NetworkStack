@@ -15,19 +15,17 @@
 //
 
 import Foundation
-import Moya
+import RxSwift
 
-extension CustomAPI {
-  public var method: Moya.Method {
-    switch self {
-    case .getVideo, .getVideos:
-      return .get
-    case .putVideo:
-      return .put
-    case .postVideo, .uploadVideoDocument, .authent:
-      return .post
-    case .delVideo:
-      return .delete
-    }
-  }
+protocol webService {
+  var webServices: WebServices { get set }
+  init(webServices: WebServices)
+}
+
+protocol VideoWebService: webService {
+  func fetchAllVideos() -> Observable<[Video]>
+  func fetchVideo(identifier: Int) -> Observable<Video>
+  func updateVideo(video: Video) -> Observable<Void>
+  func addVideo(video: Video) -> Observable<Video>
+  func deleteVideo(identifier: Int) -> Observable<Void>
 }

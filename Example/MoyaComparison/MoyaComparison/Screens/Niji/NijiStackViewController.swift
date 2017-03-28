@@ -57,7 +57,7 @@ final class NijiStackViewController: UIViewController, StoryboardBased {
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .default
+    return .lightContent
   }
   
   override var prefersStatusBarHidden: Bool {
@@ -68,7 +68,7 @@ final class NijiStackViewController: UIViewController, StoryboardBased {
   private func setupSubViews() {
     self.setupTableView()
     self.dataStore?.delegate = self
-    self.setupRightNavigationItems(image: Asset.iconPlus.image, title: "", color: Color.black) { [unowned self] in
+    self.setupRightNavigationItems(image: Asset.iconPlus.image, title: "", color: Color.green) { [unowned self] in
       self.dataStore?.addVideo()
     }
   }

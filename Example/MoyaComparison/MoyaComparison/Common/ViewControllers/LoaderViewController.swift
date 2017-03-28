@@ -41,4 +41,12 @@ final class LoaderViewController: UIViewController, StoryboardBased {
     super.viewWillAppear(animated)
     actions?.didFinishLoad()
   }
+  
+  override var prefersStatusBarHidden: Bool {
+    return false
+  }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
 }

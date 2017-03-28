@@ -18,7 +18,8 @@ import Foundation
 import NetworkStack
 import RxSwift
 
-extension WebServiceClient {
+struct AuthenticationWebService {
+  var webServices: WebServices
   public func authent(user: String, password: String) -> Observable<Void> {
     
     return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.authent(user: user, password: password))

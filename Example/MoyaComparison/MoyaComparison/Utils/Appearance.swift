@@ -14,20 +14,18 @@
 // limitations under the License.
 //
 
-import Foundation
-import Moya
+import UIKit
 
-extension CustomAPI {
-  public var method: Moya.Method {
-    switch self {
-    case .getVideo, .getVideos:
-      return .get
-    case .putVideo:
-      return .put
-    case .postVideo, .uploadVideoDocument, .authent:
-      return .post
-    case .delVideo:
-      return .delete
-    }
+final class Appearance {
+  
+  static func setup() {
+    
+    UINavigationBar.appearance().tintColor = UIColor.white
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    
+    UINavigationBar.appearance().backIndicatorImage = Asset.arrowLeft.image
+    UINavigationBar.appearance().backIndicatorTransitionMaskImage = Asset.arrowLeft.image
+    
+    UIToolbar.appearance().tintColor = UIColor.black
   }
 }

@@ -28,13 +28,13 @@ struct WebServices {
   let customAPIProvider: RxMoyaProvider<CustomAPI>
 }
 
-final class WebServiceClient {
-  
-  // MARK: - Properties
-  internal let webServices: WebServices
-  
-  // MARK: Setup
-  init(webServices: WebServices) {
-    self.webServices = webServices
-  }
+struct ServiceClients {
+  let niji: NijiVideoWebService
+  let moya: MoyaVideoWebService
+  let user: UserWebServices
+  let authent: AuthenticationWebService
+}
+
+struct WebServiceClient {
+  internal let clients: ServiceClients
 }

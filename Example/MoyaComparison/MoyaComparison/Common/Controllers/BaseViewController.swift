@@ -28,7 +28,8 @@ class BaseViewController: UIViewController {
     return rootViewController
   }
   
-  override var prefersStatusBarHidden: Bool { return true }
+  override var prefersStatusBarHidden: Bool { return false }
+  override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
   override var shouldAutorotate: Bool { return true }
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return [.portrait, .landscape, .portraitUpsideDown] }
   

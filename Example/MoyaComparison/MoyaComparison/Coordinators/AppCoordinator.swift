@@ -54,7 +54,15 @@ final class AppCoordinator: Coordinator {
       videoNetworkStack: videoNetworkStack,
       customAPIProvider: customAPIProvider
     )
-    self.webServiceClient = WebServiceClient(webServices: webServices)
+    
+    let clients = ServiceClients(
+      niji: NijiVideoWebService(webServices: webServices),
+      moya: MoyaVideoWebService(webServices: webServices),
+      user: UserWebServices(webServices: webServices),
+      authent: AuthenticationWebService(webServices: webServices)
+    )
+    
+    self.webServiceClient = WebServiceClient(clients: clients)
   }
   
   fileprivate func startTabBar() {

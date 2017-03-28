@@ -26,19 +26,27 @@ protocol VideoDataStoreDelegate: class {
 
 struct VideoDataStore {
   
-  // MARK: - Public Properties
   weak var delegate: VideoDataStoreDelegate?
   
-  // MARK: - Private Properties
-  private let webServiceClient: WebServiceClient?
-  private let disposeBag = DisposeBag()
+  private var disposeBag = DisposeBag()
+  private var webService: VideoWebService?
   
-  init(webServiceClient: WebServiceClient?) {
-    self.webServiceClient = webServiceClient
+  init(webService: VideoWebService?) {
+    self.webService = webService
+  }
+  
+  func fakeNijiVideoToAdd() -> Video {
+    let video = Video()
+    video.title = "Moya NetworkStack"
+    video.creationDate = Date()
+    video.hasSponsors.value = true
+    video.likeCounts = 10000
+    video.statusCode.value = 10
+    return video
   }
   
   func fetchVideos() {
-    self.webServiceClient?.fetchAllVideos()
+    self.webService?.fetchAllVideos()
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
       .observeOn(MainScheduler.instance)
       .do(
@@ -56,8 +64,8 @@ struct VideoDataStore {
   }
   
   func addVideo() {
-    let video = fakeVideoToAdd()
-    self.webServiceClient?.addVideo(video: video)
+    let video = fakeNijiVideoToAdd()
+    self.webService?.addVideo(video: video)
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
       .observeOn(MainScheduler.instance)
       .do(onNext: { (video: Video) in
@@ -72,7 +80,7 @@ struct VideoDataStore {
   }
   
   func deleteVideo(identifier: Int) {
-    self.webServiceClient?.deleteVideo(identifier: identifier)
+    self.webService?.deleteVideo(identifier: identifier)
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
       .observeOn(MainScheduler.instance)
       .do(onNext: nil, onError: { (error: Error) in
@@ -84,15 +92,5 @@ struct VideoDataStore {
       }, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
       .subscribe()
       .addDisposableTo(self.disposeBag)
-  }
-  
-  func fakeVideoToAdd() -> Video {
-    let video = Video()
-    video.title = "La NetworkStack by Niji"
-    video.creationDate = Date()
-    video.hasSponsors.value = true
-    video.likeCounts = 10000
-    video.statusCode.value = 10
-    return video
   }
 }

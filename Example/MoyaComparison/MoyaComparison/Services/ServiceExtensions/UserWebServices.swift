@@ -19,7 +19,9 @@ import RxSwift
 import Alamofire
 import NetworkStack
 
-extension WebServiceClient {
+struct UserWebServices {
+  var webServices: WebServices
+  
   func fetchAllUsers() -> Observable<[User]> {
     let requestParameters = RequestParameters(method: .get,
                                               route: Route.users(),

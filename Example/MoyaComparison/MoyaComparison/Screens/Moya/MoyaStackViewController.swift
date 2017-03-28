@@ -36,7 +36,7 @@ final class MoyaStackViewController: UIViewController, StoryboardBased {
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .default
+    return .lightContent
   }
   
   override var prefersStatusBarHidden: Bool {

@@ -30,6 +30,7 @@ final class NijiTabCoordinator: Coordinator {
     self.webServiceClient = webServiceClient
     self.navigationController.tabBarItem = UITabBarItem(title: "Niji", image: Asset.iconNetworkstack.image, tag: 1)
     self.navigationController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
+    self.navigationController.setupBlackNavigationBar()
     start()
   }
   
@@ -46,7 +47,7 @@ final class NijiTabCoordinator: Coordinator {
   }
   
   fileprivate func moveToNijiStack() {
-    let dataStore = VideoDataStore(webServiceClient: self.webServiceClient)
+    let dataStore = VideoDataStore(webService: self.webServiceClient.clients.niji)
     let controller = NijiStackViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
     self.navigationController.setViewControllers([controller], animated: true)
   }

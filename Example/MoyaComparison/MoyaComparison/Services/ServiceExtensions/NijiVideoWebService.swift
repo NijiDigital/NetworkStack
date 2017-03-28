@@ -19,9 +19,10 @@ import NetworkStack
 import Foundation
 import RxSwift
 import JSONCodable
-import Moya
 
-extension WebServiceClient {
+struct NijiVideoWebService: VideoWebService {
+  var webServices: WebServices
+  
   func fetchAllVideos() -> Observable<[Video]> {
     let requestParameters = RequestParameters(method: .get,
                                               route: Route.videos(),
