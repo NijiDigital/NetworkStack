@@ -25,6 +25,12 @@ protocol Swifty {
   func toJSON() -> JSON
 }
 
+extension Swifty {
+  public func toJSON() -> JSON {
+    return JSON(self)
+  }
+}
+
 protocol MultipleJSONConformance: JSONCodable, Mappable, Swifty {}
 
 protocol DualJSONConformance: JSONCodable, Swifty {}

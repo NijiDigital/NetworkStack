@@ -48,7 +48,6 @@
 		6DF771F81E8989FD0051C8AB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771851E8989FD0051C8AB /* User.swift */; };
 		6DF771FA1E8989FD0051C8AB /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771881E8989FD0051C8AB /* Video.swift */; };
 		6DF771FD1E8989FD0051C8AB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DF7718D1E8989FD0051C8AB /* Images.xcassets */; };
-		6DF771FE1E8989FD0051C8AB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF7718E1E8989FD0051C8AB /* Info.plist */; };
 		6DF771FF1E8989FD0051C8AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF7718F1E8989FD0051C8AB /* LaunchScreen.storyboard */; };
 		6DF772011E8989FD0051C8AB /* colors.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771921E8989FD0051C8AB /* colors.stencil */; };
 		6DF772021E8989FD0051C8AB /* colors.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771931E8989FD0051C8AB /* colors.xml */; };
@@ -490,8 +489,8 @@
 		6DF771A41E8989FD0051C8AB /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				6DF771A61E8989FD0051C8AB /* ThirdViewController.storyboard */,
 				6DF771A71E8989FD0051C8AB /* ThirdViewController.swift */,
+				6DF771A61E8989FD0051C8AB /* ThirdViewController.storyboard */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -605,8 +604,8 @@
 		6DF7722E1E898B180051C8AB /* Niji */ = {
 			isa = PBXGroup;
 			children = (
-				6DF772301E898B180051C8AB /* NijiStackViewController.storyboard */,
 				6DF772311E898B180051C8AB /* NijiStackViewController.swift */,
+				6DF772301E898B180051C8AB /* NijiStackViewController.storyboard */,
 			);
 			path = Niji;
 			sourceTree = "<group>";
@@ -614,8 +613,8 @@
 		6DF772381E898B580051C8AB /* Moya */ = {
 			isa = PBXGroup;
 			children = (
-				6DF7723A1E898B580051C8AB /* MoyaStackViewController.storyboard */,
 				6DF7723B1E898B580051C8AB /* MoyaStackViewController.swift */,
+				6DF7723A1E898B580051C8AB /* MoyaStackViewController.storyboard */,
 			);
 			path = Moya;
 			sourceTree = "<group>";
@@ -793,7 +792,6 @@
 				6DF772101E8989FD0051C8AB /* ThirdViewController.storyboard in Resources */,
 				6DF771FF1E8989FD0051C8AB /* LaunchScreen.storyboard in Resources */,
 				6DF772361E898B180051C8AB /* NijiStackViewController.storyboard in Resources */,
-				6DF771FE1E8989FD0051C8AB /* Info.plist in Resources */,
 				6DF7720A1E8989FD0051C8AB /* ForthViewController.storyboard in Resources */,
 				6DF772041E8989FD0051C8AB /* strings.stencil in Resources */,
 				6DF772021E8989FD0051C8AB /* colors.xml in Resources */,

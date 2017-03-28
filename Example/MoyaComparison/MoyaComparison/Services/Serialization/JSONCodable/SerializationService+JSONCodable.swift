@@ -19,24 +19,77 @@ import JSONCodable
 import RxSwift
 
 struct SerializationServiceJSONCodable {
- 
-  // MARK: parse func
-  func parse<T: JSONDecodable>(object: Any) -> Observable<T> {
+  
+  // MARK: json func
+  func toJSON<T: JSONCodable>(object: T) throws -> JSONObject {
+    guard let json = try object.toJSON() as? JSONObject else {
+      throw SerializationServiceError.unexpectedFormat(json: "Failed to encode object : \(object) to \(T.self)")
+    }
+    return json
+  }
+  
+  func toJSON<T: JSONCodable>(objects: [T]) throws -> JSONObject {
+    guard let json = try objects.toJSON() as? JSONObject else {
+      throw SerializationServiceError.unexpectedFormat(json: "Failed to encode objects : \(objects) to \(T.self)")
+    }
+    return json
+  }
+  
+  func toJSON<T: JSONCodable>(object: T) -> Observable<JSONObject> {
     return Observable.create { observer in
       do {
-        if let json = object as? JSONObject {
-          let object = try T(object: json)
-          observer.on(.next(object))
+        if let json = try object.toJSON() as? JSONObject {
+          observer.on(.next(json))
           observer.on(.completed)
-        } else {
-          let error = SerializationServiceError.unexpectedFormat(json: object)
-          observer.on(.error(error))
         }
       } catch {
         observer.on(.error(error))
       }
       return Disposables.create()
     }
+  }
+  
+  func toJSON<T: JSONCodable>(objects: [T]) -> Observable<JSONObject> {
+    return Observable.create { observer in
+      do {
+        if let json = try objects.toJSON() as? JSONObject {
+          observer.on(.next(json))
+          observer.on(.completed)
+        }
+      } catch {
+        observer.on(.error(error))
+      }
+      return Disposables.create()
+    }
+  }
+  // MARK: parse func
+  func parse<T: JSONDecodable>(object: Any) throws -> T {
+    guard let jsonObject = object as? JSONObject else {
+      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(object) to \(T.self)")
+    }
+    return try T(object: jsonObject)
+  }
+  
+  func parse<T: JSONDecodable>(objects: Any) throws -> [T] {
+    var objectList = [T]()
+    let objectsToDeserialize: [Any]
+    if let objects = objects as? [Any] {
+      objectsToDeserialize = objects
+    } else {
+      objectsToDeserialize = [objects]
+    }
+    
+    for objectItem in objectsToDeserialize {
+      if let objectItem = objectItem as? JSONObject {
+        do {
+          let object = try T.init(object: objectItem)
+          objectList.append(object)
+        } catch {
+          throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self)")
+        }
+      }
+    }
+    return objectList
   }
   
   func parse<T: JSONDecodable>(objects: Any) -> Observable<[T]> {
@@ -65,33 +118,22 @@ struct SerializationServiceJSONCodable {
     })
   }
   
-  func parse<T: JSONDecodable>(object: Any) throws -> T {
-    guard let jsonObject = object as? JSONObject else {
-      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(object) to \(T.self)")
-    }
-    return try T(object: jsonObject)
-  }
-  
-  func parse<T: JSONDecodable>(objects: Any) throws -> [T] {
-    var objectList = [T]()
-    let objectsToDeserialize: [Any]
-    if let objects = objects as? [Any] {
-      objectsToDeserialize = objects
-    } else {
-      objectsToDeserialize = [objects]
-    }
-    
-    for objectItem in objectsToDeserialize {
-      if let objectItem = objectItem as? JSONObject {
-        do {
-          let object = try T.init(object: objectItem)
-          objectList.append(object)
-        } catch {
-          throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self)")
+  func parse<T: JSONDecodable>(object: Any) -> Observable<T> {
+    return Observable.create { observer in
+      do {
+        if let json = object as? JSONObject {
+          let object = try T(object: json)
+          observer.on(.next(object))
+          observer.on(.completed)
+        } else {
+          let error = SerializationServiceError.unexpectedFormat(json: object)
+          observer.on(.error(error))
         }
+      } catch {
+        observer.on(.error(error))
       }
+      return Disposables.create()
     }
-    return objectList
   }
 
 }
