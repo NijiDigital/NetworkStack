@@ -39,6 +39,8 @@ public enum LogModule: String {
   case appCoordinator
   case githubProvider
   case webServiceClient
+  case parsing
+  case encoding
 }
 
 extension SwiftyBeaver {
