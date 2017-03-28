@@ -37,23 +37,4 @@ extension UIView {
     frame.size.height = height
     view.frame = frame
   }
-  
-  // Grabbed from IQKeyboardManager, avoid to use it as possible
-  /**
-   Returns the UIViewController object that manages the receiver.
-   */
-  public func viewController() -> UIViewController? {
-    var nextResponder: UIResponder? = self
-    
-    repeat {
-      nextResponder = nextResponder?.next
-      
-      if let viewController = nextResponder as? UIViewController {
-        return viewController
-      }
-      
-    } while nextResponder != nil
-    
-    return nil
-  }
 }

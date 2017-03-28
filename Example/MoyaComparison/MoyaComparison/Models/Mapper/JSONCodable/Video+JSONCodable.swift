@@ -46,3 +46,9 @@ extension Video {
     })
   }
 }
+
+public struct JSONTransformers {
+  public static let StringToDate = JSONTransformer<String, Date?>(
+    decoding: {DateFormatter.iso8601Formatter.date(from: $0)},
+    encoding: {DateFormatter.iso8601Formatter.string(from: $0 ?? Date())})
+}

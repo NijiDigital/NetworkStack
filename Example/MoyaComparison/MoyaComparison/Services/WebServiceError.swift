@@ -18,5 +18,6 @@ import Foundation
 
 public enum WebServiceError: Error {
   case unexpectedJSONFormat(json: Any)
+  case unexpectedObjectFormat(object: Any)
   case defaultError(error: Error)
 }

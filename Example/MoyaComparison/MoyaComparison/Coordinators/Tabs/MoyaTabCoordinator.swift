@@ -43,13 +43,11 @@ final class MoyaTabCoordinator: Coordinator {
   private func moveToLoader() {
     let controller = LoaderViewController.instance(actions: self)
     self.navigationController.setViewControllers([controller], animated: true)
-    //self.baseViewController.addViewController(controller, method: .replaceRoot)
   }
   
   fileprivate func moveToMoyaStack() {
     let controller = MoyaStackViewController.instance(webService: self.webServiceClient)
     self.navigationController.setViewControllers([controller], animated: true)
-    //self.baseViewController.addViewController(controller, method: .replaceRoot)
   }
 }
 

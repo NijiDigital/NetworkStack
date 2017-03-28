@@ -15,6 +15,7 @@
 enum Asset: String {
   case arrowLeft = "arrow-left"
   case arrowRight = "arrow-right"
+  case iconNetworkstack = "icon-networkstack"
   case iconPlus = "icon-plus"
 
   var image: Image {

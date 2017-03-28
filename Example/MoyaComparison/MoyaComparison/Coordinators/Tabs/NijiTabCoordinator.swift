@@ -28,7 +28,7 @@ final class NijiTabCoordinator: Coordinator {
   // MARK: init
   init(webServiceClient: WebServiceClient) {
     self.webServiceClient = webServiceClient
-    self.navigationController.tabBarItem = UITabBarItem(title: "Niji", image: nil, tag: 1)
+    self.navigationController.tabBarItem = UITabBarItem(title: "Niji", image: Asset.iconNetworkstack.image, tag: 1)
     self.navigationController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
     start()
   }
