@@ -19,32 +19,32 @@ import NetworkStack
 import Alamofire
 
 extension RequestParameters {
-  public static func fetchAllVideos() -> RequestParameters {
+  public static func fetchAllUsers() -> RequestParameters {
     return RequestParameters(method: .get,
-                             route: Route.videos())
+                             route: Route.users())
   }
   
-  public static func fetchVideo(identifier: Int) -> RequestParameters {
+  public static func fetchUser(identifier: Int) -> RequestParameters {
     return RequestParameters(method: .get,
-                             route: Route.video(identifier: identifier))
+                             route: Route.user(identifier: identifier))
   }
   
-  public static func updateVideo(identifier: Int, parameters: Alamofire.Parameters) -> RequestParameters {
+  public static func updateUser(identifier: Int, parameters: Alamofire.Parameters) -> RequestParameters {
     return RequestParameters(method: .put,
-                             route: Route.video(identifier: identifier),
+                             route: Route.user(identifier: identifier),
                              parameters: parameters,
                              parametersEncoding: URLEncoding.httpBody)
   }
   
-  public static func addVideo(parameters: Alamofire.Parameters) -> RequestParameters {
-    return RequestParameters(method: .post,
-                             route: Route.videos(),
-                             parameters: parameters,
-                             parametersEncoding: URLEncoding.httpBody)
-  }
-  
-  public static func deleteVideo(identifier: Int) -> RequestParameters {
+  public static func addUser(parameters: Alamofire.Parameters) -> RequestParameters {
     return RequestParameters(method: .delete,
-                             route: Route.video(identifier: identifier))
+                             route: Route.users(),
+                             parameters: parameters,
+                             parametersEncoding: URLEncoding.httpBody)
+  }
+  
+  public static func deleteUser(identifier: Int) -> RequestParameters {
+    return RequestParameters(method: .post,
+                             route: Route.user(identifier: identifier))
   }
 }

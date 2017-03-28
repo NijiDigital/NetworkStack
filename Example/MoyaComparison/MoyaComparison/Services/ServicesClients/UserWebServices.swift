@@ -23,23 +23,14 @@ struct UserWebServices {
   var webServices: WebServices
   
   func fetchAllUsers() -> Observable<[User]> {
-    let requestParameters = RequestParameters(method: .get,
-                                              route: Route.users(),
-                                              needsAuthorization: false,
-                                              parametersEncoding: URLEncoding.default)
-    
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllUsers())
       .flatMap({ (_, json: Any) -> Observable<[User]> in
         return self.webServices.serializationSwiftyJSON.parse(objects: json)
       })
   }
   
   func fetchUser(identifier: Int) -> Observable<User> {
-    let requestParameters = RequestParameters(method: .get,
-                                              route: Route.user(identifier: identifier),
-                                              needsAuthorization: false,
-                                              parametersEncoding: URLEncoding.default)
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchUser(identifier: identifier))
       .flatMap({ (_, json: Any) -> Observable<User> in
         return self.webServices.serializationSwiftyJSON.parse(object: json)
       })
@@ -51,13 +42,7 @@ struct UserWebServices {
       logger.error(.webServiceClient, "Failed to parse user : \(error)")
       return Observable.error(error)
     }
-    let parameters: Alamofire.Parameters = json
-    let requestParameters = RequestParameters(method: .put,
-                                              route: Route.user(identifier: user.identifier),
-                                              needsAuthorization: false,
-                                              parameters: parameters,
-                                              parametersEncoding: URLEncoding.httpBody)
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateUser(identifier: user.identifier, parameters: json))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })
@@ -69,25 +54,14 @@ struct UserWebServices {
       logger.error(.webServiceClient, "Failed to parse user : \(error)")
       return Observable.error(error)
     }
-    let parameters: Alamofire.Parameters = json
-    let requestParameters = RequestParameters(method: .delete,
-                                              route: Route.users(),
-                                              needsAuthorization: false,
-                                              parameters: parameters,
-                                              parametersEncoding: URLEncoding.httpBody)
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addUser(parameters: json))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })
   }
   
   func deleteUser(identifier: Int) -> Observable<Void> {
-    
-    let requestParameters = RequestParameters(method: .post,
-                                              route: Route.user(identifier: identifier),
-                                              needsAuthorization: false,
-                                              parametersEncoding: URLEncoding.default)
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.deleteUser(identifier: identifier))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })

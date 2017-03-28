@@ -68,6 +68,9 @@ struct NijiVideoWebService: VideoWebService {
       })
   }
   
+  /// Create fake video for Niji NetworkStack
+  ///
+  /// - Returns: fake created video
   func fakeVideoToAdd() -> Video {
     let video = Video()
     video.title = "NetworkStack by Niji"
