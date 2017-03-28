@@ -28,7 +28,7 @@ final class ForthTabCoordinator: Coordinator {
   // MARK: - Init
   init(webServiceClient: WebServiceClient) {
     self.webServiceClient = webServiceClient
-    self.baseViewController.tabBarItem = UITabBarItem(title: TabsName.forth.rawValue, image: nil, tag: 4)
+    self.baseViewController.tabBarItem = UITabBarItem(title: TabsName.forth.rawValue, image: nil, tag: TabsTag.forth.rawValue)
     self.baseViewController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
     start()
   }

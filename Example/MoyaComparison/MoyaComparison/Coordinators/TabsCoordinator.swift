@@ -24,6 +24,13 @@ enum TabsName: String {
   case forth
 }
 
+enum TabsTag: Int {
+  case niji = 1
+  case moya
+  case third
+  case forth
+}
+
 final class TabsCoordinator: Coordinator {
   
   // MARK: - Private Properties

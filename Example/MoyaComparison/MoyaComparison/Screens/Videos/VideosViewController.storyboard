@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9D4-yG-0qX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7d1-tr-fbf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,41 +9,25 @@
     </dependencies>
     <scenes>
         <!--Videos View Controller-->
-        <scene sceneID="twf-ep-J5T">
+        <scene sceneID="I9f-kq-TAh">
             <objects>
-                <viewController restorationIdentifier="VideosViewController" storyboardIdentifier="VideosViewController" id="9D4-yG-0qX" customClass="VideosViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gyg-yj-yWZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="eAp-tL-glM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="D7D-ZD-bzK">
+                <tableViewController restorationIdentifier="VideosViewController" storyboardIdentifier="VideosViewController" id="7d1-tr-fbf" customClass="VideosViewController" customModule="MoyaComparison" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BQH-2J-nnl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rv5-9b-SfD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="9D4-yG-0qX" id="xHL-d3-ytV"/>
-                                    <outlet property="delegate" destination="9D4-yG-0qX" id="IV0-Jj-3SK"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rv5-9b-SfD" firstAttribute="top" secondItem="D7D-ZD-bzK" secondAttribute="top" id="7s2-ew-WU7"/>
-                            <constraint firstAttribute="trailing" secondItem="rv5-9b-SfD" secondAttribute="trailing" id="FAJ-yz-0bM"/>
-                            <constraint firstItem="eAp-tL-glM" firstAttribute="top" secondItem="rv5-9b-SfD" secondAttribute="bottom" id="H5I-yb-LgF"/>
-                            <constraint firstItem="rv5-9b-SfD" firstAttribute="leading" secondItem="D7D-ZD-bzK" secondAttribute="leading" id="lga-Rn-kyL"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="rv5-9b-SfD" id="ZLk-nk-pVd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uI9-np-A6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <connections>
+                            <outlet property="dataSource" destination="7d1-tr-fbf" id="qt0-ZD-GFF"/>
+                            <outlet property="delegate" destination="7d1-tr-fbf" id="koo-po-sWI"/>
+                        </connections>
+                    </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="oqW-TY-hG4">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0tl-OU-p91" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159.19999999999999" y="55.322338830584712"/>
+            <point key="canvasLocation" x="545" y="55"/>
         </scene>
     </scenes>
 </document>

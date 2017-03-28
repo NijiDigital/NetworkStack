@@ -18,16 +18,13 @@ import UIKit
 import Reusable
 import RxSwift
 
-final class VideosViewController: UIViewController, StoryboardBased {
+final class VideosViewController: UITableViewController, StoryboardBased {
   
   // MARK: - Private Properties
   private var webservice: WebServiceClient?
   fileprivate var dataStore: VideoDataStore?
   private let disposeBag = DisposeBag()
   fileprivate var videos: [Video] = []
-  
-  // MARK: - Private Outlets
-  @IBOutlet fileprivate weak var tableView: UITableView!
   
   // MARK: - Private Constants
   fileprivate enum Dimension {
@@ -49,11 +46,12 @@ final class VideosViewController: UIViewController, StoryboardBased {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupSubViews()
+    self.dataStore?.fetchVideos()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.dataStore?.fetchVideos()
+    self.refreshControl?.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: .valueChanged)
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -62,6 +60,11 @@ final class VideosViewController: UIViewController, StoryboardBased {
   
   override var prefersStatusBarHidden: Bool {
     return false
+  }
+  
+  // MARK: - User Actions
+  func handleRefresh(refreshControl: UIRefreshControl) {
+    self.dataStore?.fetchVideos()
   }
   
   // MARK: - Private Funcs
@@ -82,6 +85,7 @@ extension VideosViewController: VideoDataStoreDelegate {
   func fetched(videos: [Video]) {
     self.videos = videos
     self.tableView.reloadData()
+    self.refreshControl?.endRefreshing()
   }
   
   func added(video: Video) {
@@ -101,34 +105,32 @@ extension VideosViewController: VideoDataStoreDelegate {
   }
 }
 
-extension VideosViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+extension VideosViewController {
+  override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return Dimension.heightForRow
   }
   
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       self.dataStore?.deleteVideo(identifier: videos[indexPath.row].identifier)
     } else if editingStyle == .insert {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
   }
-}
 
-extension VideosViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return videos.count
   }
   
-  func numberOfSections(in tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return Dimension.sections
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: VideoCell = self.tableView.dequeueReusableCell(for: indexPath)
     if let video = self.videos[safe: indexPath.row] {
       cell.setup(video: video)
