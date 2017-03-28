@@ -17,10 +17,11 @@
 import Foundation
 import NetworkStack
 import RxSwift
+import Alamofire
 
 struct AuthenticationWebService {
   var webServices: WebServices
-  public func authent(user: String, password: String) -> Observable<Void> {
+  func authent(user: String, password: String) -> Observable<Void> {
     
     return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.authent(user: user, password: password))
       .flatMap({ (_, json: Any) -> Observable<Authorization> in
@@ -30,6 +31,22 @@ struct AuthenticationWebService {
         self.webServices.userNetworkStack.clearToken()
         self.webServices.userNetworkStack.updateToken(token: authent.token, refreshToken: authent.refreshToken, expiresIn: authent.expirationDate)
         return
-    })
+      })
+  }
+  
+  func refreshToken() -> Observable<Void> {
+    guard let refreshToken = self.webServices.userNetworkStack.currentRefreshToken() else {
+      return Observable.error(WebServiceError.missingMandatoryValue(valueInfo: "refreshToken"))
+    }
+    
+    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.refreshToken(refreshToken))
+      .flatMap({ (_, json: Any) -> Observable<Authorization> in
+        return self.webServices.serializationSwiftyJSON.parse(object: json)
+      })
+      .map({ (authent: Authorization) -> Void in
+        self.webServices.userNetworkStack.clearToken()
+        self.webServices.userNetworkStack.updateToken(token: authent.token, refreshToken: authent.refreshToken, expiresIn: authent.expirationDate)
+        return
+      })
   }
 }

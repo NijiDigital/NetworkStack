@@ -28,6 +28,7 @@ extension Route: CustomStringConvertible {
 
 extension Route {
   public static func authent() -> Route { return Route(path: "/authent") }
+  public static func refreshToken() -> Route { return Route(path: "/refreshToken") }
   public static func videos() -> Route { return Route(path: "/videos") }
   public static func video(identifier: Int) -> Route { return Route(path: "/videos/\(identifier)") }
   public static func document(videoIdentifier: Int) -> Route { return Route(path: "/videos/\(videoIdentifier)/document") }

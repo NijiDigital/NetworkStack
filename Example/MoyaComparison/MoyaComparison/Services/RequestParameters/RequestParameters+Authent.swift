@@ -22,6 +22,17 @@ extension RequestParameters {
   public static func authent(user: String, password: String) -> RequestParameters {
     let stringToEncode: String = String(format: "%@:%@", user, password)
     let authHeaders: Alamofire.HTTPHeaders = ["Authorization": "Basic \(stringToEncode.convertTobase64())"]
-    return RequestParameters(method: .get, route: Route.authent(), needsAuthorization: false, parameters: nil, parametersEncoding: URLEncoding.default, headers: authHeaders)
+    return RequestParameters(method: .get,
+                             route: Route.authent(),
+                             headers: authHeaders)
+  }
+  
+  public static func refreshToken(_ refreshToken: String) -> RequestParameters {
+    let parameters: Parameters = ["refresh_token": refreshToken]
+    
+    return RequestParameters(method: .post,
+                             route: Route.refreshToken(),
+                             parameters: parameters,
+                             parametersEncoding: URLEncoding.httpBody)
   }
 }
