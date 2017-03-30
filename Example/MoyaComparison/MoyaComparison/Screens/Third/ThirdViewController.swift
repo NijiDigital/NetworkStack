@@ -19,16 +19,17 @@ import Reusable
 
 final class ThirdViewController: UIViewController, StoryboardBased {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   private var webservice: WebServiceClient?
   
-  // MARK: instance
+  // MARK: - Instance
   public static func instance(webService: WebServiceClient?) -> ThirdViewController {
     let controller = ThirdViewController.instantiate()
     controller.webservice = webService
     return controller
   }
   
+  // MARK: - Overrivide Funcs
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.

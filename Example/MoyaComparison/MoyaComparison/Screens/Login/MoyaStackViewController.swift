@@ -19,17 +19,17 @@ import Reusable
 
 final class MoyaStackViewController: UIViewController, StoryboardBased {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   private var webservice: WebServiceClient?
   
-  // MARK: instance
+  // MARK: - Instance
   public static func instance(webService: WebServiceClient?) -> MoyaStackViewController {
     let controller = MoyaStackViewController.instantiate()
     controller.webservice = webService
     return controller
   }
 
-  // MARK: override funcs
+  // MARK: - Override Funcs
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.

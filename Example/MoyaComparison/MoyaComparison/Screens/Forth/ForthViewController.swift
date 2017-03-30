@@ -19,16 +19,17 @@ import Reusable
 
 final class ForthViewController: UIViewController, StoryboardBased {
   
-  // MARK: private properties
+  // MARK: - Private Properties
   private var webservice: WebServiceClient?
   
-  // MARK: instance
+  // MARK: - Instance
   public static func instance(webService: WebServiceClient?) -> ForthViewController {
     let controller = ForthViewController.instantiate()
     controller.webservice = webService
     return controller
   }
 
+  // MARK: - Override Funcs
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.

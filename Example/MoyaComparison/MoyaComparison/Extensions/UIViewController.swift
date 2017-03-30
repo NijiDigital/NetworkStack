@@ -36,7 +36,7 @@ extension UIViewController {
     self.parent?.navigationItem.backBarButtonItem = backItem
   }
   
-  func setupRightNavigationItems(image: UIImage, title: String, color: UIColor, completion: @escaping () -> Void) {
+  func setupRightNavigationItems(image: UIImage? = nil, title: String? = nil, color: UIColor, completion: @escaping () -> Void) {
     let barButtonItem = BarButtonItemFactory(image: image, title: title, style:.plain, action: { _ in
       completion()
     })
@@ -45,7 +45,7 @@ extension UIViewController {
     self.parent?.navigationItem.rightBarButtonItem = barButtonItem
   }
   
-  func setupLeftNavigationItems(image: UIImage, title: String, color: UIColor, completion: @escaping () -> Void) {
+  func setupLeftNavigationItems(image: UIImage? = nil, title: String? = nil, color: UIColor, completion: @escaping () -> Void) {
     let leftButtonItem = BarButtonItemFactory(image: image, title: title, style:.plain, action: { _ in
       completion()
     })
