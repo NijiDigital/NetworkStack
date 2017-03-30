@@ -71,7 +71,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   private func setupSubViews() {
     self.setupTableView()
     self.dataStore?.delegate = self
-    self.setupRightNavigationItems(image: Asset.iconPlus.image, title: "", color: Color.green) { [unowned self] in
+    self.setupRightNavigationItems(image: Asset.iconPlus.image, color: Color.green) { [unowned self] in
       self.dataStore?.addVideo()
     }
   }
@@ -81,6 +81,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   }
 }
 
+// MARK: - VideoView implementation
 extension VideosViewController: VideoView {
   func fetched(videos: [Video]) {
     self.videos = videos
@@ -105,6 +106,7 @@ extension VideosViewController: VideoView {
   }
 }
 
+// MARK: - UITableViewDelegate implementation
 extension VideosViewController {
   override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
@@ -121,7 +123,11 @@ extension VideosViewController {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
   }
+}
 
+// MARK: - UITableViewDataSource implementation
+extension VideosViewController {
+    
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return videos.count
   }

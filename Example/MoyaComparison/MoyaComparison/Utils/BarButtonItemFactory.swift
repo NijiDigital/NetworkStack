@@ -11,8 +11,10 @@ import UIKit
 
 final class BarButtonItemFactory: UIBarButtonItem {
   
+  // MARK: - Private Properties
   private var actionBlock:(() -> Void)?
   
+  // MARK: - Override Funcs
   override init() {
     super.init()
   }
@@ -21,7 +23,8 @@ final class BarButtonItemFactory: UIBarButtonItem {
     super.init(coder: aDecoder)
   }
   
-  convenience init(image: UIImage?, title: String, style: UIBarButtonItemStyle, action:(() -> Void)?) {
+  // MARK: - Convenience Funcs
+  convenience init(image: UIImage?, title: String?, style: UIBarButtonItemStyle, action:(() -> Void)?) {
     self.init(style: style, action: action)
     self.title = title
     self.image = image
@@ -37,17 +40,19 @@ final class BarButtonItemFactory: UIBarButtonItem {
     self.title = title
   }
   
+  // MARK: - Actions
+  @objc func executeAction(sender: BarButtonItemFactory) {
+    if let actionBlock = self.actionBlock {
+      actionBlock()
+    }
+  }
+  
+  // MARK: - Private Funcs
   private convenience init(style: UIBarButtonItemStyle, action:(() -> Void)?) {
     self.init()
     self.style = style
     self.target = self
     self.action = #selector(executeAction(sender:))
     self.actionBlock = action
-  }
-  
-  @objc func executeAction(sender: BarButtonItemFactory) {
-    if let actionBlock = self.actionBlock {
-      actionBlock()
-    }
   }
 }
