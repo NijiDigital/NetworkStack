@@ -56,9 +56,6 @@ struct MoyaVideoWebService: VideoWebService {
       })
   }
   
-  /// Create fake video for Moya service stack
-  ///
-  /// - Returns: fake created video
   func fakeVideoToAdd() -> Video {
     let video = Video()
     video.title = "Moya network stack"
