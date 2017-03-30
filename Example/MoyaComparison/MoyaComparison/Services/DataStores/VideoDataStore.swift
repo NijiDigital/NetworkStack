@@ -17,16 +17,9 @@
 import Foundation
 import RxSwift
 
-protocol VideoDataStoreDelegate: class {
-  func fetched(videos: [Video])
-  func added(video: Video)
-  func deleted()
-  func error(message: String)
-}
-
 struct VideoDataStore {
   
-  weak var delegate: VideoDataStoreDelegate?
+  weak var delegate: VideoView?
   
   private var disposeBag = DisposeBag()
   private var webService: VideoWebService?

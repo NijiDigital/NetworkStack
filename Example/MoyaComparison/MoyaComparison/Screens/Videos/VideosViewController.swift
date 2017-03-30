@@ -81,7 +81,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   }
 }
 
-extension VideosViewController: VideoDataStoreDelegate {
+extension VideosViewController: VideoView {
   func fetched(videos: [Video]) {
     self.videos = videos
     self.tableView.reloadData()
