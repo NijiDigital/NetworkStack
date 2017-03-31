@@ -31,17 +31,16 @@ struct VideoDataStore {
   func fetchVideos() {
     self.webService?.fetchAllVideos()
       .observeOn(MainScheduler.instance)
-      .do(
-        onNext: { (videos: [Video]) in
-          self.delegate?.fetched(videos: videos)
-          logger.debug(.webServiceClient, "received videos : \(videos)")
-      },
-        onError: { (error: Error) in
+      .subscribe({ (event: Event<[Video]>) in
+        switch event {
+        case .next(let videos): self.delegate?.fetched(videos: videos)
+        case .error(let error):
           let message = "Failed to fetch videos with error : \(error)"
           self.delegate?.error(message: message)
           logger.error(.webServiceClient, message)
-      }, onCompleted: nil, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
-      .subscribe()
+        case .completed: break
+        }
+      })
       .addDisposableTo(self.disposeBag)
   }
   
@@ -52,14 +51,16 @@ struct VideoDataStore {
     }
     self.webService?.add(video: video)
       .observeOn(MainScheduler.instance)
-      .do(onNext: { (video: Video) in
-        self.delegate?.added(video: video)
-      }, onError: { (error: Error) in
-        let message = "Failed to add video with error : \(error)"
-        self.delegate?.error(message: message)
-        logger.error(.webServiceClient, message)
-      }, onCompleted: nil, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
-      .subscribe()
+      .subscribe({ (event: Event<Video>) in
+        switch event {
+        case .next(let video): self.delegate?.added(video: video)
+        case .error(let error):
+          let message = "Failed to add video with error : \(error)"
+          self.delegate?.error(message: message)
+          logger.error(.webServiceClient, message)
+        case .completed: break
+        }
+      })
       .addDisposableTo(self.disposeBag)
   }
   
@@ -67,13 +68,21 @@ struct VideoDataStore {
     self.webService?.deleteVideo(identifier: identifier)
       .observeOn(MainScheduler.instance)
       .do(onNext: nil, onError: { (error: Error) in
-        let message = "Failed to delete video with error : \(error)"
-        self.delegate?.error(message: message)
-        logger.error(.webServiceClient, message)
+        
       }, onCompleted: { _ in
-        self.delegate?.deleted()
+        
       }, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
-      .subscribe()
+      .subscribe({ (event: Event<()>) in
+        switch event {
+        case .next(_): break
+        case .error(let error):
+          let message = "Failed to delete video with error : \(error)"
+          self.delegate?.error(message: message)
+          logger.error(.webServiceClient, message)
+        case .completed: self.delegate?.deleted()
+          
+        }
+      })
       .addDisposableTo(self.disposeBag)
   }
 }
