@@ -21,11 +21,6 @@ final class VideoCell: UITableViewCell, NibReusable {
   // MARK: - Private Outlets
   @IBOutlet private weak var titleLabel: UILabel!
   
-  // MARK: - Override Funcs
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-  
   // MARK: - Public Funcs
   public func setup(video: Video) {
     self.titleLabel.text = video.title
