@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/steven_watremez/workspace/tools/NetworkStack/Example/MoyaComparison/MoyaComparison.xcodeproj">
+      location = "group:MoyaComparison.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
