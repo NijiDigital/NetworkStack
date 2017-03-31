@@ -5,7 +5,7 @@ source "https://github.com/CocoaPods/Specs.git"
 platform :ios, '9.0'
 use_frameworks!
 
-target 'NetworkStackExample' do
+target 'MoyaComparison' do
   # Pods for NetworkStackExample
   pod 'JSONCodable'
   pod 'SwiftyJSON'

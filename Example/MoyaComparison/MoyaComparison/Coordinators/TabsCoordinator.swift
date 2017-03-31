@@ -20,15 +20,11 @@ import UIKit
 enum TabsName: String {
   case niji = "Niji"
   case moya = "Moya"
-  case third
-  case forth
 }
 
 enum TabsTag: Int {
   case niji = 1
   case moya
-  case third
-  case forth
 }
 
 final class TabsCoordinator: Coordinator {

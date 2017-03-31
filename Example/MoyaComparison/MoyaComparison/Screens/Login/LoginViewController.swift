@@ -17,7 +17,7 @@
 import UIKit
 import Reusable
 
-final class MoyaStackViewController: UIViewController, StoryboardBased {
+final class LoginViewController: UIViewController, StoryboardBased {
   
   // MARK: - Private Properties
   private var webservice: WebServiceClient?

@@ -1,10 +1,19 @@
 //
-//  BaseViewController.swift
-//  NetworkStackExample
+// Copyright 2017 niji
 //
-//  Created by Steven_WATREMEZ on 3/12/17
-//  Copyright (c) 2017 niji. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 import UIKit
 import RxSwift
 import Reusable
@@ -44,21 +53,6 @@ class BaseViewController: UIViewController {
     }
   }
   
-  // MARK: -
-  // MARK: View Controller Lifecycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.isViewDidAppear = true
-  }
-  
   // MARK: Privates methods
   fileprivate func push(_ viewController: UIViewController) {
     guard let unwrappedNavigationController = navigationController else { fatalError("Trying to push but no navigation controller is set") }
@@ -79,7 +73,6 @@ class BaseViewController: UIViewController {
   
   fileprivate func presentModal(_ viewController: UIViewController, withNavigation navigation: Bool) {
     if navigation {
-      _ = viewController.preferredStatusBarStyle
       let navigationController = UINavigationController(rootViewController: viewController)
       present(navigationController, animated: true, completion: nil)
     } else {
@@ -89,7 +82,6 @@ class BaseViewController: UIViewController {
   }
   
   fileprivate func presentModalWithNavigation(_ viewController: UIViewController) -> UINavigationController {
-    _ = viewController.preferredStatusBarStyle
     let navigationController = UINavigationController(rootViewController: viewController)
     present(navigationController, animated: true, completion: nil)
     return navigationController
@@ -97,13 +89,5 @@ class BaseViewController: UIViewController {
   
   fileprivate func dismissModalStack() {
     self.dismiss(animated: true, completion: nil)
-  }
-    
-  fileprivate func topModalController(_ fromController: UIViewController) -> UIViewController {
-    var topController = fromController
-    if let nextController = fromController.presentedViewController {
-      topController = self.topModalController(nextController)
-    }
-    return topController
   }
 }

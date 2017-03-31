@@ -21,7 +21,7 @@ extension String {
   /// Encode String to base 64
   ///
   /// - Returns: return base64 String encoded
-  func convertTobase64() -> String {
+  func convertToBase64() -> String {
     guard let dataToConvert = self.data(using: .utf8) else {
       logger.error(.encoding, "Failed to encode string to base64 = \(self)")
       return ""

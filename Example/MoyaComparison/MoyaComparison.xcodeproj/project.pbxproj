@@ -22,8 +22,8 @@
 		6DC269B71E8AE7BD000A5A5A /* VideoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269B11E8AE7BD000A5A5A /* VideoWebService.swift */; };
 		6DC269B91E8AFAD7000A5A5A /* RequestParameters+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269B81E8AFAD7000A5A5A /* RequestParameters+Video.swift */; };
 		6DC269BB1E8AFF43000A5A5A /* RequestParameters+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269BA1E8AFF43000A5A5A /* RequestParameters+User.swift */; };
-		6DC269C51E8B04AB000A5A5A /* MoyaStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC269BE1E8B04AB000A5A5A /* MoyaStackViewController.storyboard */; };
-		6DC269C61E8B04AB000A5A5A /* MoyaStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269BF1E8B04AB000A5A5A /* MoyaStackViewController.swift */; };
+		6DC269C51E8B04AB000A5A5A /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC269BE1E8B04AB000A5A5A /* LoginViewController.storyboard */; };
+		6DC269C61E8B04AB000A5A5A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269BF1E8B04AB000A5A5A /* LoginViewController.swift */; };
 		6DC269C81E8B04AB000A5A5A /* VideosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DC269C21E8B04AB000A5A5A /* VideosViewController.storyboard */; };
 		6DC269C91E8B04AB000A5A5A /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269C31E8B04AB000A5A5A /* VideosViewController.swift */; };
 		6DF771CD1E8989FD0051C8AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */; };
@@ -68,10 +68,6 @@
 		6DF772021E8989FD0051C8AB /* colors.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771931E8989FD0051C8AB /* colors.xml */; };
 		6DF772031E8989FD0051C8AB /* images.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771941E8989FD0051C8AB /* images.stencil */; };
 		6DF772041E8989FD0051C8AB /* strings.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771951E8989FD0051C8AB /* strings.stencil */; };
-		6DF7720A1E8989FD0051C8AB /* ForthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF7719E1E8989FD0051C8AB /* ForthViewController.storyboard */; };
-		6DF7720B1E8989FD0051C8AB /* ForthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7719F1E8989FD0051C8AB /* ForthViewController.swift */; };
-		6DF772101E8989FD0051C8AB /* ThirdViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771A61E8989FD0051C8AB /* ThirdViewController.storyboard */; };
-		6DF772111E8989FD0051C8AB /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771A71E8989FD0051C8AB /* ThirdViewController.swift */; };
 		6DF772141E8989FD0051C8AB /* CustomAPI+method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771AE1E8989FD0051C8AB /* CustomAPI+method.swift */; };
 		6DF772151E8989FD0051C8AB /* CustomAPI+parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */; };
 		6DF772161E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */; };
@@ -124,8 +120,8 @@
 		6DC269B11E8AE7BD000A5A5A /* VideoWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoWebService.swift; sourceTree = "<group>"; };
 		6DC269B81E8AFAD7000A5A5A /* RequestParameters+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestParameters+Video.swift"; sourceTree = "<group>"; };
 		6DC269BA1E8AFF43000A5A5A /* RequestParameters+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestParameters+User.swift"; sourceTree = "<group>"; };
-		6DC269BE1E8B04AB000A5A5A /* MoyaStackViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoyaStackViewController.storyboard; sourceTree = "<group>"; };
-		6DC269BF1E8B04AB000A5A5A /* MoyaStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaStackViewController.swift; sourceTree = "<group>"; };
+		6DC269BE1E8B04AB000A5A5A /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		6DC269BF1E8B04AB000A5A5A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6DC269C21E8B04AB000A5A5A /* VideosViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideosViewController.storyboard; sourceTree = "<group>"; };
 		6DC269C31E8B04AB000A5A5A /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,10 +167,6 @@
 		6DF771931E8989FD0051C8AB /* colors.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = colors.xml; sourceTree = "<group>"; };
 		6DF771941E8989FD0051C8AB /* images.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.stencil; sourceTree = "<group>"; };
 		6DF771951E8989FD0051C8AB /* strings.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = strings.stencil; sourceTree = "<group>"; };
-		6DF7719E1E8989FD0051C8AB /* ForthViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForthViewController.storyboard; sourceTree = "<group>"; };
-		6DF7719F1E8989FD0051C8AB /* ForthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForthViewController.swift; sourceTree = "<group>"; };
-		6DF771A61E8989FD0051C8AB /* ThirdViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ThirdViewController.storyboard; sourceTree = "<group>"; };
-		6DF771A71E8989FD0051C8AB /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		6DF771AE1E8989FD0051C8AB /* CustomAPI+method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+method.swift"; sourceTree = "<group>"; };
 		6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+parameters.swift"; sourceTree = "<group>"; };
 		6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+parametersEncoding.swift"; sourceTree = "<group>"; };
@@ -289,8 +281,8 @@
 		6DC269BC1E8B04AB000A5A5A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				6DC269BF1E8B04AB000A5A5A /* MoyaStackViewController.swift */,
-				6DC269BE1E8B04AB000A5A5A /* MoyaStackViewController.storyboard */,
+				6DC269BF1E8B04AB000A5A5A /* LoginViewController.swift */,
+				6DC269BE1E8B04AB000A5A5A /* LoginViewController.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -518,29 +510,8 @@
 			children = (
 				6DC269C01E8B04AB000A5A5A /* Videos */,
 				6DC269BC1E8B04AB000A5A5A /* Login */,
-				6DF771A41E8989FD0051C8AB /* Users */,
-				6DF7719C1E8989FD0051C8AB /* Forth */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		6DF7719C1E8989FD0051C8AB /* Forth */ = {
-			isa = PBXGroup;
-			children = (
-				6DF7719F1E8989FD0051C8AB /* ForthViewController.swift */,
-				6DF7719E1E8989FD0051C8AB /* ForthViewController.storyboard */,
-			);
-			path = Forth;
-			sourceTree = "<group>";
-		};
-		6DF771A41E8989FD0051C8AB /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				6DF771A71E8989FD0051C8AB /* ThirdViewController.swift */,
-				6DF771A61E8989FD0051C8AB /* ThirdViewController.storyboard */,
-			);
-			name = Users;
-			path = Third;
 			sourceTree = "<group>";
 		};
 		6DF771AA1E8989FD0051C8AB /* Services */ = {
@@ -814,11 +785,9 @@
 				6DF772011E8989FD0051C8AB /* colors.stencil in Resources */,
 				6DF771D01E8989FD0051C8AB /* VideoCell.xib in Resources */,
 				6DF772031E8989FD0051C8AB /* images.stencil in Resources */,
-				6DF772101E8989FD0051C8AB /* ThirdViewController.storyboard in Resources */,
 				6DF771FF1E8989FD0051C8AB /* LaunchScreen.storyboard in Resources */,
-				6DF7720A1E8989FD0051C8AB /* ForthViewController.storyboard in Resources */,
 				6DF772041E8989FD0051C8AB /* strings.stencil in Resources */,
-				6DC269C51E8B04AB000A5A5A /* MoyaStackViewController.storyboard in Resources */,
+				6DC269C51E8B04AB000A5A5A /* LoginViewController.storyboard in Resources */,
 				6DF772021E8989FD0051C8AB /* colors.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1004,7 +973,6 @@
 				6DC269B51E8AE7BD000A5A5A /* NijiVideoWebService.swift in Sources */,
 				6DF772281E8989FD0051C8AB /* DefaultKeys.swift in Sources */,
 				6DF7721F1E8989FD0051C8AB /* SerializationService+SwiftyJSON.swift in Sources */,
-				6DF7720B1E8989FD0051C8AB /* ForthViewController.swift in Sources */,
 				6DF771D51E8989FD0051C8AB /* LoaderViewController.swift in Sources */,
 				6DF772191E8989FD0051C8AB /* VideoDataStore.swift in Sources */,
 				6DF771D71E8989FD0051C8AB /* Colors.swift in Sources */,
@@ -1042,7 +1010,6 @@
 				6DF7721B1E8989FD0051C8AB /* Routes.swift in Sources */,
 				6DC269B41E8AE7BD000A5A5A /* MoyaVideoWebService.swift in Sources */,
 				6DF771F31E8989FD0051C8AB /* Authorization+SwiftyJSON.swift in Sources */,
-				6DF772111E8989FD0051C8AB /* ThirdViewController.swift in Sources */,
 				6DC269BB1E8AFF43000A5A5A /* RequestParameters+User.swift in Sources */,
 				6DC269B31E8AE7BD000A5A5A /* AuthenticationWebService.swift in Sources */,
 				6DF771E21E8989FD0051C8AB /* ThirdTabCoordinator.swift in Sources */,
@@ -1064,7 +1031,7 @@
 				6DF771E31E8989FD0051C8AB /* TabsCoordinator.swift in Sources */,
 				6DF771D81E8989FD0051C8AB /* Global.swift in Sources */,
 				6DF771F51E8989FD0051C8AB /* Video+SwiftyJSON.swift in Sources */,
-				6DC269C61E8B04AB000A5A5A /* MoyaStackViewController.swift in Sources */,
+				6DC269C61E8B04AB000A5A5A /* LoginViewController.swift in Sources */,
 				6DF771F21E8989FD0051C8AB /* Video+ObjectMapper.swift in Sources */,
 				6D21EBE71E8A741800F851ED /* UINavigationController.swift in Sources */,
 				6DF771DF1E8989FD0051C8AB /* ForthTabCoordinator.swift in Sources */,

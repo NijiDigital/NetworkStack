@@ -29,9 +29,9 @@ extension UIViewController {
   }
   
   func removeFromContainer() {
-    willMove(toParentViewController: nil)
-    view.removeFromSuperview()
-    removeFromParentViewController()
+    self.willMove(toParentViewController: nil)
+    self.view.removeFromSuperview()
+    self.removeFromParentViewController()
   }
   
   func addInContainer(_ containerViewController: UIViewController) {
@@ -40,9 +40,9 @@ extension UIViewController {
   
   func addInContainer(_ containerViewController: UIViewController, inView contentView: UIView) {
     containerViewController.addChildViewController(self)
-    view.frame = contentView.bounds
+    self.view.frame = contentView.bounds
     contentView.embedView(view)
-    didMove(toParentViewController: containerViewController)
+    self.didMove(toParentViewController: containerViewController)
   }
   
   func sa_addChildViewController(viewController: UIViewController) {

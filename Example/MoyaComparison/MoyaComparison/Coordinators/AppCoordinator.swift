@@ -23,7 +23,7 @@ final class AppCoordinator: Coordinator {
   
   // MARK: - Private Properties
   private var webServiceClient: WebServiceClient?
-  internal var baseViewController: BaseViewController
+  internal var baseViewController: BaseViewController // TODO: remove baseViewController -- useless for this example, keep it simple.
   internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
   
