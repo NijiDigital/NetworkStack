@@ -37,7 +37,7 @@ struct NijiVideoWebService: VideoWebService {
       })
   }
   
-  func updateVideo(video: Video) -> Observable<Void> {
+  func update(video: Video) -> Observable<Void> {
     guard let json: JSONObject = video.toJSON().dictionaryObject else {
       let error = SerializationServiceError.unexpectedParsing(object: video)
       logger.error(.webServiceClient, "Failed to parse video : \(error)")
@@ -49,7 +49,7 @@ struct NijiVideoWebService: VideoWebService {
       })
   }
   
-  func addVideo(video: Video) -> Observable<Video> {
+  func add(video: Video) -> Observable<Video> {
     guard let json: JSONObject = video.toJSON().dictionaryObject else {
       let error = SerializationServiceError.unexpectedParsing(object: video)
       logger.error(.webServiceClient, "Failed to parse video : \(error)")

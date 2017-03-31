@@ -39,10 +39,8 @@
 		6DF771DB1E8989FD0051C8AB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7715E1E8989FD0051C8AB /* Strings.swift */; };
 		6DF771DD1E8989FD0051C8AB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771611E8989FD0051C8AB /* AppCoordinator.swift */; };
 		6DF771DE1E8989FD0051C8AB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771621E8989FD0051C8AB /* Coordinator.swift */; };
-		6DF771DF1E8989FD0051C8AB /* ForthTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771641E8989FD0051C8AB /* ForthTabCoordinator.swift */; };
 		6DF771E01E8989FD0051C8AB /* MoyaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771651E8989FD0051C8AB /* MoyaTabCoordinator.swift */; };
 		6DF771E11E8989FD0051C8AB /* NijiTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771661E8989FD0051C8AB /* NijiTabCoordinator.swift */; };
-		6DF771E21E8989FD0051C8AB /* ThirdTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771671E8989FD0051C8AB /* ThirdTabCoordinator.swift */; };
 		6DF771E31E8989FD0051C8AB /* TabsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771681E8989FD0051C8AB /* TabsCoordinator.swift */; };
 		6DF771E51E8989FD0051C8AB /* CollectionType+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716B1E8989FD0051C8AB /* CollectionType+Safe.swift */; };
 		6DF771E61E8989FD0051C8AB /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716C1E8989FD0051C8AB /* DateFormatter.swift */; };
@@ -137,10 +135,8 @@
 		6DF7715E1E8989FD0051C8AB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		6DF771611E8989FD0051C8AB /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		6DF771621E8989FD0051C8AB /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		6DF771641E8989FD0051C8AB /* ForthTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForthTabCoordinator.swift; sourceTree = "<group>"; };
 		6DF771651E8989FD0051C8AB /* MoyaTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaTabCoordinator.swift; sourceTree = "<group>"; };
 		6DF771661E8989FD0051C8AB /* NijiTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NijiTabCoordinator.swift; sourceTree = "<group>"; };
-		6DF771671E8989FD0051C8AB /* ThirdTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTabCoordinator.swift; sourceTree = "<group>"; };
 		6DF771681E8989FD0051C8AB /* TabsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsCoordinator.swift; sourceTree = "<group>"; };
 		6DF7716B1E8989FD0051C8AB /* CollectionType+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Safe.swift"; sourceTree = "<group>"; };
 		6DF7716C1E8989FD0051C8AB /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -379,8 +375,6 @@
 			children = (
 				6DF771661E8989FD0051C8AB /* NijiTabCoordinator.swift */,
 				6DF771651E8989FD0051C8AB /* MoyaTabCoordinator.swift */,
-				6DF771671E8989FD0051C8AB /* ThirdTabCoordinator.swift */,
-				6DF771641E8989FD0051C8AB /* ForthTabCoordinator.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -1012,7 +1006,6 @@
 				6DF771F31E8989FD0051C8AB /* Authorization+SwiftyJSON.swift in Sources */,
 				6DC269BB1E8AFF43000A5A5A /* RequestParameters+User.swift in Sources */,
 				6DC269B31E8AE7BD000A5A5A /* AuthenticationWebService.swift in Sources */,
-				6DF771E21E8989FD0051C8AB /* ThirdTabCoordinator.swift in Sources */,
 				6DF772251E8989FD0051C8AB /* WebServiceError.swift in Sources */,
 				6D21EBE11E8A4F3900F851ED /* String+Base64Encoding.swift in Sources */,
 				6D21EBE31E8A509400F851ED /* UIViewController+BaseViewController.swift in Sources */,
@@ -1034,7 +1027,6 @@
 				6DC269C61E8B04AB000A5A5A /* LoginViewController.swift in Sources */,
 				6DF771F21E8989FD0051C8AB /* Video+ObjectMapper.swift in Sources */,
 				6D21EBE71E8A741800F851ED /* UINavigationController.swift in Sources */,
-				6DF771DF1E8989FD0051C8AB /* ForthTabCoordinator.swift in Sources */,
 				6DF771EF1E8989FD0051C8AB /* Video+JSONCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

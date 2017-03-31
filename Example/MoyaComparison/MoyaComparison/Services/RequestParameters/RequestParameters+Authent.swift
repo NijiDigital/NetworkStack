@@ -21,7 +21,7 @@ import Alamofire
 extension RequestParameters {
   public static func authent(user: String, password: String) -> RequestParameters {
     let stringToEncode: String = String(format: "%@:%@", user, password)
-    let authHeaders: Alamofire.HTTPHeaders = ["Authorization": "Basic \(stringToEncode.convertTobase64())"]
+    let authHeaders: Alamofire.HTTPHeaders = ["Authorization": "Basic \(stringToEncode.convertToBase64())"]
     return RequestParameters(method: .get,
                              route: Route.authent(),
                              headers: authHeaders)

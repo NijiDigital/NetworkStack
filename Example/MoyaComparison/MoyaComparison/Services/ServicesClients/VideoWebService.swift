@@ -39,13 +39,13 @@ protocol VideoWebService: webService {
   ///
   /// - Parameter video: video to update
   /// - Returns: Observable of Void because deleting doesn't return object
-  func updateVideo(video: Video) -> Observable<Void>
+  func update(video: Video) -> Observable<Void>
   
   /// Add a video on server
   ///
   /// - Parameter identifier: video object to add
   /// - Returns: Observable of Video. Video full object from server.
-  func addVideo(video: Video) -> Observable<Video>
+  func add(video: Video) -> Observable<Video>
   
   /// Delete specific video from server
   ///

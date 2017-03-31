@@ -23,8 +23,8 @@ final class LoginViewController: UIViewController, StoryboardBased {
   private var webservice: WebServiceClient?
   
   // MARK: - Instance
-  public static func instance(webService: WebServiceClient?) -> MoyaStackViewController {
-    let controller = MoyaStackViewController.instantiate()
+  public static func instance(webService: WebServiceClient?) -> LoginViewController {
+    let controller = LoginViewController.instantiate()
     controller.webservice = webService
     return controller
   }

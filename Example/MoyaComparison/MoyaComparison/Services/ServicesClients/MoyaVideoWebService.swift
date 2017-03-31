@@ -35,14 +35,14 @@ struct MoyaVideoWebService: VideoWebService {
       })
   }
   
-  func updateVideo(video: Video) -> Observable<Void> {
+  func update(video: Video) -> Observable<Void> {
     return self.webServices.customAPIProvider.request(CustomAPI.putVideo(video: video)).asObservable()
       .flatMap({ _ -> Observable<Void> in
         return Observable.empty()
       })
   }
   
-  func addVideo(video: Video) -> Observable<Video> {
+  func add(video: Video) -> Observable<Video> {
     return self.webServices.customAPIProvider.request(CustomAPI.postVideo(video: video)).mapJSON()
       .flatMap({ (json: Any) -> Observable<Video> in
         return self.webServices.serializationSwiftyJSON.parse(object: json)

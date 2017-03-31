@@ -30,7 +30,6 @@ struct VideoDataStore {
   
   func fetchVideos() {
     self.webService?.fetchAllVideos()
-      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
       .observeOn(MainScheduler.instance)
       .do(
         onNext: { (videos: [Video]) in
@@ -51,8 +50,7 @@ struct VideoDataStore {
       logger.error(.webServiceClient, "Failed to create fake video !")
       return
     }
-    self.webService?.addVideo(video: video)
-      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+    self.webService?.add(video: video)
       .observeOn(MainScheduler.instance)
       .do(onNext: { (video: Video) in
         self.delegate?.added(video: video)
@@ -67,7 +65,6 @@ struct VideoDataStore {
   
   func deleteVideo(identifier: Int) {
     self.webService?.deleteVideo(identifier: identifier)
-      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
       .observeOn(MainScheduler.instance)
       .do(onNext: nil, onError: { (error: Error) in
         let message = "Failed to delete video with error : \(error)"
