@@ -42,7 +42,7 @@ final class AppCoordinator: Coordinator {
   private func initWebServiceClient() {
     let userBaseURL: String = Environment.baseURL + Environment.apiVersion
     let videoBaseURL: String = Environment.baseURL + Environment.apiVersion
-    let keychainService: KeychainService = KeychainService(serviceType: "default_keychain")
+    let keychainService: KeychainService = KeychainService(serviceType: "com.networkstack.example.keychain")
     let userNetworkStack = NetworkStack(baseURL: userBaseURL, keychainService: keychainService)
     let videoNetworkStack = NetworkStack(baseURL: videoBaseURL, keychainService: keychainService)
     let customAPIProvider = RxMoyaProvider<CustomAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
