@@ -17,25 +17,24 @@ public enum LogModule: String {
   case encoding
 }
 
-extension SwiftyBeaver {
-  
-  public class func verbose(_ module: LogModule, _ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
-    verbose({ return "[\(module.rawValue)] - \(message())" as Any}(), path, function, line: line)
+extension LogModule {
+  public func verbose(_ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
+    SwiftyBeaver.verbose({ return "[\(self.rawValue)] - \(message())" as Any}(), path, function, line: line)
   }
   
-  public class func debug(_ module: LogModule, _ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
-    debug({ return "[\(module.rawValue)] - \(message())" as Any}(), path, function, line: line)
+  public func debug(_ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
+    SwiftyBeaver.debug({ return "[\(self.rawValue)] - \(message())" as Any}(), path, function, line: line)
   }
   
-  public class func info(_ module: LogModule, _ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
-    info({ return "[\(module.rawValue)] - \(message())" as Any}(), path, function, line: line)
+  public func info(_ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
+    SwiftyBeaver.info({ return "[\(self.rawValue)] - \(message())" as Any}(), path, function, line: line)
   }
   
-  public class func warning(_ module: LogModule, _ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
-    warning({ return "[\(module.rawValue)] - \(message())" as Any}(), path, function, line: line)
+  public func warning(_ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
+    SwiftyBeaver.warning({ return "[\(self.rawValue)] - \(message())" as Any}(), path, function, line: line)
   }
   
-  public class func error(_ module: LogModule, _ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
-    error({ return "[\(module.rawValue)] - \(message())" as Any}(), path, function, line: line)
+  public func error(_ message: @autoclosure @escaping () -> Any, _ path: String = #file, _ function: String = #function, line: Int = #line) {
+    SwiftyBeaver.error({ return "[\(self.rawValue)] - \(message())" as Any}(), path, function, line: line)
   }
 }

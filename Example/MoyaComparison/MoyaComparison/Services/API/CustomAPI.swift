@@ -31,7 +31,7 @@ enum CustomAPI: TargetType {
 extension CustomAPI {
   public var baseURL: URL {
     guard let url = URL(string: Environment.baseURL + Environment.apiVersion) else {
-      logger.error(.githubProvider, "Failed to manage data")
+      LogModule.githubProvider.error("Failed to manage data")
       fatalError("Failed to convert base url string to URL ! -- CustomProvider")
     }
     return url

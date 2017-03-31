@@ -37,7 +37,7 @@ struct VideoDataStore {
         case .error(let error):
           let message = "Failed to fetch videos with error : \(error)"
           self.delegate?.error(message: message)
-          logger.error(.webServiceClient, message)
+          LogModule.webServiceClient.error(message)
         case .completed: break
         }
       })
@@ -46,7 +46,7 @@ struct VideoDataStore {
   
   func addVideo() {
     guard let video = webService?.fakeVideoToAdd() else {
-      logger.error(.webServiceClient, "Failed to create fake video !")
+      LogModule.webServiceClient.error("Failed to create fake video !")
       return
     }
     self.webService?.add(video: video)
@@ -57,7 +57,7 @@ struct VideoDataStore {
         case .error(let error):
           let message = "Failed to add video with error : \(error)"
           self.delegate?.error(message: message)
-          logger.error(.webServiceClient, message)
+          LogModule.webServiceClient.error(message)
         case .completed: break
         }
       })
@@ -67,18 +67,13 @@ struct VideoDataStore {
   func deleteVideo(identifier: Int) {
     self.webService?.deleteVideo(identifier: identifier)
       .observeOn(MainScheduler.instance)
-      .do(onNext: nil, onError: { (error: Error) in
-        
-      }, onCompleted: { _ in
-        
-      }, onSubscribe: nil, onSubscribed: nil, onDispose: nil)
       .subscribe({ (event: Event<()>) in
         switch event {
         case .next(_): break
         case .error(let error):
           let message = "Failed to delete video with error : \(error)"
           self.delegate?.error(message: message)
-          logger.error(.webServiceClient, message)
+          LogModule.webServiceClient.error(message)
         case .completed: self.delegate?.deleted()
           
         }

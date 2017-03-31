@@ -39,7 +39,7 @@ struct UserWebServices {
   func updateUser(_ user: User) -> Observable<Void> {
     guard let json: JSONObject = user.toJSON().dictionaryObject else {
       let error = SerializationServiceError.unexpectedParsing(object: user)
-      logger.error(.webServiceClient, "Failed to parse user : \(error)")
+      LogModule.webServiceClient.error("Failed to parse user : \(error)")
       return Observable.error(error)
     }
     return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateUser(identifier: user.identifier, parameters: json))
@@ -51,7 +51,7 @@ struct UserWebServices {
   func addUser(_ user: User) -> Observable<Void> {
     guard let json: JSONObject = user.toJSON().dictionaryObject else {
       let error = SerializationServiceError.unexpectedParsing(object: user)
-      logger.error(.webServiceClient, "Failed to parse user : \(error)")
+      LogModule.webServiceClient.error("Failed to parse user : \(error)")
       return Observable.error(error)
     }
     return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addUser(parameters: json))

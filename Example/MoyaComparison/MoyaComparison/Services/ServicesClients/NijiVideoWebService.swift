@@ -40,7 +40,7 @@ struct NijiVideoWebService: VideoWebService {
   func update(video: Video) -> Observable<Void> {
     guard let json: JSONObject = video.toJSON().dictionaryObject else {
       let error = SerializationServiceError.unexpectedParsing(object: video)
-      logger.error(.webServiceClient, "Failed to parse video : \(error)")
+      LogModule.webServiceClient.error("Failed to parse video : \(error)")
       return Observable.error(error)
     }
     return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateVideo(identifier: video.identifier, parameters: json))
@@ -52,7 +52,7 @@ struct NijiVideoWebService: VideoWebService {
   func add(video: Video) -> Observable<Video> {
     guard let json: JSONObject = video.toJSON().dictionaryObject else {
       let error = SerializationServiceError.unexpectedParsing(object: video)
-      logger.error(.webServiceClient, "Failed to parse video : \(error)")
+      LogModule.webServiceClient.error("Failed to parse video : \(error)")
       return Observable.error(error)
     }
     return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addVideo(parameters: json))

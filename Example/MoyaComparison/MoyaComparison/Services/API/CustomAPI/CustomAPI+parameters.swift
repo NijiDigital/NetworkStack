@@ -22,7 +22,7 @@ extension CustomAPI {
     case .authent(let email, let passwd):
       let stringToEncode: String = String(format: "%@:%@", email, passwd)
       guard let credentialData: Data = stringToEncode.data(using: .utf8) else {
-        logger.error(.webServiceClient, "Failed to encod data, user:\(email), password:\(passwd)")
+        LogModule.webServiceClient.error("Failed to encod data, user:\(email), password:\(passwd)")
         return nil
       }
       let base64Credentials: String = credentialData.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))

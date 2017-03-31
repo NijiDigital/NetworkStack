@@ -17,9 +17,6 @@
 import Foundation
 import SwiftyBeaver
 
-// Create global variable for logs
-let logger =  SwiftyBeaver.self
-
 struct MCLogger {
   static func setup() {
     let console = ConsoleDestination()
@@ -31,6 +28,6 @@ struct MCLogger {
     console.levelString.warning = "📙 -- WARNING"
     console.levelString.error = "📕 -- ERROR"
     
-    logger.addDestination(console)
+    SwiftyBeaver.addDestination(console)
   }
 }
