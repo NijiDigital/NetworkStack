@@ -24,22 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   // MARK: - Private Properties
   private var appCoordinator: AppCoordinator?
-  private var baseViewController: BaseViewController {
-    let baseController = BaseViewController()
+  private var mainViewController: UIViewController {
+    let mainViewController = UITabBarController()
     
     MCLogger.setup()
     
     let window = UIWindow(frame: UIScreen.main.bounds)
     self.window = window
-    self.window?.rootViewController = baseController
+    self.window?.rootViewController = mainViewController
     self.window?.makeKeyAndVisible()
     
-    return baseController
+    return mainViewController
   }
 
   // MARK: - Life Cycle
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    self.appCoordinator = AppCoordinator(baseController: self.baseViewController)
+    self.appCoordinator = AppCoordinator(mainViewController: self.mainViewController)
     self.appCoordinator?.start()
     return true
   }

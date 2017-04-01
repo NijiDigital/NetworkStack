@@ -22,14 +22,13 @@ import Moya
 final class AppCoordinator: Coordinator {
   
   // MARK: - Private Properties
+  var mainViewController: UIViewController
   private var webServiceClient: WebServiceClient?
-  internal var baseViewController: BaseViewController // TODO: remove baseViewController -- useless for this example, keep it simple.
-  internal var navigationController = UINavigationController()
   internal var childCoordinators: [Coordinator] = []
   
   // MARK: - Init
-  init(baseController: BaseViewController) {
-    self.baseViewController = baseController
+  init(mainViewController: UIViewController) {
+    self.mainViewController = mainViewController
     self.initWebServiceClient()
   }
   
@@ -61,13 +60,12 @@ final class AppCoordinator: Coordinator {
       user: UserWebServices(webServices: webServices),
       authent: AuthenticationWebService(webServices: webServices)
     )
-    
     self.webServiceClient = WebServiceClient(clients: clients)
   }
   
   fileprivate func startTabBar() {
     if let webServiceClient = self.webServiceClient {
-      let coordinator = TabsCoordinator(baseController: self.baseViewController, webServiceClient: webServiceClient)
+      let coordinator = TabsCoordinator(mainViewController: self.mainViewController, webServiceClient: webServiceClient)
       self.childCoordinators.append(coordinator)
       coordinator.start()
     }

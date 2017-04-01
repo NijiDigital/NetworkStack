@@ -19,8 +19,8 @@ import UIKit
 // MARK: Back title
 extension UIViewController {
   
-  func removeBackTitle () {
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+  func removeBackTitle() {
+    self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
   }
 }
 

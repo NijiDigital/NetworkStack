@@ -27,29 +27,27 @@ enum TabsTag: Int {
   case moya
 }
 
-final class TabsCoordinator: Coordinator {
+final class TabsCoordinator: TabCoordinator {
   
   // MARK: - Private Properties
-  internal var baseViewController: BaseViewController
-  internal var navigationController = UINavigationController()
+  var mainViewController: UIViewController
   internal var childCoordinators: [Coordinator] = []
-  private var tabBarController = UITabBarController()
   private let webServiceClient: WebServiceClient
   
   private struct TabsCoordinators {
     let niji: NijiTabCoordinator
     let moya: MoyaTabCoordinator
-    func all() -> [Coordinator] { return [niji, moya] }
+    func all() -> [NavCoordinator] { return [niji, moya] }
   }
   
   private lazy var coordinators: TabsCoordinators = TabsCoordinators(
-    niji: NijiTabCoordinator(webServiceClient: self.webServiceClient),
-    moya: MoyaTabCoordinator(webServiceClient: self.webServiceClient)
+    niji: NijiTabCoordinator(mainViewController: UINavigationController(), webServiceClient: self.webServiceClient),
+    moya: MoyaTabCoordinator(mainViewController: UINavigationController(), webServiceClient: self.webServiceClient)
   )
   
   // MARK: - Init
-  init(baseController: BaseViewController, webServiceClient: WebServiceClient) {
-    self.baseViewController = baseController
+  init(mainViewController: UIViewController, webServiceClient: WebServiceClient) {
+    self.mainViewController = mainViewController
     self.webServiceClient = webServiceClient
   }
   
@@ -57,7 +55,7 @@ final class TabsCoordinator: Coordinator {
   func start() {
     self.tabBarController.viewControllers = coordinators.all().map({ $0.navigationController })
     self.tabBarController.tabBar.setupBlackTabBar()
-    self.baseViewController.addViewController(self.tabBarController, method: .replaceRoot)
+    self.tabBarController.moreNavigationController.isNavigationBarHidden = true
   }
   
   func stop() {} 

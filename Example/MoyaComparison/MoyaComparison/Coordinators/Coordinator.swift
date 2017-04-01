@@ -18,23 +18,22 @@ import Foundation
 import UIKit
 
 protocol Coordinator: class {
-  var baseViewController: BaseViewController { get }
-  var navigationController: UINavigationController { get }
+  var mainViewController: UIViewController { get }
   var childCoordinators: [Coordinator] { get set }
   func start()
   func push(childCoordinator: Coordinator)
-  func popChildCoordinator()
+  func popChildCoordinator(completion: (() -> Void)?)
 }
 
 // MARK: Default Implementation
 extension Coordinator {
   func push(childCoordinator coordinator: Coordinator) {
-    childCoordinators.append(coordinator)
-    baseViewController.addViewController(coordinator.baseViewController, method: .presentModal)
+    self.childCoordinators.append(coordinator)
+    self.mainViewController.navigationController?.pushViewController(coordinator.mainViewController, animated: true)
   }
   
-  func popChildCoordinator() {
-    let _ = childCoordinators.popLast()
-    baseViewController.dismiss(animated: true, completion: nil)
+  func popChildCoordinator(completion: (() -> Void)?) {
+    let _ = self.childCoordinators.popLast()
+    self.mainViewController.dismiss(animated: true, completion: completion)
   }
 }

@@ -17,21 +17,22 @@
 import Foundation
 import UIKit
 
-final class MoyaTabCoordinator: Coordinator {
+final class MoyaTabCoordinator: NavCoordinator {
   
   // MARK: - Private Properties
-  internal var baseViewController = BaseViewController()
-  internal var navigationController = UINavigationController()
+  var mainViewController: UIViewController
   internal var childCoordinators: [Coordinator] = []
   private let webServiceClient: WebServiceClient
   
   // MARK: - Init
-  init(webServiceClient: WebServiceClient) {
+  init(mainViewController: UIViewController, webServiceClient: WebServiceClient) {
+    self.mainViewController = mainViewController
     self.webServiceClient = webServiceClient
+    
     self.navigationController.tabBarItem = UITabBarItem(title: TabsName.moya.rawValue, image: Asset.iconMoya.image, tag: TabsTag.moya.rawValue)
     self.navigationController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
     self.navigationController.setupBlackNavigationBar()
-    start()
+    self.start()
   }
   
   // MARK: - Public Funcs
@@ -44,13 +45,13 @@ final class MoyaTabCoordinator: Coordinator {
   // MARK: - Private Funcs
   private func moveToLoader() {
     let controller = LoaderViewController.instance(actions: self)
-    self.navigationController.setViewControllers([controller], animated: true)
+    self.pushToRoot(viewController: controller)
   }
   
   fileprivate func moveToMoyaStack() {
     let dataStore = VideoDataStore(webService: self.webServiceClient.clients.moya)
     let controller = VideosViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
-    self.navigationController.setViewControllers([controller], animated: true)
+    self.pushToRoot(viewController: controller)
   }
 }
 
