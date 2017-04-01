@@ -37,17 +37,12 @@ final class NijiTabCoordinator: NavCoordinator {
   
   // MARK: - Public Funcs
   func start() {
-    self.moveToLoader()
+    self.moveToNijiStack()
   }
   
   func stop() {}
   
   // MARK: - Private Funcs
-  private func moveToLoader() {
-    let controller = LoaderViewController.instance(actions: self)
-    self.pushToRoot(viewController: controller)
-  }
-  
   fileprivate func moveToNijiStack() {
     let dataStore = VideoDataStore(webService: self.webServiceClient.clients.niji)
     let controller = VideosViewController.instance(webService: self.webServiceClient, dataStore: dataStore)

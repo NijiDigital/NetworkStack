@@ -37,17 +37,12 @@ final class MoyaTabCoordinator: NavCoordinator {
   
   // MARK: - Public Funcs
   func start() {
-    self.moveToLoader()
+    self.moveToMoyaStack()
   }
   
   func stop() {}
   
-  // MARK: - Private Funcs
-  private func moveToLoader() {
-    let controller = LoaderViewController.instance(actions: self)
-    self.pushToRoot(viewController: controller)
-  }
-  
+  // MARK: - Private Funcs 
   fileprivate func moveToMoyaStack() {
     let dataStore = VideoDataStore(webService: self.webServiceClient.clients.moya)
     let controller = VideosViewController.instance(webService: self.webServiceClient, dataStore: dataStore)
