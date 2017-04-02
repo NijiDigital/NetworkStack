@@ -94,8 +94,11 @@ extension VideosViewController: VideoView {
   }
   
   func error(message: String) {
+    
     let alert = UIAlertController(title: Dimension.errorAlertTitle, message: message, preferredStyle: UIAlertControllerStyle.alert)
-    let okAction = UIAlertAction(title: Dimension.errorAlertButton, style: UIAlertActionStyle.cancel, handler: nil)
+    let okAction = UIAlertAction(title: Dimension.errorAlertButton, style: UIAlertActionStyle.cancel) { _ in
+      self.refreshControl?.endRefreshing()
+    }
     alert.addAction(okAction)
     self.present(alert, animated: true, completion: nil)
   }

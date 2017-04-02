@@ -36,16 +36,14 @@ struct SerializationServiceJSONCodable {
     } else {
       objectsToDeserialize = [objects]
     }
-    
-    for objectItem in objectsToDeserialize {
-      if let objectItem = objectItem as? JSONObject {
-        do {
-          let object = try T.init(object: objectItem)
-          objectList.append(object)
-        } catch {
-          throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self)")
-        }
-      }
+    do {
+      objectList = try objectsToDeserialize.flatMap { (objectItem: Any) -> JSONObject? in
+          return objectItem as? JSONObject
+        }.map({ (json: JSONObject) -> T in
+          return try T.init(object: json)
+        })
+    } catch {
+      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self)")
     }
     return objectList
   }
@@ -75,5 +73,4 @@ struct SerializationServiceJSONCodable {
       return Disposables.create()
     }
   }
-
 }
