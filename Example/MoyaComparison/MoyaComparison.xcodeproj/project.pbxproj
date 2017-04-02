@@ -356,19 +356,11 @@
 		6DF771711E8989FD0051C8AB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6DF771731E8989FD0051C8AB /* CRUD */,
-				6DF771751E8989FD0051C8AB /* Mapper */,
-				6DF771831E8989FD0051C8AB /* POJO */,
 				6DF771861E8989FD0051C8AB /* Realm */,
+				6DF771831E8989FD0051C8AB /* POJO */,
+				6DF771751E8989FD0051C8AB /* Mapper */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		6DF771731E8989FD0051C8AB /* CRUD */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CRUD;
 			sourceTree = "<group>";
 		};
 		6DF771751E8989FD0051C8AB /* Mapper */ = {

@@ -31,26 +31,6 @@ struct SerializationServiceObjectMapper {
     return mapper.toJSONArray(objects) as JSONArray
   }
   
-  func toJSON<T: Mappable>(object: T) -> Observable<JSONObject> {
-    return Observable.create({ (observer: AnyObserver<JSONObject>) -> Disposable in
-      let mapper = Mapper<T>()
-      let result = mapper.toJSON(object) as JSONObject
-      observer.on(.next(result))
-      observer.on(.completed)
-      return Disposables.create()
-    })
-  }
-  
-  func toJSON<T: Mappable>(objects: [T]) -> Observable<JSONArray> {
-    return Observable.create({ (observer: AnyObserver<JSONArray>) -> Disposable in
-      let mapper = Mapper<T>()
-      let result =  mapper.toJSONArray(objects) as JSONArray
-      observer.on(.next(result))
-      observer.on(.completed)
-      return Disposables.create()
-    })
-  }
-  
   // MARK: Parse funcs
   func parse<T: Mappable>(object: Any) throws -> T {
     guard let parsedResult = Mapper<T>().map(JSONObject: object) else {

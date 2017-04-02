@@ -52,26 +52,13 @@ struct SerializationServiceJSONCodable {
   
   func parse<T: JSONDecodable>(objects: Any) -> Observable<[T]> {
     return Observable.create({ observer in
-      var objectList = [T]()
-      let objectsToDeserialize: [Any]
-      if let objects = objects as? [Any] {
-        objectsToDeserialize = objects
-      } else {
-        objectsToDeserialize = [objects]
+      do {
+        let results: [T] = try self.parse(objects: objects)
+        observer.on(.next(results))
+        observer.on(.completed)
+      } catch {
+        observer.on(.error(error))
       }
-      
-      for objectItem in objectsToDeserialize {
-        if let objectItem = objectItem as? JSONObject {
-          do {
-            let object = try T.init(object: objectItem)
-            objectList.append(object)
-          } catch {
-            observer.on(.error(error))
-          }
-        }
-      }
-      observer.on(.next(objectList))
-      observer.on(.completed)
       return Disposables.create()
     })
   }
@@ -79,14 +66,9 @@ struct SerializationServiceJSONCodable {
   func parse<T: JSONDecodable>(object: Any) -> Observable<T> {
     return Observable.create { observer in
       do {
-        if let json = object as? JSONObject {
-          let object = try T(object: json)
-          observer.on(.next(object))
-          observer.on(.completed)
-        } else {
-          let error = SerializationServiceError.unexpectedFormat(json: object)
-          observer.on(.error(error))
-        }
+        let result: T = try self.parse(object: object)
+        observer.on(.next(result))
+        observer.on(.completed)
       } catch {
         observer.on(.error(error))
       }
