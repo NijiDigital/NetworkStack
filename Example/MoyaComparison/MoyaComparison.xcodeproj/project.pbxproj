@@ -14,6 +14,7 @@
 		6D457F321E8D54E000CC3C51 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D457F311E8D54E000CC3C51 /* VideoView.swift */; };
 		6D457F341E8D5AFC00CC3C51 /* MCLogger+LogModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D457F331E8D5AFC00CC3C51 /* MCLogger+LogModule.swift */; };
 		6DA264801E91504800DE558F /* VideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2647F1E91504800DE558F /* VideosDataSource.swift */; };
+		6DA264821E91559500DE558F /* WebServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA264811E91559500DE558F /* WebServiceFactory.swift */; };
 		6DC269B31E8AE7BD000A5A5A /* AuthenticationWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebService.swift */; };
 		6DC269B41E8AE7BD000A5A5A /* MoyaVideoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269AE1E8AE7BD000A5A5A /* MoyaVideoWebService.swift */; };
 		6DC269B51E8AE7BD000A5A5A /* NijiVideoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269AF1E8AE7BD000A5A5A /* NijiVideoWebService.swift */; };
@@ -104,6 +105,7 @@
 		6D457F311E8D54E000CC3C51 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		6D457F331E8D5AFC00CC3C51 /* MCLogger+LogModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MCLogger+LogModule.swift"; sourceTree = "<group>"; };
 		6DA2647F1E91504800DE558F /* VideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosDataSource.swift; sourceTree = "<group>"; };
+		6DA264811E91559500DE558F /* WebServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceFactory.swift; sourceTree = "<group>"; };
 		6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebService.swift; sourceTree = "<group>"; };
 		6DC269AE1E8AE7BD000A5A5A /* MoyaVideoWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaVideoWebService.swift; sourceTree = "<group>"; };
 		6DC269AF1E8AE7BD000A5A5A /* NijiVideoWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NijiVideoWebService.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				6DF771CB1E8989FD0051C8AB /* MCLogger.swift */,
 				6D457F331E8D5AFC00CC3C51 /* MCLogger+LogModule.swift */,
 				6D21EBE81E8A755B00F851ED /* Appearance.swift */,
+				6DA264811E91559500DE558F /* WebServiceFactory.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */,
 				6DF771F11E8989FD0051C8AB /* User+ObjectMapper.swift in Sources */,
 				6DF771E31E8989FD0051C8AB /* TabsCoordinator.swift in Sources */,
+				6DA264821E91559500DE558F /* WebServiceFactory.swift in Sources */,
 				6DF771F51E8989FD0051C8AB /* Video+SwiftyJSON.swift in Sources */,
 				6DC269C61E8B04AB000A5A5A /* LoginViewController.swift in Sources */,
 				6DC4B49B1E901E99001D5F32 /* NavCoordinator.swift in Sources */,

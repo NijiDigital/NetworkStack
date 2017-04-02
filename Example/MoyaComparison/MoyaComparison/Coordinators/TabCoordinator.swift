@@ -12,6 +12,7 @@ protocol TabCoordinator: Coordinator {
   var tabBarController: UITabBarController { get }
 }
 
+// MARK: - Default Implementation
 extension TabCoordinator {
   var tabBarController: UITabBarController {
     guard let tabBarController = self.mainViewController as? UITabBarController else {

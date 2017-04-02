@@ -39,27 +39,7 @@ final class AppCoordinator: Coordinator {
   
   // MARK: - Private Funcs
   private func initWebServiceClient() {
-    let userBaseURL: String = Environment.baseURL + Environment.apiVersion
-    let videoBaseURL: String = Environment.baseURL + Environment.apiVersion
-    let keychainService: KeychainService = KeychainService(serviceType: "com.networkstack.example.moyacomparison.keychain")
-    let userNetworkStack = NetworkStack(baseURL: userBaseURL, keychainService: keychainService)
-    let videoNetworkStack = NetworkStack(baseURL: videoBaseURL, keychainService: keychainService)
-    let customAPIProvider = RxMoyaProvider<CustomAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
-    let webServices = WebServices(
-      serializationJSONCodable: SerializationServiceJSONCodable(),
-      serializationSwiftyJSON: SerializationServiceSwiftyJSON(),
-      serializationObjectMapper: SerializationServiceObjectMapper(),
-      userNetworkStack: userNetworkStack,
-      videoNetworkStack: videoNetworkStack,
-      customAPIProvider: customAPIProvider
-    )
-    
-    let clients = ServiceClients(
-      niji: NijiVideoWebService(webServices: webServices),
-      moya: MoyaVideoWebService(webServices: webServices),
-      user: UserWebServices(webServices: webServices),
-      authent: AuthenticationWebService(webServices: webServices)
-    )
+    let clients = WebServiceFactory.clients()
     self.webServiceClient = WebServiceClient(clients: clients)
   }
   

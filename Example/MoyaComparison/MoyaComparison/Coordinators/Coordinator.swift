@@ -25,7 +25,7 @@ protocol Coordinator: class {
   func popChildCoordinator(completion: (() -> Void)?)
 }
 
-// MARK: Default Implementation
+// MARK: - Default Implementation
 extension Coordinator {
   func push(childCoordinator coordinator: Coordinator) {
     self.childCoordinators.append(coordinator)

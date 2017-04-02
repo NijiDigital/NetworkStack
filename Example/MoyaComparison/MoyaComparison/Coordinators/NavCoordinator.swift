@@ -12,6 +12,7 @@ protocol NavCoordinator: Coordinator {
   var navigationController: UINavigationController { get }
 }
 
+// MARK: - Default Implementation
 extension NavCoordinator {
   var navigationController: UINavigationController {
     guard let nc = self.mainViewController as? UINavigationController else {
