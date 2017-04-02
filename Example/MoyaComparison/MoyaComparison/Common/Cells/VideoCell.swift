@@ -22,7 +22,7 @@ final class VideoCell: UITableViewCell, NibReusable {
   @IBOutlet private weak var titleLabel: UILabel!
   
   // MARK: - Public Funcs
-  public func setup(video: Video) {
+  public func config(with video: Video) {
     self.titleLabel.text = video.title
   }
 }
