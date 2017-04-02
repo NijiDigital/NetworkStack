@@ -21,9 +21,8 @@ import RxSwift
 final class VideosViewController: UITableViewController, StoryboardBased {
   
   // MARK: - Private Properties
-  private var webservice: WebServiceClient?
-  
   fileprivate var dataSource: VideosDataSource?
+  private var webservice: WebServiceClient?
   private let disposeBag = DisposeBag()
   
   // MARK: - Private Constants
@@ -49,7 +48,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.refreshControl?.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: .valueChanged)
+    self.refreshControl?.addTarget(self, action: #selector(VideosViewController.handleRefresh(refreshControl:)), for: .valueChanged)
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -79,13 +78,14 @@ final class VideosViewController: UITableViewController, StoryboardBased {
 // MARK: - VideoView implementation
 extension VideosViewController: VideoView {
   func fetched(videos: [Video]) {
-    self.dataSource?.videos = videos
-    self.tableView.reloadData()
     self.refreshControl?.endRefreshing()
+    self.dataSource?.addAll(videos)
+    self.tableView.reloadData()
+    
   }
   
   func added(video: Video) {
-    self.dataSource?.videos.insert(video, at: self.dataSource?.videos.endIndex ?? 0)
+    self.dataSource?.add(video)
     self.tableView.reloadData()
   }
   
