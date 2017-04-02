@@ -19,15 +19,19 @@ import RxSwift
 
 struct VideoDataStore {
   
+  // MARK: - Public Properties
   weak var delegate: VideoView?
   
+  // MARK: - Private Properties
   private var disposeBag = DisposeBag()
   private var webService: VideoWebService?
   
+  // MARK: - Init
   init(webService: VideoWebService?) {
     self.webService = webService
   }
   
+  // MARK: - Public Funcs
   func fetchVideos() {
     self.webService?.fetchAllVideos()
       .observeOn(MainScheduler.instance)
