@@ -18,7 +18,7 @@ import Foundation
 import RealmSwift
 import Realm
 
-final class Video: Object, MultipleJSONConformance {
+final class Video: Object, DualJSONConformance {
   
   enum Attributes: String {
     case identifier = "id"

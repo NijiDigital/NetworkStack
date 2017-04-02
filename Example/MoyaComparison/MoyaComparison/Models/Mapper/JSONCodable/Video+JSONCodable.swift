@@ -33,7 +33,7 @@ extension Video {
     self.relatedVideos.append(objectsIn: relatedVideosSandbox)
   }
   
-  func toJSON() throws -> Any {
+  func toJSON() throws -> JSONObject {
     return try JSONEncoder.create({ (encoder: JSONEncoder) in
       try encoder.encode(self.identifier, key: Attributes.identifier.rawValue)
       try encoder.encode(self.title, key: Attributes.title.rawValue)

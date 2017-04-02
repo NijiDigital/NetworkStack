@@ -26,19 +26,19 @@ struct NijiVideoWebService: VideoWebService {
   func fetchAllVideos() -> Observable<[Video]> {
     return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllVideos())
       .flatMap({ (_, json: Any) -> Observable<[Video]> in
-        return self.webServices.serializationSwiftyJSON.parse(objects: json)
+        return self.webServices.serializationJSONCodable.parse(objects: json)
       })
   }
   
   func fetchVideo(identifier: Int) -> Observable<Video> {
     return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchVideo(identifier: identifier))
       .flatMap({ (_, json: Any) -> Observable<Video> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.webServices.serializationJSONCodable.parse(object: json)
       })
   }
   
   func update(video: Video) -> Observable<Void> {
-    guard let json: JSONObject = video.toJSON().dictionaryObject else {
+    guard let json: JSONObject = try? video.toJSON() else {
       let error = SerializationServiceError.unexpectedParsing(object: video)
       LogModule.webServiceClient.error("Failed to parse video : \(error)")
       return Observable.error(error)
@@ -50,14 +50,14 @@ struct NijiVideoWebService: VideoWebService {
   }
   
   func add(video: Video) -> Observable<Video> {
-    guard let json: JSONObject = video.toJSON().dictionaryObject else {
+    guard let json: JSONObject = try? video.toJSON() else {
       let error = SerializationServiceError.unexpectedParsing(object: video)
       LogModule.webServiceClient.error("Failed to parse video : \(error)")
       return Observable.error(error)
     }
     return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addVideo(parameters: json))
       .flatMap({ (_, json: Any) -> Observable<Video> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.webServices.serializationJSONCodable.parse(object: json)
       })
   }
   

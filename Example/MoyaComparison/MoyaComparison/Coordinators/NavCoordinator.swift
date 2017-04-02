@@ -32,8 +32,4 @@ extension NavCoordinator {
   func pushToRoot(viewController: UIViewController) {
     self.navigationController.setViewControllers([viewController], animated: false)
   }
-  
-  func push(viewController: UIViewController) {
-    self.navigationController.pushViewController(viewController, animated: true)
-  }
 }

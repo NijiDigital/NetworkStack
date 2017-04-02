@@ -20,48 +20,6 @@ import RxSwift
 
 struct SerializationServiceJSONCodable {
   
-  // MARK: json func
-  func toJSON<T: JSONCodable>(object: T) throws -> JSONObject {
-    guard let json = try object.toJSON() as? JSONObject else {
-      throw SerializationServiceError.unexpectedFormat(json: "Failed to encode object : \(object) to \(T.self)")
-    }
-    return json
-  }
-  
-  func toJSON<T: JSONCodable>(objects: [T]) throws -> JSONObject {
-    guard let json = try objects.toJSON() as? JSONObject else {
-      throw SerializationServiceError.unexpectedFormat(json: "Failed to encode objects : \(objects) to \(T.self)")
-    }
-    return json
-  }
-  
-  func toJSON<T: JSONCodable>(object: T) -> Observable<JSONObject> {
-    return Observable.create { observer in
-      do {
-        if let json = try object.toJSON() as? JSONObject {
-          observer.on(.next(json))
-          observer.on(.completed)
-        }
-      } catch {
-        observer.on(.error(error))
-      }
-      return Disposables.create()
-    }
-  }
-  
-  func toJSON<T: JSONCodable>(objects: [T]) -> Observable<JSONObject> {
-    return Observable.create { observer in
-      do {
-        if let json = try objects.toJSON() as? JSONObject {
-          observer.on(.next(json))
-          observer.on(.completed)
-        }
-      } catch {
-        observer.on(.error(error))
-      }
-      return Disposables.create()
-    }
-  }
   // MARK: parse func
   func parse<T: JSONDecodable>(object: Any) throws -> T {
     guard let jsonObject = object as? JSONObject else {

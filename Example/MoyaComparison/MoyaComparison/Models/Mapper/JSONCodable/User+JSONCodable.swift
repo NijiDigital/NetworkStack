@@ -26,7 +26,7 @@ extension User {
     self.age = try decoder.decode(JSONKeys.age.rawValue)
   }
   
-  func toJSON() throws -> Any {
+  func toJSON() throws -> JSONObject {
     return try JSONEncoder.create({ (encoder: JSONEncoder) in
       try encoder.encode(self.identifier, key: JSONKeys.identifier.rawValue)
       try encoder.encode(self.firstName, key: JSONKeys.firstName.rawValue)
