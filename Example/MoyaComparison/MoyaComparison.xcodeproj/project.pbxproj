@@ -30,13 +30,9 @@
 		6DF771CD1E8989FD0051C8AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */; };
 		6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714F1E8989FD0051C8AB /* VideoCell.swift */; };
 		6DF771D01E8989FD0051C8AB /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771501E8989FD0051C8AB /* VideoCell.xib */; };
-		6DF771D41E8989FD0051C8AB /* LoaderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771561E8989FD0051C8AB /* LoaderViewController.storyboard */; };
-		6DF771D51E8989FD0051C8AB /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771571E8989FD0051C8AB /* LoaderViewController.swift */; };
 		6DF771D71E8989FD0051C8AB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7715A1E8989FD0051C8AB /* Colors.swift */; };
-		6DF771D81E8989FD0051C8AB /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7715B1E8989FD0051C8AB /* Global.swift */; };
 		6DF771D91E8989FD0051C8AB /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7715C1E8989FD0051C8AB /* Images.swift */; };
 		6DF771DA1E8989FD0051C8AB /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7715D1E8989FD0051C8AB /* Storyboards.swift */; };
-		6DF771DB1E8989FD0051C8AB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7715E1E8989FD0051C8AB /* Strings.swift */; };
 		6DF771DD1E8989FD0051C8AB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771611E8989FD0051C8AB /* AppCoordinator.swift */; };
 		6DF771DE1E8989FD0051C8AB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771621E8989FD0051C8AB /* Coordinator.swift */; };
 		6DF771E01E8989FD0051C8AB /* MoyaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771651E8989FD0051C8AB /* MoyaTabCoordinator.swift */; };
@@ -46,7 +42,6 @@
 		6DF771E61E8989FD0051C8AB /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716C1E8989FD0051C8AB /* DateFormatter.swift */; };
 		6DF771E71E8989FD0051C8AB /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716D1E8989FD0051C8AB /* UITabBar.swift */; };
 		6DF771E91E8989FD0051C8AB /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716F1E8989FD0051C8AB /* UIViewController.swift */; };
-		6DF771EA1E8989FD0051C8AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771701E8989FD0051C8AB /* Main.storyboard */; };
 		6DF771ED1E8989FD0051C8AB /* Authorization+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771771E8989FD0051C8AB /* Authorization+JSONCodable.swift */; };
 		6DF771EE1E8989FD0051C8AB /* User+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771781E8989FD0051C8AB /* User+JSONCodable.swift */; };
 		6DF771EF1E8989FD0051C8AB /* Video+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771791E8989FD0051C8AB /* Video+JSONCodable.swift */; };
@@ -100,7 +95,6 @@
 
 /* Begin PBXFileReference section */
 		1250F4EAFB5A18960708BEBC /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
-		25C6FBF6E07B9DD7592BA8AB /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		37D7A8A9D832436482899178 /* Pods-NetworkStackExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackExample/Pods-NetworkStackExample.release.xcconfig"; sourceTree = "<group>"; };
 		62FB824752289CCD37BB0B7A /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A807EC4D07F3944B3483EAE /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,13 +120,9 @@
 		6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DF7714F1E8989FD0051C8AB /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		6DF771501E8989FD0051C8AB /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
-		6DF771561E8989FD0051C8AB /* LoaderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoaderViewController.storyboard; sourceTree = "<group>"; };
-		6DF771571E8989FD0051C8AB /* LoaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
 		6DF7715A1E8989FD0051C8AB /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		6DF7715B1E8989FD0051C8AB /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		6DF7715C1E8989FD0051C8AB /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		6DF7715D1E8989FD0051C8AB /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
-		6DF7715E1E8989FD0051C8AB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		6DF771611E8989FD0051C8AB /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		6DF771621E8989FD0051C8AB /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6DF771651E8989FD0051C8AB /* MoyaTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaTabCoordinator.swift; sourceTree = "<group>"; };
@@ -142,7 +132,6 @@
 		6DF7716C1E8989FD0051C8AB /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		6DF7716D1E8989FD0051C8AB /* UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
 		6DF7716F1E8989FD0051C8AB /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		6DF771701E8989FD0051C8AB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6DF771771E8989FD0051C8AB /* Authorization+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+JSONCodable.swift"; sourceTree = "<group>"; };
 		6DF771781E8989FD0051C8AB /* User+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+JSONCodable.swift"; sourceTree = "<group>"; };
 		6DF771791E8989FD0051C8AB /* Video+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+JSONCodable.swift"; sourceTree = "<group>"; };
@@ -187,7 +176,6 @@
 		9E0F5CE8E8A324C0CAE0B21D /* Pods-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0939E1B30AFE7AFCFF342DF /* MoyaComparison.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyaComparison.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3F5BF7EE3B67B6F3754160 /* Pods-NetworkStackExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackExample/Pods-NetworkStackExample.debug.xcconfig"; sourceTree = "<group>"; };
-		DF06B80F89C7DFC7F3FC45C8 /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,18 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				C87EF36CC6D28501044ECA99 /* default */,
-				6CD3D1DFE37E36B70F4A72AD /* dev */,
-				5059AEE7FEC0FB2193A72576 /* prod */,
 			);
 			path = Environments;
-			sourceTree = "<group>";
-		};
-		5059AEE7FEC0FB2193A72576 /* prod */ = {
-			isa = PBXGroup;
-			children = (
-				DF06B80F89C7DFC7F3FC45C8 /* Environment.swift */,
-			);
-			path = prod;
 			sourceTree = "<group>";
 		};
 		5BB8D3FBDFCBAA2BE4037AA0 /* UnitTests */ = {
@@ -252,14 +230,6 @@
 				3035B27A817B598D4CFBBED7 /* Tests */,
 			);
 			path = UnitTests;
-			sourceTree = "<group>";
-		};
-		6CD3D1DFE37E36B70F4A72AD /* dev */ = {
-			isa = PBXGroup;
-			children = (
-				25C6FBF6E07B9DD7592BA8AB /* Environment.swift */,
-			);
-			path = dev;
 			sourceTree = "<group>";
 		};
 		6DC269AB1E8AE7BD000A5A5A /* ServicesClients */ = {
@@ -297,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */,
-				6DF771701E8989FD0051C8AB /* Main.storyboard */,
 				6DF771581E8989FD0051C8AB /* Constants */,
 				6DF7715F1E8989FD0051C8AB /* Coordinators */,
 				6DF771711E8989FD0051C8AB /* Models */,
@@ -317,7 +286,6 @@
 			children = (
 				6DF7714E1E8989FD0051C8AB /* Cells */,
 				6DF771511E8989FD0051C8AB /* Controllers */,
-				6DF771541E8989FD0051C8AB /* ViewControllers */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -338,23 +306,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		6DF771541E8989FD0051C8AB /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				6DF771561E8989FD0051C8AB /* LoaderViewController.storyboard */,
-				6DF771571E8989FD0051C8AB /* LoaderViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		6DF771581E8989FD0051C8AB /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				6DF7715A1E8989FD0051C8AB /* Colors.swift */,
-				6DF7715B1E8989FD0051C8AB /* Global.swift */,
 				6DF7715C1E8989FD0051C8AB /* Images.swift */,
 				6DF7715D1E8989FD0051C8AB /* Storyboards.swift */,
-				6DF7715E1E8989FD0051C8AB /* Strings.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -706,11 +663,9 @@
 			buildConfigurationList = FC02977D3204A3E633AAE4F9 /* Build configuration list for PBXNativeTarget "MoyaComparison" */;
 			buildPhases = (
 				8CE0FC915DB2DD79C92E9F1E /* [CP] Check Pods Manifest.lock */,
-				FBC1EFC06708D714A66BE39E /* 🔧 Switch App Environment */,
 				0573C54C8D68DCB2E108AD36 /* 🛠 Generate swiftgen constants */,
 				0C321A78BE5E62A8E88FC607 /* ⚠️ SwiftLint */,
 				2E173BC9164519F2608F5E11 /* ⚠️ Warn for TODO and FIXME comments */,
-				1E80D7F99F1904D5E1ED3E26 /* Set version number */,
 				8B797C81FE2601AA7E167029 /* Sources */,
 				109063E1D6C1B7405F623DB4 /* Frameworks */,
 				A141F4D09061937C42526CEF /* Resources */,
@@ -737,8 +692,12 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = niji;
 				TargetAttributes = {
+					450AAAFC942E5774A8C22450 = {
+						DevelopmentTeam = B564TVEPFR;
+					};
 					95577B80E776312185E3CBEF = {
-						DevelopmentTeam = C8NWXKTJBC;
+						DevelopmentTeam = B564TVEPFR;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -772,10 +731,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DF771D41E8989FD0051C8AB /* LoaderViewController.storyboard in Resources */,
 				6DC269C81E8B04AB000A5A5A /* VideosViewController.storyboard in Resources */,
 				6DF771FD1E8989FD0051C8AB /* Images.xcassets in Resources */,
-				6DF771EA1E8989FD0051C8AB /* Main.storyboard in Resources */,
 				6DF772011E8989FD0051C8AB /* colors.stencil in Resources */,
 				6DF771D01E8989FD0051C8AB /* VideoCell.xib in Resources */,
 				6DF772031E8989FD0051C8AB /* images.stencil in Resources */,
@@ -801,7 +758,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n  SRCDIR=\"$PROJECT_DIR/$PROJECT_NAME\"\n  swiftgen images -t swift3 \"$SRCDIR/Resources/Images.xcassets\" --output \"$SRCDIR/Constants/Images.swift\"\n  swiftgen strings -t swift3 \"$SRCDIR/Resources/Base.lproj/Localizable.strings\" --output \"$SRCDIR/Constants/Strings.swift\"\n  swiftgen colors -t swift3 \"$SRCDIR/Resources/SwiftGen/colors.xml\" --output \"$SRCDIR/Constants/Colors.swift\"\n  swiftgen storyboards -t swift3 \"$SRCDIR\" --output \"$SRCDIR/Constants/Storyboards.swift\"\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
+			shellScript = "if which swiftgen >/dev/null; then\n  SRCDIR=\"$PROJECT_DIR/$PROJECT_NAME\"\n  swiftgen images -t swift3 \"$SRCDIR/Resources/Images.xcassets\" --output \"$SRCDIR/Constants/Images.swift\"\n  swiftgen colors -t swift3 \"$SRCDIR/Resources/SwiftGen/colors.xml\" --output \"$SRCDIR/Constants/Colors.swift\"\n  swiftgen storyboards -t swift3 \"$SRCDIR\" --output \"$SRCDIR/Constants/Storyboards.swift\"\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/AliSoftware/SwiftGen\"\nfi";
 		};
 		0C321A78BE5E62A8E88FC607 /* ⚠️ SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -831,20 +788,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackExample/Pods-NetworkStackExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		1E80D7F99F1904D5E1ED3E26 /* Set version number */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Set version number";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "git=$(sh /etc/profile; which git)\ngit_release_version=$(\"$git\" describe --tags --always --abbrev=0)\nnumber_of_commits=$(\"$git\" rev-list master --count)\ntarget_plist=\"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\ndsym_plist=\"$DWARF_DSYM_FOLDER_PATH/$DWARF_DSYM_FILE_NAME/Contents/Info.plist\"\n\nfor plist in \"$target_plist\" \"$dsym_plist\"; do\n  if [ -f \"$plist\" ]; then\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $number_of_commits\" \"$plist\"\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString ${git_release_version#*v}\" \"$plist\"\n  fi\ndone";
 		};
 		2E173BC9164519F2608F5E11 /* ⚠️ Warn for TODO and FIXME comments */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -935,20 +878,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBC1EFC06708D714A66BE39E /* 🔧 Switch App Environment */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "🔧 Switch App Environment";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -z \"${APP_ENVIRONMENT}\" ]; then\n\techo \"Select Environment Build Phase:0: warning: No APP_ENVIRONMENT variable set, the default app environment was unchanged.\"\nelse\n\techo \"Switching to environment '${APP_ENVIRONMENT}'...\"\n\t# Copy Enviroment.swift file\n\tcp \"${PROJECT_DIR}/Environments/${APP_ENVIRONMENT}/Environment.swift\" \"${PROJECT_DIR}/Environments/default/Environment.swift\"\n\t# Replace NSAppTransportSecurity entry\n\t/usr/libexec/PlistBuddy -c 'Delete :NSAppTransportSecurity' \"${INFOPLIST_FILE}\"\n\tatsPlist=\"AppTransportSecurity.plist\"\n\tif [ -f \"${PROJECT_DIR}/Environments/${APP_ENVIRONMENT}/${atsPlist}\" ]; then\n\t\t/usr/libexec/PlistBuddy -c \"Merge '${PROJECT_DIR}/Environments/${APP_ENVIRONMENT}/${atsPlist}'\" \"${INFOPLIST_FILE}\"\n\tfi\nfi\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -967,10 +896,8 @@
 				6DC269B51E8AE7BD000A5A5A /* NijiVideoWebService.swift in Sources */,
 				6DF772281E8989FD0051C8AB /* DefaultKeys.swift in Sources */,
 				6DF7721F1E8989FD0051C8AB /* SerializationService+SwiftyJSON.swift in Sources */,
-				6DF771D51E8989FD0051C8AB /* LoaderViewController.swift in Sources */,
 				6DF772191E8989FD0051C8AB /* VideoDataStore.swift in Sources */,
 				6DF771D71E8989FD0051C8AB /* Colors.swift in Sources */,
-				6DF771DB1E8989FD0051C8AB /* Strings.swift in Sources */,
 				6DF771F01E8989FD0051C8AB /* Authorization+ObjectMapper.swift in Sources */,
 				6DF771CD1E8989FD0051C8AB /* AppDelegate.swift in Sources */,
 				6DC4B49D1E903B64001D5F32 /* TabCoordinator.swift in Sources */,
@@ -1021,7 +948,6 @@
 				6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */,
 				6DF771F11E8989FD0051C8AB /* User+ObjectMapper.swift in Sources */,
 				6DF771E31E8989FD0051C8AB /* TabsCoordinator.swift in Sources */,
-				6DF771D81E8989FD0051C8AB /* Global.swift in Sources */,
 				6DF771F51E8989FD0051C8AB /* Video+SwiftyJSON.swift in Sources */,
 				6DC269C61E8B04AB000A5A5A /* LoginViewController.swift in Sources */,
 				6DC4B49B1E901E99001D5F32 /* NavCoordinator.swift in Sources */,
@@ -1053,7 +979,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = C8NWXKTJBC;
+				DEVELOPMENT_TEAM = B564TVEPFR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GLOBAL_APP_BUILD_VERSION = 1;
@@ -1064,6 +990,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "78e32f0f-8d0b-4129-998b-c271c0dc6711";
+				PROVISIONING_PROFILE_SPECIFIER = "Generic Dev";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1132,6 +1060,7 @@
 			baseConfigurationReference = 8582DAD1F13DDA76CBA012FF /* Pods-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NetworkStackExample.app/NetworkStackExample";
+				DEVELOPMENT_TEAM = B564TVEPFR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1161,7 +1090,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C8NWXKTJBC;
+				DEVELOPMENT_TEAM = B564TVEPFR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -1173,6 +1102,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "78e32f0f-8d0b-4129-998b-c271c0dc6711";
+				PROVISIONING_PROFILE_SPECIFIER = "Generic Dev";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1246,6 +1177,7 @@
 			baseConfigurationReference = 9E0F5CE8E8A324C0CAE0B21D /* Pods-UnitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NetworkStackExample.app/NetworkStackExample";
+				DEVELOPMENT_TEAM = B564TVEPFR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

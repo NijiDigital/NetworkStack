@@ -45,25 +45,6 @@ enum StoryboardScene {
   enum LaunchScreen: StoryboardSceneType {
     static let storyboardName = "LaunchScreen"
   }
-  enum LoaderViewController: String, StoryboardSceneType {
-    static let storyboardName = "LoaderViewController"
-
-    static func initialViewController() -> MoyaComparison.LoaderViewController {
-      guard let vc = storyboard().instantiateInitialViewController() as? MoyaComparison.LoaderViewController else {
-        fatalError("Failed to instantiate initialViewController for \(self.storyboardName)")
-      }
-      return vc
-    }
-
-    case loaderViewControllerScene = "LoaderViewController"
-    static func instantiateLoaderViewController() -> MoyaComparison.LoaderViewController {
-      guard let vc = StoryboardScene.LoaderViewController.loaderViewControllerScene.viewController() as? MoyaComparison.LoaderViewController
-      else {
-        fatalError("ViewController 'LoaderViewController' is not of the expected class MoyaComparison.LoaderViewController.")
-      }
-      return vc
-    }
-  }
   enum LoginViewController: String, StoryboardSceneType {
     static let storyboardName = "LoginViewController"
 
@@ -82,9 +63,6 @@ enum StoryboardScene {
       }
       return vc
     }
-  }
-  enum Main: StoryboardSceneType {
-    static let storyboardName = "Main"
   }
   enum VideosViewController: String, StoryboardSceneType {
     static let storyboardName = "VideosViewController"

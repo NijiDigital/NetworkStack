@@ -56,6 +56,4 @@ final class TabsCoordinator: TabCoordinator {
     self.tabBarController.viewControllers = coordinators.all().map({ $0.navigationController })
     self.tabBarController.tabBar.setupBlackTabBar()
   }
-  
-  func stop() {} 
 }
