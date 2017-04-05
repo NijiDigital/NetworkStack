@@ -16,7 +16,7 @@
 
 import Foundation
 
-struct Authorization: DualJSONConformance {
+struct Authorization: MultipleJSONConformance {
   
   enum JSONKeys: String {
     case token

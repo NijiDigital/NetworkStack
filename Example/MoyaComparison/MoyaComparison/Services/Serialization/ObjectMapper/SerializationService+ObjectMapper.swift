@@ -21,32 +21,38 @@ import RxSwift
 struct SerializationServiceObjectMapper {
   
   // MARK: json func
-  func toJSON<T: Mappable>(object: T) -> JSONObject {
+  func toJSON<T: ImmutableMappable>(object: T) -> JSONObject {
     let mapper = Mapper<T>()
     return mapper.toJSON(object) as JSONObject
   }
   
-  func toJSON<T: Mappable>(objects: [T]) -> JSONArray {
+  func toJSON<T: ImmutableMappable>(objects: [T]) -> JSONArray {
     let mapper = Mapper<T>()
     return mapper.toJSONArray(objects) as JSONArray
   }
   
   // MARK: Parse funcs
-  func parse<T: Mappable>(object: Any) throws -> T {
-    guard let parsedResult = Mapper<T>().map(JSONObject: object) else {
-      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(object) to \(T.self)")
+  func parse<T: ImmutableMappable>(object: Any) throws -> T {
+    let parsedResult: T
+    do {
+      parsedResult = try Mapper<T>().map(JSONObject: object)
+    } catch {
+      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(object) to \(T.self) with error : \(error)")
     }
     return parsedResult
   }
   
-  func parse<T: Mappable>(objects: Any) throws -> [T] {
-    guard let parsedResult = Mapper<T>().mapArray(JSONObject: objects) else {
-      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self)")
+  func parse<T: ImmutableMappable>(objects: Any) throws -> [T] {
+    let parsedResult: [T]
+    do {
+      parsedResult = try Mapper<T>().mapArray(JSONObject: objects)
+    } catch {
+      throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self) with error : \(error)")
     }
     return parsedResult
   }
   
-  func parse<T: Mappable>(object: Any) throws -> Observable<T> {
+  func parse<T: ImmutableMappable>(object: Any) throws -> Observable<T> {
     return Observable.create({ (observer: AnyObserver<T>) -> Disposable in
       do {
         let result: T = try self.parse(object: object)
@@ -59,7 +65,7 @@ struct SerializationServiceObjectMapper {
     })
   }
   
-  func parse<T: Mappable>(objects: Any) throws -> Observable<[T]> {
+  func parse<T: ImmutableMappable>(objects: Any) throws -> Observable<[T]> {
     return Observable.create({ (observer: AnyObserver<[T]>) -> Disposable in
       do {
         let results: [T] = try self.parse(objects: objects)

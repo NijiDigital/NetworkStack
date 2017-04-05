@@ -32,7 +32,7 @@ extension Swifty {
 }
 
 /// MultipleJSONConformance protocol is conformance of JSONCodable, Mappable, Swifty protocols
-protocol MultipleJSONConformance: JSONCodable, Mappable, Swifty {}
+protocol MultipleJSONConformance: JSONCodable, ImmutableMappable, Swifty {}
 
 /// DualJSONConformance protocol is conformance of JSONCodable, Swifty protocols
 protocol DualJSONConformance: JSONCodable, Swifty {}

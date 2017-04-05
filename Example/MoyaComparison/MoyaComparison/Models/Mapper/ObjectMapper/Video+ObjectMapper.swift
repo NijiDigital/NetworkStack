@@ -19,23 +19,32 @@ import ObjectMapper
 
 extension Video {
   
-  // MARK: Initializers
-  convenience init?(map: Map) {
-    self.init()
-  }
-  
   // MARK: Mappable
   func mapping(map: Map) {
     // Attributes
-    self.identifier <- map[Attributes.identifier.rawValue]
-    self.title <- map[Attributes.title.rawValue]
-    self.creationDate <- (map[Attributes.creationDate.rawValue], ISO8601DateTransform())
-    self.likeCounts <- map[Attributes.likeCounts.rawValue]
-    self.hasSponsors.value <- map[Attributes.hasSponsors.rawValue]
-    self.statusCode.value <- map[Attributes.statusCode.rawValue]
+    self.identifier >>> map[Attributes.identifier.rawValue]
+    self.title >>> map[Attributes.title.rawValue]
+    self.creationDate >>> (map[Attributes.creationDate.rawValue], ISO8601DateTransform())
+    self.likeCounts >>> map[Attributes.likeCounts.rawValue]
+    self.hasSponsors.value >>> map[Attributes.hasSponsors.rawValue]
+    self.statusCode.value >>> map[Attributes.statusCode.rawValue]
+    // Relationships
+    let relatedVideosSandbox: [Video] = Array(self.relatedVideos)
+    relatedVideosSandbox >>> map[Video.Relationships.relatedVideos.rawValue]
+  }
+  
+  convenience init(map: Map) throws {
+      self.init()
+    self.identifier = try map.value(Attributes.identifier.rawValue)
+    self.title = try map.value(Attributes.title.rawValue)
+    
+    self.creationDate = try map.value(Attributes.creationDate.rawValue, using: ISO8601DateTransform())
+    self.likeCounts = try map.value(Attributes.likeCounts.rawValue)
+    self.hasSponsors.value = try map.value(Attributes.hasSponsors.rawValue)
+    self.statusCode.value = try map.value(Attributes.statusCode.rawValue)
     // Relationships
     var relatedVideosSandbox: [Video] = []
-    relatedVideosSandbox <- map[Video.Relationships.relatedVideos.rawValue]
+    relatedVideosSandbox = try map.value(Video.Relationships.relatedVideos.rawValue)
     self.relatedVideos.append(objectsIn: relatedVideosSandbox)
   }
 }

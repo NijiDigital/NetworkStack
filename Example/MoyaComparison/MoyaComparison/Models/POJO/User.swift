@@ -16,7 +16,7 @@
 
 import Foundation
 
-struct User: DualJSONConformance {
+struct User: MultipleJSONConformance {
   
   enum JSONKeys: String {
     case identifier

@@ -16,15 +16,17 @@
 
 import Foundation
 import ObjectMapper
-//
-//extension Authorization {
-//  init?(map: Map) {
-//    self.init
-//  }
-//
-//  mutating func mapping(map: Map) {
-//    self.token <- map[JSONKeys.token.rawValue]
-//    self.expirationDate <- (map[Attributes.expirationDate.rawValue], ISO8601DateTransform())
-//    self.refreshToken <- map[JSONKeys.refreshToken.rawValue]
-//  }
-//}
+
+extension Authorization {
+  mutating func mapping(map: Map) {
+    self.token >>> map[JSONKeys.token.rawValue]
+    self.expirationDate >>> (map[JSONKeys.expirationDate.rawValue])
+    self.refreshToken >>> map[JSONKeys.refreshToken.rawValue]
+  }
+  
+  init(map: Map) throws {
+    self.token = try map.value(JSONKeys.token.rawValue)
+    self.expirationDate = try map.value(JSONKeys.expirationDate.rawValue)
+    self.refreshToken = try map.value(JSONKeys.refreshToken.rawValue)
+  }
+}
