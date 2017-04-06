@@ -759,7 +759,7 @@ public final class Keychain {
     }
 
     public func allKeys() -> [String] {
-        return type(of: self).prettify(itemClass: itemClass, items: items()).map { $0["key"] as! String }
+        return type(of: self).prettify(itemClass: itemClass, items: items()).flatMap { $0["key"] as? String }
     }
 
     public class func allItems(_ itemClass: ItemClass) -> [[String: Any]] {
@@ -2874,10 +2874,7 @@ extension Status: RawRepresentable, CustomStringConvertible {
 }
 
 extension Status: CustomNSError {
-
-    public static var errorDomain: String {
-        return KeychainAccessErrorDomain
-    }
+    public static let errorDomain = KeychainAccessErrorDomain
 
     public var errorCode: Int {
         return Int(rawValue)

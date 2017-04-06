@@ -1,0 +1,6 @@
+framework module Pods_MoyaComparison {
+  umbrella header "Pods-MoyaComparison-umbrella.h"
+
+  export *
+  module * { export * }
+}

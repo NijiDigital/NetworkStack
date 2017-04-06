@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B698D2168571608F243160E /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A807EC4D07F3944B3483EAE /* Pods_UnitTests.framework */; };
+		24199748AFEE04F908E69C24 /* Pods_MoyaComparison.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6A9C53D6705B4C318428EC /* Pods_MoyaComparison.framework */; };
 		6D21EBE11E8A4F3900F851ED /* String+Base64Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D21EBE01E8A4F3900F851ED /* String+Base64Encoding.swift */; };
 		6D21EBE71E8A741800F851ED /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D21EBE61E8A741800F851ED /* UINavigationController.swift */; };
 		6D21EBE91E8A755B00F851ED /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D21EBE81E8A755B00F851ED /* Appearance.swift */; };
@@ -80,7 +81,6 @@
 		6DF772281E8989FD0051C8AB /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771CA1E8989FD0051C8AB /* DefaultKeys.swift */; };
 		6DF772291E8989FD0051C8AB /* MCLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771CB1E8989FD0051C8AB /* MCLogger.swift */; };
 		86757451F9591A2746ED48AA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925FD9F5472D2009D98B2D84 /* Environment.swift */; };
-		EFFD0C4DEFB3CD47F884A4D5 /* Pods_NetworkStackExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79245A963BF1CC9F3CCC86C2 /* Pods_NetworkStackExample.framework */; };
 		F1D4074CA6073A4D94FC49DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9705E06D89CFCD2D642082A3 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +95,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B6A9C53D6705B4C318428EC /* Pods_MoyaComparison.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaComparison.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1250F4EAFB5A18960708BEBC /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		1877E646E6EF948CDD542B70 /* Pods-MoyaComparison.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaComparison.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoyaComparison/Pods-MoyaComparison.debug.xcconfig"; sourceTree = "<group>"; };
 		37D7A8A9D832436482899178 /* Pods-NetworkStackExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackExample/Pods-NetworkStackExample.release.xcconfig"; sourceTree = "<group>"; };
 		62FB824752289CCD37BB0B7A /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A807EC4D07F3944B3483EAE /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 		6DF771CB1E8989FD0051C8AB /* MCLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCLogger.swift; sourceTree = "<group>"; };
 		79245A963BF1CC9F3CCC86C2 /* Pods_NetworkStackExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkStackExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8582DAD1F13DDA76CBA012FF /* Pods-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8BE086785F6440CC3A0BD901 /* Pods-MoyaComparison.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaComparison.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoyaComparison/Pods-MoyaComparison.release.xcconfig"; sourceTree = "<group>"; };
 		925FD9F5472D2009D98B2D84 /* Environment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9705E06D89CFCD2D642082A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		9E0F5CE8E8A324C0CAE0B21D /* Pods-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -194,7 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1D4074CA6073A4D94FC49DE /* Foundation.framework in Frameworks */,
-				EFFD0C4DEFB3CD47F884A4D5 /* Pods_NetworkStackExample.framework in Frameworks */,
+				24199748AFEE04F908E69C24 /* Pods_MoyaComparison.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +578,7 @@
 				261F56BF7BEEA0814245EBD8 /* iOS */,
 				79245A963BF1CC9F3CCC86C2 /* Pods_NetworkStackExample.framework */,
 				6A807EC4D07F3944B3483EAE /* Pods_UnitTests.framework */,
+				0B6A9C53D6705B4C318428EC /* Pods_MoyaComparison.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -625,6 +629,8 @@
 				CB3F5BF7EE3B67B6F3754160 /* Pods-NetworkStackExample.debug.xcconfig */,
 				9E0F5CE8E8A324C0CAE0B21D /* Pods-UnitTests.release.xcconfig */,
 				8582DAD1F13DDA76CBA012FF /* Pods-UnitTests.debug.xcconfig */,
+				8BE086785F6440CC3A0BD901 /* Pods-MoyaComparison.release.xcconfig */,
+				1877E646E6EF948CDD542B70 /* Pods-MoyaComparison.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -781,7 +787,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackExample/Pods-NetworkStackExample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoyaComparison/Pods-MoyaComparison-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2E173BC9164519F2608F5E11 /* ⚠️ Warn for TODO and FIXME comments */ = {
@@ -810,7 +816,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackExample/Pods-NetworkStackExample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoyaComparison/Pods-MoyaComparison-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		616F685FB2C1D89781E52CE7 /* [CP] Embed Pods Frameworks */ = {
@@ -840,7 +846,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8CE0FC915DB2DD79C92E9F1E /* [CP] Check Pods Manifest.lock */ = {
@@ -855,7 +861,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CB9FE66F6A4E40F34295F944 /* [CP] Copy Pods Resources */ = {
@@ -967,7 +973,7 @@
 /* Begin XCBuildConfiguration section */
 		270936B2208D1B4E40387841 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB3F5BF7EE3B67B6F3754160 /* Pods-NetworkStackExample.debug.xcconfig */;
+			baseConfigurationReference = 1877E646E6EF948CDD542B70 /* Pods-MoyaComparison.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_BUNDLE_IDENTIFIER = "com.niji.${PRODUCT_NAME:rfc1034identifier}";
@@ -1077,7 +1083,7 @@
 		};
 		4B58F7789E165A8C2E158E1C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37D7A8A9D832436482899178 /* Pods-NetworkStackExample.release.xcconfig */;
+			baseConfigurationReference = 8BE086785F6440CC3A0BD901 /* Pods-MoyaComparison.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_BUNDLE_IDENTIFIER = "com.niji.${PRODUCT_NAME:rfc1034identifier}";
