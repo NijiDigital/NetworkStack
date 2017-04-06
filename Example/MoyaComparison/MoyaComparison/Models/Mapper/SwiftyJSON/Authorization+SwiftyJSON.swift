@@ -19,8 +19,8 @@ import SwiftyJSON
 
 extension Authorization {
   init(json: JSON) {
-    self.token = json[JSONKeys.token.rawValue].stringValue
-    self.expirationDate = json[JSONKeys.expirationDate.rawValue].doubleValue
-    self.refreshToken = json[JSONKeys.refreshToken.rawValue].stringValue
+    self.token = json[JSONKeys.token].stringValue
+    self.expirationDate = json[JSONKeys.expirationDate].doubleValue
+    self.refreshToken = json[JSONKeys.refreshToken].stringValue
   }
 }

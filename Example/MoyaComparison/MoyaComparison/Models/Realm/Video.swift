@@ -20,17 +20,17 @@ import Realm
 
 final class Video: Object, MultipleJSONConformance {
   
-  enum Attributes: String {
-    case identifier = "id"
-    case title
-    case creationDate
-    case likeCounts
-    case hasSponsors
-    case statusCode
+  enum Attributes {
+    static let identifier = "id"
+    static let title = "title"
+    static let creationDate = "creationDate"
+    static let likeCounts = "likeCounts"
+    static let hasSponsors = "hasSponsors"
+    static let statusCode = "statusCode"
   }
   
-  enum Relationships: String {
-    case relatedVideos
+  enum Relationships {
+    static let relatedVideos = "relatedVideos"
   }
 
   // MARK: Attributes

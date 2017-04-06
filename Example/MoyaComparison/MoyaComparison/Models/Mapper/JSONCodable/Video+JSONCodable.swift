@@ -22,27 +22,27 @@ extension Video {
     self.init()
     let decoder = JSONDecoder(object: object)
     // Attributes
-    self.identifier = try decoder.decode(Attributes.identifier.rawValue)
-    self.title = try decoder.decode(Attributes.title.rawValue)
-    self.creationDate = try decoder.decode(Attributes.creationDate.rawValue, transformer: JSONTransformers.StringToDate)
-    self.likeCounts = try decoder.decode(Attributes.likeCounts.rawValue)
-    self.hasSponsors.value = try decoder.decode(Attributes.hasSponsors.rawValue)
-    self.statusCode.value = try decoder.decode(Attributes.statusCode.rawValue)
+    self.identifier = try decoder.decode(Attributes.identifier)
+    self.title = try decoder.decode(Attributes.title)
+    self.creationDate = try decoder.decode(Attributes.creationDate, transformer: JSONTransformers.StringToDate)
+    self.likeCounts = try decoder.decode(Attributes.likeCounts)
+    self.hasSponsors.value = try decoder.decode(Attributes.hasSponsors)
+    self.statusCode.value = try decoder.decode(Attributes.statusCode)
     // RelationShips
-    let relatedVideosSandbox: [Video] = try decoder.decode(Relationships.relatedVideos.rawValue)
+    let relatedVideosSandbox: [Video] = try decoder.decode(Relationships.relatedVideos)
     self.relatedVideos.append(objectsIn: relatedVideosSandbox)
   }
   
   func toJSON() throws -> JSONObject {
     return try JSONEncoder.create({ (encoder: JSONEncoder) in
-      try encoder.encode(self.identifier, key: Attributes.identifier.rawValue)
-      try encoder.encode(self.title, key: Attributes.title.rawValue)
-      try encoder.encode(self.creationDate, key: Attributes.creationDate.rawValue, transformer: JSONTransformers.StringToDate)
-      try encoder.encode(self.likeCounts, key: Attributes.likeCounts.rawValue)
-      try encoder.encode(self.hasSponsors.value, key: Attributes.hasSponsors.rawValue)
-      try encoder.encode(self.statusCode.value, key: Attributes.statusCode.rawValue)
+      try encoder.encode(self.identifier, key: Attributes.identifier)
+      try encoder.encode(self.title, key: Attributes.title)
+      try encoder.encode(self.creationDate, key: Attributes.creationDate, transformer: JSONTransformers.StringToDate)
+      try encoder.encode(self.likeCounts, key: Attributes.likeCounts)
+      try encoder.encode(self.hasSponsors.value, key: Attributes.hasSponsors)
+      try encoder.encode(self.statusCode.value, key: Attributes.statusCode)
       let relatedVideosSandbox: [Video] = Array(self.relatedVideos)
-      try encoder.encode(relatedVideosSandbox, key: Relationships.relatedVideos.rawValue)
+      try encoder.encode(relatedVideosSandbox, key: Relationships.relatedVideos)
     })
   }
 }

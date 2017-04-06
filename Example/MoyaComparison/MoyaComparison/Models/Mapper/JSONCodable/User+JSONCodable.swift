@@ -20,18 +20,18 @@ import JSONCodable
 extension User {
   init(object: JSONObject) throws {
     let decoder = JSONDecoder(object: object)
-    self.identifier = try decoder.decode(JSONKeys.identifier.rawValue)
-    self.firstName = try decoder.decode(JSONKeys.firstName.rawValue)
-    self.lastName = try decoder.decode(JSONKeys.lastName.rawValue)
-    self.age = try decoder.decode(JSONKeys.age.rawValue)
+    self.identifier = try decoder.decode(JSONKeys.identifier)
+    self.firstName = try decoder.decode(JSONKeys.firstName)
+    self.lastName = try decoder.decode(JSONKeys.lastName)
+    self.age = try decoder.decode(JSONKeys.age)
   }
   
   func toJSON() throws -> JSONObject {
     return try JSONEncoder.create({ (encoder: JSONEncoder) in
-      try encoder.encode(self.identifier, key: JSONKeys.identifier.rawValue)
-      try encoder.encode(self.firstName, key: JSONKeys.firstName.rawValue)
-      try encoder.encode(self.lastName, key: JSONKeys.lastName.rawValue)
-      try encoder.encode(self.age, key: JSONKeys.age.rawValue)
+      try encoder.encode(self.identifier, key: JSONKeys.identifier)
+      try encoder.encode(self.firstName, key: JSONKeys.firstName)
+      try encoder.encode(self.lastName, key: JSONKeys.lastName)
+      try encoder.encode(self.age, key: JSONKeys.age)
     })
   }
 }

@@ -19,14 +19,14 @@ import ObjectMapper
 
 extension Authorization {
   mutating func mapping(map: Map) {
-    self.token >>> map[JSONKeys.token.rawValue]
-    self.expirationDate >>> (map[JSONKeys.expirationDate.rawValue])
-    self.refreshToken >>> map[JSONKeys.refreshToken.rawValue]
+    self.token >>> map[JSONKeys.token]
+    self.expirationDate >>> (map[JSONKeys.expirationDate])
+    self.refreshToken >>> map[JSONKeys.refreshToken]
   }
   
   init(map: Map) throws {
-    self.token = try map.value(JSONKeys.token.rawValue)
-    self.expirationDate = try map.value(JSONKeys.expirationDate.rawValue)
-    self.refreshToken = try map.value(JSONKeys.refreshToken.rawValue)
+    self.token = try map.value(JSONKeys.token)
+    self.expirationDate = try map.value(JSONKeys.expirationDate)
+    self.refreshToken = try map.value(JSONKeys.refreshToken)
   }
 }

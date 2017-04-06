@@ -20,16 +20,16 @@ import ObjectMapper
 extension User {
   
   mutating func mapping(map: Map) {
-    self.identifier >>> map[JSONKeys.identifier.rawValue]
-    self.firstName >>> map[JSONKeys.firstName.rawValue]
-    self.lastName >>> map[JSONKeys.lastName.rawValue]
-    self.age >>> map[JSONKeys.age.rawValue]
+    self.identifier >>> map[JSONKeys.identifier]
+    self.firstName >>> map[JSONKeys.firstName]
+    self.lastName >>> map[JSONKeys.lastName]
+    self.age >>> map[JSONKeys.age]
   }
   
   init(map: Map) throws {
-    self.identifier = try map.value(JSONKeys.identifier.rawValue)
-    self.firstName = try map.value(JSONKeys.firstName.rawValue)
-    self.lastName = try map.value(JSONKeys.lastName.rawValue)
-    self.age = try map.value(JSONKeys.age.rawValue)
+    self.identifier = try map.value(JSONKeys.identifier)
+    self.firstName = try map.value(JSONKeys.firstName)
+    self.lastName = try map.value(JSONKeys.lastName)
+    self.age = try map.value(JSONKeys.age)
   }
 }

@@ -19,17 +19,17 @@ import SwiftyJSON
 
 extension User {
   init(json: JSON) {
-    self.identifier = json[JSONKeys.identifier.rawValue].intValue
-    self.firstName = json[JSONKeys.firstName.rawValue].stringValue
-    self.lastName = json[JSONKeys.lastName.rawValue].stringValue
-    self.age = json[JSONKeys.age.rawValue].intValue
+    self.identifier = json[JSONKeys.identifier].intValue
+    self.firstName = json[JSONKeys.firstName].stringValue
+    self.lastName = json[JSONKeys.lastName].stringValue
+    self.age = json[JSONKeys.age].intValue
   }
   
   func toJSON() -> JSON {
     var json: JSON = JSON(dictionaryLiteral: [])
-    json[JSONKeys.firstName.rawValue].string = self.firstName
-    json[JSONKeys.lastName.rawValue].string = self.lastName
-    json[JSONKeys.age.rawValue].int = self.age
+    json[JSONKeys.firstName].string = self.firstName
+    json[JSONKeys.lastName].string = self.lastName
+    json[JSONKeys.age].int = self.age
     return json
   }
 }

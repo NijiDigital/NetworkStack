@@ -20,8 +20,8 @@ import JSONCodable
 extension Authorization {
   init(object: JSONObject) throws {
     let decoder = JSONDecoder(object: object)
-    self.token = try decoder.decode(JSONKeys.token.rawValue)
-    self.expirationDate = try decoder.decode(JSONKeys.expirationDate.rawValue)
-    self.refreshToken = try decoder.decode(JSONKeys.refreshToken.rawValue)
+    self.token = try decoder.decode(JSONKeys.token)
+    self.expirationDate = try decoder.decode(JSONKeys.expirationDate)
+    self.refreshToken = try decoder.decode(JSONKeys.refreshToken)
   }
 }

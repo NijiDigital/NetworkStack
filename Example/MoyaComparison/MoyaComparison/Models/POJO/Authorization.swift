@@ -18,10 +18,10 @@ import Foundation
 
 struct Authorization: MultipleJSONConformance {
   
-  enum JSONKeys: String {
-    case token
-    case expirationDate
-    case refreshToken
+  enum JSONKeys {
+    static let token = "token"
+    static let expirationDate = "expirationDate"
+    static let refreshToken = "refreshToken"
   }
   let token: String
   let expirationDate: TimeInterval

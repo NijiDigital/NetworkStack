@@ -21,27 +21,27 @@ extension Video {
   
   convenience init(json: JSON) {
     self.init()
-    self.identifier = json[Attributes.identifier.rawValue].intValue
-    self.title = json[Attributes.title.rawValue].stringValue
-    self.creationDate = json[Attributes.creationDate.rawValue].flatMap(SwiftyTransformer.dateTransform).first
-    self.likeCounts  = json[Attributes.likeCounts.rawValue].intValue
-    self.hasSponsors.value = json[Attributes.hasSponsors.rawValue].boolValue
-    self.statusCode.value = json[Attributes.statusCode.rawValue].intValue
+    self.identifier = json[Attributes.identifier].intValue
+    self.title = json[Attributes.title].stringValue
+    self.creationDate = json[Attributes.creationDate].flatMap(SwiftyTransformer.dateTransform).first
+    self.likeCounts  = json[Attributes.likeCounts].intValue
+    self.hasSponsors.value = json[Attributes.hasSponsors].boolValue
+    self.statusCode.value = json[Attributes.statusCode].intValue
     // RelationShips
-    let relatedVideosSandbox: [Video] = json[Relationships.relatedVideos.rawValue].arrayValue.map(SwiftyTransformer.arrayVideoTransform)
+    let relatedVideosSandbox: [Video] = json[Relationships.relatedVideos].arrayValue.map(SwiftyTransformer.arrayVideoTransform)
     self.relatedVideos.append(objectsIn: relatedVideosSandbox)
   }
     
   func toJSON() -> JSON {
     var json: JSON = JSON(dictionaryLiteral: [])
-    json[Attributes.identifier.rawValue].int = self.identifier
-    json[Attributes.title.rawValue].string = self.title
-    json[Attributes.creationDate.rawValue].string = self.creationDate.map(SwiftyTransformer.dateTransform)
-    json[Attributes.likeCounts.rawValue].int = self.likeCounts
-    json[Attributes.hasSponsors.rawValue].bool = self.hasSponsors.value
-    json[Attributes.statusCode.rawValue].int = self.statusCode.value
+    json[Attributes.identifier].int = self.identifier
+    json[Attributes.title].string = self.title
+    json[Attributes.creationDate].string = self.creationDate.map(SwiftyTransformer.dateTransform)
+    json[Attributes.likeCounts].int = self.likeCounts
+    json[Attributes.hasSponsors].bool = self.hasSponsors.value
+    json[Attributes.statusCode].int = self.statusCode.value
     // RelationShips
-    json[Relationships.relatedVideos.rawValue].arrayObject = self.relatedVideos.map(SwiftyTransformer.arrayVideoTransform)
+    json[Relationships.relatedVideos].arrayObject = self.relatedVideos.map(SwiftyTransformer.arrayVideoTransform)
     return json
   }
 }

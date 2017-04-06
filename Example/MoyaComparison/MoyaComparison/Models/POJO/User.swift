@@ -18,11 +18,11 @@ import Foundation
 
 struct User: MultipleJSONConformance {
   
-  enum JSONKeys: String {
-    case identifier
-    case firstName
-    case lastName
-    case age
+  enum JSONKeys {
+    static let identifier = "identifier"
+    static let firstName = "firstName"
+    static let lastName = "lastName"
+    static let age = "age"
   }
   
   let identifier: Int
