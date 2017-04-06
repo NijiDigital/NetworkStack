@@ -13,6 +13,16 @@
 		6D21EBE91E8A755B00F851ED /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D21EBE81E8A755B00F851ED /* Appearance.swift */; };
 		6D457F321E8D54E000CC3C51 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D457F311E8D54E000CC3C51 /* VideoView.swift */; };
 		6D457F341E8D5AFC00CC3C51 /* MCLogger+LogModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D457F331E8D5AFC00CC3C51 /* MCLogger+LogModule.swift */; };
+		6D81F9DC1E96F003006821F0 /* Authorization+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D11E96F003006821F0 /* Authorization+JSONCodable.swift */; };
+		6D81F9DD1E96F003006821F0 /* User+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D21E96F003006821F0 /* User+JSONCodable.swift */; };
+		6D81F9DE1E96F003006821F0 /* Video+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D31E96F003006821F0 /* Video+JSONCodable.swift */; };
+		6D81F9DF1E96F003006821F0 /* Authorization+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D51E96F003006821F0 /* Authorization+ObjectMapper.swift */; };
+		6D81F9E01E96F003006821F0 /* User+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D61E96F003006821F0 /* User+ObjectMapper.swift */; };
+		6D81F9E11E96F003006821F0 /* Video+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D71E96F003006821F0 /* Video+ObjectMapper.swift */; };
+		6D81F9E21E96F003006821F0 /* Authorization+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9D91E96F003006821F0 /* Authorization+SwiftyJSON.swift */; };
+		6D81F9E31E96F003006821F0 /* User+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9DA1E96F003006821F0 /* User+SwiftyJSON.swift */; };
+		6D81F9E41E96F003006821F0 /* Video+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9DB1E96F003006821F0 /* Video+SwiftyJSON.swift */; };
+		6D81F9E61E96F033006821F0 /* SwiftyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9E51E96F033006821F0 /* SwiftyProtocol.swift */; };
 		6DA264801E91504800DE558F /* VideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2647F1E91504800DE558F /* VideosDataSource.swift */; };
 		6DA264821E91559500DE558F /* WebServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA264811E91559500DE558F /* WebServiceFactory.swift */; };
 		6DC269B31E8AE7BD000A5A5A /* AuthenticationWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebService.swift */; };
@@ -43,16 +53,6 @@
 		6DF771E61E8989FD0051C8AB /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716C1E8989FD0051C8AB /* DateFormatter.swift */; };
 		6DF771E71E8989FD0051C8AB /* UITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716D1E8989FD0051C8AB /* UITabBar.swift */; };
 		6DF771E91E8989FD0051C8AB /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7716F1E8989FD0051C8AB /* UIViewController.swift */; };
-		6DF771ED1E8989FD0051C8AB /* Authorization+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771771E8989FD0051C8AB /* Authorization+JSONCodable.swift */; };
-		6DF771EE1E8989FD0051C8AB /* User+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771781E8989FD0051C8AB /* User+JSONCodable.swift */; };
-		6DF771EF1E8989FD0051C8AB /* Video+JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771791E8989FD0051C8AB /* Video+JSONCodable.swift */; };
-		6DF771F01E8989FD0051C8AB /* Authorization+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7717B1E8989FD0051C8AB /* Authorization+ObjectMapper.swift */; };
-		6DF771F11E8989FD0051C8AB /* User+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7717C1E8989FD0051C8AB /* User+ObjectMapper.swift */; };
-		6DF771F21E8989FD0051C8AB /* Video+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7717D1E8989FD0051C8AB /* Video+ObjectMapper.swift */; };
-		6DF771F31E8989FD0051C8AB /* Authorization+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7717F1E8989FD0051C8AB /* Authorization+SwiftyJSON.swift */; };
-		6DF771F41E8989FD0051C8AB /* User+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771801E8989FD0051C8AB /* User+SwiftyJSON.swift */; };
-		6DF771F51E8989FD0051C8AB /* Video+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771811E8989FD0051C8AB /* Video+SwiftyJSON.swift */; };
-		6DF771F61E8989FD0051C8AB /* SwiftyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771821E8989FD0051C8AB /* SwiftyProtocol.swift */; };
 		6DF771F71E8989FD0051C8AB /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771841E8989FD0051C8AB /* Authorization.swift */; };
 		6DF771F81E8989FD0051C8AB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771851E8989FD0051C8AB /* User.swift */; };
 		6DF771FA1E8989FD0051C8AB /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771881E8989FD0051C8AB /* Video.swift */; };
@@ -104,6 +104,16 @@
 		6D21EBE81E8A755B00F851ED /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		6D457F311E8D54E000CC3C51 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		6D457F331E8D5AFC00CC3C51 /* MCLogger+LogModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MCLogger+LogModule.swift"; sourceTree = "<group>"; };
+		6D81F9D11E96F003006821F0 /* Authorization+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+JSONCodable.swift"; sourceTree = "<group>"; };
+		6D81F9D21E96F003006821F0 /* User+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+JSONCodable.swift"; sourceTree = "<group>"; };
+		6D81F9D31E96F003006821F0 /* Video+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+JSONCodable.swift"; sourceTree = "<group>"; };
+		6D81F9D51E96F003006821F0 /* Authorization+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+ObjectMapper.swift"; sourceTree = "<group>"; };
+		6D81F9D61E96F003006821F0 /* User+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ObjectMapper.swift"; sourceTree = "<group>"; };
+		6D81F9D71E96F003006821F0 /* Video+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+ObjectMapper.swift"; sourceTree = "<group>"; };
+		6D81F9D91E96F003006821F0 /* Authorization+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+SwiftyJSON.swift"; sourceTree = "<group>"; };
+		6D81F9DA1E96F003006821F0 /* User+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+SwiftyJSON.swift"; sourceTree = "<group>"; };
+		6D81F9DB1E96F003006821F0 /* Video+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+SwiftyJSON.swift"; sourceTree = "<group>"; };
+		6D81F9E51E96F033006821F0 /* SwiftyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyProtocol.swift; sourceTree = "<group>"; };
 		6DA2647F1E91504800DE558F /* VideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosDataSource.swift; sourceTree = "<group>"; };
 		6DA264811E91559500DE558F /* WebServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceFactory.swift; sourceTree = "<group>"; };
 		6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebService.swift; sourceTree = "<group>"; };
@@ -134,16 +144,6 @@
 		6DF7716C1E8989FD0051C8AB /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		6DF7716D1E8989FD0051C8AB /* UITabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBar.swift; sourceTree = "<group>"; };
 		6DF7716F1E8989FD0051C8AB /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		6DF771771E8989FD0051C8AB /* Authorization+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+JSONCodable.swift"; sourceTree = "<group>"; };
-		6DF771781E8989FD0051C8AB /* User+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+JSONCodable.swift"; sourceTree = "<group>"; };
-		6DF771791E8989FD0051C8AB /* Video+JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+JSONCodable.swift"; sourceTree = "<group>"; };
-		6DF7717B1E8989FD0051C8AB /* Authorization+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+ObjectMapper.swift"; sourceTree = "<group>"; };
-		6DF7717C1E8989FD0051C8AB /* User+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+ObjectMapper.swift"; sourceTree = "<group>"; };
-		6DF7717D1E8989FD0051C8AB /* Video+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+ObjectMapper.swift"; sourceTree = "<group>"; };
-		6DF7717F1E8989FD0051C8AB /* Authorization+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+SwiftyJSON.swift"; sourceTree = "<group>"; };
-		6DF771801E8989FD0051C8AB /* User+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+SwiftyJSON.swift"; sourceTree = "<group>"; };
-		6DF771811E8989FD0051C8AB /* Video+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+SwiftyJSON.swift"; sourceTree = "<group>"; };
-		6DF771821E8989FD0051C8AB /* SwiftyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyProtocol.swift; path = ../SwiftyProtocol.swift; sourceTree = "<group>"; };
 		6DF771841E8989FD0051C8AB /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		6DF771851E8989FD0051C8AB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6DF771881E8989FD0051C8AB /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -232,6 +232,46 @@
 				3035B27A817B598D4CFBBED7 /* Tests */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		6D81F9CF1E96F003006821F0 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				6D81F9D01E96F003006821F0 /* JSONCodable */,
+				6D81F9D41E96F003006821F0 /* ObjectMapper */,
+				6D81F9D81E96F003006821F0 /* SwiftyJSON */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		6D81F9D01E96F003006821F0 /* JSONCodable */ = {
+			isa = PBXGroup;
+			children = (
+				6D81F9D11E96F003006821F0 /* Authorization+JSONCodable.swift */,
+				6D81F9D21E96F003006821F0 /* User+JSONCodable.swift */,
+				6D81F9D31E96F003006821F0 /* Video+JSONCodable.swift */,
+			);
+			path = JSONCodable;
+			sourceTree = "<group>";
+		};
+		6D81F9D41E96F003006821F0 /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				6D81F9D51E96F003006821F0 /* Authorization+ObjectMapper.swift */,
+				6D81F9D61E96F003006821F0 /* User+ObjectMapper.swift */,
+				6D81F9D71E96F003006821F0 /* Video+ObjectMapper.swift */,
+			);
+			path = ObjectMapper;
+			sourceTree = "<group>";
+		};
+		6D81F9D81E96F003006821F0 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				6D81F9D91E96F003006821F0 /* Authorization+SwiftyJSON.swift */,
+				6D81F9DA1E96F003006821F0 /* User+SwiftyJSON.swift */,
+				6D81F9DB1E96F003006821F0 /* Video+SwiftyJSON.swift */,
+			);
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		6DC269AB1E8AE7BD000A5A5A /* ServicesClients */ = {
@@ -356,52 +396,12 @@
 		6DF771711E8989FD0051C8AB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6D81F9E51E96F033006821F0 /* SwiftyProtocol.swift */,
+				6D81F9CF1E96F003006821F0 /* Parser */,
 				6DF771861E8989FD0051C8AB /* Realm */,
 				6DF771831E8989FD0051C8AB /* POJO */,
-				6DF771751E8989FD0051C8AB /* Mapper */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		6DF771751E8989FD0051C8AB /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-				6DF771821E8989FD0051C8AB /* SwiftyProtocol.swift */,
-				6DF771761E8989FD0051C8AB /* JSONCodable */,
-				6DF7717A1E8989FD0051C8AB /* ObjectMapper */,
-				6DF7717E1E8989FD0051C8AB /* SwiftyJSON */,
-			);
-			path = Mapper;
-			sourceTree = "<group>";
-		};
-		6DF771761E8989FD0051C8AB /* JSONCodable */ = {
-			isa = PBXGroup;
-			children = (
-				6DF771771E8989FD0051C8AB /* Authorization+JSONCodable.swift */,
-				6DF771781E8989FD0051C8AB /* User+JSONCodable.swift */,
-				6DF771791E8989FD0051C8AB /* Video+JSONCodable.swift */,
-			);
-			path = JSONCodable;
-			sourceTree = "<group>";
-		};
-		6DF7717A1E8989FD0051C8AB /* ObjectMapper */ = {
-			isa = PBXGroup;
-			children = (
-				6DF7717B1E8989FD0051C8AB /* Authorization+ObjectMapper.swift */,
-				6DF7717C1E8989FD0051C8AB /* User+ObjectMapper.swift */,
-				6DF7717D1E8989FD0051C8AB /* Video+ObjectMapper.swift */,
-			);
-			path = ObjectMapper;
-			sourceTree = "<group>";
-		};
-		6DF7717E1E8989FD0051C8AB /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				6DF7717F1E8989FD0051C8AB /* Authorization+SwiftyJSON.swift */,
-				6DF771801E8989FD0051C8AB /* User+SwiftyJSON.swift */,
-				6DF771811E8989FD0051C8AB /* Video+SwiftyJSON.swift */,
-			);
-			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 		6DF771831E8989FD0051C8AB /* POJO */ = {
@@ -891,20 +891,17 @@
 				6DC269B51E8AE7BD000A5A5A /* NijiVideoWebService.swift in Sources */,
 				6DF772281E8989FD0051C8AB /* DefaultKeys.swift in Sources */,
 				6DF7721F1E8989FD0051C8AB /* SerializationService+SwiftyJSON.swift in Sources */,
+				6D81F9DD1E96F003006821F0 /* User+JSONCodable.swift in Sources */,
 				6DF772191E8989FD0051C8AB /* VideoDataStore.swift in Sources */,
 				6DF771D71E8989FD0051C8AB /* Colors.swift in Sources */,
-				6DF771F01E8989FD0051C8AB /* Authorization+ObjectMapper.swift in Sources */,
 				6DF771CD1E8989FD0051C8AB /* AppDelegate.swift in Sources */,
+				6D81F9DE1E96F003006821F0 /* Video+JSONCodable.swift in Sources */,
 				6DC4B49D1E903B64001D5F32 /* TabCoordinator.swift in Sources */,
-				6DF771ED1E8989FD0051C8AB /* Authorization+JSONCodable.swift in Sources */,
 				6DF771E61E8989FD0051C8AB /* DateFormatter.swift in Sources */,
-				6DF771EE1E8989FD0051C8AB /* User+JSONCodable.swift in Sources */,
 				6D457F341E8D5AFC00CC3C51 /* MCLogger+LogModule.swift in Sources */,
 				6DF772181E8989FD0051C8AB /* CustomAPI.swift in Sources */,
 				6DC269C91E8B04AB000A5A5A /* VideosViewController.swift in Sources */,
 				6DF7721A1E8989FD0051C8AB /* RequestParameters+Authent.swift in Sources */,
-				6DF771F61E8989FD0051C8AB /* SwiftyProtocol.swift in Sources */,
-				6DF771F41E8989FD0051C8AB /* User+SwiftyJSON.swift in Sources */,
 				6DF772161E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift in Sources */,
 				86757451F9591A2746ED48AA /* Environment.swift in Sources */,
 				6DF771D91E8989FD0051C8AB /* Images.swift in Sources */,
@@ -914,21 +911,27 @@
 				6DF772171E8989FD0051C8AB /* CustomAPI+path.swift in Sources */,
 				6DF772141E8989FD0051C8AB /* CustomAPI+method.swift in Sources */,
 				6DF7721D1E8989FD0051C8AB /* SerializationService+ObjectMapper.swift in Sources */,
+				6D81F9E31E96F003006821F0 /* User+SwiftyJSON.swift in Sources */,
 				6DF771E11E8989FD0051C8AB /* NijiTabCoordinator.swift in Sources */,
+				6D81F9E21E96F003006821F0 /* Authorization+SwiftyJSON.swift in Sources */,
+				6D81F9E41E96F003006821F0 /* Video+SwiftyJSON.swift in Sources */,
 				6DF771E71E8989FD0051C8AB /* UITabBar.swift in Sources */,
 				6DF771FA1E8989FD0051C8AB /* Video.swift in Sources */,
 				6DF771DE1E8989FD0051C8AB /* Coordinator.swift in Sources */,
 				6DF772291E8989FD0051C8AB /* MCLogger.swift in Sources */,
 				6DF771E91E8989FD0051C8AB /* UIViewController.swift in Sources */,
 				6DF772151E8989FD0051C8AB /* CustomAPI+parameters.swift in Sources */,
+				6D81F9DF1E96F003006821F0 /* Authorization+ObjectMapper.swift in Sources */,
 				6DF7721C1E8989FD0051C8AB /* SerializationService+JSONCodable.swift in Sources */,
 				6DF7721B1E8989FD0051C8AB /* Routes.swift in Sources */,
 				6DA264801E91504800DE558F /* VideosDataSource.swift in Sources */,
+				6D81F9DC1E96F003006821F0 /* Authorization+JSONCodable.swift in Sources */,
 				6DC269B41E8AE7BD000A5A5A /* MoyaVideoWebService.swift in Sources */,
-				6DF771F31E8989FD0051C8AB /* Authorization+SwiftyJSON.swift in Sources */,
 				6DC269BB1E8AFF43000A5A5A /* RequestParameters+User.swift in Sources */,
+				6D81F9E11E96F003006821F0 /* Video+ObjectMapper.swift in Sources */,
 				6DC269B31E8AE7BD000A5A5A /* AuthenticationWebService.swift in Sources */,
 				6DF772251E8989FD0051C8AB /* WebServiceError.swift in Sources */,
+				6D81F9E01E96F003006821F0 /* User+ObjectMapper.swift in Sources */,
 				6D21EBE11E8A4F3900F851ED /* String+Base64Encoding.swift in Sources */,
 				6D21EBE91E8A755B00F851ED /* Appearance.swift in Sources */,
 				6DF771DA1E8989FD0051C8AB /* Storyboards.swift in Sources */,
@@ -941,15 +944,12 @@
 				6D457F321E8D54E000CC3C51 /* VideoView.swift in Sources */,
 				6DC269B91E8AFAD7000A5A5A /* RequestParameters+Video.swift in Sources */,
 				6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */,
-				6DF771F11E8989FD0051C8AB /* User+ObjectMapper.swift in Sources */,
 				6DF771E31E8989FD0051C8AB /* TabsCoordinator.swift in Sources */,
+				6D81F9E61E96F033006821F0 /* SwiftyProtocol.swift in Sources */,
 				6DA264821E91559500DE558F /* WebServiceFactory.swift in Sources */,
-				6DF771F51E8989FD0051C8AB /* Video+SwiftyJSON.swift in Sources */,
 				6DC269C61E8B04AB000A5A5A /* LoginViewController.swift in Sources */,
 				6DC4B49B1E901E99001D5F32 /* NavCoordinator.swift in Sources */,
-				6DF771F21E8989FD0051C8AB /* Video+ObjectMapper.swift in Sources */,
 				6D21EBE71E8A741800F851ED /* UINavigationController.swift in Sources */,
-				6DF771EF1E8989FD0051C8AB /* Video+JSONCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
