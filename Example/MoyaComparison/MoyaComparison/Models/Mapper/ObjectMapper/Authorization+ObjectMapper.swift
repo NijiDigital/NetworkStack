@@ -17,7 +17,7 @@
 import Foundation
 import ObjectMapper
 
-extension Authorization {
+extension Authorization: ImmutableMappable {
   mutating func mapping(map: Map) {
     self.token >>> map[JSONKeys.token]
     self.expirationDate >>> (map[JSONKeys.expirationDate])

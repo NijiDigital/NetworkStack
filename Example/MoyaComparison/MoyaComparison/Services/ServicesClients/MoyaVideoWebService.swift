@@ -18,7 +18,7 @@ import Foundation
 import RxSwift
 import Moya
 
-struct MoyaVideoWebService: VideoWebService {
+struct MoyaVideoWebService: VideoWebServiceClient {
   var services: Services
   
   func fetchAllVideos() -> Observable<[Video]> {

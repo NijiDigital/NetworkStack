@@ -52,7 +52,7 @@
 		6DF771F31E8989FD0051C8AB /* Authorization+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7717F1E8989FD0051C8AB /* Authorization+SwiftyJSON.swift */; };
 		6DF771F41E8989FD0051C8AB /* User+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771801E8989FD0051C8AB /* User+SwiftyJSON.swift */; };
 		6DF771F51E8989FD0051C8AB /* Video+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771811E8989FD0051C8AB /* Video+SwiftyJSON.swift */; };
-		6DF771F61E8989FD0051C8AB /* MultipleJSONConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */; };
+		6DF771F61E8989FD0051C8AB /* SwiftyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771821E8989FD0051C8AB /* SwiftyProtocol.swift */; };
 		6DF771F71E8989FD0051C8AB /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771841E8989FD0051C8AB /* Authorization.swift */; };
 		6DF771F81E8989FD0051C8AB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771851E8989FD0051C8AB /* User.swift */; };
 		6DF771FA1E8989FD0051C8AB /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771881E8989FD0051C8AB /* Video.swift */; };
@@ -74,7 +74,7 @@
 		6DF7721D1E8989FD0051C8AB /* SerializationService+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771BC1E8989FD0051C8AB /* SerializationService+ObjectMapper.swift */; };
 		6DF7721E1E8989FD0051C8AB /* SerializationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771BD1E8989FD0051C8AB /* SerializationServiceError.swift */; };
 		6DF7721F1E8989FD0051C8AB /* SerializationService+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771BF1E8989FD0051C8AB /* SerializationService+SwiftyJSON.swift */; };
-		6DF772241E8989FD0051C8AB /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771C51E8989FD0051C8AB /* WebServiceClient.swift */; };
+		6DF772241E8989FD0051C8AB /* WebServiceClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771C51E8989FD0051C8AB /* WebServiceClients.swift */; };
 		6DF772251E8989FD0051C8AB /* WebServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771C61E8989FD0051C8AB /* WebServiceError.swift */; };
 		6DF772271E8989FD0051C8AB /* BarButtonItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771C91E8989FD0051C8AB /* BarButtonItemFactory.swift */; };
 		6DF772281E8989FD0051C8AB /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771CA1E8989FD0051C8AB /* DefaultKeys.swift */; };
@@ -143,7 +143,7 @@
 		6DF7717F1E8989FD0051C8AB /* Authorization+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6DF771801E8989FD0051C8AB /* User+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6DF771811E8989FD0051C8AB /* Video+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+SwiftyJSON.swift"; sourceTree = "<group>"; };
-		6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleJSONConformance.swift; path = ../MultipleJSONConformance.swift; sourceTree = "<group>"; };
+		6DF771821E8989FD0051C8AB /* SwiftyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyProtocol.swift; path = ../SwiftyProtocol.swift; sourceTree = "<group>"; };
 		6DF771841E8989FD0051C8AB /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		6DF771851E8989FD0051C8AB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6DF771881E8989FD0051C8AB /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		6DF771BC1E8989FD0051C8AB /* SerializationService+ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerializationService+ObjectMapper.swift"; sourceTree = "<group>"; };
 		6DF771BD1E8989FD0051C8AB /* SerializationServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationServiceError.swift; sourceTree = "<group>"; };
 		6DF771BF1E8989FD0051C8AB /* SerializationService+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerializationService+SwiftyJSON.swift"; sourceTree = "<group>"; };
-		6DF771C51E8989FD0051C8AB /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
+		6DF771C51E8989FD0051C8AB /* WebServiceClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClients.swift; sourceTree = "<group>"; };
 		6DF771C61E8989FD0051C8AB /* WebServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceError.swift; sourceTree = "<group>"; };
 		6DF771C91E8989FD0051C8AB /* BarButtonItemFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItemFactory.swift; sourceTree = "<group>"; };
 		6DF771CA1E8989FD0051C8AB /* DefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		6DF771751E8989FD0051C8AB /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				6DF771821E8989FD0051C8AB /* MultipleJSONConformance.swift */,
+				6DF771821E8989FD0051C8AB /* SwiftyProtocol.swift */,
 				6DF771761E8989FD0051C8AB /* JSONCodable */,
 				6DF7717A1E8989FD0051C8AB /* ObjectMapper */,
 				6DF7717E1E8989FD0051C8AB /* SwiftyJSON */,
@@ -462,7 +462,7 @@
 		6DF771AA1E8989FD0051C8AB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6DF771C51E8989FD0051C8AB /* WebServiceClient.swift */,
+				6DF771C51E8989FD0051C8AB /* WebServiceClients.swift */,
 				6DF771C61E8989FD0051C8AB /* WebServiceError.swift */,
 				6DF771B71E8989FD0051C8AB /* Routes.swift */,
 				6DC269AB1E8AE7BD000A5A5A /* ServicesClients */,
@@ -903,13 +903,13 @@
 				6DF772181E8989FD0051C8AB /* CustomAPI.swift in Sources */,
 				6DC269C91E8B04AB000A5A5A /* VideosViewController.swift in Sources */,
 				6DF7721A1E8989FD0051C8AB /* RequestParameters+Authent.swift in Sources */,
-				6DF771F61E8989FD0051C8AB /* MultipleJSONConformance.swift in Sources */,
+				6DF771F61E8989FD0051C8AB /* SwiftyProtocol.swift in Sources */,
 				6DF771F41E8989FD0051C8AB /* User+SwiftyJSON.swift in Sources */,
 				6DF772161E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift in Sources */,
 				86757451F9591A2746ED48AA /* Environment.swift in Sources */,
 				6DF771D91E8989FD0051C8AB /* Images.swift in Sources */,
 				6DF771E51E8989FD0051C8AB /* CollectionType+Safe.swift in Sources */,
-				6DF772241E8989FD0051C8AB /* WebServiceClient.swift in Sources */,
+				6DF772241E8989FD0051C8AB /* WebServiceClients.swift in Sources */,
 				6DF771F71E8989FD0051C8AB /* Authorization.swift in Sources */,
 				6DF772171E8989FD0051C8AB /* CustomAPI+path.swift in Sources */,
 				6DF772141E8989FD0051C8AB /* CustomAPI+method.swift in Sources */,
@@ -971,7 +971,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_BUNDLE_IDENTIFIER = "com.niji.${PRODUCT_NAME:rfc1034identifier}";
-				APP_ENVIRONMENT = prod;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1082,7 +1081,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_BUNDLE_IDENTIFIER = "com.niji.${PRODUCT_NAME:rfc1034identifier}";
-				APP_ENVIRONMENT = prod;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

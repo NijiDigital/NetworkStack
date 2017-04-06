@@ -17,7 +17,7 @@
 import Foundation
 import JSONCodable
 
-extension Authorization {
+extension Authorization: JSONCodable {
   init(object: JSONObject) throws {
     let decoder = JSONDecoder(object: object)
     self.token = try decoder.decode(JSONKeys.token)

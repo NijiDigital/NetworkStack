@@ -15,8 +15,6 @@
 //
 
 import Foundation
-import JSONCodable
-import ObjectMapper
 import SwiftyJSON
 
 /// Swifty protocol to use Generics for parsing with SwiftyJSON
@@ -30,9 +28,3 @@ extension Swifty {
     return JSON(self)
   }
 }
-
-/// MultipleJSONConformance protocol is conformance of JSONCodable, Mappable, Swifty protocols
-protocol MultipleJSONConformance: JSONCodable, ImmutableMappable, Swifty {}
-
-/// DualJSONConformance protocol is conformance of JSONCodable, Swifty protocols
-protocol DualJSONConformance: JSONCodable, Swifty {}

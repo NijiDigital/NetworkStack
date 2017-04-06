@@ -17,7 +17,7 @@
 import Foundation
 import ObjectMapper
 
-extension Video {
+extension Video: ImmutableMappable {
   
   // MARK: Mappable
   func mapping(map: Map) {

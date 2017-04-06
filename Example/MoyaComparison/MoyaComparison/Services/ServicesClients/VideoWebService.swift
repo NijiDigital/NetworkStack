@@ -18,7 +18,7 @@ import Foundation
 import RxSwift
 
 /// Web Service for Videos
-protocol VideoWebService {
+protocol VideoWebServiceClient {
   
   var services: Services { get set }
   

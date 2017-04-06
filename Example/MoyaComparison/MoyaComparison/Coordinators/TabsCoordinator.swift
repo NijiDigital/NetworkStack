@@ -32,7 +32,7 @@ final class TabsCoordinator: TabCoordinator {
   // MARK: - Private Properties
   var mainViewController: UIViewController
   internal var childCoordinators: [Coordinator] = []
-  private let webServicesContainer: WebServicesContainer
+  private let webServiceClients: WebServiceClients
   
   private struct TabsCoordinators {
     let niji: NijiTabCoordinator
@@ -41,14 +41,14 @@ final class TabsCoordinator: TabCoordinator {
   }
   
   private lazy var coordinators: TabsCoordinators = TabsCoordinators(
-    niji: NijiTabCoordinator(mainViewController: UINavigationController(), webServicesContainer: self.webServicesContainer),
-    moya: MoyaTabCoordinator(mainViewController: UINavigationController(), webServicesContainer: self.webServicesContainer)
+    niji: NijiTabCoordinator(mainViewController: UINavigationController(), webServiceClients: self.webServiceClients),
+    moya: MoyaTabCoordinator(mainViewController: UINavigationController(), webServiceClients: self.webServiceClients)
   )
   
   // MARK: - Init
-  init(mainViewController: UIViewController, webServicesContainer: WebServicesContainer) {
+  init(mainViewController: UIViewController, webServiceClients: WebServiceClients) {
     self.mainViewController = mainViewController
-    self.webServicesContainer = webServicesContainer
+    self.webServiceClients = webServiceClients
   }
   
   // MARK: - Public Funcs

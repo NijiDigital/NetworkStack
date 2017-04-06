@@ -24,16 +24,16 @@ struct VideoDataStore {
   
   // MARK: - Private Properties
   private var disposeBag = DisposeBag()
-  private var webService: VideoWebService?
+  private var webServiceClient: VideoWebServiceClient?
   
   // MARK: - Init
-  init(webService: VideoWebService?) {
-    self.webService = webService
+  init(webServiceClient: VideoWebServiceClient?) {
+    self.webServiceClient = webServiceClient
   }
   
   // MARK: - Public Funcs
   func fetchVideos() {
-    self.webService?.fetchAllVideos()
+    self.webServiceClient?.fetchAllVideos()
       .observeOn(MainScheduler.instance)
       .subscribe({ (event: Event<[Video]>) in
         switch event {
@@ -49,11 +49,11 @@ struct VideoDataStore {
   }
   
   func addVideo() {
-    guard let video = webService?.fakeVideoToAdd() else {
+    guard let video = webServiceClient?.fakeVideoToAdd() else {
       LogModule.webServiceClient.error("Failed to create fake video !")
       return
     }
-    self.webService?.add(video: video)
+    self.webServiceClient?.add(video: video)
       .observeOn(MainScheduler.instance)
       .subscribe({ (event: Event<Video>) in
         switch event {
@@ -69,7 +69,7 @@ struct VideoDataStore {
   }
   
   func deleteVideo(identifier: Int) {
-    self.webService?.deleteVideo(identifier: identifier)
+    self.webServiceClient?.deleteVideo(identifier: identifier)
       .observeOn(MainScheduler.instance)
       .subscribe({ (event: Event<()>) in
         switch event {

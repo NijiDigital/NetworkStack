@@ -18,7 +18,7 @@ import Foundation
 import RealmSwift
 import Realm
 
-final class Video: Object, MultipleJSONConformance {
+final class Video: Object {
   
   enum Attributes {
     static let identifier = "id"

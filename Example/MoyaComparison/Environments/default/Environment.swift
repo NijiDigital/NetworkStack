@@ -18,5 +18,6 @@ import Foundation
 
 enum Environment {
   static let baseURL = "https://safe-retreat-51773.herokuapp.com"
+  //static let baseURL = "https://localhost:5000"
   static let apiVersion = "/api/v1"
 }

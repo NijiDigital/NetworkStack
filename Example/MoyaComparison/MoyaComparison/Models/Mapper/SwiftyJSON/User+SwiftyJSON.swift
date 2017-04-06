@@ -17,7 +17,7 @@
 import Foundation
 import SwiftyJSON
 
-extension User {
+extension User: Swifty {
   init(json: JSON) {
     self.identifier = json[JSONKeys.identifier].intValue
     self.firstName = json[JSONKeys.firstName].stringValue

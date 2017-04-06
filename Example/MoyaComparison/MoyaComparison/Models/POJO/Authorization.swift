@@ -16,7 +16,7 @@
 
 import Foundation
 
-struct Authorization: MultipleJSONConformance {
+struct Authorization {
   
   enum JSONKeys {
     static let token = "token"

@@ -17,7 +17,7 @@
 import Foundation
 import SwiftyJSON
 
-extension Video {
+extension Video: Swifty {
   
   convenience init(json: JSON) {
     self.init()

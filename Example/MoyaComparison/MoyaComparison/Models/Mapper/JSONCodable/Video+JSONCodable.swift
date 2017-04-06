@@ -16,7 +16,7 @@
 import Foundation
 import JSONCodable
 
-extension Video {
+extension Video: JSONCodable {
   
   convenience init(object: JSONObject) throws {
     self.init()

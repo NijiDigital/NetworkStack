@@ -16,7 +16,7 @@
 
 import Foundation
 
-struct User: MultipleJSONConformance {
+struct User {
   
   enum JSONKeys {
     static let identifier = "identifier"

@@ -22,7 +22,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   
   // MARK: - Private Properties
   fileprivate var dataSource: VideosDataSource?
-  private var webServicesContainer: WebServicesContainer?
+  private var webServiceClients: WebServiceClients?
   private let disposeBag = DisposeBag()
   
   // MARK: - Private Constants
@@ -32,9 +32,9 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   }
   
   // MARK: - Instance
-  public static func instance(webServicesContainer: WebServicesContainer?, dataSource: VideosDataSource) -> VideosViewController {
+  public static func instance(webServiceClients: WebServiceClients?, dataSource: VideosDataSource) -> VideosViewController {
     let controller = VideosViewController.instantiate()
-    controller.webServicesContainer = webServicesContainer
+    controller.webServiceClients = webServiceClients
     controller.dataSource = dataSource
     return controller
   }

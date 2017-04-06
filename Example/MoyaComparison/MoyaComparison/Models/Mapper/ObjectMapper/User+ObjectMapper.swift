@@ -17,7 +17,7 @@
 import Foundation
 import ObjectMapper
 
-extension User {
+extension User: ImmutableMappable {
   
   mutating func mapping(map: Map) {
     self.identifier >>> map[JSONKeys.identifier]

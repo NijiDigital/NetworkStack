@@ -17,7 +17,7 @@
 import Foundation
 import JSONCodable
 
-extension User {
+extension User: JSONCodable {
   init(object: JSONObject) throws {
     let decoder = JSONDecoder(object: object)
     self.identifier = try decoder.decode(JSONKeys.identifier)

@@ -17,7 +17,7 @@
 import Foundation
 import SwiftyJSON
 
-extension Authorization {
+extension Authorization: Swifty {
   init(json: JSON) {
     self.token = json[JSONKeys.token].stringValue
     self.expirationDate = json[JSONKeys.expirationDate].doubleValue
