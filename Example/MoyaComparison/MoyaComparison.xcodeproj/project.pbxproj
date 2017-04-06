@@ -39,6 +39,9 @@
 		6DC269C91E8B04AB000A5A5A /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269C31E8B04AB000A5A5A /* VideosViewController.swift */; };
 		6DC4B49B1E901E99001D5F32 /* NavCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4B49A1E901E99001D5F32 /* NavCoordinator.swift */; };
 		6DC4B49D1E903B64001D5F32 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC4B49C1E903B64001D5F32 /* TabCoordinator.swift */; };
+		6DF04AC51E96F78700553E13 /* User+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF04AC41E96F78700553E13 /* User+Decodable.swift */; };
+		6DF04AC71E96F91000553E13 /* Authorization+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF04AC61E96F91000553E13 /* Authorization+Decodable.swift */; };
+		6DF04AC91E96F95E00553E13 /* Video+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF04AC81E96F95E00553E13 /* Video+Decodable.swift */; };
 		6DF771CD1E8989FD0051C8AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */; };
 		6DF771CF1E8989FD0051C8AB /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7714F1E8989FD0051C8AB /* VideoCell.swift */; };
 		6DF771D01E8989FD0051C8AB /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771501E8989FD0051C8AB /* VideoCell.xib */; };
@@ -131,6 +134,9 @@
 		6DC269C31E8B04AB000A5A5A /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		6DC4B49A1E901E99001D5F32 /* NavCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCoordinator.swift; sourceTree = "<group>"; };
 		6DC4B49C1E903B64001D5F32 /* TabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
+		6DF04AC41E96F78700553E13 /* User+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Decodable.swift"; sourceTree = "<group>"; };
+		6DF04AC61E96F91000553E13 /* Authorization+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Authorization+Decodable.swift"; sourceTree = "<group>"; };
+		6DF04AC81E96F95E00553E13 /* Video+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+Decodable.swift"; sourceTree = "<group>"; };
 		6DF7714B1E8989FD0051C8AB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DF7714F1E8989FD0051C8AB /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		6DF771501E8989FD0051C8AB /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 		6D81F9CF1E96F003006821F0 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				6DF04AC31E96F77B00553E13 /* Decodable */,
 				6D81F9D01E96F003006821F0 /* JSONCodable */,
 				6D81F9D41E96F003006821F0 /* ObjectMapper */,
 				6D81F9D81E96F003006821F0 /* SwiftyJSON */,
@@ -306,6 +313,16 @@
 				6DC269C21E8B04AB000A5A5A /* VideosViewController.storyboard */,
 			);
 			path = Videos;
+			sourceTree = "<group>";
+		};
+		6DF04AC31E96F77B00553E13 /* Decodable */ = {
+			isa = PBXGroup;
+			children = (
+				6DF04AC41E96F78700553E13 /* User+Decodable.swift */,
+				6DF04AC61E96F91000553E13 /* Authorization+Decodable.swift */,
+				6DF04AC81E96F95E00553E13 /* Video+Decodable.swift */,
+			);
+			path = Decodable;
 			sourceTree = "<group>";
 		};
 		6DF771491E8989FD0051C8AB /* MoyaComparison */ = {
@@ -922,6 +939,7 @@
 				6D81F9E21E96F003006821F0 /* Authorization+SwiftyJSON.swift in Sources */,
 				6D81F9E41E96F003006821F0 /* Video+SwiftyJSON.swift in Sources */,
 				6DF771E71E8989FD0051C8AB /* UITabBar.swift in Sources */,
+				6DF04AC91E96F95E00553E13 /* Video+Decodable.swift in Sources */,
 				6DF771FA1E8989FD0051C8AB /* Video.swift in Sources */,
 				6DF771DE1E8989FD0051C8AB /* Coordinator.swift in Sources */,
 				6DF772291E8989FD0051C8AB /* MCLogger.swift in Sources */,
@@ -935,8 +953,10 @@
 				6DC269B41E8AE7BD000A5A5A /* MoyaVideoWebService.swift in Sources */,
 				6DC269BB1E8AFF43000A5A5A /* RequestParameters+User.swift in Sources */,
 				6D81F9E11E96F003006821F0 /* Video+ObjectMapper.swift in Sources */,
+				6DF04AC71E96F91000553E13 /* Authorization+Decodable.swift in Sources */,
 				6DC269B31E8AE7BD000A5A5A /* AuthenticationWebService.swift in Sources */,
 				6DF772251E8989FD0051C8AB /* WebServiceError.swift in Sources */,
+				6DF04AC51E96F78700553E13 /* User+Decodable.swift in Sources */,
 				6D81F9E01E96F003006821F0 /* User+ObjectMapper.swift in Sources */,
 				6D21EBE11E8A4F3900F851ED /* String+Base64Encoding.swift in Sources */,
 				6D21EBE91E8A755B00F851ED /* Appearance.swift in Sources */,

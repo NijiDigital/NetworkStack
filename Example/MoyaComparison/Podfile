@@ -19,6 +19,7 @@ target 'MoyaComparison' do
   pod 'Moya/RxSwift'
   pod 'SwiftyJSON'
   pod 'ObjectMapper'
+  pod 'Decodable'
 end
 
 target 'UnitTests' do

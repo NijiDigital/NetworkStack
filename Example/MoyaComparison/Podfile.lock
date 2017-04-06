@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.4.0)
+  - Decodable (0.5)
   - JSONCodable (3.0.1)
   - KeychainAccess (3.0.2)
   - Moya/Core (8.0.3):
@@ -32,6 +33,7 @@ PODS:
   - SwiftyUserDefaults (3.0.0)
 
 DEPENDENCIES:
+  - Decodable
   - JSONCodable
   - Moya/RxSwift
   - NetworkStack
@@ -46,6 +48,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Decodable: 7c90acc68d357b71d0d6efc120faf9c53c644b7e
   JSONCodable: bd8616ae881befe2b82fbbf56d98b2dd377ac662
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
@@ -61,6 +64,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
 
-PODFILE CHECKSUM: 3f36e3f98ab0518fb16ce76b450f31ed5d9f4ec8
+PODFILE CHECKSUM: d711d6327437b2d9986f6a3c4b22848aa456c6b8
 
 COCOAPODS: 1.2.1.rc.1
