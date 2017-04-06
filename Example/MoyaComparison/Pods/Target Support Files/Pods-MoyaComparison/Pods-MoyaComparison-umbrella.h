@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_NetworkStackExampleVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_NetworkStackExampleVersionString[];
+FOUNDATION_EXPORT double Pods_MoyaComparisonVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MoyaComparisonVersionString[];
 

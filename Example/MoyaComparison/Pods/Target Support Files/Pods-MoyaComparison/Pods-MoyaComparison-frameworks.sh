@@ -90,6 +90,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Decodable/Decodable.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JSONCodable/JSONCodable.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Moya/Moya.framework"
@@ -107,6 +108,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Decodable/Decodable.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JSONCodable/JSONCodable.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Moya/Moya.framework"
