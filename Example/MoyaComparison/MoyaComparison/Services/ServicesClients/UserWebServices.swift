@@ -20,19 +20,19 @@ import Alamofire
 import NetworkStack
 
 struct UserWebServices {
-  var webServices: WebServices
+  var services: Services
   
   func fetchAllUsers() -> Observable<[User]> {
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllUsers())
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllUsers())
       .flatMap({ (_, json: Any) -> Observable<[User]> in
-        return self.webServices.serializationSwiftyJSON.parse(objects: json)
+        return self.services.serializationSwiftyJSON.parse(objects: json)
       })
   }
   
   func fetchUser(identifier: Int) -> Observable<User> {
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchUser(identifier: identifier))
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchUser(identifier: identifier))
       .flatMap({ (_, json: Any) -> Observable<User> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.services.serializationSwiftyJSON.parse(object: json)
       })
   }
   
@@ -42,7 +42,7 @@ struct UserWebServices {
       LogModule.webServiceClient.error("Failed to parse user : \(error)")
       return Observable.error(error)
     }
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateUser(identifier: user.identifier, parameters: json))
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateUser(identifier: user.identifier, parameters: json))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })
@@ -54,14 +54,14 @@ struct UserWebServices {
       LogModule.webServiceClient.error("Failed to parse user : \(error)")
       return Observable.error(error)
     }
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addUser(parameters: json))
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addUser(parameters: json))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })
   }
   
   func deleteUser(identifier: Int) -> Observable<Void> {
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.deleteUser(identifier: identifier))
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.deleteUser(identifier: identifier))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })

@@ -22,12 +22,12 @@ final class MoyaTabCoordinator: NavCoordinator {
   // MARK: - Private Properties
   var mainViewController: UIViewController
   internal var childCoordinators: [Coordinator] = []
-  private let webServiceClient: WebServiceClient
+  private let webServicesContainer: WebServicesContainer
   
   // MARK: - Init
-  init(mainViewController: UIViewController, webServiceClient: WebServiceClient) {
+  init(mainViewController: UIViewController, webServicesContainer: WebServicesContainer) {
     self.mainViewController = mainViewController
-    self.webServiceClient = webServiceClient
+    self.webServicesContainer = webServicesContainer
     
     self.navigationController.tabBarItem = UITabBarItem(title: TabsName.moya.rawValue, image: Asset.iconMoya.image, tag: TabsTag.moya.rawValue)
     self.navigationController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
@@ -42,9 +42,9 @@ final class MoyaTabCoordinator: NavCoordinator {
   
   // MARK: - Private Funcs 
   fileprivate func moveToMoyaStack() {
-    let dataStore = VideoDataStore(webService: self.webServiceClient.clients.moya)
+    let dataStore = VideoDataStore(webService: self.webServicesContainer.clients.moya)
     let dataSource = VideosDataSource(dataStore: dataStore)
-    let controller = VideosViewController.instance(webService: self.webServiceClient, dataSource: dataSource)
+    let controller = VideosViewController.instance(webServicesContainer: self.webServicesContainer, dataSource: dataSource)
     self.pushToRoot(viewController: controller)
   }
 }

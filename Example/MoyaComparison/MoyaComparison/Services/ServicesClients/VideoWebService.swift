@@ -17,12 +17,12 @@
 import Foundation
 import RxSwift
 
-protocol webService {
-  var webServices: WebServices { get set }
+protocol WebService {
+  var services: Services { get set }
 }
 
 /// Web Service for Videos
-protocol VideoWebService: webService {
+protocol VideoWebService: WebService {
   
   /// Retreive all Videos from Server
   ///

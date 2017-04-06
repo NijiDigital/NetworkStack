@@ -20,12 +20,12 @@ import Reusable
 final class LoginViewController: UIViewController, StoryboardBased {
   
   // MARK: - Private Properties
-  private var webservice: WebServiceClient?
+  private var webServicesContainer: WebServicesContainer?
   
   // MARK: - Instance
-  public static func instance(webService: WebServiceClient?) -> LoginViewController {
+  public static func instance(webServicesContainer: WebServicesContainer?) -> LoginViewController {
     let controller = LoginViewController.instantiate()
-    controller.webservice = webService
+    controller.webServicesContainer = webServicesContainer
     return controller
   }
 

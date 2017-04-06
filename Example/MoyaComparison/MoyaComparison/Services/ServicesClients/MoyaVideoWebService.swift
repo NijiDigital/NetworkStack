@@ -19,38 +19,38 @@ import RxSwift
 import Moya
 
 struct MoyaVideoWebService: VideoWebService {
-  var webServices: WebServices
+  var services: Services
   
   func fetchAllVideos() -> Observable<[Video]> {
-    return self.webServices.customAPIProvider.request(CustomAPI.getVideos()).mapJSON()
+    return self.services.customAPIProvider.request(CustomAPI.getVideos()).mapJSON()
       .flatMap({ (json: Any) -> Observable<[Video]> in
-        return self.webServices.serializationSwiftyJSON.parse(objects: json)
+        return self.services.serializationSwiftyJSON.parse(objects: json)
       })
   }
   
   func fetchVideo(identifier: Int) -> Observable<Video> {
-    return self.webServices.customAPIProvider.request(CustomAPI.getVideo(identifier: identifier)).mapJSON()
+    return self.services.customAPIProvider.request(CustomAPI.getVideo(identifier: identifier)).mapJSON()
       .flatMap({ (json: Any) -> Observable<Video> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.services.serializationSwiftyJSON.parse(object: json)
       })
   }
   
   func update(video: Video) -> Observable<Void> {
-    return self.webServices.customAPIProvider.request(CustomAPI.putVideo(video: video)).asObservable()
+    return self.services.customAPIProvider.request(CustomAPI.putVideo(video: video)).asObservable()
       .flatMap({ _ -> Observable<Void> in
         return Observable.empty()
       })
   }
   
   func add(video: Video) -> Observable<Video> {
-    return self.webServices.customAPIProvider.request(CustomAPI.postVideo(video: video)).mapJSON()
+    return self.services.customAPIProvider.request(CustomAPI.postVideo(video: video)).mapJSON()
       .flatMap({ (json: Any) -> Observable<Video> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.services.serializationSwiftyJSON.parse(object: json)
       })
   }
   
   func deleteVideo(identifier: Int) -> Observable<Void> {
-    return self.webServices.customAPIProvider.request(CustomAPI.delVideo(identifier: identifier)).asObservable()
+    return self.services.customAPIProvider.request(CustomAPI.delVideo(identifier: identifier)).asObservable()
       .flatMap({ _ -> Observable<Void> in
         return Observable.empty()
       })

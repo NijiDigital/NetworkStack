@@ -21,19 +21,19 @@ import RxSwift
 import JSONCodable
 
 struct NijiVideoWebService: VideoWebService {
-  var webServices: WebServices
+  var services: Services
   
   func fetchAllVideos() -> Observable<[Video]> {
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllVideos())
+    return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllVideos())
       .flatMap({ (_, json: Any) -> Observable<[Video]> in
-        return self.webServices.serializationJSONCodable.parse(objects: json)
+        return self.services.serializationJSONCodable.parse(objects: json)
       })
   }
   
   func fetchVideo(identifier: Int) -> Observable<Video> {
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchVideo(identifier: identifier))
+    return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchVideo(identifier: identifier))
       .flatMap({ (_, json: Any) -> Observable<Video> in
-        return self.webServices.serializationJSONCodable.parse(object: json)
+        return self.services.serializationJSONCodable.parse(object: json)
       })
   }
   
@@ -43,7 +43,7 @@ struct NijiVideoWebService: VideoWebService {
       LogModule.webServiceClient.error("Failed to parse video : \(error)")
       return Observable.error(error)
     }
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateVideo(identifier: video.identifier, parameters: json))
+    return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.updateVideo(identifier: video.identifier, parameters: json))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })
@@ -55,14 +55,14 @@ struct NijiVideoWebService: VideoWebService {
       LogModule.webServiceClient.error("Failed to parse video : \(error)")
       return Observable.error(error)
     }
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addVideo(parameters: json))
+    return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.addVideo(parameters: json))
       .flatMap({ (_, json: Any) -> Observable<Video> in
-        return self.webServices.serializationJSONCodable.parse(object: json)
+        return self.services.serializationJSONCodable.parse(object: json)
       })
   }
   
   func deleteVideo(identifier: Int) -> Observable<Void> {
-    return self.webServices.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.deleteVideo(identifier: identifier))
+    return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.deleteVideo(identifier: identifier))
       .flatMap({ (_, _) -> Observable<Void> in
         return Observable.empty()
       })

@@ -23,7 +23,7 @@ final class AppCoordinator: Coordinator {
   
   // MARK: - Private Properties
   var mainViewController: UIViewController
-  private var webServiceClient: WebServiceClient?
+  private var webServicesContainer: WebServicesContainer?
   internal var childCoordinators: [Coordinator] = []
   
   // MARK: - Init
@@ -40,12 +40,12 @@ final class AppCoordinator: Coordinator {
   // MARK: - Private Funcs
   private func initWebServiceClient() {
     let clients = WebServiceFactory.clients()
-    self.webServiceClient = WebServiceClient(clients: clients)
+    self.webServicesContainer = WebServicesContainer(clients: clients)
   }
   
   fileprivate func startTabBar() {
-    if let webServiceClient = self.webServiceClient {
-      let coordinator = TabsCoordinator(mainViewController: self.mainViewController, webServiceClient: webServiceClient)
+    if let webServicesContainer = self.webServicesContainer {
+      let coordinator = TabsCoordinator(mainViewController: self.mainViewController, webServicesContainer: webServicesContainer)
       self.childCoordinators.append(coordinator)
       coordinator.start()
     }

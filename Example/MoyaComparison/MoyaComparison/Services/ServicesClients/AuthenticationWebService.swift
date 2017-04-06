@@ -21,7 +21,7 @@ import Alamofire
 
 struct AuthenticationWebService {
   // MARK: - Properties
-  var webServices: WebServices
+  var services: Services
   
   // MARK: - Public Func
   /// Authentication method with Basic auth (user and password will be encoded like that ````base64(user:password)````) and Bearer service
@@ -34,17 +34,17 @@ struct AuthenticationWebService {
   func authent(user: String, password: String) -> Observable<Void> {
     
     // set refreshToken when you launch authent WS
-    self.webServices.userNetworkStack.renewTokenHandler = {
+    self.services.userNetworkStack.renewTokenHandler = {
       return self.refreshToken()
     }
     
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.authent(user: user, password: password))
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.authent(user: user, password: password))
       .flatMap({ (_, json: Any) -> Observable<Authorization> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.services.serializationSwiftyJSON.parse(object: json)
       })
       .map({ (authent: Authorization) -> Void in
-        self.webServices.userNetworkStack.clearToken()
-        self.webServices.userNetworkStack.updateToken(token: authent.token, refreshToken: authent.refreshToken, expiresIn: authent.expirationDate)
+        self.services.userNetworkStack.clearToken()
+        self.services.userNetworkStack.updateToken(token: authent.token, refreshToken: authent.refreshToken, expiresIn: authent.expirationDate)
         return
       })
   }
@@ -54,17 +54,17 @@ struct AuthenticationWebService {
   ///
   /// - Returns: Observable of Void because network stack handle token and refreshToken update
   private func refreshToken() -> Observable<Void> {
-    guard let refreshToken = self.webServices.userNetworkStack.currentRefreshToken() else {
+    guard let refreshToken = self.services.userNetworkStack.currentRefreshToken() else {
       return Observable.error(WebServiceError.missingMandatoryValue(valueInfo: "refreshToken"))
     }
     
-    return self.webServices.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.refreshToken(refreshToken))
+    return self.services.userNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.refreshToken(refreshToken))
       .flatMap({ (_, json: Any) -> Observable<Authorization> in
-        return self.webServices.serializationSwiftyJSON.parse(object: json)
+        return self.services.serializationSwiftyJSON.parse(object: json)
       })
       .map({ (authent: Authorization) -> Void in
-        self.webServices.userNetworkStack.clearToken()
-        self.webServices.userNetworkStack.updateToken(token: authent.token, refreshToken: authent.refreshToken, expiresIn: authent.expirationDate)
+        self.services.userNetworkStack.clearToken()
+        self.services.userNetworkStack.updateToken(token: authent.token, refreshToken: authent.refreshToken, expiresIn: authent.expirationDate)
         return
       })
   }
