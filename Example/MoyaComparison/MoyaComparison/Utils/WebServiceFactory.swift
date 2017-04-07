@@ -18,8 +18,8 @@ import Foundation
 import NetworkStack
 import Moya
 
-struct WebServiceFactory {
-  static func clients() -> WebServiceClients {
+struct ServiceFactory {
+  static func webServiceClients() -> WebServiceClients {
     let services: Services = self.services()
     let clients = WebServiceClients(
       niji: NijiVideoWebServiceClient(services: services),
