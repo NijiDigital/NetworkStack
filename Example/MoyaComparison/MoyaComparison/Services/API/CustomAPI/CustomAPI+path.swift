@@ -21,14 +21,13 @@ extension CustomAPI {
     switch self {
     case .authent:
       return "/authent"
-    case .getVideos:
+    case .getVideos, .postVideo(_):
       return "/videos"
     case .getVideo(let identifier):
       return "/videos/\(identifier)"
     case .putVideo(let video):
       return "/videos/\(video.identifier)"
-    case .postVideo(_):
-      return "/videos"
+    
     case .delVideo(let identifier):
       return "/videos/\(identifier)"
     case .uploadVideoDocument(let identifier, _):
