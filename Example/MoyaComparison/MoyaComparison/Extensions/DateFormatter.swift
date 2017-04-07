@@ -19,20 +19,7 @@ import SwiftyJSON
 
 extension DateFormatter {
   
-  static private let webServiceIsoFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
   static private let webServiceIsoFormatWithUSLocal = "yyyy-MM-dd'T'HH:mm:ssXXX"
-  static private let deviceListInputFormat = "yyyy-MM-dd HH:mm:ss"
-  static private let deviceListOutputFormat = "dd/MM/yyyy"
-  static private let playerSimpleDateFormat = "mm:ss"
-  
-  static private let accengageDateFormat = "yyyy-MM-dd HH:mm:ss zzz"
-  
-  @nonobjc static let webServiceIsoFormatter = DateFormatter(format: webServiceIsoFormat)
-  @nonobjc static let deviceListInputFormatter = DateFormatter(format: deviceListInputFormat)
-  @nonobjc static let deviceListOutputFormatter = DateFormatter(format: deviceListOutputFormat)
-  @nonobjc static let playerSimpleDateFormatter = DateFormatter(format: playerSimpleDateFormat)
-  
-  @nonobjc static let accengageDateFormatter = DateFormatter(format: accengageDateFormat)
   
   @nonobjc static let iso8601Formatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -42,14 +29,4 @@ extension DateFormatter {
     formatter.dateFormat = webServiceIsoFormatWithUSLocal
     return formatter
   }()
-  
-  private convenience init(format: String) {
-    self.init()
-    dateFormat = format
-  }
-  
-  static func dateTransform(value: String, json: JSON) -> Date? {
-    let formatter = webServiceIsoFormatter
-    return formatter.date(from: value)
-  }
 }
