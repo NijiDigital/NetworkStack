@@ -18,7 +18,7 @@ import Foundation
 import NetworkStack
 import Moya
 
-struct ServiceFactory {
+enum ServiceFactory {
   static func webServiceClients() -> WebServiceClients {
     let services: Services = self.services()
     let clients = WebServiceClients(
