@@ -49,14 +49,4 @@ final class Video: Object {
   override static func primaryKey() -> String? {
     return "identifier"
   }
-  
-//  init(identifier: Int, title: String, creationDate: String, likeCounts: Int, hasSponsors: Bool, statusCode: Int, relatedVideos: [Video]) {
-//    self.identifier = identifier
-//    self.title = title
-//    self.creationDate = DateFormatter.iso8601Formatter.date(from: creationDate)
-//    self.likeCounts = likeCounts
-//    self.hasSponsors.value = hasSponsors
-//    self.statusCode.value = statusCode
-//    self.relatedVideos.append(objectsIn: relatedVideos)
-//  }
 }
