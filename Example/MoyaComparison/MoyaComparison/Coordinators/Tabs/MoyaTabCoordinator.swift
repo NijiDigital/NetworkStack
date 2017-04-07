@@ -44,7 +44,7 @@ final class MoyaTabCoordinator: NavCoordinator {
   fileprivate func moveToMoyaStack() {
     let dataStore = VideoDataStore(webServiceClient: self.webServiceClients.moya)
     let dataSource = VideosDataSource(dataStore: dataStore)
-    let controller = VideosViewController.instance(webServiceClients: self.webServiceClients, dataSource: dataSource)
+    let controller = VideosViewController.instance(dataSource: dataSource)
     self.pushToRoot(viewController: controller)
   }
 }
