@@ -21,12 +21,7 @@ extension CustomAPI {
     switch self {
     case .authent(let email, let passwd):
       let stringToEncode: String = String(format: "%@:%@", email, passwd)
-      guard let credentialData: Data = stringToEncode.data(using: .utf8) else {
-        LogModule.webServiceClient.error("Failed to encod data, user:\(email), password:\(passwd)")
-        return nil
-      }
-      let base64Credentials: String = credentialData.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
-      return ["Authorization": "Basic \(base64Credentials)"]
+      return ["Authorization": "Basic \(stringToEncode.convertToBase64())"]
     case .postVideo(let video), .putVideo(let video):
       return video.toJSON().dictionaryObject
     default:

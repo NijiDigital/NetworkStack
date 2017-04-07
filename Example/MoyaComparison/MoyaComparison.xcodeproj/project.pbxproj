@@ -417,9 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				6D81F9E51E96F033006821F0 /* SwiftyProtocol.swift */,
-				6D81F9CF1E96F003006821F0 /* Parser */,
 				6DF771861E8989FD0051C8AB /* Realm */,
 				6DF771831E8989FD0051C8AB /* POJO */,
+				6D81F9CF1E96F003006821F0 /* Parser */,
 			);
 			path = Models;
 			sourceTree = "<group>";

@@ -11,6 +11,10 @@ import Decodable
 
 extension Video: Decodable {
   static func decode(_ json: Any) throws -> Video {
-    return try Video()
+    let video = Video()
+    video.identifier = try json => KeyPath(Attributes.identifier)
+    video.title = try json => KeyPath(Attributes.title)
+    video.creationDate = try DateFormatter.iso8601Formatter.date(from: json => KeyPath(Attributes.creationDate))
+    return video
   }
 }
