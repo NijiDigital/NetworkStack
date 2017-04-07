@@ -17,7 +17,7 @@
 import Foundation
 import UIKit
 
-final class BarButtonItemFactory: UIBarButtonItem {
+final class BlockBarButtonItem: UIBarButtonItem {
   
   // MARK: - Private Properties
   private var actionBlock:(() -> Void)?
@@ -49,7 +49,7 @@ final class BarButtonItemFactory: UIBarButtonItem {
   }
   
   // MARK: - Actions
-  @objc func executeAction(sender: BarButtonItemFactory) {
+  @objc func executeAction(sender: BlockBarButtonItem) {
     if let actionBlock = self.actionBlock {
       actionBlock()
     }

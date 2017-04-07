@@ -37,7 +37,7 @@ extension UIViewController {
   }
   
   func setupRightNavigationItems(image: UIImage? = nil, title: String? = nil, color: UIColor, completion: @escaping () -> Void) {
-    let barButtonItem = BarButtonItemFactory(image: image, title: title, style:.plain, action: { _ in
+    let barButtonItem = BlockBarButtonItem(image: image, title: title, style:.plain, action: { _ in
       completion()
     })
     barButtonItem.tintColor = color
@@ -46,7 +46,7 @@ extension UIViewController {
   }
   
   func setupLeftNavigationItems(image: UIImage? = nil, title: String? = nil, color: UIColor, completion: @escaping () -> Void) {
-    let leftButtonItem = BarButtonItemFactory(image: image, title: title, style:.plain, action: { _ in
+    let leftButtonItem = BlockBarButtonItem(image: image, title: title, style:.plain, action: { _ in
       completion()
     })
     leftButtonItem.tintColor = color
