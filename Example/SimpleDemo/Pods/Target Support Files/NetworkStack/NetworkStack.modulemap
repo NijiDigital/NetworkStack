@@ -1,0 +1,6 @@
+framework module NetworkStack {
+  umbrella header "NetworkStack-umbrella.h"
+
+  export *
+  module * { export * }
+}

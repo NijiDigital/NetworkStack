@@ -1,0 +1,35 @@
+# CocoaPods master specs
+source "https://github.com/CocoaPods/Specs.git"
+
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+use_frameworks!
+
+target 'MoyaComparison' do
+  # Pods for MoyaComparison
+  pod 'JSONCodable'
+  pod 'SwiftyJSON'
+  pod 'RxCocoa'
+  pod 'RxSwift'
+  pod 'SwiftyBeaver'
+  pod 'NetworkStack'
+  pod 'Reusable'
+  pod 'RealmSwift'
+  pod 'SwiftyUserDefaults'
+  pod 'Moya/RxSwift'
+  pod 'SwiftyJSON'
+  pod 'ObjectMapper'
+  pod 'Decodable'
+end
+
+target 'UnitTests' do
+  # Pods for testing
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '3.0'
+    end
+  end
+end
