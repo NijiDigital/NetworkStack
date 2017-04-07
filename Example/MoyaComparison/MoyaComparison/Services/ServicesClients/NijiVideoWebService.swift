@@ -20,7 +20,7 @@ import Foundation
 import RxSwift
 import JSONCodable
 
-struct NijiVideoWebService: VideoWebServiceClient {
+struct NijiVideoWebServiceClient: VideoWebServiceClient {
   var services: Services
   
   func fetchAllVideos() -> Observable<[Video]> {

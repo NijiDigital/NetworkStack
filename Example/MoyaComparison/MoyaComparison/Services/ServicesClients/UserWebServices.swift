@@ -19,7 +19,7 @@ import RxSwift
 import Alamofire
 import NetworkStack
 
-struct UserWebServices {
+struct UserWebServicesClient {
   var services: Services
   
   func fetchAllUsers() -> Observable<[User]> {

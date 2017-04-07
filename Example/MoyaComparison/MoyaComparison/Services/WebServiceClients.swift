@@ -31,8 +31,8 @@ struct Services {
 
 /// ServiceClients is a struct to centralize web services client split in several structs
 struct WebServiceClients {
-  let niji: NijiVideoWebService
-  let moya: MoyaVideoWebService
-  let user: UserWebServices
-  let authent: AuthenticationWebService
+  let niji: NijiVideoWebServiceClient
+  let moya: MoyaVideoWebServiceClient
+  let user: UserWebServicesClient
+  let authent: AuthenticationWebServiceClient
 }

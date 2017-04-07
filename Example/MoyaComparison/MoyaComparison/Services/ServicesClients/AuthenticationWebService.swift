@@ -19,7 +19,7 @@ import NetworkStack
 import RxSwift
 import Alamofire
 
-struct AuthenticationWebService {
+struct AuthenticationWebServiceClient {
   // MARK: - Properties
   var services: Services
   

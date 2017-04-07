@@ -21,10 +21,10 @@ import Moya
 struct WebServiceFactory {
   static func clients() -> WebServiceClients {
     let clients = WebServiceClients(
-      niji: NijiVideoWebService(services: services()),
-      moya: MoyaVideoWebService(services: services()),
-      user: UserWebServices(services: services()),
-      authent: AuthenticationWebService(services: services())
+      niji: NijiVideoWebServiceClient(services: services()),
+      moya: MoyaVideoWebServiceClient(services: services()),
+      user: UserWebServicesClient(services: services()),
+      authent: AuthenticationWebServiceClient(services: services())
     )
     return clients
   }
