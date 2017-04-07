@@ -11,8 +11,8 @@ import Decodable
 
 extension Authorization: Decodable {
   static func decode(_ json: Any) throws -> Authorization {
-    return try Authorization(token: json => "token",
-                             expirationDate: json => "expirationDate",
-                             refreshToken: json => "refreshToken")
+    return try Authorization(token: json => KeyPath(JSONKeys.token),
+                             expirationDate: json => KeyPath(JSONKeys.expirationDate),
+                             refreshToken: json => KeyPath(JSONKeys.refreshToken))
   }
 }
