@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.4.0)
-  - KeychainAccess (3.0.1)
-  - NetworkStack (0.1.2):
+  - KeychainAccess (3.0.2)
+  - NetworkStack (0.1.3):
     - Alamofire (~> 4.0)
     - KeychainAccess (~> 3.0)
     - RxSwift (~> 3.0)
@@ -18,23 +18,23 @@ PODS:
   - OHHTTPStubs/NSURLSession (5.2.3):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (5.2.3)
-  - RxSwift (3.2.0)
+  - RxSwift (3.4.0)
 
 DEPENDENCIES:
-  - NetworkStack (from `../`)
+  - NetworkStack (from `../../`)
   - OHHTTPStubs
 
 EXTERNAL SOURCES:
   NetworkStack:
-    :path: ../
+    :path: "../../"
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
-  NetworkStack: 30a553f6154bc890139878e3df69f9318a18437b
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  NetworkStack: 5eff330784afeb9da9df85ff9166e760ff667a1a
   OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
-  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
+  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
 
-PODFILE CHECKSUM: 2d098fef1e905f9cb28e30c73785f1fc6fc1adb1
+PODFILE CHECKSUM: e191b3b8f52a2c52836269885fb9903b07746c1f
 
-COCOAPODS: 1.1.0.beta.1
+COCOAPODS: 1.2.0

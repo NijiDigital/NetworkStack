@@ -6,7 +6,7 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-final class ZipCollectionTypeSink<C: Collection, O: ObserverType>
+final fileprivate class ZipCollectionTypeSink<C: Collection, O: ObserverType>
     : Sink<O> where C.Iterator.Element : ObservableConvertibleType {
     typealias R = O.E
     typealias Parent = ZipCollectionType<C, R>
@@ -48,8 +48,7 @@ final class ZipCollectionTypeSink<C: Collection, O: ObserverType>
                 }
                 
                 if _numberOfValues < _parent.count {
-                    let numberOfOthersThatAreDone = _numberOfDone - (_isDone[atIndex] ? 1 : 0)
-                    if numberOfOthersThatAreDone == _parent.count - 1 {
+                    if _numberOfDone == _parent.count - 1 {
                         self.forwardOn(.completed)
                         self.dispose()
                     }

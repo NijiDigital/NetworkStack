@@ -33,7 +33,7 @@ extension Coordinator {
   }
   
   func popChildCoordinator(completion: (() -> Void)?) {
-    let _ = self.childCoordinators.popLast()
+    _ = self.childCoordinators.popLast()
     self.mainViewController.dismiss(animated: true, completion: completion)
   }
 }

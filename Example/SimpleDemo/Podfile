@@ -6,7 +6,7 @@ use_frameworks!
 # Common Pods
 #----------------------
 def common_core_pods
-  pod 'NetworkStack', :path => '../'
+  pod 'NetworkStack', :path => '../../'
 end
 
 # Target-Specific Pods
