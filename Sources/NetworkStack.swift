@@ -247,19 +247,27 @@ extension NetworkStack {
   fileprivate func webserviceStackError(error: Error, httpURLResponse: HTTPURLResponse?, responseData: Data?) -> NetworkStackError {
     let finalError: NetworkStackError
     
-    switch error {
-    case URLError.notConnectedToInternet, URLError.cannotLoadFromNetwork, URLError.networkConnectionLost,
-         URLError.callIsActive, URLError.internationalRoamingOff, URLError.dataNotAllowed:
-      finalError = NetworkStackError.noInternet(error: error)
-    case URLError.cannotConnectToHost, URLError.cannotFindHost, URLError.dnsLookupFailed, URLError.redirectToNonExistentLocation:
-      finalError = NetworkStackError.serverUnreachable(error: error)
-    case URLError.badServerResponse, URLError.cannotParseResponse, URLError.cannotDecodeContentData, URLError.cannotDecodeRawData:
-      finalError = NetworkStackError.badServerResponse(error: error)
+    // We're forced to compare with NSError because there's a bug in Xcode 8.2 / Swift 3.0
+    // when bridging NSErrors to Errors makes the program crash (BAD_INSTRUCTION) — Solved in 8.3
+    let nserror = error as NSError
+    guard nserror.domain == NSURLErrorDomain else {
+        return NetworkStackError.otherError(error: nserror)
+    }
+    
+    switch nserror.code {
+    case NSURLErrorNotConnectedToInternet,
+         NSURLErrorCannotLoadFromNetwork, NSURLErrorNetworkConnectionLost,
+         NSURLErrorCallIsActive, NSURLErrorInternationalRoamingOff, NSURLErrorDataNotAllowed:
+      finalError = NetworkStackError.noInternet(error: nserror)
+    case NSURLErrorCannotConnectToHost, NSURLErrorCannotFindHost, NSURLErrorDNSLookupFailed, NSURLErrorRedirectToNonExistentLocation:
+      finalError = NetworkStackError.serverUnreachable(error: nserror)
+    case NSURLErrorBadServerResponse, NSURLErrorCannotParseResponse, NSURLErrorCannotDecodeContentData, NSURLErrorCannotDecodeRawData:
+      finalError = NetworkStackError.badServerResponse(error: nserror)
     default:
       if let httpURLResponse = httpURLResponse, 400..<600 ~= httpURLResponse.statusCode {
         finalError = NetworkStackError.http(httpURLResponse: httpURLResponse, data: responseData)
       } else {
-        finalError = NetworkStackError.otherError(error: error)
+        finalError = NetworkStackError.otherError(error: nserror)
       }
     }
     
