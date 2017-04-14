@@ -159,22 +159,39 @@ public enum NetworkStackError: Error {
 
 ## Serialization Comparison
 
-### JSONCodable
-**Works :** focus on serialization. Your object needs to conform `JSONCodable` protocol. 
+### Decodable
+**Works :** focus on deserialization. Your object needs to conform `Decodable` protocol. 
 
 ```swift
-init(object: JSONObject) throws // deserialize
-
-func toJSON() throws -> JSONObject // serialize
+decode(object: JSONObject) throws // deserialize
 ```
 
 `JSONCodable` works with `coder` and `decoder` to serialize and deserialize Objects.
 
 **Error handling :** `JSONCodable` is based on throwable to catch error. That you have easy to understand error.
 
+**Transformable :** Don't need tranformer because is flexibility.
+
+**Serialization Service :** you can se here, [JSONCodable file conformance](MoyaComparison/Models/Mapper/JSONCodable/Video+JSONCodable.swift) for our Realm Video object.
+
+`JSONCodable` [documentation](https://github.com/matthewcheok/JSONCodable) 
+
+### JSONCodable
+**Works :** focus on serialization. Your object needs to conform `JSONCodable` protocol. 
+
+```swift
+decode(_ json: Any) throws -> T // deserialize
+```
+
+[JSONCodable file](MoyaComparison/Models/Parser/JSONCodable/Video+JSONCodable.swift) conformance example.
+
+`Decoable` just deserialize your `JSON`. 
+
+**Error handling :** `Decodable` throw.
+
 **Transformable :** `JSONTransformer` is a protocol to create transformers. Two default trnasformers is implement (`StringToURL` & `StringToDate`) for me it is enough for all principle usages.
 
-**Serialization Service :** you can se here, [JSONCodable file conformance](MoyaComparison/Models/Mapper/JSONCodable/VideoJSONCodable.swift) for our Realm Video object.
+**Serialization Service :** you can se here, [Decodable file conformance](MoyaComparison/Models/Parser/JSONCodable/Video+JSONCodable.swift) for our Realm Video object.
 
 `JSONCodable` [documentation](https://github.com/matthewcheok/JSONCodable) 
 
@@ -236,8 +253,8 @@ You see two network layers that have same possibility.
 ### TargetType vs RequestParameters
 
 
-
 ### RxSwift
+
 
 ### table of comparison
 
