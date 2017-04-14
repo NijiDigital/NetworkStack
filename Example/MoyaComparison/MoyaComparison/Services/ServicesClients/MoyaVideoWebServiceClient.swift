@@ -19,6 +19,14 @@ import RxSwift
 import Moya
 
 struct MoyaVideoWebServiceClient: VideoWebServiceClient {
+  internal func badAccess() -> Observable<Void> {
+//    return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters(method: .get, route: Route.badAccess()))
+//      .flatMap({ (_, _) -> Observable<Void> in
+//        return Observable.empty()
+//      })
+    return Observable.empty()
+  }
+
   var services: Services
   
   func fetchAllVideos() -> Observable<[Video]> {
