@@ -34,4 +34,5 @@ extension Route {
   public static func document(videoIdentifier: Int) -> Route { return Route(path: "/videos/\(videoIdentifier)/document") }
   public static func users() -> Route { return Route(path: "/users") }
   public static func user(identifier: Int) -> Route { return Route(path: "/users/\(identifier)") }
+  public static func badAccess() -> Route { return Route(path: "/bad") }
 }

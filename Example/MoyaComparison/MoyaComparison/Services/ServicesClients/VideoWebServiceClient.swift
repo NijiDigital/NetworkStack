@@ -55,4 +55,6 @@ protocol VideoWebServiceClient {
   ///
   /// - Returns: fake created video
   func fakeVideoToAdd() -> Video
+  
+  func badAccess() -> Observable<Void>
 }

@@ -84,4 +84,22 @@ struct VideoDataStore {
       })
       .addDisposableTo(self.disposeBag)
   }
+  
+  func badAccess() {
+    self.webServiceClient?.badAccess()
+      .observeOn(MainScheduler.instance)
+      .subscribe({ (event: Event<()>) in
+        switch event {
+        case .next(_): break
+        case .error(let error):
+          let message = "Failed to delete video with error : \(error)"
+          self.delegate?.error(message: message)
+          LogModule.webServiceClient.error(message)
+        case .completed: self.delegate?.deleted()
+          
+        }
+      })
+      .addDisposableTo(self.disposeBag)
+  }
+  
 }
