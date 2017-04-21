@@ -36,7 +36,7 @@ public final class NetworkStack {
   fileprivate(set) var uploadManager: Alamofire.SessionManager?
   fileprivate var requestManager: Alamofire.SessionManager
   
-  fileprivate var askCredentialHandler: AskCredentialHandler?
+  public var askCredentialHandler: AskCredentialHandler?
   public var renewTokenHandler: RenewTokenHandler?
   
   public weak var delegate: NetworkStackDelegate?
