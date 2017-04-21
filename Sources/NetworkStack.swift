@@ -22,6 +22,10 @@ import Alamofire
 
 public final class NetworkStack {
   
+  // MARK: - Constants
+  
+  static let authorizationHeaderKey = "Authorization"
+  
   // MARK: - Type aliases
   
   public typealias AskCredentialHandler = (() -> Observable<Void>)
@@ -163,7 +167,7 @@ extension NetworkStack {
     if needsAuthorization {
       let tokenValue = self.auhtorizationHeaderValue()
       if let tokenAutValue = tokenValue {
-        requestHeaders["Authorization"] = tokenAutValue
+        requestHeaders[NetworkStack.authorizationHeaderKey] = tokenAutValue
       }
     }
     if let headers = headers {
@@ -172,6 +176,15 @@ extension NetworkStack {
       }
     }
     return requestHeaders
+  }
+  
+  fileprivate func updateRequestAuthorizationHeader(dataRequest: Alamofire.DataRequest) -> Alamofire.DataRequest {
+    guard let tokenValue = self.auhtorizationHeaderValue(), var newURLRequest = dataRequest.request else {
+      return dataRequest
+    }
+    
+    newURLRequest.setValue(tokenValue, forHTTPHeaderField: NetworkStack.authorizationHeaderKey)
+    return self.requestManager.request(newURLRequest)
   }
 }
 
@@ -342,8 +355,10 @@ extension NetworkStack {
     
     if let renewTokenHandler = self.renewTokenHandler {
       requestObservable = self.sendAutoRetryRequest({ [unowned self] () -> Observable<(HTTPURLResponse, T.SerializedObject)> in
-        return self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
-        }, renewTokenFunction: { () -> Observable<Void> in
+        
+        let updatedRequest = self.updateRequestAuthorizationHeader(dataRequest: request)
+        return self.sendRequest(alamofireRequest: updatedRequest, queue: queue, responseSerializer: responseSerializer)
+      }, renewTokenFunction: { () -> Observable<Void> in
           return renewTokenHandler()
       })
     } else {
