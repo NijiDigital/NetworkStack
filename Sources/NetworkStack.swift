@@ -396,7 +396,8 @@ extension NetworkStack {
     }
   }
   
-  public func sendBackgroundUploadRequest(uploadRequestParameters: UploadRequestParameters) -> Observable<URLSessionTask> {
+  public func sendBackgroundUploadRequest(uploadRequestParameters: UploadRequestParameters,
+                                          queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<URLSessionTask> {
     return Observable.create({ [unowned self] (observer) -> Disposable in
       
       guard let requestURL = self.requestURL(uploadRequestParameters.route) else {
@@ -430,6 +431,7 @@ extension NetworkStack {
       
       return Disposables.create()
     })
+    .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
   }
   
   fileprivate func enrichMultipartFormData(multipartFormData: MultipartFormData,
