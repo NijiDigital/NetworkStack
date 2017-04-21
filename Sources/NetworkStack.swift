@@ -39,6 +39,8 @@ public final class NetworkStack {
   fileprivate var askCredentialHandler: AskCredentialHandler?
   public var renewTokenHandler: RenewTokenHandler?
   
+  public weak var delegate: NetworkStackDelegate?
+  
   // MARK: - Setup
   
   public init(baseURL: String,
@@ -292,6 +294,10 @@ extension NetworkStack {
       return Observable.create { [unowned self] observer in
         self.validateRequest(request: alamofireRequest)
           .response(queue: queue, responseSerializer: responseSerializer) { [unowned self] (packedResponse: DataResponse<T.SerializedObject>) -> Void in
+            
+            if let response = packedResponse.response, let request = packedResponse.request {
+              self.delegate?.networkStack(self, didReceiveResponse: response, forRequest: request)
+            }
             
             switch packedResponse.result {
             case .success(let result):
