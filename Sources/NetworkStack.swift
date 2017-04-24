@@ -37,8 +37,23 @@ public final class NetworkStack {
   fileprivate let baseURL: String
   fileprivate let keychainService: KeychainService
   
-  fileprivate(set) var uploadManager: Alamofire.SessionManager?
   fileprivate var requestManager: Alamofire.SessionManager
+  
+  fileprivate var uploadManager: Alamofire.SessionManager?
+  
+  public var uploadManagerSessionDelegate: Alamofire.SessionDelegate? {
+    return uploadManager?.delegate
+  }
+  
+  public var backgroundCompletionHandler: (() -> Void)? {
+    get {
+      return uploadManager?.backgroundCompletionHandler
+    }
+    set {
+      uploadManager?.backgroundCompletionHandler = newValue
+    }
+  }
+
   
   public var askCredentialHandler: AskCredentialHandler?
   public var renewTokenHandler: RenewTokenHandler?
