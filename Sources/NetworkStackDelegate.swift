@@ -17,5 +17,5 @@
 //
 
 public protocol NetworkStackDelegate: class {
-  func networkStack(_ networkStack: NetworkStack, didReceiveResponse: HTTPURLResponse, forRequest: URLRequest)
+  func networkStack(_ networkStack: NetworkStack, didReceiveResponse response: HTTPURLResponse, forRequest request: URLRequest)
 }
