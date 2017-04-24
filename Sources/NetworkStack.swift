@@ -34,8 +34,8 @@ public final class NetworkStack {
   // MARK: - Properties
   
   fileprivate let disposeBag = DisposeBag()
-  fileprivate let baseURL: String
   fileprivate let keychainService: KeychainService
+  public let baseURL: String  
   
   fileprivate var requestManager: Alamofire.SessionManager
   
