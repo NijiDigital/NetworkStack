@@ -19,6 +19,5 @@ import Foundation
 protocol VideoView: class {
   func fetched(videos: [Video])
   func added(video: Video)
-  func deleted()
   func error(message: String)
 }

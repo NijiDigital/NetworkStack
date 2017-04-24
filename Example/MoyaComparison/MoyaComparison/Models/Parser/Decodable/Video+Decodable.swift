@@ -14,7 +14,6 @@
 // limitations under the License.
 //
 
-import Foundation
 import Decodable
 
 extension Video: Decodable {

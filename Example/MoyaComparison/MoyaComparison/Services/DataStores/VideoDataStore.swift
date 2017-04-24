@@ -68,7 +68,7 @@ struct VideoDataStore {
       .addDisposableTo(self.disposeBag)
   }
   
-  func deleteVideo(identifier: Int) {
+  func deleteVideo(identifier: Int, completion: @escaping () -> Void) {
     self.webServiceClient?.deleteVideo(identifier: identifier)
       .observeOn(MainScheduler.instance)
       .subscribe({ (event: Event<()>) in
@@ -78,7 +78,7 @@ struct VideoDataStore {
           let message = "Failed to delete video with error : \(error)"
           self.delegate?.error(message: message)
           LogModule.webServiceClient.error(message)
-        case .completed: self.delegate?.deleted()
+        case .completed: completion()
           
         }
       })

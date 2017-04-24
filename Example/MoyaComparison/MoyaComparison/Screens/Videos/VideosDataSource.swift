@@ -16,10 +16,15 @@
 
 import UIKit
 
+protocol VideoProvider: class {
+  func deleted()
+}
+
 final class VideosDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
   
   // MARK: - Public Properties
   var dataStore: VideoDataStore
+  weak var delegate: VideoProvider?
   
   // MARK: - Private Properties
   fileprivate var videos: [Video] = []
@@ -56,7 +61,10 @@ extension VideosDataSource {
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      self.dataStore.deleteVideo(identifier: videos[indexPath.row].identifier)
+      self.dataStore.deleteVideo(identifier: videos[indexPath.row].identifier) {
+        self.videos.remove(at: indexPath.row)
+        self.delegate?.deleted()
+      }
     } else if editingStyle == .insert {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
