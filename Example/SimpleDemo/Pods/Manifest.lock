@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.4.0)
   - Decodable (0.5)
   - KeychainAccess (3.0.2)
-  - NetworkStack (0.1.2):
+  - NetworkStack (0.1.4):
     - Alamofire (~> 4.0)
     - KeychainAccess (~> 3.0)
     - RxSwift (~> 3.0)
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   Decodable: 7c90acc68d357b71d0d6efc120faf9c53c644b7e
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
-  NetworkStack: 30a553f6154bc890139878e3df69f9318a18437b
+  NetworkStack: 34b66beede256b1056c4c5b3ebe64ee01fcc63cb
   OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
 

@@ -95,7 +95,7 @@ struct VideoDataStore {
           let message = "Failed to delete video with error : \(error)"
           self.delegate?.error(message: message)
           LogModule.webServiceClient.error(message)
-        case .completed: self.delegate?.deleted()
+        case .completed: break
           
         }
       })
