@@ -43,6 +43,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
     self.setupSubViews()
     self.dataSource?.dataStore.fetchVideos()
     self.dataSource?.delegate = self
+//    self.dataSource?.dataStore.badAccess()
   }
   
   override func viewWillAppear(_ animated: Bool) {

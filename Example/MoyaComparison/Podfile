@@ -6,13 +6,13 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'MoyaComparison' do
+  pod 'NetworkStack', :path => '../../'
   # Pods for MoyaComparison
   pod 'JSONCodable'
   pod 'SwiftyJSON'
   pod 'RxCocoa'
   pod 'RxSwift'
   pod 'SwiftyBeaver'
-  pod 'NetworkStack'
   pod 'Reusable'
   pod 'RealmSwift'
   pod 'SwiftyUserDefaults'
