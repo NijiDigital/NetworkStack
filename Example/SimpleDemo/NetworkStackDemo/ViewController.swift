@@ -24,14 +24,20 @@ import RxSwift
 class ViewController: UIViewController {
   
   private let disposebag = DisposeBag()
+  private var client: VideoWebServiceClient?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     
-    let networkStack = NetworkStack(baseURL: "https://safe-retreat-51773.herokuapp.com/api/v1", keychainService: KeychainService(serviceType: "com.niji.networkstack"))
-    let client = VideoWebServiceClient(networkStack: networkStack)
+    let networkStack = NetworkStack(baseURL: "https://yourapi.com/api/v1/", keychainService: KeychainService(serviceType: "com.niji.networkstack"))
+    self.client = VideoWebServiceClient(networkStack: networkStack)
     
-    client.fetchVideo(identifier: 0)
+    client?.fetchVideo(identifier: 0)
+      .subscribeOn(MainScheduler.instance)
       .observeOn(MainScheduler.instance)
       .subscribe { (event: Event<Video>) in
         switch event {
@@ -42,4 +48,3 @@ class ViewController: UIViewController {
       }.addDisposableTo(self.disposebag)
   }
 }
-
