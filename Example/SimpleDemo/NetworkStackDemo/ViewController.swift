@@ -18,10 +18,28 @@
 //
 
 import UIKit
+import NetworkStack
+import RxSwift
 
 class ViewController: UIViewController {
+  
+  private let disposebag = DisposeBag()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let networkStack = NetworkStack(baseURL: "https://safe-retreat-51773.herokuapp.com/api/v1", keychainService: KeychainService(serviceType: "com.niji.networkstack"))
+    let client = VideoWebServiceClient(networkStack: networkStack)
+    
+    client.fetchVideo(identifier: 0)
+      .observeOn(MainScheduler.instance)
+      .subscribe { (event: Event<Video>) in
+        switch event {
+        case .next(let video): print("video : \(video)")
+        case .error(let error): print("!!!!!! error : \(error) !!! !!!")
+        case .completed: print("completed !")
+        }
+      }.addDisposableTo(self.disposebag)
   }
 }
 

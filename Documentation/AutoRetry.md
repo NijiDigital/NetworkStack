@@ -22,7 +22,7 @@ Compose with this property optional when you init NetworkStack :
 var askCredentialHandler: () -> Observable<Void>
 ```
 
-If you set this property you can authenticate automaticly. Required settings are :
+If you set this property you can relaunch your authenticate workflow automaticly when required settings are satisfied :
 
 - Are Authenticated
 - Received a `401` or `403`
@@ -31,3 +31,7 @@ If you set this property you can authenticate automaticly. Required settings are
 
 `askCredentials()`
 
+## TODO
+
+- [ ] Made conditions to **refresh token** public but with actual default behaviour.
+- [ ] Made conditions to **renew authentication** public but with actual default behaviour.

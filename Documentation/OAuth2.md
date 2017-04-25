@@ -17,3 +17,5 @@ func currentAccessToken() -> String?
 
 func currentRefreshToken() -> String?
 ```
+
+Refer to [auto retry](AutoRetry.md) topic wether you want advanced authentication behaviour.

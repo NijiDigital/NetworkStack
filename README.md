@@ -4,7 +4,6 @@ NetworkStack
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/NetworkStack.svg?style=flat-square)](https://cocoapods.org/pods/NetworkStack)
 [![CocoaPods](https://img.shields.io/cocoapods/p/NetworkStack.svg?style=flat-square)]()
 [![Twitter](https://img.shields.io/badge/twitter-@Niji_Digital-blue.svg?style=flat-square)](http://twitter.com/Niji_Digital)
-[![Twitter](https://img.shields.io/badge/website-niji.fr-green.svg?style=flat-square)](http://niji.fr)
 [![CocoaPods](https://img.shields.io/cocoapods/l/NetworkStack.svg?style=flat-square)](LICENSE)
 
 <img src="cover.png">
@@ -18,7 +17,7 @@ NetworkStack
 Using [CocoaPods](https://guides.cocoapods.org) is the recommended way :
 
 - In your Podfile, add `use_frameworks!` and pod `NetworkStack` to your main and test targets.
-- Run `pod repo update` to make CocoaPods aware of the latest available Realm versions.
+- Run `pod repo update` to make CocoaPods aware of the latest available `NetworkStack` versions.
 - Simply add `pod 'NetworkStack'` to your `Podfile`.
 
 ```ruby
@@ -28,24 +27,19 @@ pod 'NetworkStack'
 From the command line, run `pod install`
 
 # Documentation & Usage Examples
+We have specific wiki. It will be helpful for you if you want to implement advanced or specific behaviour : 
+ 
+---------------- 
+ 
+<p align="center"> 
+    <a href="Documentation/UploadRequests.md">Upload requests</a> &bull;  
+    <a href="Documentation/OAuth2.md">OAuth2</a> &bull;
+    <a href="Documentation/AutoRetry.md">Auto retry</a> 
+</p> 
+ 
+---------------- 
 
-We have specific wikis. It will be helpful for you if you want to implement advanced or specific behaviour. We support :
-
-----------------
-
-<p align="center">
-    <a href="Documentation/BasicRequests.md">Basic requests</a> &bull;
-    <a href="Documentation/UploadRequests.md">Upload requests</a> &bull; 
-    <a href="Documentation/OAuth2.md">OAuth2</a> &bull; 
-    <a href="Documentation/CustomRequests.md">Custom requests</a> &bull; 
-    <a href="Documentation/CustomSessionManager.md">Custom SessionManager</a> &bull; 
-    <a href="Documentation/AutoRetry.md">Auto retry</a>
-</p>
-
-----------------
-
-##Simple Usage
-
+## Simple Usage
 
 ### Setup 
 ```swift
@@ -76,6 +70,8 @@ extension Route {
 }
 ```
 
+This is an implementation example but you are free to use it like you want.
+
 ### RequestParameters
 This is the core of requests creation. Request parameters can take : 
 
@@ -97,7 +93,6 @@ let requestParameters = RequestParameters(method: .get,
                                           headers: nil) // [String: String] type
 ```
 
-
 ***For Upload :** **`UploadRequestParameters`** :
 
 - **method:** ` Alamofire.HTTPMethod = .post`
@@ -109,6 +104,8 @@ let requestParameters = RequestParameters(method: .get,
 
 
 ### Requests
+
+In public interface you can find this few methods that help you to send requests.
 
 ```swift
 func sendRequestWithDataResponse(requestParameters: RequestParameters) -> Observable<(HTTPURLResponse, Data)>
@@ -142,7 +139,7 @@ networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
 ```
 
 ### Errors 
-Network stack use several error that you can use to manage your app errors. 
+Network stack handle several errors that you can use in your app.
 
 ```swift
 public enum NetworkStackError: Error {
@@ -167,11 +164,17 @@ public enum NetworkStackError: Error {
 }
 ```
 
-## More examples & Help Topics
+# More examples & Help Topics
 We have some examples :
 
 - [Simple usage](Example/SimpleDemo/README.md)
 - [MoyaComparison](Example/MoyaComparison/README.md)
+
+# Feedback
+
+- If you found a **bug** , open an **issue** 
+- If you have a **feature request** , open an **issue** 
+- If you want to **contribute** , submit a **pull request** 
 
 # License
 

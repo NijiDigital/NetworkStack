@@ -77,10 +77,11 @@ extension ObservableType {
      - parameter onError: Action to invoke upon errored termination of the observable sequence.
      - parameter onCompleted: Action to invoke upon graceful termination of the observable sequence.
      - parameter onSubscribe: Action to invoke before subscribing to source observable sequence.
+     - parameter onSubscribed: Action to invoke after subscribing to source observable sequence.
      - parameter onDispose: Action to invoke after subscription to source observable has been disposed for any reason. It can be either because sequence terminates for some reason or observer subscription being disposed.
     - returns: The source sequence with the side-effecting behavior applied.
      */
-    public func `do`(onNext: ((E) throws -> Void)? = nil, onError: ((Swift.Error) throws -> Void)? = nil, onCompleted: (() throws -> Void)? = nil, onSubscribe: (() -> ())? = nil, onDispose: (() -> ())? = nil)
+    public func `do`(onNext: ((E) throws -> Void)? = nil, onError: ((Swift.Error) throws -> Void)? = nil, onCompleted: (() throws -> Void)? = nil, onSubscribe: (() -> ())? = nil, onSubscribed: (() -> ())? = nil, onDispose: (() -> ())? = nil)
         -> Observable<E> {
             return Do(source: self.asObservable(), eventHandler: { e in
                 switch e {
@@ -91,7 +92,7 @@ extension ObservableType {
                 case .completed:
                     try onCompleted?()
                 }
-            }, onSubscribe: onSubscribe, onDispose: onDispose)
+            }, onSubscribe: onSubscribe, onSubscribed: onSubscribed, onDispose: onDispose)
     }
 }
 
@@ -227,4 +228,29 @@ extension ObservableType {
             return false
         }
     }
+}
+
+// MARK: materialize
+
+extension ObservableType {
+    /**
+     Convert any Observable into an Observable of its events.
+     - seealso: [materialize operator on reactivex.io](http://reactivex.io/documentation/operators/materialize-dematerialize.html)
+     - returns: An observable sequence that wraps events in an Event<E>. The returned Observable never errors, but it does complete after observing all of the events of the underlying Observable.
+     */
+    public func materialize() -> Observable<Event<E>> {
+        return Materialize(source: self.asObservable())
+    }
+}
+
+extension ObservableType where E: EventConvertible {
+    /**
+     Convert any previously materialized Observable into it's original form.
+     - seealso: [materialize operator on reactivex.io](http://reactivex.io/documentation/operators/materialize-dematerialize.html)
+     - returns: The dematerialized observable sequence.
+     */
+    public func dematerialize() -> Observable<E.ElementType> {
+        return Dematerialize(source: self.asObservable())
+    }
+    
 }
