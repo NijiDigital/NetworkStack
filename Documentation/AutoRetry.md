@@ -3,13 +3,13 @@
 
 ## Auto refresh token
 
-Compose with this property, tyou can inject this property when you want :
+Compose with this property, you can inject it when you want :
 
 ```swift 
-var renewTokenHandler = () -> Observable<Void>
+public var renewTokenHandler = () -> Observable<Void>
 ```
 
-If you set this property you can renew you token automaticly. Required settings are : 
+With previous property you can renew your token automaticly. Required settings are : 
 
 - Are authenticiated 
 - Received an error for a request with `401` or `404` server status code.
@@ -17,10 +17,10 @@ If you set this property you can renew you token automaticly. Required settings 
 
 ## Renew Authent if needeed
 
-Compose with this property optional when you init NetworkStack :
+Compose with this optional property when you init NetworkStack :
 
 ```swift 
-var askCredentialHandler: () -> Observable<Void>
+public var askCredentialHandler: () -> Observable<Void>
 ```
 
 If you set this property you can relaunch your authenticate workflow automaticly when required settings are satisfied :
@@ -30,7 +30,8 @@ If you set this property you can relaunch your authenticate workflow automaticly
 - Failed to renew token 
 - `askCredentialHandler` is not `nil`
 
-`askCredentials()`
+### UPDATE :
+`AskCredentials` is new struct to handle credentials. 
 
 ## TODO
 

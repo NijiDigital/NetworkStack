@@ -8,7 +8,7 @@ NetworkStack
 
 <img src="cover.png">
 
-`NetworkStack` is a network library to send requests easily. Based on [Alamofire](https://github.com/Alamofire/Alamofire), you will find all your habits. This is the best way to work with [RxSwift](https://github.com/ReactiveX/RxSwift) and [Alamofire](https://github.com/Alamofire/Alamofire) to add some functionnalities like automatic renewing token or upload files.
+`NetworkStack` is a high-level network layer abstraction library written in `Swift` and based on [Alamofire](https://github.com/Alamofire/Alamofire) with `RxSwift`. 
  
 # Installation
  
