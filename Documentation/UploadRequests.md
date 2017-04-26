@@ -13,8 +13,9 @@ let networkStack = NetworkStack(baseURL: baseStringURL,
                                 uploadManager: uploadManager)
 ```
 
-
 ### Upload request parameter to use to send upload request :
+
+`UploadRequestParametersFile` follow **multipart/form-data** guidelines.
 
 ```swift
 let fileURL = URL(string: "/var/mobile/Applications/Documents/my-id-card.pdf")!
