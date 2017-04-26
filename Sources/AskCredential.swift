@@ -19,24 +19,31 @@
 import UIKit
 import RxSwift
 
-public typealias AskCredentialHandler = (() -> Observable<Void>)
-public typealias AskCredentialTriggerCondition = ((Error) -> Bool)
-
 public struct AskCredential {
   
-  // MARK: Properties
+  // MARK: - Type aliases
+  
+  public typealias AskCredentialHandler = (() -> Observable<Void>)
+  public typealias AskCredentialTriggerCondition = ((Error) -> Bool)
+  
+  // MARK: - Properties
   
   public var triggerCondition: AskCredentialTriggerCondition
   public var handler: AskCredentialHandler
   
-  // MARK:
+  // MARK: - Setup
   
-  init(handler: @escaping AskCredentialHandler) {
+  public init(triggerCondition: @escaping AskCredentialTriggerCondition, handler: @escaping AskCredentialHandler) {
+    self.triggerCondition = triggerCondition
+    self.handler = handler
+  }
+  
+  public init(handler: @escaping AskCredentialHandler) {
     self.handler = handler
     self.triggerCondition = AskCredential.defaultTriggerCondition()
   }
   
-  // MARK: Private
+  // MARK: - Private
   
   private static func defaultTriggerCondition() -> AskCredentialTriggerCondition {
     let triggerCondition = { (error: Error) -> Bool in
@@ -47,7 +54,7 @@ public struct AskCredential {
   
   private static func shouldAskCredential(forError error: Error) -> Bool {
     var shouldAskCredentials = false
-    if case NetworkStackError.http(httpURLResponse: let httpURLResponse, data: _) = error, httpURLResponse.statusCode == 401 || httpURLResponse.statusCode == 403 {
+    if case NetworkStackError.http(httpURLResponse: let httpURLResponse, data: _) = error, httpURLResponse.statusCode == 401 {
       shouldAskCredentials = true
     }
     return shouldAskCredentials
