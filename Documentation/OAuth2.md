@@ -1,8 +1,8 @@
 # OAuth2
+----
+## Authentication
 
-### Authentication
-
-**Token**
+### Token
 
 Based on keychain service to store `accessTokenKey `, `refreshTokenKey ` and `expirationDateKey `
 

@@ -1,6 +1,7 @@
 # Auto retry
+----
 
-**Auto refresh token**
+## Auto refresh token
 
 Compose with this property, tyou can inject this property when you want :
 
@@ -14,7 +15,7 @@ If you set this property you can renew you token automaticly. Required settings 
 - Received an error for a request with `401` or `404` server status code.
 - `renewTokenHandler` is not nil
 
-**Renew Authent if needeed**
+## Renew Authent if needeed
 
 Compose with this property optional when you init NetworkStack :
 
@@ -33,5 +34,5 @@ If you set this property you can relaunch your authenticate workflow automaticly
 
 ## TODO
 
-- [ ] Made conditions to **refresh token** public but with actual default behaviour.
-- [ ] Made conditions to **renew authentication** public but with actual default behaviour.
+- [ ] Make conditions to **refresh token** public but with actual default behaviour.
+- [x] Make conditions to **renew authentication** public but with actual default behaviour.

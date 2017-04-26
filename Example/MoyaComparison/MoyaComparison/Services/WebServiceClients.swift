@@ -24,6 +24,7 @@ struct Services {
   let serializationJSONCodable: SerializationServiceJSONCodable
   let serializationSwiftyJSON: SerializationServiceSwiftyJSON
   let serializationObjectMapper: SerializationServiceObjectMapper
+  let serializationDecodable: SerializationServiceDecodable
   let userNetworkStack: NetworkStack
   let videoNetworkStack: NetworkStack
   let customAPIProvider: RxMoyaProvider<CustomAPI>

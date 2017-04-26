@@ -24,6 +24,7 @@
 		6D81F9E31E96F003006821F0 /* User+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9DA1E96F003006821F0 /* User+SwiftyJSON.swift */; };
 		6D81F9E41E96F003006821F0 /* Video+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9DB1E96F003006821F0 /* Video+SwiftyJSON.swift */; };
 		6D81F9E61E96F033006821F0 /* SwiftyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D81F9E51E96F033006821F0 /* SwiftyProtocol.swift */; };
+		6D8E9CF21EB09694003031B8 /* SerializationService+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8E9CF11EB09694003031B8 /* SerializationService+Decodable.swift */; };
 		6DA264801E91504800DE558F /* VideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2647F1E91504800DE558F /* VideosDataSource.swift */; };
 		6DA264821E91559500DE558F /* WebServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA264811E91559500DE558F /* WebServiceFactory.swift */; };
 		6DC269B31E8AE7BD000A5A5A /* AuthenticationWebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebServiceClient.swift */; };
@@ -119,6 +120,7 @@
 		6D81F9DA1E96F003006821F0 /* User+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6D81F9DB1E96F003006821F0 /* Video+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6D81F9E51E96F033006821F0 /* SwiftyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyProtocol.swift; sourceTree = "<group>"; };
+		6D8E9CF11EB09694003031B8 /* SerializationService+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerializationService+Decodable.swift"; sourceTree = "<group>"; };
 		6DA2647F1E91504800DE558F /* VideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosDataSource.swift; sourceTree = "<group>"; };
 		6DA264811E91559500DE558F /* WebServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceFactory.swift; sourceTree = "<group>"; };
 		6DC269AD1E8AE7BD000A5A5A /* AuthenticationWebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWebServiceClient.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 				6D81F9DB1E96F003006821F0 /* Video+SwiftyJSON.swift */,
 			);
 			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		6D8E9CF01EB0966B003031B8 /* Decodable */ = {
+			isa = PBXGroup;
+			children = (
+				6D8E9CF11EB09694003031B8 /* SerializationService+Decodable.swift */,
+			);
+			path = Decodable;
 			sourceTree = "<group>";
 		};
 		6DC269AB1E8AE7BD000A5A5A /* ServicesClients */ = {
@@ -537,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF771BD1E8989FD0051C8AB /* SerializationServiceError.swift */,
+				6D8E9CF01EB0966B003031B8 /* Decodable */,
 				6DF771B91E8989FD0051C8AB /* JSONCodable */,
 				6DF771BB1E8989FD0051C8AB /* ObjectMapper */,
 				6DF771BE1E8989FD0051C8AB /* SwiftyJSON */,
@@ -927,6 +938,7 @@
 				6DF7721A1E8989FD0051C8AB /* RequestParameters+Authent.swift in Sources */,
 				6DF772161E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift in Sources */,
 				86757451F9591A2746ED48AA /* Environment.swift in Sources */,
+				6D8E9CF21EB09694003031B8 /* SerializationService+Decodable.swift in Sources */,
 				6DF771D91E8989FD0051C8AB /* Images.swift in Sources */,
 				6DF771E51E8989FD0051C8AB /* CollectionType+Safe.swift in Sources */,
 				6DF772241E8989FD0051C8AB /* WebServiceClients.swift in Sources */,

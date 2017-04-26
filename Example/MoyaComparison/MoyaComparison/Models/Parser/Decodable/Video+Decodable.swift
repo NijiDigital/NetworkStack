@@ -24,9 +24,11 @@ extension Video: Decodable {
     video.creationDate = try DateFormatter.iso8601Formatter.date(from: json => KeyPath(Attributes.creationDate))
     video.hasSponsors.value = try json => KeyPath(Attributes.hasSponsors)
     video.likeCounts = try json => KeyPath(Attributes.likeCounts)
-    video.statusCode.value = try json => KeyPath(Attributes.statusCode)
-    let relatedVideosSandbox: [Video] = try json => KeyPath(Relationships.relatedVideos)
-    video.relatedVideos.append(objectsIn: relatedVideosSandbox)
+    video.statusCode.value = Int(try json => KeyPath(Attributes.statusCode))
+    let relatedVideosSandbox: [Video]? = try json =>? "relatedVideos"
+    if let relatedVideosSandbox = relatedVideosSandbox {
+      video.relatedVideos.append(objectsIn: relatedVideosSandbox)
+    }
     return video
   }
 }

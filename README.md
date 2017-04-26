@@ -72,7 +72,7 @@ extension Route {
 
 This is an implementation example but you are free to use it like you want.
 
-### RequestParameters
+### Request parameters
 This is the core of requests creation. Request parameters can take : 
 
 **`RequestParameters`** :
@@ -167,7 +167,7 @@ public enum NetworkStackError: Error {
 # More examples & Help Topics
 We have some examples :
 
-- [Simple usage](Example/SimpleDemo/README.md)
+- [Simple demo](Example/SimpleDemo/README.md)
 - [MoyaComparison](Example/MoyaComparison/README.md)
 
 # Feedback

@@ -41,6 +41,7 @@ enum ServiceFactory {
       serializationJSONCodable: SerializationServiceJSONCodable(),
       serializationSwiftyJSON: SerializationServiceSwiftyJSON(),
       serializationObjectMapper: SerializationServiceObjectMapper(),
+      serializationDecodable: SerializationServiceDecodable(),
       userNetworkStack: userNetworkStack,
       videoNetworkStack: videoNetworkStack,
       customAPIProvider: customAPIProvider

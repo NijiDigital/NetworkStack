@@ -1,6 +1,6 @@
 # Upload Requests
-
-**Init NetworkStack to use upload :**
+----
+### Init NetworkStack to use upload
 
 ```swift
 let baseStringURL = "http://networkstack.fr/api/v1"
@@ -13,7 +13,7 @@ let networkStack = NetworkStack(baseURL: baseStringURL,
 ```
 
 
-**Upload request parameter to use to send upload request :**
+### Upload request parameter to use to send upload request :
 
 ```swift
 let fileURL = URL(string: "/var/mobile/Applications/Documents/myfile.pdf")!
