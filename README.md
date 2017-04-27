@@ -31,11 +31,9 @@ We have specific wiki. It will be helpful for you if you want to implement advan
  
 ---------------- 
  
-<p align="center"> 
-    <a href="Documentation/UploadRequests.md">Upload requests</a> &bull;  
-    <a href="Documentation/OAuth2.md">OAuth2</a> &bull;
-    <a href="Documentation/AutoRetry.md">Auto retry</a> 
-</p> 
+- [UploadRequests](UploadRequests.md)
+- [OAuth2](OAuth2)
+- [Auto retry](AutoRetry.md)
  
 ---------------- 
 
