@@ -350,36 +350,44 @@ extension NetworkStack {
   fileprivate func sendRequest<T: DataResponseSerializerProtocol>(requestParameters: RequestParameters,
                                queue: DispatchQueue = DispatchQueue.global(qos: .default),
                                responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
-    guard let request = self.buildRequest(requestParameters: requestParameters) else {
-      return Observable.error(NetworkStackError.requestBuildFail)
-    }
-    
     if requestParameters.needsAuthorization {
-      return self.sendAuthenticatedRequest(request: request, queue: queue, responseSerializer: responseSerializer)
+		return self.sendAuthenticatedRequest(requestParameters: requestParameters, queue: queue, responseSerializer: responseSerializer)
     } else {
+		guard let request = self.buildRequest(requestParameters: requestParameters) else {
+			return Observable.error(NetworkStackError.requestBuildFail)
+		}
+		
       return self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
     }
   }
   
   fileprivate func sendAuthenticatedRequest<T: DataResponseSerializerProtocol>(
-    request: Alamofire.DataRequest,
+    requestParameters: RequestParameters,
     queue: DispatchQueue = DispatchQueue.global(qos: .default),
     responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
-    
+
     let requestObservable: Observable<(HTTPURLResponse, T.SerializedObject)>
     
-    if let renewTokenHandler = self.renewTokenHandler {
-      requestObservable = self.sendAutoRetryRequest({ [unowned self] () -> Observable<(HTTPURLResponse, T.SerializedObject)> in
-        
-        let updatedRequest = self.updateRequestAuthorizationHeader(dataRequest: request)
-        return self.sendRequest(alamofireRequest: updatedRequest, queue: queue, responseSerializer: responseSerializer)
-      }, renewTokenFunction: { () -> Observable<Void> in
-          return renewTokenHandler()
-      })
-    } else {
-      requestObservable = self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
-    }
-    
+	if let renewTokenHandler = self.renewTokenHandler {
+		requestObservable = self.sendAutoRetryRequest({ [unowned self] () -> Observable<(HTTPURLResponse, T.SerializedObject)> in
+			
+			guard let request = self.buildRequest(requestParameters: requestParameters) else {
+				return Observable.error(NetworkStackError.requestBuildFail)
+			}
+			
+			return self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
+			}, renewTokenFunction: { () -> Observable<Void> in
+				return renewTokenHandler()
+		})
+	} else {
+		
+		guard let request = self.buildRequest(requestParameters: requestParameters) else {
+			return Observable.error(NetworkStackError.requestBuildFail)
+		}
+		
+		requestObservable = self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
+	}
+	
     return requestObservable
     .do(onError: { [unowned self] error in
       self.askCredentialsIfNeeded(forError: error)
