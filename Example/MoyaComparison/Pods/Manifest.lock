@@ -9,7 +9,7 @@ PODS:
   - Moya/RxSwift (8.0.3):
     - Moya/Core
     - RxSwift (~> 3.0)
-  - NetworkStack (0.1.4):
+  - NetworkStack (0.1.5):
     - Alamofire (~> 4.0)
     - KeychainAccess (~> 3.0)
     - RxSwift (~> 3.0)
@@ -56,7 +56,7 @@ SPEC CHECKSUMS:
   JSONCodable: bd8616ae881befe2b82fbbf56d98b2dd377ac662
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
-  NetworkStack: 34b66beede256b1056c4c5b3ebe64ee01fcc63cb
+  NetworkStack: f1694b6310a93594dc881552bd3c1b4e90831cad
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   Realm: 32f86104d37c8521f864d4274050b38ba6190733
   RealmSwift: f719e7511c902b8908593e8f143f59e47931bdb6
@@ -70,4 +70,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4f1f0474014eb8b0578fcb6d15c5e7980e43e177
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
