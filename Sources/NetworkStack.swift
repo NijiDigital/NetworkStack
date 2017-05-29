@@ -351,8 +351,10 @@ extension NetworkStack {
                                queue: DispatchQueue = DispatchQueue.global(qos: .default),
                                responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
     if requestParameters.needsAuthorization {
+      // Need to pass the parameters directly, because in case of retry, need to build the request again.
       return self.sendAuthenticatedRequest(requestParameters: requestParameters, queue: queue, responseSerializer: responseSerializer)
     } else {
+      // Be carefull, call buildRequest and so `requestManager.request` method launch immediatly the request by default
       guard let request = self.buildRequest(requestParameters: requestParameters) else {
         return Observable.error(NetworkStackError.requestBuildFail)
       }
