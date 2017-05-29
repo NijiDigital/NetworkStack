@@ -9,6 +9,19 @@ NetworkStack
 <img src="cover.png">
 
 `NetworkStack` is a high-level network layer abstraction library written in `Swift` and based on [Alamofire](https://github.com/Alamofire/Alamofire) with `RxSwift`. 
+
+`NetworkStack` is an networking library wrapping [Alamofire](https://github.com/Alamofire/Alamofire), [Rx](https://github.com/ReactiveX/RxSwift), `OAuth` and replay mechanism in a reactive abstract API.
+
+# Features
+
+This library features the following:
+
+* Wraps your network calls into a RxSwift-compatible API, returning `Observable<T>` values rather than using completion blocks
+* Handles the OAuth authentication workflow, allowing you to specify the credentials (which are stored in the Keychain) and let the library use them to enrich your authenticated requests for you
+* Handles auto-retry in case of 401 authentication errors:
+  * letting you execute the refreshToken request, then replay the request automatically
+  * letting you present arbitrary login screen when credentials must be asked to the user in case the refreshToken isn't valid or available
+* Simplifies the API so that your WebService client has a simple (and Alamofire-agnostic) API to call when it needs to send requests, without worrying about the internals.
  
 # Installation
  
@@ -31,9 +44,9 @@ We have specific wiki. It will be helpful for you if you want to implement advan
  
 ---------------- 
  
-- [UploadRequests](UploadRequests.md)
-- [OAuth2](OAuth2)
-- [Auto retry](AutoRetry.md)
+- [UploadRequests](Documentation/UploadRequests.md)
+- [OAuth2](Documentation/OAuth2)
+- [Auto retry](Documentation/AutoRetry.md)
  
 ---------------- 
 
