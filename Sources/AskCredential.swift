@@ -19,6 +19,18 @@
 import UIKit
 import RxSwift
 
+/** 
+
+AskCredential
+
+This struct must be use to define the behavior when NetworkStack
+can't find how to provide token for authorization.
+
+Use triggerCondition to define for what error you need to call the handler
+
+This handler must fetch new token and update the NetworkStack with it.
+
+*/
 public struct AskCredential {
   
   // MARK: - Type aliases
