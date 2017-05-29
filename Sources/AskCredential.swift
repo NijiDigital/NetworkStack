@@ -23,12 +23,16 @@ import RxSwift
 
 AskCredential
 
-This struct must be use to define the behavior when NetworkStack
-can't find how to provide token for authorization.
+# Description
 
-Use triggerCondition to define for what error you need to call the handler
+This struct define the behavior when NetworkStack can't find how to provide token for request which need authorization.
 
-This handler must fetch new token and update the NetworkStack with it.
+# Usage
+
+- Use triggerCondition to define for what error you need to call the handler.
+by default 401 error trigger handler.
+
+- Your provided handler must fetch new token and update the NetworkStack with it.
 
 */
 public struct AskCredential {
