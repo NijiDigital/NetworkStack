@@ -58,7 +58,7 @@ let baseStringURL = "http://networkstack.fr/api/v1"
 let keychainService: KeychainService = KeychainService(serviceType: "com.networkstack.keychain")
 let networkStack = NetworkStack(baseURL: baseStringURL, keychainService: keychainService)
 ```
-To customize your request you have flexibility. Free for you to create your `SessionManager` to change behaviour of requesting inside `NetworkStack`. `NetworkStack` has two properties that you can set :
+You can customize your request in many way. Feel free to create your `SessionManager` to change behaviour of requesting inside `NetworkStack`. `NetworkStack` has two properties that you can set :
 
 - **requestManager:** `Alamofire.SessionManager` is `Alamofire.SessionManager()` by default
 - **uploadManager:**  `Alamofire.SessionManager` is `nil` by default
@@ -150,7 +150,7 @@ networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
 ```
 
 ### Errors 
-Network stack handle several errors that you can use in your app.
+Network stack provides several errors that you can handles in your app.
 
 ```swift
 public enum NetworkStackError: Error {

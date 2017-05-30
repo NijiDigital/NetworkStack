@@ -3,7 +3,7 @@
 
 ## Auto refresh token
 
-Using this property, you can tell your code how to renew the token. Typically, this closure will contain code to perform the "RefreshToken" request, parse the response, store the new token in your NetworkStack, and emit a Observable.just() to tell when it's done.
+Using this property, you can tell your code how to renew the token. Typically, this closure will contain code to perform the "RefreshToken" request, parse the response, update the token stored in your NetworkStack, and emit a Observable.just() to tell when it's done.
 
 ```swift 
 public var renewTokenHandler = () -> Observable<Void>
@@ -11,7 +11,7 @@ public var renewTokenHandler = () -> Observable<Void>
 
 With this property you can renew your token automatically. This closure will be called when: 
 
-- You're authenticiated 
+- You're authenticated
 - But you received an 401 error for a request
 - That renewTokenHandler closure is not nil
 
