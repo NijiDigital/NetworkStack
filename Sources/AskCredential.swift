@@ -56,23 +56,17 @@ public struct AskCredential {
   
   public init(handler: @escaping AskCredentialHandler) {
     self.handler = handler
-    self.triggerCondition = AskCredential.defaultTriggerCondition()
+    self.triggerCondition = AskCredential.defaultTriggerCondition
   }
   
   // MARK: - Private
   
-  private static func defaultTriggerCondition() -> AskCredentialTriggerCondition {
-    let triggerCondition = { (error: Error) -> Bool in
-      return AskCredential.shouldAskCredential(forError: error)
-    }
-    return triggerCondition
-  }
-  
-  private static func shouldAskCredential(forError error: Error) -> Bool {
+  private static func defaultTriggerCondition(error: Error) -> Bool {
     var shouldAskCredentials = false
     if case NetworkStackError.http(httpURLResponse: let httpURLResponse, data: _) = error, httpURLResponse.statusCode == 401 {
       shouldAskCredentials = true
     }
     return shouldAskCredentials
   }
+
 }
