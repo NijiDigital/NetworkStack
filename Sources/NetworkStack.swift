@@ -27,8 +27,7 @@ public final class NetworkStack {
   static let authorizationHeaderKey = "Authorization"
 
   // MARK: - Type aliases
-
-  public typealias AskCredentialHandler = (() -> Observable<Void>)
+  
   public typealias RenewTokenHandler = (() -> Observable<Void>)
 
   // MARK: - Properties
@@ -53,9 +52,8 @@ public final class NetworkStack {
       uploadManager?.backgroundCompletionHandler = newValue
     }
   }
-
-
-  public var askCredentialHandler: AskCredentialHandler?
+  
+  public var askCredential: AskCredential?
   public var renewTokenHandler: RenewTokenHandler?
 
   public weak var delegate: NetworkStackDelegate?
@@ -66,13 +64,14 @@ public final class NetworkStack {
               keychainService: KeychainService,
               requestManager: Alamofire.SessionManager = Alamofire.SessionManager(),
               uploadManager: SessionManager? = nil,
-              askCredentialHandler: AskCredentialHandler? = nil) {
-
+              askCredential: AskCredential? = nil) {
+    
     self.baseURL = baseURL
     self.keychainService = keychainService
     self.uploadManager = uploadManager
     self.requestManager = requestManager
-    self.askCredentialHandler = askCredentialHandler
+    
+    self.askCredential = askCredential
   }
 }
 
@@ -222,7 +221,7 @@ extension NetworkStack {
   }
 
   fileprivate func askCredentials() -> Observable<Void> {
-    guard let askCredentialHandler = self.askCredentialHandler else {
+    guard let askCredentialHandler = self.askCredential?.handler else {
       return Observable.just()
     }
 
@@ -244,11 +243,10 @@ extension NetworkStack {
   }
 
   fileprivate func shouldAskCredentials(forError error: Error) -> Bool {
-    var shouldAskCredentials = false
-    if case NetworkStackError.http(httpURLResponse: let httpURLResponse, data: _) = error, httpURLResponse.statusCode == 401 || httpURLResponse.statusCode == 403 {
-      shouldAskCredentials = true
+    guard let triggerCondition = self.askCredential?.triggerCondition else {
+      return false
     }
-    return shouldAskCredentials
+    return triggerCondition(error)
   }
 
   fileprivate func sendAutoRetryRequest<T>(_ sendRequestBlock: @escaping () -> Observable<T>, renewTokenFunction: @escaping () -> Observable<Void>) -> Observable<T> {
