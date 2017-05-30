@@ -20,20 +20,19 @@ With this property you can renew your token automatically. This closure will be 
 Compose with this optional property when you init NetworkStack:
 
 ```swift 
-public var askCredentialHandler: () -> Observable<Void>
+public var askCredential: AskCredential?
 ```
 
-If you set this property you can relaunch your authenticate workflow automatically. This closure will be called when:
+If you set this property you can relaunch your authenticate workflow automatically. This property is a struct that encapsulate a closure to handle re-authe,tication process and a condition to know when trigger the closure.
+This closure will be called when:
 
 - You're Authenticated
 - But you received an 401 error for a request
 - The renew token fail
-- That `askCredentialHandler` closure is not `nil`
-
-### UPDATE :
-`AskCredentials` is new struct to handle credentials. 
+- That `askCredential` property is not `nil`
 
 ## TODO
 
+- [ ] Make renewTokenHandler same as askCredential property for consistency
 - [ ] Make conditions to **refresh token** public but with actual default behaviour.
 - [x] Make conditions to **renew authentication** public but with actual default behaviour.
