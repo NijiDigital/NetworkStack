@@ -51,6 +51,7 @@ We have specific wiki. It will be helpful for you if you want to implement advan
 ## Simple Usage
 
 ### Setup 
+
 ```swift
 let baseStringURL = "http://networkstack.fr/api/v1"
 let keychainService: KeychainService = KeychainService(serviceType: "com.networkstack.keychain")
@@ -62,6 +63,7 @@ You can customize your request in many way. Feel free to create your `SessionMan
 - **uploadManager:**  `Alamofire.SessionManager` is `nil` by default
 
 ### Routes as Routable protocol
+
 `NetworkStack` has **`Routable`** protocol to create path for endpoints of your requests.
 
 ```swift
@@ -82,6 +84,7 @@ extension Route {
 This is an implementation example but you are free to use it like you want.
 
 ### Request parameters
+
 This is the core of requests creation. Request parameters can take : 
 
 **`RequestParameters`** :
@@ -130,6 +133,7 @@ func sendBackgroundUploadRequest(uploadRequestParameters: UploadRequestParameter
 ```
 
 ### Send request and response
+
 ```swift
 networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
   .subscribe({ (event: Event<(HTTPURLResponse, Any)>) in
@@ -148,6 +152,7 @@ networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
 ```
 
 ### Errors 
+
 Network stack provides several errors that you can handles in your app.
 
 ```swift
@@ -174,6 +179,7 @@ public enum NetworkStackError: Error {
 ```
 
 # More examples & Help Topics
+
 We have some examples :
 
 - [Simple demo](Example/SimpleDemo/README.md)

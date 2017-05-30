@@ -21,6 +21,7 @@ func currentRefreshToken() -> String?
 ## JWT
 
 ### Token
+
 You can use the NetworkStack with JWT based authentication.
 The difference with OAuth2 is the usage of ```func updateToken(token: String, refreshToken: String? = default, expiresIn: TimeInterval? = default)```
 Just pass the `JWT` as `token` parameter.

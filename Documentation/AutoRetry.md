@@ -23,7 +23,7 @@ Compose with this optional property when you init NetworkStack:
 public var askCredential: AskCredential?
 ```
 
-If you set this property you can relaunch your authenticate workflow automatically. This property is a struct that encapsulate a closure to handle re-authe,tication process and a condition to know when trigger the closure.
+If you set this property you can relaunch your authenticate workflow automatically. This property is a struct that encapsulate a closure to handle re-authentication process and a condition to know when trigger the closure.
 This closure will be called when:
 
 - You're Authenticated
@@ -31,8 +31,10 @@ This closure will be called when:
 - The renew token fail
 - That `askCredential` property is not `nil`
 
+Unlike renew token process, askCredential doesn't replay the initial request.
+
 ## TODO
 
-- [ ] Make renewTokenHandler same as askCredential property for consistency
-- [ ] Make conditions to **refresh token** public but with actual default behaviour.
+- [ ] Make renewTokenHandler same as askCredential property for consistency. [Issue #22](https://github.com/NijiDigital/NetworkStack/issues/22)
+- [ ] Make conditions to **refresh token** public but with actual default behaviour. Will be done with [Issue #22](https://github.com/NijiDigital/NetworkStack/issues/22)
 - [x] Make conditions to **renew authentication** public but with actual default behaviour.
