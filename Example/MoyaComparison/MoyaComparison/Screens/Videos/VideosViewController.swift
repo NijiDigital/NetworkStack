@@ -42,6 +42,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
     super.viewDidLoad()
     self.setupSubViews()
     self.dataSource?.dataStore.fetchVideos()
+    self.dataSource?.delegate = self
 //    self.dataSource?.dataStore.badAccess()
   }
   
@@ -75,12 +76,11 @@ final class VideosViewController: UITableViewController, StoryboardBased {
 }
 
 // MARK: - VideoView implementation
-extension VideosViewController: VideoView {
+extension VideosViewController: VideoView, VideoProvider {
   func fetched(videos: [Video]) {
     self.refreshControl?.endRefreshing()
     self.dataSource?.addAll(videos)
     self.tableView.reloadData()
-    
   }
   
   func added(video: Video) {

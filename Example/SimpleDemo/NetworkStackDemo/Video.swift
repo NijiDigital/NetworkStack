@@ -15,9 +15,25 @@
 //
 
 import Foundation
+import Decodable
 
-protocol VideoView: class {
-  func fetched(videos: [Video])
-  func added(video: Video)
-  func error(message: String)
+struct Video {
+  
+  enum JSONKeys {
+    // Attributes
+    static let identifier = "id"
+    static let title = "title"
+  }
+  
+  // MARK: Attributes
+  let identifier: Int
+  let title: String
+}
+
+extension Video: Decodable {
+  static func decode(_ json: Any) throws -> Video {
+    return try Video(identifier: json => KeyPath(JSONKeys.identifier),
+                     title: json => KeyPath(JSONKeys.title)
+    )
+  }
 }

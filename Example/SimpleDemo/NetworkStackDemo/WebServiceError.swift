@@ -16,8 +16,10 @@
 
 import Foundation
 
-protocol VideoView: class {
-  func fetched(videos: [Video])
-  func added(video: Video)
-  func error(message: String)
+/// Error enum for web services
+public enum WebServiceError: Error {
+  case unexpectedJSONFormat(json: Any)
+  case unexpectedObjectFormat(object: Any)
+  case defaultError(error: Error)
+  case missingMandatoryValue(valueInfo: String)
 }

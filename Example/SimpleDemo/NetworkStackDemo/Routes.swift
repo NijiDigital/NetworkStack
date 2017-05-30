@@ -15,9 +15,17 @@
 //
 
 import Foundation
+import NetworkStack
 
-protocol VideoView: class {
-  func fetched(videos: [Video])
-  func added(video: Video)
-  func error(message: String)
+public struct Route: Routable {
+  public let path: String
+  init(path: String) { self.path = path }
+}
+
+extension Route: CustomStringConvertible {
+  public var description: String { return path }
+}
+
+extension Route {
+  public static func video(identifier: Int) -> Route { return Route(path: "/videos/\(identifier)") }
 }
