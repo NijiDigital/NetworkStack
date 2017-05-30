@@ -8,8 +8,6 @@ NetworkStack
 
 <img src="cover.png">
 
-`NetworkStack` is a high-level network layer abstraction library written in `Swift` and based on [Alamofire](https://github.com/Alamofire/Alamofire) with `RxSwift`. 
-
 `NetworkStack` is an networking library wrapping [Alamofire](https://github.com/Alamofire/Alamofire), [Rx](https://github.com/ReactiveX/RxSwift), `OAuth` and replay mechanism in a reactive abstract API.
 
 # Features
