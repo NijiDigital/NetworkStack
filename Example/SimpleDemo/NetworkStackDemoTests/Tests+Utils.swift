@@ -11,6 +11,8 @@ import NetworkStack
 import Alamofire
 import OHHTTPStubs
 
+internal let kTimeout: TimeInterval = 3.0
+
 struct TestRoute: Routable {
   public let path: String
 
