@@ -16,17 +16,23 @@ class RenewTokenTests: NetworkStackTests {
 
   var networkStack: NetworkStack!
   let baseURL = "https://niji.fr"
+  let initToken = "fakeInitialToken"
+  let newToken = "fakeRenewedToken"
+
 
   override func setUp() {
     super.setUp()
 
     let keychain = KeychainService(serviceType: "fr.niji.networkstack.test")
     networkStack = NetworkStack(baseURL: baseURL, keychainService: keychain)
-    networkStack.updateToken(token: "fakeInitialToken")
+    networkStack.updateToken(token: initToken)
     networkStack.renewTokenHandler = {
-      self.networkStack.updateToken(token: "fakeRenewedToken")
+      self.networkStack.updateToken(token: self.newToken)
       return Observable.just()
     }
+
+    print("Current JWT : \(networkStack.currentAccessToken())")
+
   }
 
   override func tearDown() {
@@ -103,33 +109,48 @@ class RenewTokenTests: NetworkStackTests {
   }
 
   func testSimpleRenewToken() {
+    let token = self.networkStack.currentAccessToken()
+    XCTAssertNotNil(token)
+    XCTAssertEqual(token, self.initToken)
+
+    let promise = expectation(description: "Get 401")
 
     let route: TestRoute = TestRoute("/test")
     let requestParameters = RequestParameters(method: .get,
-                                              route: route)
+                                              route: route,
+                                              needsAuthorization: true)
 
-    let promise = expectation(description: "Get 401")
-    loadStubFile("empty.json", status: 401, forRoute: route)
+
+    var counter: Int = 0
+    stub(condition: pathEndsWith(route.path)) { _ in
+      let stubPath = OHPathForFile("empty.json", type(of: self))
+      counter += 1
+      // First time return 401, second time return 200 OK
+      if let token = self.networkStack.currentAccessToken(), token == self.newToken {
+        return fixture(filePath: stubPath!, status: 200, headers: ["Content-Type":"application/json"])
+      } else {
+        return fixture(filePath: stubPath!, status: 401, headers: ["Content-Type":"application/json"])
+      }
+    }
+
     _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
-      .subscribe(onError: { (error) in
-        if let networkStackError = error as? NetworkStackError {
-          switch networkStackError {
-          case .http(let httpURLResponse, _):
-            let code = httpURLResponse.statusCode
-            XCTAssertEqual(code, 401, "Expected HTTP 401 error. Got \(code)")
-            break
-          default:
-            XCTFail()
-            break
-          }
-        } else {
-          XCTFail()
-        }
-
+      .subscribe(onNext: { _ in
         promise.fulfill()
+      },
+                 onError: { (error) in
+        XCTFail()
       })
 
-    waitForExpectations(timeout: kTimeout, handler: nil)
+    waitForExpectations(timeout: kTimeout, handler: { _ in
+      // Check the token value
+      let token = self.networkStack.currentAccessToken()
+      XCTAssertNotNil(token)
+      XCTAssertEqual(token, self.newToken)
+    })
+  }
+
+  func testMultiRequestWithHTTP401() {
+
   }
 
 }

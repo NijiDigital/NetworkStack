@@ -541,6 +541,9 @@ extension NetworkStack {
 
   public func sendRequestWithJSONResponse(requestParameters: RequestParameters,
                                           queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<(HTTPURLResponse, Any)> {
+
+    print("Current JWT : \(self.currentAccessToken())")
+
     let responseSerializer = self.defaultJSONResponseSerializer()
     return self.sendRequest(requestParameters: requestParameters,
                             queue: queue,
@@ -585,7 +588,8 @@ extension NetworkStack {
   }
 
   public func currentAccessToken() -> String? {
-    return self.keychainService.accessToken
+    let token = self.keychainService.accessToken
+    return token
   }
 
   public func currentRefreshToken() -> String? {

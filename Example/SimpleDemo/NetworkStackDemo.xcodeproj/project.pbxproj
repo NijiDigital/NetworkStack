@@ -67,6 +67,7 @@
 		DB8B3BB91EDEA8DA00157F5A /* RenewTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewTokenTests.swift; sourceTree = "<group>"; };
 		DB8B3BBB1EDEBC2000157F5A /* Tests+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tests+Utils.swift"; sourceTree = "<group>"; };
 		DB8B3BC11EDEC3DF00157F5A /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		DB8B3BC71EDEFFB400157F5A /* NetworkStack.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NetworkStack.entitlements; sourceTree = "<group>"; };
 		F218749CBECF1D62305736FC /* Pods-NetworkStackDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		F2DB290C976711843DA47AA4 /* Pods-NetworkStackDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +134,7 @@
 				6D5C858F1EAF8AFA00D16717 /* WebServiceError.swift */,
 				6D5C85911EAF8B4600D16717 /* WebServiceClients.swift */,
 				6D5C85951EAF8C4900D16717 /* Video.swift */,
+				DB8B3BC71EDEFFB400157F5A /* NetworkStack.entitlements */,
 			);
 			path = NetworkStackDemo;
 			sourceTree = "<group>";
@@ -266,6 +268,7 @@
 					557F26491E6D9E12003658BC = {
 						CreatedOnToolsVersion = 8.2;
 						ProvisioningStyle = Automatic;
+						TestTargetID = 557F26351E6D9E12003658BC;
 					};
 					557F26541E6D9E12003658BC = {
 						CreatedOnToolsVersion = 8.2;
@@ -581,6 +584,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				DEVELOPMENT_TEAM = 5YUC5L4ER7;
 				INFOPLIST_FILE = NetworkStackDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -596,6 +600,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				DEVELOPMENT_TEAM = 5YUC5L4ER7;
 				INFOPLIST_FILE = NetworkStackDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -609,11 +614,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2DB290C976711843DA47AA4 /* Pods-NetworkStackDemoTests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				INFOPLIST_FILE = NetworkStackDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Niji.NetworkStackDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkStackDemo.app/NetworkStackDemo";
 			};
 			name = Debug;
 		};
@@ -621,11 +628,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D85FCA0AAB2CAB3ED1BF0C3 /* Pods-NetworkStackDemoTests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				INFOPLIST_FILE = NetworkStackDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Niji.NetworkStackDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkStackDemo.app/NetworkStackDemo";
 			};
 			name = Release;
 		};
