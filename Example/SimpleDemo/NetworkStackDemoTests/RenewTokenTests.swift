@@ -17,8 +17,8 @@ class RenewTokenTests: NetworkStackTests {
   var networkStack: NetworkStack!
   let baseURL = "https://niji.fr"
   let initToken = "fakeInitialToken"
-  let newToken = "fakeRenewedToken"
-
+  var newToken: String { return "fakeRenewedToken" + "\(newTokenCount)" }
+  var newTokenCount: Int = 0
 
   override func setUp() {
     super.setUp()
@@ -27,6 +27,7 @@ class RenewTokenTests: NetworkStackTests {
     networkStack = NetworkStack(baseURL: baseURL, keychainService: keychain)
     networkStack.updateToken(token: initToken)
     networkStack.renewTokenHandler = {
+      self.newTokenCount += 1
       self.networkStack.updateToken(token: self.newToken)
       return Observable.just()
     }
@@ -68,7 +69,7 @@ class RenewTokenTests: NetworkStackTests {
   }
 
   func testSimpleHTTP401() {
-    let promise = expectation(description: "Get 401")
+    let promise = expectation(description: "testSimpleHTTP401")
 
     let route: TestRoute = TestRoute("/test")
     let requestParameters = RequestParameters(method: .get,
@@ -109,11 +110,7 @@ class RenewTokenTests: NetworkStackTests {
   }
 
   func testSimpleRenewToken() {
-    let token = self.networkStack.currentAccessToken()
-    XCTAssertNotNil(token)
-    XCTAssertEqual(token, self.initToken)
-
-    let promise = expectation(description: "Get 401")
+    let promise = expectation(description: "testSimpleRenewToken")
 
     let route: TestRoute = TestRoute("/test")
     let requestParameters = RequestParameters(method: .get,
@@ -150,7 +147,52 @@ class RenewTokenTests: NetworkStackTests {
   }
 
   func testMultiRequestWithHTTP401() {
+    let promise1 = expectation(description: "Request 1")
+    let promise2 = expectation(description: "Request 2")
 
+    let route: TestRoute = TestRoute("/test")
+    let requestParameters = RequestParameters(method: .get,
+                                              route: route,
+                                              needsAuthorization: true)
+
+
+    var counter: Int = 0
+    stub(condition: pathEndsWith(route.path)) { _ in
+      let stubPath = OHPathForFile("empty.json", type(of: self))
+      counter += 1
+      // First time return 401, second time return 200 OK
+      if let token = self.networkStack.currentAccessToken(), token == self.newToken {
+        return fixture(filePath: stubPath!, status: 200, headers: ["Content-Type":"application/json"])
+      } else {
+        return fixture(filePath: stubPath!, status: 401, headers: ["Content-Type":"application/json"])
+      }
+    }
+
+    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+      .subscribe(onNext: { _ in
+        promise1.fulfill()
+      },
+                 onError: { (error) in
+                  XCTFail()
+      })
+
+    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+      .subscribe(onNext: { _ in
+        promise2.fulfill()
+      },
+                 onError: { (error) in
+                  XCTFail()
+      })
+
+    waitForExpectations(timeout: kTimeout, handler: { _ in
+      let nbRequest = 1 + 2 // 1 first request with 401 error, and after the renwToken, the 2 request finally sent
+      XCTAssertEqual(counter, nbRequest)
+
+      // Check the token value
+      let token = self.networkStack.currentAccessToken()
+      XCTAssertNotNil(token)
+      XCTAssertEqual(token, "fakeRenewedToken1")
+    })
   }
 
 }

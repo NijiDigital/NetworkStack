@@ -1,0 +1,94 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.35.1"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    xcversion(version: '~> 8.2')
+    unlock_keychain(path: 'login.keychain') if is_ci
+
+    SLACK_URL = "https://hooks.slack.com/services/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"
+    SLATHER_IGNORES = %w(../* */AppDelegate.swift */Constants/* */Coordinators/*).freeze
+    XCARGS = "APP_ENVIRONMENT=#{ENV['APP_ENVIRONMENT']} APP_BUNDLE_IDENTIFIER=#{ENV['APP_BUNDLE_IDENTIFIER']}"
+  end
+
+  desc "Runs all the tests and generate JUnit report"
+  lane :test do
+    scan(
+         scheme: 'NetworkStackDemo',
+         xcargs: XCARGS,
+         output_directory: './Reports',
+         output_types: "junit",
+         code_coverage:true
+         )
+         slather(
+                 workspace: 'NetworkStackDemo.xcworkspace',
+                 proj: 'NetworkStackDemo.xcodeproj',
+                 scheme: 'NetworkStackDemo',
+                 ignore: SLATHER_IGNORES,
+                 jenkins: true,
+                 source_directory: '../../Sources',
+                 output_directory: './Reports',
+                 cobertura_xml: true
+                 )
+  end
+
+  desc "Run the tests and generate HTML coverage report"
+  lane :local do
+    scan(
+         scheme: 'NetworkStackDemo',
+         xcargs: XCARGS,
+         output_directory: './Reports/',
+         output_types: "html",
+         open_report: true,
+         code_coverage:true
+         )
+         slather(
+                 workspace: 'NetworkStackDemo.xcworkspace',
+                 proj: 'NetworkStackDemo.xcodeproj',
+                 scheme: 'NetworkStackDemo',
+                 ignore: SLATHER_IGNORES,
+                 source_directory: '../../Sources',
+                 output_directory: './Reports',
+                 html: true,
+                 show: true
+                 )
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics
