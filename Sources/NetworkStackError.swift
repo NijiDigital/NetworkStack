@@ -35,6 +35,8 @@ public enum NetworkStackError: Error {
   case requestBuildFail
   /// Upload manager has not been setup
   case uploadManagerIsNotSet
+  /// Requested token does'nt exist, is expired or invalidated
+  case tokenUnavaible
   /// Unknown
   case unknown
 }

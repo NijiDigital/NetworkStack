@@ -27,13 +27,16 @@ class RenewTokenTests: NetworkStackTests {
     networkStack = NetworkStack(baseURL: baseURL, keychainService: keychain)
     networkStack.updateToken(token: initToken)
     networkStack.renewTokenHandler = {
-      self.newTokenCount += 1
-      self.networkStack.updateToken(token: self.newToken)
-      return Observable.just()
+      return Observable.create({ (observer) -> Disposable in
+        self.newTokenCount += 1
+
+        self.networkStack.updateToken(token: self.newToken)
+        observer.onNext()
+        observer.onCompleted()
+
+        return Disposables.create()
+      })
     }
-
-    print("Current JWT : \(networkStack.currentAccessToken())")
-
   }
 
   override func tearDown() {
@@ -99,13 +102,13 @@ class RenewTokenTests: NetworkStackTests {
       } else {
         XCTFail()
       }
-
       promise.fulfill()
     })
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send twice.
       XCTAssertEqual(counter, 2)
+      XCTAssertEqual(self.networkStack.currentAccessToken(), self.newToken)
     })
   }
 
@@ -130,15 +133,21 @@ class RenewTokenTests: NetworkStackTests {
       }
     }
 
+    var nextCount: Int = 0
     _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
-      .subscribe(onNext: { _ in
-        promise.fulfill()
-      },
-                 onError: { (error) in
+      .do(onNext: { (_) in
+        nextCount += 1
+      },onError: { (error) in
         XCTFail()
+      }, onCompleted: {
+        promise.fulfill()
       })
+      .subscribe()
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
+      XCTAssertEqual(nextCount, 1)
+      XCTAssertEqual(counter, 2)
+
       // Check the token value
       let token = self.networkStack.currentAccessToken()
       XCTAssertNotNil(token)
@@ -146,7 +155,11 @@ class RenewTokenTests: NetworkStackTests {
     })
   }
 
-  func testMultiRequestWithHTTP401() {
+  func testMultiRequestWithHTTP401OnlyOneRenewSent() {
+    if let token = self.networkStack.currentAccessToken() {
+      XCTAssertEqual(token, initToken)
+    }
+
     let promise1 = expectation(description: "Request 1")
     let promise2 = expectation(description: "Request 2")
 
@@ -157,13 +170,17 @@ class RenewTokenTests: NetworkStackTests {
 
 
     var counter: Int = 0
+    var counter200: Int = 0
+    var counter401: Int = 0
     stub(condition: pathEndsWith(route.path)) { _ in
       let stubPath = OHPathForFile("empty.json", type(of: self))
       counter += 1
       // First time return 401, second time return 200 OK
-      if let token = self.networkStack.currentAccessToken(), token == self.newToken {
+      if counter > 1 {
+        counter200 += 1
         return fixture(filePath: stubPath!, status: 200, headers: ["Content-Type":"application/json"])
       } else {
+        counter401 += 1
         return fixture(filePath: stubPath!, status: 401, headers: ["Content-Type":"application/json"])
       }
     }
@@ -171,9 +188,71 @@ class RenewTokenTests: NetworkStackTests {
     _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise1.fulfill()
+      }, onError: { (error) in
+        XCTFail("Encounter error : \(error)")
+      })
+
+    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+      .subscribe(onNext: { _ in
+        promise2.fulfill()
+      }, onError: { (error) in
+        XCTFail("Encounter error : \(error)")
+      })
+
+    waitForExpectations(timeout: kTimeout, handler: { _ in
+      XCTAssertEqual(counter, 3)
+      XCTAssertEqual(counter200, 2)
+      XCTAssertEqual(counter401, 1)
+
+      // Check the token value
+      let token = self.networkStack.currentAccessToken()
+      XCTAssertNotNil(token)
+      XCTAssertEqual(token, "fakeRenewedToken1")
+    })
+  }
+
+  func testMultiRequestWithHTTP401() {
+    if let token = self.networkStack.currentAccessToken() {
+      XCTAssertEqual(token, initToken)
+    }
+
+    let promise1 = expectation(description: "testMultiRequestWithHTTP401 Request 1")
+    let promise2 = expectation(description: "testMultiRequestWithHTTP401 Request 2")
+    let promise3 = expectation(description: "testMultiRequestWithHTTP401 Request 3")
+
+    let route: TestRoute = TestRoute("/test")
+    let requestParameters = RequestParameters(method: .get,
+                                              route: route,
+                                              needsAuthorization: true)
+
+
+    var counter: Int = 0
+    var counter200: Int = 0
+    var counter401: Int = 0
+    stub(condition: pathEndsWith(route.path)) { _ in
+      let stubPath = OHPathForFile("empty.json", type(of: self))
+      counter += 1
+      // First time return 401, second time return 200 OK
+      if counter > 1 {
+        counter200 += 1
+        return fixture(filePath: stubPath!, status: 200, headers: ["Content-Type":"application/json"])
+      } else {
+        counter401 += 1
+        return fixture(filePath: stubPath!, status: 401, headers: ["Content-Type":"application/json"])
+      }
+    }
+
+    var nextCount: Int = 0
+    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+      .do(onNext: { (item: (response: HTTPURLResponse, data: Any)) in
+        nextCount += 1
+      })
+      .subscribe(onNext: { _ in
       },
                  onError: { (error) in
                   XCTFail()
+      }, onCompleted: {
+        promise1.fulfill()
       })
 
     _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
@@ -184,9 +263,21 @@ class RenewTokenTests: NetworkStackTests {
                   XCTFail()
       })
 
+    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+      .subscribe(onNext: { _ in
+        promise3.fulfill()
+      },
+                 onError: { (error) in
+                  XCTFail()
+      })
+
     waitForExpectations(timeout: kTimeout, handler: { _ in
-      let nbRequest = 1 + 2 // 1 first request with 401 error, and after the renwToken, the 2 request finally sent
-      XCTAssertEqual(counter, nbRequest)
+      XCTAssertEqual(nextCount, 1)
+      let nbRequest = 1 + 3 // 1 first request with 401 error, and after the renewToken, the 3 requests finally sent
+      XCTAssertEqual(counter, nbRequest,"Expected 4 request, the first one with 401 error response. And then the 3 tests request. Here we have : \(counter)")
+
+      XCTAssertEqual(counter401, 1)
+      XCTAssertEqual(counter200, 3)
 
       // Check the token value
       let token = self.networkStack.currentAccessToken()
