@@ -13,7 +13,6 @@
 		557F263F1E6D9E12003658BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F263D1E6D9E12003658BC /* Main.storyboard */; };
 		557F26411E6D9E12003658BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 557F26401E6D9E12003658BC /* Assets.xcassets */; };
 		557F26441E6D9E12003658BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F26421E6D9E12003658BC /* LaunchScreen.storyboard */; };
-		557F264F1E6D9E12003658BC /* NetworkStackDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F264E1E6D9E12003658BC /* NetworkStackDemoTests.swift */; };
 		557F265A1E6D9E12003658BC /* NetworkStackDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F26591E6D9E12003658BC /* NetworkStackDemoUITests.swift */; };
 		6B63147CCE8E249CF7926C37 /* Pods_NetworkStackDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B03F02F57C3CD9B9F982CA /* Pods_NetworkStackDemoTests.framework */; };
 		6D5C858E1EAF88E700D16717 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C858D1EAF88E700D16717 /* Routes.swift */; };
@@ -52,7 +51,6 @@
 		557F26431E6D9E12003658BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		557F26451E6D9E12003658BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		557F264A1E6D9E12003658BC /* NetworkStackDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStackDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		557F264E1E6D9E12003658BC /* NetworkStackDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStackDemoTests.swift; sourceTree = "<group>"; };
 		557F26501E6D9E12003658BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		557F26551E6D9E12003658BC /* NetworkStackDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStackDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F26591E6D9E12003658BC /* NetworkStackDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStackDemoUITests.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				DB8B3BC01EDEC3DF00157F5A /* Fixtures */,
-				557F264E1E6D9E12003658BC /* NetworkStackDemoTests.swift */,
 				557F26501E6D9E12003658BC /* Info.plist */,
 				DB8B3BB91EDEA8DA00157F5A /* RenewTokenTests.swift */,
 				DB8B3BBB1EDEBC2000157F5A /* Tests+Utils.swift */,
@@ -436,7 +433,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				557F264F1E6D9E12003658BC /* NetworkStackDemoTests.swift in Sources */,
 				DB8B3BBC1EDEBC2000157F5A /* Tests+Utils.swift in Sources */,
 				DB8B3BBA1EDEA8DA00157F5A /* RenewTokenTests.swift in Sources */,
 			);
