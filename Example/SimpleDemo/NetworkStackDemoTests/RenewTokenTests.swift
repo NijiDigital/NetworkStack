@@ -11,6 +11,7 @@ import NetworkStack
 import Alamofire
 import RxSwift
 import OHHTTPStubs
+import RxSwift
 
 class RenewTokenTests: NetworkStackTests {
 
@@ -19,6 +20,7 @@ class RenewTokenTests: NetworkStackTests {
   let initToken = "fakeInitialToken"
   var newToken: String { return "fakeRenewedToken" + "\(newTokenCount)" }
   var newTokenCount: Int = 0
+  var disposeBag: DisposeBag = DisposeBag()
 
   override func setUp() {
     super.setUp()
@@ -42,6 +44,8 @@ class RenewTokenTests: NetworkStackTests {
   override func tearDown() {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     super.tearDown()
+
+    self.disposeBag = DisposeBag()
   }
 
   func testSimpleHTTP200() {
@@ -60,10 +64,11 @@ class RenewTokenTests: NetworkStackTests {
       return fixture(filePath: stubPath!, headers: ["Content-Type":"application/json"])
     }
 
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext : {_ in
         promise.fulfill()
       })
+      .addDisposableTo(self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send only once.
@@ -87,23 +92,24 @@ class RenewTokenTests: NetworkStackTests {
       return fixture(filePath: stubPath!, status: 401, headers: ["Content-Type":"application/json"])
     }
 
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
-    .subscribe(onError: { (error) in
-      if let networkStackError = error as? NetworkStackError {
-        switch networkStackError {
-        case .http(let httpURLResponse, _):
-          let code = httpURLResponse.statusCode
-          XCTAssertEqual(code, 401, "Expected HTTP 401 error. Got \(code)")
-          break
-        default:
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+      .subscribe(onError: { (error) in
+        if let networkStackError = error as? NetworkStackError {
+          switch networkStackError {
+          case .http(let httpURLResponse, _):
+            let code = httpURLResponse.statusCode
+            XCTAssertEqual(code, 401, "Expected HTTP 401 error. Got \(code)")
+            break
+          default:
+            XCTFail()
+            break
+          }
+        } else {
           XCTFail()
-          break
         }
-      } else {
-        XCTFail()
-      }
-      promise.fulfill()
-    })
+        promise.fulfill()
+      })
+      .addDisposableTo(self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send twice.
@@ -134,7 +140,7 @@ class RenewTokenTests: NetworkStackTests {
     }
 
     var nextCount: Int = 0
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .do(onNext: { (_) in
         nextCount += 1
       },onError: { (error) in
@@ -143,6 +149,8 @@ class RenewTokenTests: NetworkStackTests {
         promise.fulfill()
       })
       .subscribe()
+      .addDisposableTo(self.disposeBag)
+
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(nextCount, 1)
@@ -185,19 +193,21 @@ class RenewTokenTests: NetworkStackTests {
       }
     }
 
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise1.fulfill()
       }, onError: { (error) in
         XCTFail("Encounter error : \(error)")
       })
+      .addDisposableTo(self.disposeBag)
 
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise2.fulfill()
       }, onError: { (error) in
         XCTFail("Encounter error : \(error)")
       })
+      .addDisposableTo(self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(counter, 3)
@@ -243,7 +253,7 @@ class RenewTokenTests: NetworkStackTests {
     }
 
     var nextCount: Int = 0
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .do(onNext: { (item: (response: HTTPURLResponse, data: Any)) in
         nextCount += 1
       })
@@ -254,22 +264,25 @@ class RenewTokenTests: NetworkStackTests {
       }, onCompleted: {
         promise1.fulfill()
       })
+      .addDisposableTo(self.disposeBag)
 
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise2.fulfill()
       },
                  onError: { (error) in
                   XCTFail()
       })
+      .addDisposableTo(self.disposeBag)
 
-    _ = networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
+    networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise3.fulfill()
       },
                  onError: { (error) in
                   XCTFail()
       })
+      .addDisposableTo(self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(nextCount, 1)
@@ -278,12 +291,12 @@ class RenewTokenTests: NetworkStackTests {
 
       XCTAssertEqual(counter401, 1)
       XCTAssertEqual(counter200, 3)
-
+      
       // Check the token value
       let token = self.networkStack.currentAccessToken()
       XCTAssertNotNil(token)
       XCTAssertEqual(token, "fakeRenewedToken1")
     })
   }
-
+  
 }
