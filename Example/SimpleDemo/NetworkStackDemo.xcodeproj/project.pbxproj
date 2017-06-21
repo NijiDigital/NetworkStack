@@ -13,13 +13,15 @@
 		557F263F1E6D9E12003658BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F263D1E6D9E12003658BC /* Main.storyboard */; };
 		557F26411E6D9E12003658BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 557F26401E6D9E12003658BC /* Assets.xcassets */; };
 		557F26441E6D9E12003658BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F26421E6D9E12003658BC /* LaunchScreen.storyboard */; };
-		557F264F1E6D9E12003658BC /* NetworkStackDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F264E1E6D9E12003658BC /* NetworkStackDemoTests.swift */; };
 		557F265A1E6D9E12003658BC /* NetworkStackDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F26591E6D9E12003658BC /* NetworkStackDemoUITests.swift */; };
 		6B63147CCE8E249CF7926C37 /* Pods_NetworkStackDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B03F02F57C3CD9B9F982CA /* Pods_NetworkStackDemoTests.framework */; };
 		6D5C858E1EAF88E700D16717 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C858D1EAF88E700D16717 /* Routes.swift */; };
 		6D5C85901EAF8AFA00D16717 /* WebServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C858F1EAF8AFA00D16717 /* WebServiceError.swift */; };
 		6D5C85921EAF8B4600D16717 /* WebServiceClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C85911EAF8B4600D16717 /* WebServiceClients.swift */; };
 		6D5C85961EAF8C4900D16717 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C85951EAF8C4900D16717 /* Video.swift */; };
+		DB8B3BBA1EDEA8DA00157F5A /* RenewTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B3BB91EDEA8DA00157F5A /* RenewTokenTests.swift */; };
+		DB8B3BBC1EDEBC2000157F5A /* Tests+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B3BBB1EDEBC2000157F5A /* Tests+Utils.swift */; };
+		DB8B3BC21EDEC3DF00157F5A /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = DB8B3BC11EDEC3DF00157F5A /* empty.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +51,6 @@
 		557F26431E6D9E12003658BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		557F26451E6D9E12003658BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		557F264A1E6D9E12003658BC /* NetworkStackDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStackDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		557F264E1E6D9E12003658BC /* NetworkStackDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStackDemoTests.swift; sourceTree = "<group>"; };
 		557F26501E6D9E12003658BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		557F26551E6D9E12003658BC /* NetworkStackDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkStackDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F26591E6D9E12003658BC /* NetworkStackDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStackDemoUITests.swift; sourceTree = "<group>"; };
@@ -61,6 +62,10 @@
 		8F75B4EC321F11FEFF279A41 /* Pods_NetworkStackDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkStackDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7B03F02F57C3CD9B9F982CA /* Pods_NetworkStackDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkStackDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80F589707D6CD6AE44DB6ED /* Pods-NetworkStackDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo.release.xcconfig"; sourceTree = "<group>"; };
+		DB8B3BB91EDEA8DA00157F5A /* RenewTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenewTokenTests.swift; sourceTree = "<group>"; };
+		DB8B3BBB1EDEBC2000157F5A /* Tests+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tests+Utils.swift"; sourceTree = "<group>"; };
+		DB8B3BC11EDEC3DF00157F5A /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		DB8B3BC71EDEFFB400157F5A /* NetworkStack.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NetworkStack.entitlements; sourceTree = "<group>"; };
 		F218749CBECF1D62305736FC /* Pods-NetworkStackDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		F2DB290C976711843DA47AA4 /* Pods-NetworkStackDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStackDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +132,7 @@
 				6D5C858F1EAF8AFA00D16717 /* WebServiceError.swift */,
 				6D5C85911EAF8B4600D16717 /* WebServiceClients.swift */,
 				6D5C85951EAF8C4900D16717 /* Video.swift */,
+				DB8B3BC71EDEFFB400157F5A /* NetworkStack.entitlements */,
 			);
 			path = NetworkStackDemo;
 			sourceTree = "<group>";
@@ -134,8 +140,10 @@
 		557F264D1E6D9E12003658BC /* NetworkStackDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				557F264E1E6D9E12003658BC /* NetworkStackDemoTests.swift */,
+				DB8B3BC01EDEC3DF00157F5A /* Fixtures */,
 				557F26501E6D9E12003658BC /* Info.plist */,
+				DB8B3BB91EDEA8DA00157F5A /* RenewTokenTests.swift */,
+				DB8B3BBB1EDEBC2000157F5A /* Tests+Utils.swift */,
 			);
 			path = NetworkStackDemoTests;
 			sourceTree = "<group>";
@@ -156,6 +164,14 @@
 				A7B03F02F57C3CD9B9F982CA /* Pods_NetworkStackDemoTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB8B3BC01EDEC3DF00157F5A /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B3BC11EDEC3DF00157F5A /* empty.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		F1850EE72F85152509D7F693 /* Pods */ = {
@@ -293,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8B3BC21EDEC3DF00157F5A /* empty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +433,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				557F264F1E6D9E12003658BC /* NetworkStackDemoTests.swift in Sources */,
+				DB8B3BBC1EDEBC2000157F5A /* Tests+Utils.swift in Sources */,
+				DB8B3BBA1EDEA8DA00157F5A /* RenewTokenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,8 +578,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F218749CBECF1D62305736FC /* Pods-NetworkStackDemo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				DEVELOPMENT_TEAM = 5YUC5L4ER7;
 				INFOPLIST_FILE = NetworkStackDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -575,8 +594,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D80F589707D6CD6AE44DB6ED /* Pods-NetworkStackDemo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				DEVELOPMENT_TEAM = 5YUC5L4ER7;
 				INFOPLIST_FILE = NetworkStackDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -590,7 +610,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2DB290C976711843DA47AA4 /* Pods-NetworkStackDemoTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				INFOPLIST_FILE = NetworkStackDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Niji.NetworkStackDemoTests;
@@ -604,7 +624,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D85FCA0AAB2CAB3ED1BF0C3 /* Pods-NetworkStackDemoTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/NetworkStackDemo/NetworkStack.entitlements";
 				INFOPLIST_FILE = NetworkStackDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Niji.NetworkStackDemoTests;

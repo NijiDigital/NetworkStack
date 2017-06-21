@@ -52,9 +52,25 @@ public final class NetworkStack {
       uploadManager?.backgroundCompletionHandler = newValue
     }
   }
-  
+
+  /// Auth - Tokens part
+  fileprivate var tokenManager: TokenManager?
   public var askCredential: AskCredential?
-  public var renewTokenHandler: RenewTokenHandler?
+  public var renewTokenHandler: RenewTokenHandler? {
+    didSet {
+      if let tokenFetcher = renewTokenHandler {
+        let tokenFetchAndGiveValue: Observable<String> = tokenFetcher().map { _ in
+          if let token = self.currentAccessToken() {
+            return token
+          } else {
+            throw NetworkStackError.tokenUnavaible
+          }
+        }
+
+        self.tokenManager = TokenManager(tokenFetcher: tokenFetchAndGiveValue)
+      }
+    }
+  }
 
   public weak var delegate: NetworkStackDelegate?
 
@@ -250,17 +266,24 @@ extension NetworkStack {
   }
 
   fileprivate func sendAutoRetryRequest<T>(_ sendRequestBlock: @escaping () -> Observable<T>, renewTokenFunction: @escaping () -> Observable<Void>) -> Observable<T> {
+
     return sendRequestBlock()
       .catchError { [unowned self] (error: Error) -> Observable<T> in
-        if self.shouldRenewToken(forError: error) {
-          return renewTokenFunction()
+        // On error, check if we need to refresh token
+        if let tokenManager = self.tokenManager, self.shouldRenewToken(forError: error) {
+          tokenManager.invalidateToken()
+
+          return tokenManager.fetchToken()
             .do(onError: { [unowned self] error in
               // Ask for credentials if renew token fail for any reason
               self.askCredentials()
                 .subscribe()
                 .addDisposableTo(self.disposeBag)
             })
-            .flatMap(sendRequestBlock)
+            .flatMap({ (token) -> Observable<T> in
+              // On success, retry the initial request
+              return sendRequestBlock()
+            }).take(1)// Send .completed after the first .next received from inside the flatMap (because the .completed from inside the flatMap doesn't propagate ouside the flatMap)
         } else {
           throw error
         }
@@ -368,7 +391,7 @@ extension NetworkStack {
 
     let requestObservable: Observable<(HTTPURLResponse, T.SerializedObject)>
 
-    if let renewTokenHandler = self.renewTokenHandler {
+    if let tokenFetcher = self.renewTokenHandler {
       requestObservable = self.sendAutoRetryRequest({ [unowned self] () -> Observable<(HTTPURLResponse, T.SerializedObject)> in
 
         guard let request = self.buildRequest(requestParameters: requestParameters) else {
@@ -377,7 +400,7 @@ extension NetworkStack {
 
         return self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
         }, renewTokenFunction: { () -> Observable<Void> in
-          return renewTokenHandler()
+          return tokenFetcher().map { _ in return }
       })
     } else {
 
@@ -541,6 +564,7 @@ extension NetworkStack {
 
   public func sendRequestWithJSONResponse(requestParameters: RequestParameters,
                                           queue: DispatchQueue = DispatchQueue.global(qos: .default)) -> Observable<(HTTPURLResponse, Any)> {
+
     let responseSerializer = self.defaultJSONResponseSerializer()
     return self.sendRequest(requestParameters: requestParameters,
                             queue: queue,
@@ -585,7 +609,8 @@ extension NetworkStack {
   }
 
   public func currentAccessToken() -> String? {
-    return self.keychainService.accessToken
+    let token = self.keychainService.accessToken
+    return token
   }
 
   public func currentRefreshToken() -> String? {

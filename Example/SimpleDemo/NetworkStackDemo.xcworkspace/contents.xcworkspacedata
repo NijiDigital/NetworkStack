@@ -2,6 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:fastlane/Fastfile"
+      assignedFileDataType = "public.ruby-script">
+   </FileRef>
+   <FileRef
       location = "group:NetworkStackDemo.xcodeproj">
    </FileRef>
    <FileRef
