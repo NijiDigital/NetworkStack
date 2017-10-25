@@ -1,6 +1,6 @@
 {
   "name": "NetworkStack",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "summary": "A Swift network request manager framework using reactive programming",
   "homepage": "https://github.com/NijiDigital/NetworkStack",
   "license": {
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/NijiDigital/NetworkStack.git",
-    "tag": "0.1.5"
+    "tag": "0.1.6"
   },
   "source_files": "Sources/**/*.swift",
   "ios": {
@@ -27,10 +27,10 @@
       "~> 4.0"
     ],
     "RxSwift": [
-      "~> 3.0"
+      "~> 4.0"
     ],
     "KeychainAccess": [
-      "~> 3.0"
+      "~> 3.1"
     ]
   }
 }

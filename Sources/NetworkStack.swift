@@ -278,7 +278,7 @@ extension NetworkStack {
               // Ask for credentials if renew token fail for any reason
               self.askCredentials()
                 .subscribe()
-                .addDisposableTo(self.disposeBag)
+                .disposed(by: self.disposeBag)
             })
             .flatMap({ (token) -> Observable<T> in
               // On success, retry the initial request
@@ -415,7 +415,7 @@ extension NetworkStack {
       .do(onError: { [unowned self] error in
         self.askCredentialsIfNeeded(forError: error)
           .subscribe()
-          .addDisposableTo(self.disposeBag)
+          .disposed(by: self.disposeBag)
       })
   }
 }

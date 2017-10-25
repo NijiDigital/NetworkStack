@@ -1,6 +1,6 @@
 NetworkStack
 ===========
-[![Language: Swift 3.1](https://img.shields.io/badge/Swift-3.1-orange.svg?style=flat-square)](https://swift.org)
+[![Language: Swift 4](https://img.shields.io/badge/Swift-4-orange.svg?style=flat-square)](https://swift.org)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/NetworkStack.svg?style=flat-square)](https://cocoapods.org/pods/NetworkStack)
 [![CocoaPods](https://img.shields.io/cocoapods/p/NetworkStack.svg?style=flat-square)]()
 [![Twitter](https://img.shields.io/badge/twitter-@Niji_Digital-blue.svg?style=flat-square)](http://twitter.com/Niji_Digital)
@@ -20,9 +20,9 @@ This library features the following:
   * letting you execute the refreshToken request, then replay the request automatically
   * letting you present arbitrary login screen when credentials must be asked to the user in case the refreshToken isn't valid or available
 * Simplifies the API so that your WebService client has a simple (and Alamofire-agnostic) API to call when it needs to send requests, without worrying about the internals.
- 
+
 # Installation
- 
+
 ## CocoaPods
 
 Using [CocoaPods](https://guides.cocoapods.org) is the recommended way :
@@ -38,19 +38,19 @@ pod 'NetworkStack'
 From the command line, run `pod install`
 
 # Documentation & Usage Examples
-We have specific wiki. It will be helpful for you if you want to implement advanced or specific behaviour : 
- 
----------------- 
- 
+We have specific wiki. It will be helpful for you if you want to implement advanced or specific behaviour :
+
+----------------
+
 - [UploadRequests](Documentation/UploadRequests.md)
 - [OAuth2](Documentation/OAuth2)
 - [Auto retry](Documentation/AutoRetry.md)
- 
----------------- 
+
+----------------
 
 ## Simple Usage
 
-### Setup 
+### Setup
 
 ```swift
 let baseStringURL = "http://networkstack.fr/api/v1"
@@ -85,7 +85,7 @@ This is an implementation example but you are free to use it like you want.
 
 ### Request parameters
 
-This is the core of requests creation. Request parameters can take : 
+This is the core of requests creation. Request parameters can take :
 
 **`RequestParameters`** :
 
@@ -151,7 +151,7 @@ networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
   }).addDisposableTo(self.disposeBag)
 ```
 
-### Errors 
+### Errors
 
 Network stack provides several errors that you can handles in your app.
 
@@ -187,9 +187,9 @@ We have some examples :
 
 # Feedback
 
-- If you found a **bug** , open an **issue** 
-- If you have a **feature request** , open an **issue** 
-- If you want to **contribute** , submit a **pull request** 
+- If you found a **bug** , open an **issue**
+- If you have a **feature request** , open an **issue**
+- If you want to **contribute** , submit a **pull request**
 
 # License
 

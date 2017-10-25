@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import NetworkStack
 
 /**
  TokenManager is responsible of token management for the NetworkStack
