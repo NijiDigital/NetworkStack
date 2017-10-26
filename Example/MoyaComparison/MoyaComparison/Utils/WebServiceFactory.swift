@@ -36,7 +36,7 @@ enum ServiceFactory {
     let keychainService: KeychainService = KeychainService(serviceType: "com.networkstack.example.moyacomparison.keychain")
     let userNetworkStack = NetworkStack(baseURL: userBaseURL, keychainService: keychainService)
     let videoNetworkStack = NetworkStack(baseURL: videoBaseURL, keychainService: keychainService)
-    let customAPIProvider = RxMoyaProvider<CustomAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    let customAPIProvider = MoyaProvider<CustomAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
     let webServices = Services(
       serializationJSONCodable: SerializationServiceJSONCodable(),
       serializationSwiftyJSON: SerializationServiceSwiftyJSON(),

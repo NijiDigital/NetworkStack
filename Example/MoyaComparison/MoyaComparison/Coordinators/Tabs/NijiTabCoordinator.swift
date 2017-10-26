@@ -30,7 +30,7 @@ final class NijiTabCoordinator: NavCoordinator {
     self.webServiceClients = webServiceClients
     
     self.navigationController.tabBarItem = UITabBarItem(title: TabsName.niji.rawValue, image: Asset.iconNetworkstack.image, tag: TabsTag.niji.rawValue)
-    self.navigationController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
+    self.navigationController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     self.navigationController.setupBlackNavigationBar()
     self.start()
   }

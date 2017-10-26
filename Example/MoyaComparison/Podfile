@@ -16,7 +16,7 @@ target 'MoyaComparison' do
   pod 'Reusable'
   pod 'RealmSwift'
   pod 'SwiftyUserDefaults'
-  pod 'Moya/RxSwift', '~> 8.0'
+  pod 'Moya/RxSwift'
   pod 'SwiftyJSON'
   pod 'ObjectMapper'
   pod 'Decodable'

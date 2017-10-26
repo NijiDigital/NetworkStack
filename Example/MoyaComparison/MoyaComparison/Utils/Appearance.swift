@@ -20,7 +20,7 @@ final class Appearance {
   
   static func setup() {
     UINavigationBar.appearance().tintColor = UIColor.white
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
     UINavigationBar.appearance().backIndicatorImage = Asset.arrowLeft.image
     UINavigationBar.appearance().backIndicatorTransitionMaskImage = Asset.arrowLeft.image
     UIToolbar.appearance().tintColor = UIColor.black
