@@ -415,7 +415,7 @@ extension NetworkStack {
       .do(onError: { [unowned self] error in
         self.askCredentialsIfNeeded(forError: error)
           .subscribe()
-            .disposed(by: self.disposeBag)
+          .disposed(by: self.disposeBag)
       })
   }
 }

@@ -67,13 +67,16 @@ public:
     /// websocket_read_error_handler() and websocket_write_error_handler() are called when an
     /// error occurs on the underlying stream given by the async_read and async_write functions above.
     /// The error_code is passed through.
+    /// websocket_handshake_error_handler() will be called when there is an error in the handshake
+    /// such as "404 Not found".
     /// websocket_protocol_error_handler() is called when there is an protocol error in the incoming
-    /// messages.
+    /// websocket messages.
     /// After calling any of these error callbacks, the Socket will move into the stopped state, and
     /// no more messages should be sent, or will be received.
     /// It is safe to destroy the WebSocket object in these handlers.
     virtual void websocket_read_error_handler(std::error_code) = 0;
     virtual void websocket_write_error_handler(std::error_code) = 0;
+    virtual void websocket_handshake_error_handler(std::error_code, const HTTPHeaders&) = 0;
     virtual void websocket_protocol_error_handler(std::error_code) = 0;
     //@}
 
@@ -114,21 +117,33 @@ public:
     /// will send the HTTP request that initiates the WebSocket protocol and
     /// wait for the HTTP response from the server. The HTTP request will
     /// contain the \param request_uri in the HTTP request line. The \param host
-    /// will be sent as the value in a HTTP Host header line. Extra HTTP headers
-    /// can be provided in \a headers.
+    /// will be sent as the value in a HTTP Host header line.
+    /// \param sec_websocket_protocol will be set as header value for
+    /// Sec-WebSocket-Protocol. Extra HTTP headers can be provided in \a headers.
     ///
     /// When the server responds with a valid HTTP response, the callback
     /// function websocket_handshake_completion_handler() is called. Messages
     /// can only be sent and received after the handshake has completed.
-    void initiate_client_handshake(std::string request_uri, std::string host,
+    void initiate_client_handshake(const std::string& request_uri,
+                                   const std::string& host,
+                                   const std::string& sec_websocket_protocol,
                                    HTTPHeaders headers = HTTPHeaders{});
 
-    /// initiate_server_handshake() starts the Socket in server mode. It will wait for a
-    /// HTTP request from a client and respond with a HTTP response. After sending a HTTP
-    /// response, websocket_handshake_completion_handler() is called. Messages can only be sent and
-    /// received after the handshake has completed.
+    /// initiate_server_handshake() starts the Socket in server mode. It will
+    /// wait for a HTTP request from a client and respond with a HTTP response.
+    /// After sending a HTTP response, websocket_handshake_completion_handler()
+    /// is called. Messages can only be sent and received after the handshake
+    /// has completed.
     void initiate_server_handshake();
 
+    /// initiate_server_websocket_after_handshake() starts the Socket in a state
+    /// where it will read and write WebSocket messages but it will expect the
+    /// handshake to have been completed by the caller. The use of this
+    /// function is to perform HTTP routing externally and then start the
+    /// WebSocket in case the HTTP request is an Upgrade to WebSocket.
+    /// Typically, the caller will have used make_http_response() to send the
+    /// HTTP response itself.
+    void initiate_server_websocket_after_handshake();
 
     /// The async_write_* functions send frames. Only one frame should be sent at a time,
     /// meaning that the user must wait for the handler to be called before sending the next frame.
@@ -164,10 +179,29 @@ private:
 };
 
 
+/// read_sec_websocket_protocol() returns the value of the
+/// header Sec-WebSocket-Protocol in the http request \a request.
+/// None is returned if the header Sec-WebSocket-Protocol is absent
+/// in the request.
+util::Optional<std::string> read_sec_websocket_protocol(const HTTPRequest& request);
+
+/// make_http_response() takes \a request as a WebSocket handshake request,
+/// validates it, and makes a HTTP response. If the request is invalid, the
+/// return value is None, and ec is set to Error::bad_handshake_request.
+util::Optional<HTTPResponse> make_http_response(const HTTPRequest& request,
+                                                const std::string& sec_websocket_protocol,
+                                                std::error_code& ec);
+
 enum class Error {
-    bad_handshake_request  = 1, ///< Bad WebSocket handshake response received
-    bad_handshake_response = 2, ///< Bad WebSocket handshake response received
-    bad_message            = 3, ///< Ill-formed WebSocket message
+    bad_request_header_upgrade            = 1,
+    bad_request_header_connection         = 2,
+    bad_request_header_websocket_version  = 3,
+    bad_request_header_websocket_key      = 4,
+    bad_handshake_request                 = 5,
+    bad_handshake_response                = 6,
+    bad_handshake_response_404_not_found  = 7,
+    bad_message                           = 8
+
 };
 
 const std::error_category& error_category() noexcept;

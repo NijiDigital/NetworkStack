@@ -25,19 +25,14 @@ PODS:
 
 DEPENDENCIES:
   - Decodable
-  - NetworkStack (from `https://github.com/aelbarji/NetworkStack.git`)
+  - NetworkStack (from `../../`)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
   - RxSwift
 
 EXTERNAL SOURCES:
   NetworkStack:
-    :git: https://github.com/aelbarji/NetworkStack.git
-
-CHECKOUT OPTIONS:
-  NetworkStack:
-    :commit: d386e7c5f629f3f925aca3c3e083a7f2049209f7
-    :git: https://github.com/aelbarji/NetworkStack.git
+    :path: ../../
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -47,6 +42,6 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
 
-PODFILE CHECKSUM: 86706eef1db94e406169600d20b391bd80694cb5
+PODFILE CHECKSUM: 5addf36061eb4098b19ded3daeb49fa68d9f9aea
 
 COCOAPODS: 1.3.1

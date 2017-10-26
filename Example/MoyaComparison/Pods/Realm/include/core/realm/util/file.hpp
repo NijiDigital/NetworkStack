@@ -22,6 +22,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <memory>
+#include <functional>
 #include <stdexcept>
 #include <string>
 #include <streambuf>
@@ -30,6 +31,17 @@
 #include <dirent.h> // POSIX.1-2001
 #endif
 
+#if defined(_MSC_VER) && _MSC_VER >= 1900 // compiling with at least Visual Studio 2015
+#include <experimental/filesystem>
+namespace std {
+    namespace filesystem = std::experimental::filesystem::v1;
+}
+#define REALM_HAVE_STD_FILESYSTEM 1
+#else
+#define REALM_HAVE_STD_FILESYSTEM 0
+#endif
+
+#include <realm/utilities.hpp>
 #include <realm/util/features.h>
 #include <realm/util/assert.hpp>
 #include <realm/util/safe_int_ops.hpp>
@@ -54,16 +66,43 @@ void make_dir(const std::string& path);
 // did not already exist and was newly created, this returns true.
 bool try_make_dir(const std::string& path);
 
-/// Remove the specified directory path from the file system. If the
-/// specified path is a directory, this function is equivalent to
-/// std::remove(const char*).
+/// Remove the specified empty directory path from the file system. It is an
+/// error if the specified path is not a directory, or if it is a nonempty
+/// directory. In so far as the specified path is a directory, std::remove(const
+/// char*) is equivalent to this function.
 ///
-/// \throw File::AccessError If the directory could not be removed. If
-/// the reason corresponds to one of the exception types that are
-/// derived from File::AccessError, the derived exception type is
-/// thrown (as long as the underlying system provides the information
-/// to unambiguously distinguish that particular reason).
+/// \throw File::AccessError If the directory could not be removed. If the
+/// reason corresponds to one of the exception types that are derived from
+/// File::AccessError, the derived exception type is thrown (as long as the
+/// underlying system provides the information to unambiguously distinguish that
+/// particular reason).
 void remove_dir(const std::string& path);
+
+/// Same as remove_dir() except that this one returns false, rather
+/// than throwing an exception, if the specified directory did not
+/// exist. If the directory did exist, and was deleted, this function
+/// returns true.
+bool try_remove_dir(const std::string& path);
+
+/// Remove the specified directory after removing all its contents. Files
+/// (nondirectory entries) will be removed as if by a call to File::remove(),
+/// and empty directories as if by a call to remove_dir().
+///
+/// \throw File::AccessError If removal of the directory, or any of its contents
+/// fail.
+///
+/// remove_dir_recursive() assumes that no other process or thread is making
+/// simultaneous changes in the directory.
+void remove_dir_recursive(const std::string& path);
+
+/// Same as remove_dir_recursive() except that this one returns false, rather
+/// than throwing an exception, if the specified directory did not
+/// exist. If the directory did exist, and was deleted, this function
+/// returns true.
+///
+/// try_remove_dir_recursive() assumes that no other process or thread is making
+/// simultaneous changes in the directory.
+bool try_remove_dir_recursive(const std::string& path);
 
 /// Create a new unique directory for temporary files. The absolute
 /// path to the new directory is returned without a trailing slash.
@@ -175,6 +214,7 @@ public:
     /// Calling this function on an instance, that is not currently
     /// attached to an open file, has undefined behavior.
     size_t read(char* data, size_t size);
+    static size_t read_static(FileDesc fd, char* data, size_t size);
 
     /// Write the specified data to this file.
     ///
@@ -184,6 +224,10 @@ public:
     /// Calling this function on an instance, that was opened in
     /// read-only mode, has undefined behavior.
     void write(const char* data, size_t size);
+    static void write_static(FileDesc fd, const char* data, size_t size);
+
+    // Tells current file pointer of fd
+    static uint64_t get_file_pos(FileDesc fd);
 
     /// Calls write(s.data(), s.size()).
     void write(const std::string& s)
@@ -211,6 +255,7 @@ public:
     /// Calling this function on an instance that is not attached to
     /// an open file has undefined behavior.
     SizeType get_size() const;
+    static SizeType get_size_static(FileDesc fd);
 
     /// If this causes the file to grow, then the new section will
     /// have undefined contents. Setting the size with this function
@@ -267,6 +312,7 @@ public:
     /// instance. Distinct File instances have separate independent
     /// offsets, as long as the cucrrent process is not forked.
     void seek(SizeType);
+    static void seek_static(FileDesc, SizeType);
 
     /// Flush in-kernel buffers to disk. This blocks the caller until the
     /// synchronization operation is complete. On POSIX systems this function
@@ -316,6 +362,9 @@ public:
     /// \param key A 64-byte encryption key, or null to disable encryption.
     void set_encryption_key(const char* key);
 
+    /// Get the encryption key set by set_encryption_key(),
+    /// null_ptr if no key set.
+    const char* get_encryption_key();
     enum {
         /// If possible, disable opportunistic flushing of dirted
         /// pages of a memory mapped file to physical medium. On some
@@ -374,7 +423,7 @@ public:
     /// the synchronization operation is complete. The specified
     /// address range must be (a subset of) one that was previously returned by
     /// map().
-    static void sync_map(void* addr, size_t size);
+    static void sync_map(FileDesc fd, void* addr, size_t size);
 
     /// Check whether the specified file or directory exists. Note
     /// that a file or directory that resides in a directory that the
@@ -387,9 +436,11 @@ public:
     /// this function returns false.
     static bool is_dir(const std::string& path);
 
-    /// Remove the specified file path from the file system. If the
-    /// specified path is not a directory, this function is equivalent
-    /// to std::remove(const char*).
+    /// Remove the specified file path from the file system. It is an error if
+    /// the specified path is a directory. If the specified file is a symbolic
+    /// link, the link is removed, leaving the liked file intact. In so far as
+    /// the specified path is not a directory, std::remove(const char*) is
+    /// equivalent to this function.
     ///
     /// The specified file must not be open by the calling process. If
     /// it is, this function has undefined behaviour. Note that an
@@ -404,7 +455,7 @@ public:
     static void remove(const std::string& path);
 
     /// Same as remove() except that this one returns false, rather
-    /// than thriowing an exception, if the specified file does not
+    /// than throwing an exception, if the specified file does not
     /// exist. If the file did exist, and was deleted, this function
     /// returns true.
     static bool try_remove(const std::string& path);
@@ -437,6 +488,7 @@ public:
     /// Both instances have to be attached to open files. If they are
     /// not, this function has undefined behavior.
     bool is_same_file(const File&) const;
+    static bool is_same_file_static(FileDesc f1, FileDesc f2);
 
     // FIXME: Get rid of this method
     bool is_removed() const;
@@ -472,6 +524,22 @@ public:
     /// string is interpreted as a relative path.
     static std::string resolve(const std::string& path, const std::string& base_dir);
 
+    using ForEachHandler = std::function<bool(const std::string& file, const std::string& dir)>;
+
+    /// Scan the specified directory recursivle, and report each file
+    /// (nondirectory entry) via the specified handler.
+    ///
+    /// The first argument passed to the handler is the name of a file (not the
+    /// whole path), and the second argument is the directory in which that file
+    /// resides. The directory will be specified as a path, and relative to \a
+    /// dir_path. The directory will be the empty string for files residing
+    /// directly in \a dir_path.
+    ///
+    /// If the handler returns false, scanning will be aborted immediately, and
+    /// for_each() will return false. Otherwise for_each() will return true.
+    ///
+    /// Scanning is done as if by a recursive set of DirScanner objects.
+    static bool for_each(const std::string& dir_path, ForEachHandler handler);
 
     struct UniqueID {
 #ifdef _WIN32 // Windows version
@@ -509,15 +577,12 @@ public:
 
 private:
 #ifdef _WIN32
-    void* m_handle;
-    bool m_have_lock; // Only valid when m_handle is not null
-
-    SizeType get_file_position(); // POSIX version not needed because it's only used by Windows version of resize().
+    void* m_fd;
+    bool m_have_lock; // Only valid when m_fd is not null
 #else
     int m_fd;
 #endif
-
-    std::unique_ptr<const char[]> m_encryption_key;
+    std::unique_ptr<const char[]> m_encryption_key = nullptr;
 
     bool lock(bool exclusive, bool non_blocking);
     void open_internal(const std::string& path, AccessMode, CreateMode, int flags, bool* success);
@@ -525,6 +590,7 @@ private:
     struct MapBase {
         void* m_addr = nullptr;
         size_t m_size = 0;
+        FileDesc m_fd;
 
         MapBase() noexcept;
         ~MapBase() noexcept;
@@ -859,6 +925,8 @@ public:
 private:
 #ifndef _WIN32
     DIR* m_dirp;
+#elif REALM_HAVE_STD_FILESYSTEM
+    std::filesystem::directory_iterator m_iterator;
 #endif
 };
 
@@ -868,7 +936,7 @@ private:
 inline File::File(const std::string& path, Mode m)
 {
 #ifdef _WIN32
-    m_handle = nullptr;
+    m_fd = nullptr;
 #else
     m_fd = -1;
 #endif
@@ -879,7 +947,7 @@ inline File::File(const std::string& path, Mode m)
 inline File::File() noexcept
 {
 #ifdef _WIN32
-    m_handle = nullptr;
+    m_fd = nullptr;
 #else
     m_fd = -1;
 #endif
@@ -893,9 +961,9 @@ inline File::~File() noexcept
 inline File::File(File&& f) noexcept
 {
 #ifdef _WIN32
-    m_handle = f.m_handle;
+    m_fd = f.m_fd;
     m_have_lock = f.m_have_lock;
-    f.m_handle = nullptr;
+    f.m_fd = nullptr;
 #else
     m_fd = f.m_fd;
     f.m_fd = -1;
@@ -907,9 +975,9 @@ inline File& File::operator=(File&& f) noexcept
 {
     close();
 #ifdef _WIN32
-    m_handle = f.m_handle;
+    m_fd = f.m_fd;
     m_have_lock = f.m_have_lock;
-    f.m_handle = nullptr;
+    f.m_fd = nullptr;
 #else
     m_fd = f.m_fd;
     f.m_fd = -1;
@@ -967,7 +1035,7 @@ inline void File::open(const std::string& path, bool& was_created)
 inline bool File::is_attached() const noexcept
 {
 #ifdef _WIN32
-    return (m_handle != nullptr);
+    return (m_fd != nullptr);
 #else
     return 0 <= m_fd;
 #endif
@@ -1012,6 +1080,7 @@ inline void File::MapBase::map(const File& f, AccessMode a, size_t size, int map
     m_addr = f.map(a, size, map_flags, offset);
 #endif
     m_size = size;
+    m_fd = f.m_fd;
 }
 
 inline void File::MapBase::unmap() noexcept
@@ -1023,6 +1092,7 @@ inline void File::MapBase::unmap() noexcept
 #if REALM_ENABLE_ENCRYPTION
     m_encrypted_mapping = nullptr;
 #endif
+    m_fd = 0;
 }
 
 inline void File::MapBase::remap(const File& f, AccessMode a, size_t size, int map_flags)
@@ -1031,13 +1101,14 @@ inline void File::MapBase::remap(const File& f, AccessMode a, size_t size, int m
 
     m_addr = f.remap(m_addr, m_size, a, size, map_flags);
     m_size = size;
+    m_fd = f.m_fd;
 }
 
 inline void File::MapBase::sync()
 {
     REALM_ASSERT(m_addr);
 
-    File::sync_map(m_addr, m_size);
+    File::sync_map(m_fd, m_addr, m_size);
 }
 
 template <class T>
@@ -1111,6 +1182,7 @@ inline T* File::Map<T>::release() noexcept
 {
     T* addr = static_cast<T*>(m_addr);
     m_addr = nullptr;
+    m_fd = 0;
     return addr;
 }
 
@@ -1163,8 +1235,10 @@ inline File::Streambuf::pos_type File::Streambuf::seekpos(pos_type pos, std::ios
 inline void File::Streambuf::flush()
 {
     size_t n = pptr() - pbase();
-    m_file.write(pbase(), n);
-    setp(m_buffer.get(), epptr());
+    if (n > 0) {
+        m_file.write(pbase(), n);
+        setp(m_buffer.get(), epptr());
+    }
 }
 
 inline File::AccessError::AccessError(const std::string& msg, const std::string& path)

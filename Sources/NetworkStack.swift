@@ -102,7 +102,7 @@ extension NetworkStack {
   }
 
   fileprivate func cancelAllRequest() -> Observable<Void> {
-    return Observable.just()
+    return Observable.just(Void())
       .map { () -> Void in
         self.resetRequestManager()
       }
@@ -118,7 +118,7 @@ extension NetworkStack {
   // TODO: Handle upload manager reset
   fileprivate func resetUploadManager() -> Observable<Void> {
     guard let uploadManager = self.uploadManager else {
-      return Observable.just()
+      return Observable.just(Void())
     }
 
     let configuration = uploadManager.session.configuration
@@ -129,7 +129,7 @@ extension NetworkStack {
         if let error = error {
           observer.onError(error)
         } else {
-          observer.onNext()
+          observer.onNext(Void())
         }
       }
       uploadManager.session.invalidateAndCancel()
@@ -232,16 +232,16 @@ extension NetworkStack {
     if self.shouldAskCredentials(forError: error) == true {
       return self.askCredentials()
     } else {
-      return Observable.just()
+      return Observable.just(Void())
     }
   }
 
   fileprivate func askCredentials() -> Observable<Void> {
     guard let askCredentialHandler = self.askCredential?.handler else {
-      return Observable.just()
+      return Observable.just(Void())
     }
 
-    return Observable.just()
+    return Observable.just(Void())
       .map({ [unowned self] () -> Void in
         self.clearToken()
       })
@@ -351,7 +351,7 @@ extension NetworkStack {
             switch packedResponse.result {
             case .success(let result):
               if let httpResponse = packedResponse.response {
-                observer.onNext(httpResponse, result)
+                observer.onNext((httpResponse, result))
               } else {
                 observer.onError(NetworkStackError.unknown)
               }

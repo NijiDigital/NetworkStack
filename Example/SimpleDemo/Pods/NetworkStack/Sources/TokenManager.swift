@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 
-
 /**
  TokenManager is responsible of token management for the NetworkStack
  It manage the request flow, tu ensure that only one refresh token request was send,

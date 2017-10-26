@@ -81,23 +81,63 @@ typedef void (^RLMObjectNotificationCallback)(NSArray<NSString *> *_Nullable pro
                                               NSError *_Nullable error);
 FOUNDATION_EXTERN RLMNotificationToken *RLMObjectAddNotificationBlock(RLMObjectBase *obj, RLMObjectNotificationCallback block);
 
+// Returns whether the class is a descendent of RLMObjectBase
+FOUNDATION_EXTERN BOOL RLMIsObjectOrSubclass(Class klass);
+
+// Returns whether the class is an indirect descendant of RLMObjectBase
+FOUNDATION_EXTERN BOOL RLMIsObjectSubclass(Class klass);
+
+// For unit testing purposes, allow an Objective-C class named FakeObject to also be used
+// as the base class of managed objects. This allows for testing invalid schemas.
+FOUNDATION_EXTERN void RLMSetTreatFakeObjectAsRLMObject(BOOL flag);
+
 // Get ObjectUil class for objc or swift
 FOUNDATION_EXTERN Class RLMObjectUtilClass(BOOL isSwift);
 
 FOUNDATION_EXTERN const NSUInteger RLMDescriptionMaxDepth;
 
-@class RLMProperty, RLMArray;
+@class RLMProperty, RLMArray, RLMGenericPropertyMetadata;
 @interface RLMObjectUtil : NSObject
 
 + (nullable NSArray<NSString *> *)ignoredPropertiesForClass:(Class)cls;
 + (nullable NSArray<NSString *> *)indexedPropertiesForClass:(Class)cls;
 + (nullable NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *)linkingObjectsPropertiesForClass:(Class)cls;
 
-+ (nullable NSArray<NSString *> *)getGenericListPropertyNames:(id)obj;
-+ (nullable NSDictionary<NSString *, NSString *> *)getLinkingObjectsProperties:(id)object;
+// Precondition: these must be returned in ascending order.
++ (nullable NSArray<RLMGenericPropertyMetadata *> *)getSwiftGenericProperties:(id)obj;
 
 + (nullable NSDictionary<NSString *, NSNumber *> *)getOptionalProperties:(id)obj;
 + (nullable NSArray<NSString *> *)requiredPropertiesForClass:(Class)cls;
+
+@end
+
+typedef NS_ENUM(NSUInteger, RLMGenericPropertyKind) {
+    RLMGenericPropertyKindList,
+    RLMGenericPropertyKindLinkingObjects,
+    RLMGenericPropertyKindOptional,
+    RLMGenericPropertyKindNilLiteralOptional,   // For Swift optional properties that reflect as nil
+};
+
+// Metadata that describes a Swift generic property.
+@interface RLMGenericPropertyMetadata : NSObject
+
+@property (nonatomic, strong) NSString *propertyName;
+@property (nullable, nonatomic, strong) NSString *className;
+@property (nullable, nonatomic, strong) NSString *linkedPropertyName;
+@property (nonatomic) NSInteger index;
+@property (nonatomic) NSInteger propertyType;
+@property (nonatomic) RLMGenericPropertyKind kind;
+
++ (instancetype)metadataForListProperty:(NSString *)propertyName index:(NSInteger)index;
+
++ (instancetype)metadataForLinkingObjectsProperty:(NSString *)propertyName
+                                        className:(NSString *)className
+                               linkedPropertyName:(NSString *)linkedPropertyName
+                                            index:(NSInteger)index;
+
++ (instancetype)metadataForOptionalProperty:(NSString *)propertyName type:(NSInteger)type index:(NSInteger)index;
+
++ (instancetype)metadataForNilLiteralOptionalProperty:(NSString *)propertyName index:(NSInteger)index;
 
 @end
 

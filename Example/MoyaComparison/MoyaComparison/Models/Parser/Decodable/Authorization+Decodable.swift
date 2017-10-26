@@ -16,6 +16,7 @@
 
 import Foundation
 import Decodable
+import protocol Decodable.Decodable
 
 extension Authorization: Decodable {
   static func decode(_ json: Any) throws -> Authorization {

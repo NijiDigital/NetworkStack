@@ -15,6 +15,7 @@
 //
 import Foundation
 import JSONCodable
+import class JSONCodable.JSONEncoder
 
 extension Video: JSONCodable {
   

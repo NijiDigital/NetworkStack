@@ -45,7 +45,7 @@ struct VideoDataStore {
         case .completed: break
         }
       })
-      .addDisposableTo(self.disposeBag)
+      .disposed(by: self.disposeBag)
   }
   
   func addVideo() {
@@ -65,7 +65,7 @@ struct VideoDataStore {
         case .completed: break
         }
       })
-      .addDisposableTo(self.disposeBag)
+      .disposed(by: self.disposeBag)
   }
   
   func deleteVideo(identifier: Int, completion: @escaping () -> Void) {
@@ -82,7 +82,7 @@ struct VideoDataStore {
           
         }
       })
-      .addDisposableTo(self.disposeBag)
+      .disposed(by: self.disposeBag)
   }
   
   func badAccess() {
@@ -99,7 +99,7 @@ struct VideoDataStore {
           
         }
       })
-      .addDisposableTo(self.disposeBag)
+      .disposed(by: self.disposeBag)
   }
   
 }

@@ -34,10 +34,18 @@ public struct UploadRequestParametersFile {
     self.mimeType = mimeType
   }
   
+  public init(fileURL: URL,
+              parameterName: String,
+              fileName: String) {
+    self.init(fileURL: fileURL,
+              parameterName: parameterName,
+              fileName: fileName,
+              mimeType: MimeTypeHelper.mimeType(forFileURL: fileURL))
+  }
+  
   public init(fileURL: URL, parameterName: String) {
     self.init(fileURL: fileURL,
               parameterName: parameterName,
-              fileName: fileURL.lastPathComponent,
-              mimeType: MimeTypeHelper.mimeType(forFileURL: fileURL))
+              fileName: fileURL.lastPathComponent)
   }
 }

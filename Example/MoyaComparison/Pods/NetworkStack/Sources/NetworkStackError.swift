@@ -20,21 +20,23 @@ import Foundation
 
 public enum NetworkStackError: Error {
   /// No internet, roaming off, data not allowed, call active, …
-  case noInternet(error: Error)
+  case noInternet(error: NSError)
   /// DNS Lookup failed, Host unreachable, …
-  case serverUnreachable(error: Error)
+  case serverUnreachable(error: NSError)
   /// Invalid request, Fail to parse JSON, Unable to decode payload…
-  case badServerResponse(error: Error)
+  case badServerResponse(error: NSError)
   /// Response in 4xx-5xx range
   case http(httpURLResponse: HTTPURLResponse, data: Data?)
   /// Fail to parse response
   case parseError
   /// Other, unclassified error
-  case otherError(error: Error)
+  case otherError(error: NSError)
   /// Request building has failed
   case requestBuildFail
   /// Upload manager has not been setup
   case uploadManagerIsNotSet
+  /// Requested token does'nt exist, is expired or invalidated
+  case tokenUnavaible
   /// Unknown
   case unknown
 }

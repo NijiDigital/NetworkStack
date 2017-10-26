@@ -19,10 +19,11 @@
 #ifndef REALM_OS_SYNC_SESSION_HPP
 #define REALM_OS_SYNC_SESSION_HPP
 
+#include "feature_checks.hpp"
+#include "sync/sync_config.hpp"
+
 #include <realm/util/optional.hpp>
 #include <realm/version_id.hpp>
-
-#include "sync_config.hpp"
 
 #include <mutex>
 #include <unordered_map>
@@ -88,8 +89,11 @@ public:
         upload, download
     };
     // Register a notifier that updates the app regarding progress.
-    // The notifier will always be called immediately during the function, to provide
-    // the caller with an initial assessment of the state of synchronization.
+    //
+    // If `m_current_progress` is populated when this method is called, the notifier
+    // will be called synchronously, to provide the caller with an initial assessment
+    // of the state of synchronization. Otherwise, the progress notifier will be
+    // registered, and only called once sync has begun providing progress data.
     //
     // If `is_streaming` is true, then the notifier will be called forever, and will
     // always contain the most up-to-date number of downloadable or uploadable bytes.
@@ -108,10 +112,19 @@ public:
     // this method does nothing.
     void unregister_progress_notifier(uint64_t);
 
+    // If possible, take the session and do anything necessary to make it `Active`.
+    // Specifically:
     // If the sync session is currently `Dying`, ask it to stay alive instead.
     // If the sync session is currently `WaitingForAccessToken`, cancel any deferred close.
-    // If the sync session is currently `Inactive`, recreate it. Otherwise, a no-op.
+    // If the sync session is currently `Inactive`, recreate it.
+    // Otherwise, a no-op.
     void revive_if_needed();
+
+    // Perform any actions needed in response to regaining network connectivity.
+    // Specifically:
+    // If the sync session is currently `WaitingForAccessToken`, make the binding ask the auth server for a token.
+    // Otherwise, a no-op.
+    void handle_reconnect();
 
     // Give the `SyncSession` a new, valid token, and ask it to refresh the underlying session.
     // If the session can't accept a new token, this method does nothing.
@@ -130,6 +143,16 @@ public:
 
     // Inform the sync session that it should log out.
     void log_out();
+
+#if REALM_HAVE_SYNC_OVERRIDE_SERVER
+    // Override the address and port of the server that this `SyncSession` is connected to. If the
+    // session is already connected, it will disconnect and then reconnect to the specified address.
+    // If it's not already connected, future connection attempts will be to the specified address.
+    //
+    // NOTE: This is intended for use only in very specific circumstances. Please check with the
+    // object store team before using it.
+    void override_server(std::string address, int port);
+#endif
 
     // An object representing the user who owns the Realm this `SyncSession` represents.
     std::shared_ptr<SyncUser> user() const
@@ -214,10 +237,22 @@ private:
 
     friend class realm::SyncManager;
     // Called by SyncManager {
-    SyncSession(_impl::SyncClient&, std::string realm_path, SyncConfig);
+    static std::shared_ptr<SyncSession> create(_impl::SyncClient& client, std::string realm_path, SyncConfig config)
+    {
+        struct MakeSharedEnabler : public SyncSession {
+            MakeSharedEnabler(_impl::SyncClient& client, std::string realm_path, SyncConfig config)
+            : SyncSession(client, std::move(realm_path), std::move(config))
+            {}
+        };
+        return std::make_shared<MakeSharedEnabler>(client, std::move(realm_path), std::move(config));
+    }
     // }
 
+    SyncSession(_impl::SyncClient&, std::string realm_path, SyncConfig);
+
     void handle_error(SyncError);
+    enum class ShouldBackup { yes, no };
+    void update_error_and_mark_file_for_deletion(SyncError&, ShouldBackup);
     static std::string get_recovery_file_path();
     void handle_progress_update(uint64_t, uint64_t, uint64_t, uint64_t, bool);
 
@@ -285,6 +320,14 @@ private:
         std::function<void(std::error_code)> callback;
     };
     std::vector<CompletionWaitPackage> m_completion_wait_packages;
+
+#if REALM_HAVE_SYNC_OVERRIDE_SERVER
+    struct ServerOverride {
+        std::string address;
+        int port;
+    };
+    util::Optional<ServerOverride> m_server_override;
+#endif
 
     // The underlying `Session` object that is owned and managed by this `SyncSession`.
     // The session is first created when the `SyncSession` is moved out of its initial `inactive` state.

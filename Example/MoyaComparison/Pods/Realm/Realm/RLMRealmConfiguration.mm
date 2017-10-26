@@ -35,6 +35,7 @@ static NSString *const c_RLMRealmConfigurationProperties[] = {
     @"schemaVersion",
     @"migrationBlock",
     @"deleteRealmIfMigrationNeeded",
+    @"shouldCompactOnLaunch",
     @"dynamic",
     @"customSchema",
 };
@@ -74,12 +75,14 @@ NSString *RLMRealmPathForFile(NSString *fileName) {
 }
 
 + (RLMRealmConfiguration *)rawDefaultConfiguration {
+    RLMRealmConfiguration *configuration;
     @synchronized(c_defaultRealmFileName) {
         if (!s_defaultConfiguration) {
             s_defaultConfiguration = [[RLMRealmConfiguration alloc] init];
         }
+        configuration = s_defaultConfiguration;
     }
-    return s_defaultConfiguration;
+    return configuration;
 }
 
 + (void)resetRealmConfigurationState {
@@ -113,6 +116,7 @@ NSString *RLMRealmPathForFile(NSString *fileName) {
     configuration->_cache = _cache;
     configuration->_dynamic = _dynamic;
     configuration->_migrationBlock = _migrationBlock;
+    configuration->_shouldCompactOnLaunch = _shouldCompactOnLaunch;
     configuration->_customSchema = _customSchema;
     return configuration;
 }
@@ -200,15 +204,17 @@ static void RLMNSStringToStdString(std::string &out, NSString *in) {
 }
 
 - (BOOL)readOnly {
-    return _config.read_only();
+    return _config.immutable();
 }
 
 - (void)setReadOnly:(BOOL)readOnly {
     if (readOnly) {
         if (self.deleteRealmIfMigrationNeeded) {
             @throw RLMException(@"Cannot set `readOnly` when `deleteRealmIfMigrationNeeded` is set.");
+        } else if (self.shouldCompactOnLaunch) {
+            @throw RLMException(@"Cannot set `readOnly` when `shouldCompactOnLaunch` is set.");
         }
-        _config.schema_mode = realm::SchemaMode::ReadOnly;
+        _config.schema_mode = realm::SchemaMode::Immutable;
     }
     else if (self.readOnly) {
         _config.schema_mode = realm::SchemaMode::Automatic;
@@ -273,6 +279,23 @@ static void RLMNSStringToStdString(std::string &out, NSString *in) {
 
 - (NSString *)pathOnDisk {
     return @(_config.path.c_str());
+}
+
+- (void)setShouldCompactOnLaunch:(RLMShouldCompactOnLaunchBlock)shouldCompactOnLaunch {
+    if (shouldCompactOnLaunch) {
+        if (self.readOnly) {
+            @throw RLMException(@"Cannot set `shouldCompactOnLaunch` when `readOnly` is set.");
+        } else if (_config.sync_config) {
+            @throw RLMException(@"Cannot set `shouldCompactOnLaunch` when `syncConfiguration` is set.");
+        }
+        _config.should_compact_on_launch_function = [=](size_t totalBytes, size_t usedBytes) {
+            return shouldCompactOnLaunch(totalBytes, usedBytes);
+        };
+    }
+    else {
+        _config.should_compact_on_launch_function = nullptr;
+    }
+    _shouldCompactOnLaunch = shouldCompactOnLaunch;
 }
 
 @end
