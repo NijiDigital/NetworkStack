@@ -19,6 +19,10 @@ import Moya
 
 // MARK: - Provider setup
 enum CustomAPI: TargetType {
+  var headers: [String : String]? {
+    return [:]
+  }
+  
   case authent(email: String, passwd: String)
   case getVideos()
   case getVideo(identifier: Int)
@@ -41,10 +45,26 @@ extension CustomAPI {
 extension CustomAPI {
   public var task: Task {
     if case .uploadVideoDocument(_, let fileURL) = self {
-      let uploadType = UploadType.file(fileURL)
-      return .upload(uploadType)
+      return .uploadFile(fileURL)
     }
-    return .request
+    let parameters: [String: Any]
+    let encoding: ParameterEncoding
+    switch self {
+    case .authent(let email, let passwd):
+      let stringToEncode: String = String(format: "%@:%@", email, passwd)
+      parameters = ["Authorization": "Basic \(stringToEncode.convertToBase64())"]
+      encoding = URLEncoding.default
+    case .delVideo, .getVideo, .getVideos:
+      parameters = [:]
+      encoding = URLEncoding.default
+    case .postVideo(let video), .putVideo(let video):
+      parameters = (try? video.toJSON()) ?? [:]
+      encoding = URLEncoding.httpBody
+    case .uploadVideoDocument:
+      parameters = [:]
+      encoding = URLEncoding.httpBody
+    }
+    return .requestParameters(parameters: parameters, encoding: encoding)
   }
 }
 

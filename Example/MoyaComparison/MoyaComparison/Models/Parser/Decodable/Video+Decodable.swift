@@ -15,6 +15,7 @@
 //
 
 import Decodable
+import protocol Decodable.Decodable
 
 extension Video: Decodable {
   static func decode(_ json: Any) throws -> Video {

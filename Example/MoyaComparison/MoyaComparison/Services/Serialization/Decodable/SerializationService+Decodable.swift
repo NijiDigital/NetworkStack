@@ -16,13 +16,14 @@
 
 import Foundation
 import Decodable
+import protocol Decodable.Decodable
 import RxSwift
 
 struct SerializationServiceDecodable {
   
   // MARK: parse func
   func parse<T: Decodable>(object: Any) throws -> T {
-    return try T.decode(json: object)
+    return try T.decode(object)
   }
   
   func parse<T: Decodable>(objects: Any) throws -> [T] {
@@ -35,7 +36,7 @@ struct SerializationServiceDecodable {
     }
     do {
       objectList = try objectsToDeserialize.flatMap { (json: Any) -> T in
-          return try T.decode(json: json)
+          return try T.decode(json)
         }
     } catch {
       throw SerializationServiceError.unexpectedFormat(json: "Failed to parse json : \(objects) to \(T.self)")

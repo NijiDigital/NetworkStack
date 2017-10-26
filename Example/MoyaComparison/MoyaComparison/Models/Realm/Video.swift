@@ -34,10 +34,10 @@ final class Video: Object {
   }
 
   // MARK: Attributes
-  dynamic var identifier: Int = 0
-  dynamic var title: String = ""
-  dynamic var creationDate: Date?
-  dynamic var likeCounts: Int = 0
+  @objc dynamic var identifier: Int = 0
+  @objc dynamic var title: String = ""
+  @objc dynamic var creationDate: Date?
+  @objc dynamic var likeCounts: Int = 0
   
   // Use RealmOptional as less as possible
   let hasSponsors = RealmOptional<Bool>()

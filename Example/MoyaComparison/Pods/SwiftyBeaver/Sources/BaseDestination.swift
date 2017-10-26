@@ -92,15 +92,15 @@ open class BaseDestination: Hashable, Equatable {
     /// returns the formatted log message for processing by inheriting method
     /// and for unit tests (nil if error)
     open func send(_ level: SwiftyBeaver.Level, msg: String, thread: String, file: String,
-        function: String, line: Int) -> String? {
+                   function: String, line: Int, context: Any? = nil) -> String? {
 
         if format.hasPrefix("$J") {
             return messageToJSON(level, msg: msg, thread: thread,
-                                 file: file, function: function, line: line)
+                                 file: file, function: function, line: line, context: context)
 
         } else {
             return formatMessage(format, level: level, msg: msg, thread: thread,
-                                 file: file, function: function, line: line)
+                                 file: file, function: function, line: line, context: context)
         }
     }
 
@@ -110,13 +110,12 @@ open class BaseDestination: Hashable, Equatable {
 
     /// returns the log message based on the format pattern
     func formatMessage(_ format: String, level: SwiftyBeaver.Level, msg: String, thread: String,
-        file: String, function: String, line: Int) -> String {
+        file: String, function: String, line: Int, context: Any? = nil) -> String {
 
         var text = ""
         let phrases: [String] = format.components(separatedBy: "$")
 
-        for phrase in phrases {
-            if !phrase.isEmpty {
+        for phrase in phrases where !phrase.isEmpty {
                 let firstChar = phrase[phrase.startIndex]
                 let rangeAfterFirstChar = phrase.index(phrase.startIndex, offsetBy: 1)..<phrase.endIndex
                 let remainingPhrase = phrase[rangeAfterFirstChar]
@@ -140,12 +139,20 @@ open class BaseDestination: Hashable, Equatable {
                     text += String(line) + remainingPhrase
                 case "D":
                     // start of datetime format
+                    #if swift(>=3.2)
+                    text += formatDate(String(remainingPhrase))
+                    #else
                     text += formatDate(remainingPhrase)
+                    #endif
                 case "d":
                     text += remainingPhrase
                 case "Z":
                     // start of datetime format in UTC timezone
+                    #if swift(>=3.2)
+                    text += formatDate(String(remainingPhrase), timeZone: "UTC")
+                    #else
                     text += formatDate(remainingPhrase, timeZone: "UTC")
+                    #endif
                 case "z":
                     text += remainingPhrase
                 case "C":
@@ -153,25 +160,37 @@ open class BaseDestination: Hashable, Equatable {
                     text += escape + colorForLevel(level) + remainingPhrase
                 case "c":
                     text += reset + remainingPhrase
+                case "X":
+                    // add the context
+                    if let cx = context {
+                        text += String(describing: cx).trimmingCharacters(in: .whitespacesAndNewlines) + remainingPhrase
+                    }
+                    /*
+                    if let contextString = context as? String {
+                        text += contextString + remainingPhrase
+                    }*/
                 default:
                     text += phrase
                 }
-            }
         }
         return text
     }
 
     /// returns the log payload as optional JSON string
     func messageToJSON(_ level: SwiftyBeaver.Level, msg: String,
-        thread: String, file: String, function: String, line: Int) -> String? {
-        let dict: [String: Any] = [
+        thread: String, file: String, function: String, line: Int, context: Any? = nil) -> String? {
+        var dict: [String: Any] = [
             "timestamp": Date().timeIntervalSince1970,
             "level": level.rawValue,
             "message": msg,
             "thread": thread,
             "file": file,
             "function": function,
-            "line": line]
+            "line": line
+            ]
+        if let cx = context {
+            dict["context"] = cx
+        }
         return jsonStringFromDict(dict)
     }
 
@@ -269,7 +288,11 @@ open class BaseDestination: Hashable, Equatable {
         let endIndex = str.index(str.startIndex,
                                  offsetBy: str.characters.count - 2)
         let range = str.index(str.startIndex, offsetBy: offset)..<endIndex
+        #if swift(>=3.2)
+        return String(str[range])
+        #else
         return str[range]
+        #endif
     }
 
     /// turns dict into JSON-encoded string
@@ -348,20 +371,15 @@ open class BaseDestination: Hashable, Equatable {
                                                                    function: function, message: message)
         let (matchedNonRequired, allNonRequired) = passedNonRequiredFilters(level, path: path,
                                                                     function: function, message: message)
+
+        // If required filters exist, we should validate or invalidate the log if all of them pass or not
         if allRequired > 0 {
-            if matchedRequired == allRequired {
-                return true
-            }
-        } else {
-            // no required filters are existing so at least 1 optional needs to match
-            if allNonRequired > 0 {
-                if matchedNonRequired > 0 {
-                    return true
-                }
-            } else if allExclude == 0 {
-                // no optional is existing, so all is good
-                return true
-            }
+            return matchedRequired == allRequired
+        }
+
+        // If a non-required filter matches, the log is validated
+        if allNonRequired > 0 && matchedNonRequired > 0 {
+            return true
         }
 
         if level.rawValue < minLevel.rawValue {
@@ -371,7 +389,7 @@ open class BaseDestination: Hashable, Equatable {
             return false
         }
 
-        return false
+        return true
     }
 
     func getFiltersTargeting(_ target: Filter.TargetType, fromFilters: [FilterType]) -> [FilterType] {

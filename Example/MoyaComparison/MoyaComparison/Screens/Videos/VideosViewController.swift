@@ -55,7 +55,7 @@ final class VideosViewController: UITableViewController, StoryboardBased {
   override var prefersStatusBarHidden: Bool { return false }
   
   // MARK: - User Actions
-  func handleRefresh(refreshControl: UIRefreshControl) {
+  @objc func handleRefresh(refreshControl: UIRefreshControl) {
     self.dataSource?.dataStore.fetchVideos()
   }
   

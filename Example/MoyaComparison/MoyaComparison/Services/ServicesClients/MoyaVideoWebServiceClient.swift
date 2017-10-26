@@ -30,35 +30,40 @@ struct MoyaVideoWebServiceClient: VideoWebServiceClient {
   var services: Services
   
   func fetchAllVideos() -> Observable<[Video]> {
-    return self.services.customAPIProvider.request(CustomAPI.getVideos()).mapJSON()
+    return self.services.customAPIProvider.rx.request(CustomAPI.getVideos())
+      .mapJSON().asObservable()
       .flatMap({ (json: Any) -> Observable<[Video]> in
         return self.services.serializationSwiftyJSON.parse(objects: json)
       })
   }
   
   func fetchVideo(identifier: Int) -> Observable<Video> {
-    return self.services.customAPIProvider.request(CustomAPI.getVideo(identifier: identifier)).mapJSON()
+    return self.services.customAPIProvider.rx.request(CustomAPI.getVideo(identifier: identifier))
+      .mapJSON().asObservable()
       .flatMap({ (json: Any) -> Observable<Video> in
         return self.services.serializationSwiftyJSON.parse(object: json)
       })
   }
   
   func update(video: Video) -> Observable<Void> {
-    return self.services.customAPIProvider.request(CustomAPI.putVideo(video: video)).asObservable()
+    return self.services.customAPIProvider.rx.request(CustomAPI.putVideo(video: video))
+      .asObservable()
       .flatMap({ _ -> Observable<Void> in
         return Observable.empty()
       })
   }
   
   func add(video: Video) -> Observable<Video> {
-    return self.services.customAPIProvider.request(CustomAPI.postVideo(video: video)).mapJSON()
+    return self.services.customAPIProvider.rx.request(CustomAPI.postVideo(video: video))
+      .mapJSON().asObservable()
       .flatMap({ (json: Any) -> Observable<Video> in
         return self.services.serializationSwiftyJSON.parse(object: json)
       })
   }
   
   func deleteVideo(identifier: Int) -> Observable<Void> {
-    return self.services.customAPIProvider.request(CustomAPI.delVideo(identifier: identifier)).asObservable()
+    return self.services.customAPIProvider.rx.request(CustomAPI.delVideo(identifier: identifier))
+      .asObservable()
       .flatMap({ _ -> Observable<Void> in
         return Observable.empty()
       })

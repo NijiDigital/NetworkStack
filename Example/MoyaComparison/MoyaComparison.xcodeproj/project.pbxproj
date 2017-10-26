@@ -68,8 +68,6 @@
 		6DF772031E8989FD0051C8AB /* images.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771941E8989FD0051C8AB /* images.stencil */; };
 		6DF772041E8989FD0051C8AB /* strings.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 6DF771951E8989FD0051C8AB /* strings.stencil */; };
 		6DF772141E8989FD0051C8AB /* CustomAPI+method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771AE1E8989FD0051C8AB /* CustomAPI+method.swift */; };
-		6DF772151E8989FD0051C8AB /* CustomAPI+parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */; };
-		6DF772161E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */; };
 		6DF772171E8989FD0051C8AB /* CustomAPI+path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771B11E8989FD0051C8AB /* CustomAPI+path.swift */; };
 		6DF772181E8989FD0051C8AB /* CustomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771B21E8989FD0051C8AB /* CustomAPI.swift */; };
 		6DF772191E8989FD0051C8AB /* VideoDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF771B41E8989FD0051C8AB /* VideoDataStore.swift */; };
@@ -165,8 +163,6 @@
 		6DF771941E8989FD0051C8AB /* images.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.stencil; sourceTree = "<group>"; };
 		6DF771951E8989FD0051C8AB /* strings.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = strings.stencil; sourceTree = "<group>"; };
 		6DF771AE1E8989FD0051C8AB /* CustomAPI+method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+method.swift"; sourceTree = "<group>"; };
-		6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+parameters.swift"; sourceTree = "<group>"; };
-		6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+parametersEncoding.swift"; sourceTree = "<group>"; };
 		6DF771B11E8989FD0051C8AB /* CustomAPI+path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomAPI+path.swift"; sourceTree = "<group>"; };
 		6DF771B21E8989FD0051C8AB /* CustomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAPI.swift; path = MoyaComparison/Services/API/CustomAPI.swift; sourceTree = SOURCE_ROOT; };
 		6DF771B41E8989FD0051C8AB /* VideoDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDataStore.swift; sourceTree = "<group>"; };
@@ -517,8 +513,6 @@
 			children = (
 				6DF771B21E8989FD0051C8AB /* CustomAPI.swift */,
 				6DF771AE1E8989FD0051C8AB /* CustomAPI+method.swift */,
-				6DF771AF1E8989FD0051C8AB /* CustomAPI+parameters.swift */,
-				6DF771B01E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift */,
 				6DF771B11E8989FD0051C8AB /* CustomAPI+path.swift */,
 			);
 			path = CustomAPI;
@@ -718,7 +712,7 @@
 			attributes = {
 				CLASSPREFIX = NSE;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = niji;
 				TargetAttributes = {
 					450AAAFC942E5774A8C22450 = {
@@ -726,7 +720,7 @@
 					};
 					95577B80E776312185E3CBEF = {
 						DevelopmentTeam = B564TVEPFR;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -809,9 +803,42 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MoyaComparison/Pods-MoyaComparison-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Decodable/Decodable.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONCodable/JSONCodable.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/NetworkStack/NetworkStack.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Decodable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONCodable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetworkStack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -868,13 +895,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8CE0FC915DB2DD79C92E9F1E /* [CP] Check Pods Manifest.lock */ = {
@@ -883,13 +913,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoyaComparison-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB9FE66F6A4E40F34295F944 /* [CP] Copy Pods Resources */ = {
@@ -936,7 +969,6 @@
 				6DF772181E8989FD0051C8AB /* CustomAPI.swift in Sources */,
 				6DC269C91E8B04AB000A5A5A /* VideosViewController.swift in Sources */,
 				6DF7721A1E8989FD0051C8AB /* RequestParameters+Authent.swift in Sources */,
-				6DF772161E8989FD0051C8AB /* CustomAPI+parametersEncoding.swift in Sources */,
 				86757451F9591A2746ED48AA /* Environment.swift in Sources */,
 				6D8E9CF21EB09694003031B8 /* SerializationService+Decodable.swift in Sources */,
 				6DF771D91E8989FD0051C8AB /* Images.swift in Sources */,
@@ -956,7 +988,6 @@
 				6DF771DE1E8989FD0051C8AB /* Coordinator.swift in Sources */,
 				6DF772291E8989FD0051C8AB /* MCLogger.swift in Sources */,
 				6DF771E91E8989FD0051C8AB /* UIViewController.swift in Sources */,
-				6DF772151E8989FD0051C8AB /* CustomAPI+parameters.swift in Sources */,
 				6D81F9DF1E96F003006821F0 /* Authorization+ObjectMapper.swift in Sources */,
 				6DF7721C1E8989FD0051C8AB /* SerializationService+JSONCodable.swift in Sources */,
 				6DF7721B1E8989FD0051C8AB /* Routes.swift in Sources */,
@@ -1010,8 +1041,9 @@
 				APP_BUNDLE_IDENTIFIER = "com.niji.${PRODUCT_NAME:rfc1034identifier}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = B564TVEPFR;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GLOBAL_APP_BUILD_VERSION = 1;
@@ -1022,11 +1054,10 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "78e32f0f-8d0b-4129-998b-c271c0dc6711";
-				PROVISIONING_PROFILE_SPECIFIER = "Generic Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1041,7 +1072,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
@@ -1052,6 +1085,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1083,6 +1118,7 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1106,7 +1142,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1119,8 +1154,9 @@
 				APP_BUNDLE_IDENTIFIER = "com.niji.${PRODUCT_NAME:rfc1034identifier}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = B564TVEPFR;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -1132,10 +1168,9 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "78e32f0f-8d0b-4129-998b-c271c0dc6711";
-				PROVISIONING_PROFILE_SPECIFIER = "Generic Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1150,7 +1185,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
@@ -1161,6 +1198,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1199,6 +1238,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1220,7 +1260,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

@@ -32,8 +32,8 @@ struct NijiVideoWebServiceClient: VideoWebServiceClient {
   
   func fetchAllVideos() -> Observable<[Video]> {
     return self.services.videoNetworkStack.sendRequestWithJSONResponse(requestParameters: RequestParameters.fetchAllVideos())
-      .flatMap({ (_, json: Any) -> Observable<[Video]> in
-        return self.services.serializationDecodable.parse(objects: json)
+      .flatMap({ (response: (_: HTTPURLResponse, json: Any)) -> Observable<[Video]> in
+        return self.services.serializationDecodable.parse(objects: response.json)
       })
   }
   

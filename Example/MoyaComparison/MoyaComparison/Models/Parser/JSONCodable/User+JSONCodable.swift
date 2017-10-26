@@ -16,6 +16,7 @@
 
 import Foundation
 import JSONCodable
+import class JSONCodable.JSONEncoder
 
 extension User: JSONCodable {
   init(object: JSONObject) throws {

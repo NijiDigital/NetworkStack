@@ -27,7 +27,7 @@ struct Services {
   let serializationDecodable: SerializationServiceDecodable
   let userNetworkStack: NetworkStack
   let videoNetworkStack: NetworkStack
-  let customAPIProvider: RxMoyaProvider<CustomAPI>
+  let customAPIProvider: MoyaProvider<CustomAPI>
 }
 
 /// ServiceClients is a struct to centralize web services client split in several structs

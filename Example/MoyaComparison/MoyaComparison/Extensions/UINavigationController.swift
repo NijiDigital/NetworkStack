@@ -20,7 +20,7 @@ extension UINavigationController {
   
   func setupBlackNavigationBar() {
     navigationBar.barTintColor = UIColor.black
-    navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     navigationBar.isTranslucent = false
   }
   
@@ -30,7 +30,7 @@ extension UINavigationController {
     navigationBar.setBackgroundImage(UIImage(), for: .default)
     navigationBar.shadowImage = UIImage()
     navigationBar.isTranslucent = true
-    navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     
     automaticallyAdjustsScrollViewInsets = false
   }

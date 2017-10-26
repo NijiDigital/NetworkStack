@@ -128,7 +128,7 @@ public class SBPlatformDestination: BaseDestination {
         #if os(Linux)
             // get, update loaded and save analytics data to file on start
             let dict = analytics(analyticsFileURL, update: true)
-            let _ = saveDictToFile(dict, url: analyticsFileURL)
+            _ = saveDictToFile(dict, url: analyticsFileURL)
         #else
             if let baseURL = baseURL {
                 // is just set for everything but not Linux
@@ -141,14 +141,14 @@ public class SBPlatformDestination: BaseDestination {
 
                 // get, update loaded and save analytics data to file on start
                 let dict = analytics(analyticsFileURL, update: true)
-                let _ = saveDictToFile(dict, url: analyticsFileURL)
+                _ = saveDictToFile(dict, url: analyticsFileURL)
             }
         #endif
     }
 
     // append to file, each line is a JSON dict
     override public func send(_ level: SwiftyBeaver.Level, msg: String, thread: String,
-        file: String, function: String, line: Int) -> String? {
+        file: String, function: String, line: Int, context: Any? = nil) -> String? {
 
         var jsonString: String?
 
@@ -165,7 +165,7 @@ public class SBPlatformDestination: BaseDestination {
 
         if let str = jsonString {
             toNSLog("saving '\(msg)' to \(entriesFileURL)")
-            let _ = saveToFile(str, url: entriesFileURL)
+            _ = saveToFile(str, url: entriesFileURL)
             //toNSLog(entriesFileURL.path!)
 
             // now decide if the stored log entries should be sent to the server
@@ -250,7 +250,7 @@ public class SBPlatformDestination: BaseDestination {
 
                             self.toNSLog("Sent \(lines) encrypted log entries to server, received ok: \(ok)")
                             if ok {
-                                let _ = self.deleteFile(self.sendingFileURL)
+                                _ = self.deleteFile(self.sendingFileURL)
                             }
                             self.sendingInProgress = false
                             self.points = 0
@@ -293,7 +293,12 @@ public class SBPlatformDestination: BaseDestination {
                     toNSLog("Error! Could not set basic auth header")
                     return complete(false, 0)
             }
+
+            #if os(Linux)
+            let base64Credentials = Base64.encode([UInt8](credentials))
+            #else
             let base64Credentials = credentials.base64EncodedString(options: [])
+            #endif
             request.setValue("Basic \(base64Credentials)", forHTTPHeaderField: "Authorization")
             //toNSLog("\nrequest:")
             //print(request)
@@ -337,6 +342,7 @@ public class SBPlatformDestination: BaseDestination {
                 return complete(ok, status)
             }
             task.resume()
+            session.finishTasksAndInvalidate()
             //while true {} // commenting this line causes a crash on Linux unit tests?!?
         }
     }
@@ -371,7 +377,7 @@ public class SBPlatformDestination: BaseDestination {
             } else {
                 // append to end of file
                 let fileHandle = try FileHandle(forWritingTo: url)
-                let _ = fileHandle.seekToEndOfFile()
+                _ = fileHandle.seekToEndOfFile()
                 let line = str + "\n"
                 if let data = line.data(using: String.Encoding.utf8) {
                     fileHandle.write(data)

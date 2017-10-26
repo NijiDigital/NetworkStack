@@ -91,7 +91,9 @@ void RealmCoordinator::create_sync_session()
         throw std::logic_error("The realm encryption key specified in SyncConfig does not match the one in Realm::Config");
     }
 
-    m_sync_session = SyncManager::shared().get_session(m_config.path, *m_config.sync_config);
+    auto sync_config = *m_config.sync_config;
+    sync_config.validate_sync_history = false;
+    m_sync_session = SyncManager::shared().get_session(m_config.path, sync_config);
 
     std::weak_ptr<RealmCoordinator> weak_self = shared_from_this();
     SyncSession::Internal::set_sync_transact_callback(*m_sync_session,
@@ -113,15 +115,21 @@ void RealmCoordinator::set_config(const Realm::Config& config)
 {
     if (config.encryption_key.data() && config.encryption_key.size() != 64)
         throw InvalidEncryptionKeyException();
-    if (config.schema_mode == SchemaMode::ReadOnly && config.sync_config)
-        throw std::logic_error("Synchronized Realms cannot be opened in read-only mode");
+    if (config.schema_mode == SchemaMode::Immutable && config.sync_config)
+        throw std::logic_error("Synchronized Realms cannot be opened in immutable mode");
     if (config.schema_mode == SchemaMode::Additive && config.migration_function)
         throw std::logic_error("Realms opened in Additive-only schema mode do not use a migration function");
-    if (config.schema_mode == SchemaMode::ReadOnly && config.migration_function)
+    if (config.schema_mode == SchemaMode::Immutable && config.migration_function)
+        throw std::logic_error("Realms opened in immutable mode do not use a migration function");
+    if (config.schema_mode == SchemaMode::ReadOnlyAlternative && config.migration_function)
         throw std::logic_error("Realms opened in read-only mode do not use a migration function");
+    if (config.schema_mode == SchemaMode::Immutable && config.initialization_function)
+        throw std::logic_error("Realms opened in immutable mode do not use an initialization function");
+    if (config.schema_mode == SchemaMode::ReadOnlyAlternative && config.initialization_function)
+        throw std::logic_error("Realms opened in read-only mode do not use an initialization function");
     if (config.schema && config.schema_version == ObjectStore::NotVersioned)
         throw std::logic_error("A schema version must be specified when the schema is specified");
-    if (!config.realm_data.is_null() && (!config.read_only() || !config.in_memory))
+    if (!config.realm_data.is_null() && (!config.immutable() || !config.in_memory))
         throw std::logic_error("In-memory realms initialized from memory buffers can only be opened in read-only mode");
     if (!config.realm_data.is_null() && !config.path.empty())
         throw std::logic_error("Specifying both memory buffer and path is invalid");
@@ -136,7 +144,7 @@ void RealmCoordinator::set_config(const Realm::Config& config)
         m_config = config;
     }
     else {
-        if (m_config.read_only() != config.read_only()) {
+        if (m_config.immutable() != config.immutable()) {
             throw MismatchedConfigException("Realm at path '%1' already opened with different read permissions.", config.path);
         }
         if (m_config.in_memory != config.in_memory) {
@@ -161,7 +169,7 @@ void RealmCoordinator::set_config(const Realm::Config& config)
             if (m_config.sync_config->user != config.sync_config->user) {
                 throw MismatchedConfigException("Realm at path '%1' already opened with different sync user.", config.path);
             }
-            if (m_config.sync_config->realm_url != config.sync_config->realm_url) {
+            if (m_config.sync_config->realm_url() != config.sync_config->realm_url()) {
                 throw MismatchedConfigException("Realm at path '%1' already opened with different sync server URL.", config.path);
             }
             if (m_config.sync_config->transformer != config.sync_config->transformer) {
@@ -175,12 +183,6 @@ void RealmCoordinator::set_config(const Realm::Config& config)
 
         // Realm::update_schema() handles complaining about schema mismatches
     }
-
-#if REALM_ENABLE_SYNC
-    if (config.sync_config) {
-        create_sync_session();
-    }
-#endif
 }
 
 std::shared_ptr<Realm> RealmCoordinator::get_realm(Realm::Config config)
@@ -195,6 +197,7 @@ std::shared_ptr<Realm> RealmCoordinator::get_realm(Realm::Config config)
 
     auto schema = std::move(config.schema);
     auto migration_function = std::move(config.migration_function);
+    auto initialization_function = std::move(config.initialization_function);
     config.schema = {};
 
     if (config.cache) {
@@ -222,8 +225,9 @@ std::shared_ptr<Realm> RealmCoordinator::get_realm(Realm::Config config)
     }
 
     if (!realm) {
+        bool should_initialize_notifier = !config.immutable() && config.automatic_change_notifications;
         realm = Realm::make_shared_realm(std::move(config), shared_from_this());
-        if (!config.read_only() && !m_notifier && config.automatic_change_notifications) {
+        if (!m_notifier && should_initialize_notifier) {
             try {
                 m_notifier = std::make_unique<ExternalCommitHelper>(*this);
             }
@@ -234,9 +238,13 @@ std::shared_ptr<Realm> RealmCoordinator::get_realm(Realm::Config config)
         m_weak_realm_notifiers.emplace_back(realm, m_config.cache);
     }
 
+    if (realm->config().sync_config)
+        create_sync_session();
+
     if (schema) {
         lock.unlock();
-        realm->update_schema(std::move(*schema), config.schema_version, std::move(migration_function));
+        realm->update_schema(std::move(*schema), config.schema_version, std::move(migration_function),
+                             std::move(initialization_function));
     }
 
     return realm;
@@ -385,7 +393,7 @@ void RealmCoordinator::wake_up_notifier_worker()
 
 void RealmCoordinator::commit_write(Realm& realm)
 {
-    REALM_ASSERT(!m_config.read_only());
+    REALM_ASSERT(!m_config.immutable());
     REALM_ASSERT(realm.is_in_transaction());
 
     {
@@ -774,8 +782,21 @@ void RealmCoordinator::advance_to_ready(Realm& realm)
     auto& sg = Realm::Internal::get_shared_group(realm);
     if (notifiers) {
         auto version = notifiers.version();
-        if (version && *version <= sg->get_version_of_current_transaction())
-            return;
+        if (version) {
+            auto current_version = sg->get_version_of_current_transaction();
+            // Notifications are out of date, so just discard
+            // This should only happen if begin_read() was used to change the
+            // read version outside of our control
+            if (*version < current_version)
+                return;
+            // While there is a newer version, notifications are for the current
+            // version so just deliver them without advancing
+            if (*version == current_version) {
+                notifiers.deliver(*sg);
+                notifiers.after_advance();
+                return;
+            }
+        }
     }
 
     transaction::advance(sg, realm.m_binding_context.get(), notifiers);

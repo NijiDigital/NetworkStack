@@ -8,6 +8,7 @@ Simple and strict, yet powerful object mapping made possible by Swift 2's error 
 
 
 ```swift
+
 struct Repository {
     let name: String
     let description: String
@@ -48,20 +49,20 @@ do {
 ### A protocol
 ```swift
 public protocol Decodable {
-    static func decode(json: AnyObject) throws -> Self
+    static func decode(json: Any) throws -> Self
 }
 ```
 ### A parse-function
 ```swift
-public func parse<T>(json: AnyObject, path: [String], decode: (AnyObject throws -> T)) throws -> T
+public func parse<T>(json: Any, path: [String], decode: (Any throws -> T)) throws -> T
 ```
 
 ### And shameless operator-overloading
-The too-many generated overloads, all calling the `parse`-function, can be found in [Overloads.swift](https://github.com/Anviking/Decodable/blob/master/Sources/Overloads.swift). Return types include `T?`, `[T?]`, `[T?]?`, `AnyObject` and `[String: T]?`. When conditional protocol conformance is supported in Swift this won't be necessary, and automagic decoding of infinitly nested generic types (like `[[[[[[[[[A???]]: B]]]?]]?]]`) would work.
+The too-many generated overloads, all calling the `parse`-function, can be found in [Overloads.swift](https://github.com/Anviking/Decodable/blob/master/Sources/Overloads.swift). Return types include `T?`, `[T?]`, `[T?]?`, `Any` and `[String: T]?`. When conditional protocol conformance is supported in Swift this won't be necessary, and automagic decoding of infinitly nested generic types (like `[[[[[[[[[A???]]: B]]]?]]?]]`) would work.
 
 An overload may look like this:
 ```swift
-public func => <T: Decodable>(json: AnyObject, keyPath: KeyPath) throws -> T
+public func => <T: Decodable>(json: Any, keyPath: KeyPath) throws -> T
 ```
 
 ## KeyPaths
@@ -83,7 +84,7 @@ Errors will be caught and rethrown in the decoding process to backpropagate meta
 From [DecodingError.swift](https://github.com/anviking/decodable/tree/master/Sources/DecodingError.swift):
 ```swift
 public enum DecodingError: ErrorProtocol, Equatable {
-    /// Thrown when optional casting from `AnyObject` fails.
+    /// Thrown when optional casting from `Any` fails.
     ///
     /// This can happen both when trying to access a key on a object
     /// that isn't a `NSDictionary`, and failing to cast a `Castable`
@@ -163,7 +164,7 @@ Date.decoder = Date.decoder(using: formatter)
 
 ## When `Decodable` isn't enough
 Don't be afraid of not conforming to `Decodable`.
-```
+```swift
 let array = try NSArray.decode(json => "list").map {
     try Contribution(json: $0, repository: repo)
 }
@@ -177,6 +178,17 @@ let array = try NSArray.decode(json => "list").map {
 
 | Swift version | Compatible tag or branch |
 | --- | --- |
+| Swift 4.0 | `0.6.0` |
 | Swift 3.0 | `v0.5` |
 | Swift 2.3 | `v0.4.4`|
 | Swift 2.2 | `v0.4.3`|
+
+## Note on Swift 4.0 usage
+Due to collisions with the standard library you will have to import ambiguous symbols specifically, in addition to `Decodable` as a whole.
+
+This means you likely want the following
+```swift
+import Decodable
+import protocol Decodable.Decodable
+```
+and you can import other symbols, e.g `KeyPath`, `DecodingError`, in a simlilar fashion (using `import struct` and `import enum`)
