@@ -319,6 +319,9 @@ extension NetworkStack {
     queue: DispatchQueue = DispatchQueue.global(qos: .default),
     responseSerializer: T)
     -> Observable<(HTTPURLResponse, T.SerializedObject)> {
+
+      alamofireRequest.resume()
+
       return Observable.create { [unowned self] observer in
         self.validateRequest(request: alamofireRequest)
           .response(queue: queue, responseSerializer: responseSerializer) { [unowned self] (packedResponse: DataResponse<T.SerializedObject>) -> Void in
@@ -350,6 +353,9 @@ extension NetworkStack {
   fileprivate func sendRequest<T: DataResponseSerializerProtocol>(requestParameters: RequestParameters,
                                queue: DispatchQueue = DispatchQueue.global(qos: .default),
                                responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
+
+    self.requestManager.startRequestsImmediately = false
+
     guard let request = self.buildRequest(requestParameters: requestParameters) else {
       return Observable.error(NetworkStackError.requestBuildFail)
     }
