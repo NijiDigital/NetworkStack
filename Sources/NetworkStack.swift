@@ -616,4 +616,8 @@ extension NetworkStack {
   public func currentRefreshToken() -> String? {
     return self.keychainService.refreshToken
   }
+  
+  public func currentExpirationInterval() -> TimeInterval? {
+    return self.keychainService.expirationInterval
+  }
 }
