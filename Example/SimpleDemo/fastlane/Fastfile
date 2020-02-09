@@ -17,7 +17,7 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    xcversion(version: '~> 8.2')
+    xcversion(version: '~> 10.0')
     unlock_keychain(path: 'login.keychain') if is_ci
 
     SLACK_URL = "https://hooks.slack.com/services/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"

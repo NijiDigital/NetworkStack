@@ -33,7 +33,7 @@ class RenewTokenTests: NetworkStackTests {
         self.newTokenCount += 1
 
         self.networkStack.updateToken(token: self.newToken)
-        observer.onNext()
+        observer.onNext(())
         observer.onCompleted()
 
         return Disposables.create()
