@@ -197,7 +197,6 @@
 				557F26331E6D9E12003658BC /* Frameworks */,
 				557F26341E6D9E12003658BC /* Resources */,
 				E92EAC25B2A3391632315E3F /* [CP] Embed Pods Frameworks */,
-				24E0C390CA0767DBB503DD7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,7 +216,6 @@
 				557F26471E6D9E12003658BC /* Frameworks */,
 				557F26481E6D9E12003658BC /* Resources */,
 				1E28EE54EA26EAB7A3A29755 /* [CP] Embed Pods Frameworks */,
-				E1E71EC9F0524FF77158F084 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,7 +345,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Decodable/Decodable.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -366,22 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		24E0C390CA0767DBB503DD7F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DAB1D3B12C12079EBB6EB464 /* [CP] Check Pods Manifest.lock */ = {
@@ -402,28 +385,13 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1E71EC9F0524FF77158F084 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackDemoTests/Pods-NetworkStackDemoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E92EAC25B2A3391632315E3F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Decodable/Decodable.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
@@ -440,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetworkStackDemo/Pods-NetworkStackDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
