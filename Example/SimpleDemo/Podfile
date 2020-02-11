@@ -8,7 +8,9 @@ use_frameworks!
 def common_core_pods
   pod 'NetworkStack', :path => '../../'
   pod 'Decodable'
-  pod 'RxSwift'
+  pod 'RxSwift',
+    :git => 'https://github.com/ReactiveX/RxSwift',
+    :branch => '5.1.0'
 end
 
 # Target-Specific Pods
