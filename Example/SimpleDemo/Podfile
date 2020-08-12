@@ -7,8 +7,6 @@ use_frameworks!
 #----------------------
 def common_core_pods
   pod 'NetworkStack', :path => '../../'
-  pod 'Decodable'
-  pod 'RxSwift'
 end
 
 # Target-Specific Pods

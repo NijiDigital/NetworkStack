@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.9.1)
-  - Decodable (0.6.0)
   - KeychainAccess (3.2.1)
   - NetworkStack (0.1.6):
     - Alamofire (~> 4.0)
@@ -24,16 +23,13 @@ PODS:
   - RxSwift (4.5.0)
 
 DEPENDENCIES:
-  - Decodable
   - NetworkStack (from `../../`)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
-  - RxSwift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - Decodable
     - KeychainAccess
     - OHHTTPStubs
     - RxSwift
@@ -44,12 +40,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Decodable: f0b95fa2fcf8633dd097aa8f7f09838ab3524f5d
   KeychainAccess: d5470352939ced6d6f7fb51cb2e67aae51fc294f
   NetworkStack: bf1935d6507b67178cfaed37438568c2c752cf9f
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: 5addf36061eb4098b19ded3daeb49fa68d9f9aea
+PODFILE CHECKSUM: 4691399c8a2126553b8de74e69f63072a4ac81fe
 
 COCOAPODS: 1.9.3
