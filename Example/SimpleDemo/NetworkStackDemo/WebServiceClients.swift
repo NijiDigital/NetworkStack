@@ -27,7 +27,7 @@ struct VideoWebServiceClient {
     
     return self.networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .map({ (_, json: Any) -> Video in
-        return try Video.decode(json)
+				return try JSONDecoder().decode(Video.self, from: json as! Data)
       })
   }
   

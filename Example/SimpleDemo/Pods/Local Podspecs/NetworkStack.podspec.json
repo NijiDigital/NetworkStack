@@ -20,7 +20,7 @@
   },
   "source_files": "Sources/**/*.swift",
   "ios": {
-    "frameworks": "MobileCoreServices"
+    "frameworks": "CoreServices"
   },
   "dependencies": {
     "Alamofire": [
