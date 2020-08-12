@@ -33,7 +33,7 @@ class RenewTokenTests: NetworkStackTests {
         self.newTokenCount += 1
 
         self.networkStack.updateToken(token: self.newToken)
-        observer.onNext()
+				observer.onNext(AnyObserver<Void>.E)
         observer.onCompleted()
 
         return Disposables.create()
@@ -68,7 +68,7 @@ class RenewTokenTests: NetworkStackTests {
       .subscribe(onNext : {_ in
         promise.fulfill()
       })
-      .addDisposableTo(self.disposeBag)
+			.disposed(by: self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send only once.
@@ -109,7 +109,7 @@ class RenewTokenTests: NetworkStackTests {
         }
         promise.fulfill()
       })
-      .addDisposableTo(self.disposeBag)
+			.disposed(by: self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send twice.
@@ -149,7 +149,7 @@ class RenewTokenTests: NetworkStackTests {
         promise.fulfill()
       })
       .subscribe()
-      .addDisposableTo(self.disposeBag)
+			.disposed(by: self.disposeBag)
 
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
@@ -199,7 +199,7 @@ class RenewTokenTests: NetworkStackTests {
       }, onError: { (error) in
         XCTFail("Encounter error : \(error)")
       })
-      .addDisposableTo(self.disposeBag)
+			.disposed(by: self.disposeBag)
 
     networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
@@ -207,7 +207,7 @@ class RenewTokenTests: NetworkStackTests {
       }, onError: { (error) in
         XCTFail("Encounter error : \(error)")
       })
-      .addDisposableTo(self.disposeBag)
+			.disposed(by: self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(counter, 3)
@@ -264,7 +264,7 @@ class RenewTokenTests: NetworkStackTests {
       }, onCompleted: {
         promise1.fulfill()
       })
-      .addDisposableTo(self.disposeBag)
+		.disposed(by: self.disposeBag)
 
     networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
@@ -273,7 +273,7 @@ class RenewTokenTests: NetworkStackTests {
                  onError: { (error) in
                   XCTFail()
       })
-      .addDisposableTo(self.disposeBag)
+		.disposed(by: self.disposeBag)
 
     networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
@@ -282,7 +282,7 @@ class RenewTokenTests: NetworkStackTests {
                  onError: { (error) in
                   XCTFail()
       })
-      .addDisposableTo(self.disposeBag)
+		.disposed(by: self.disposeBag)
 
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(nextCount, 1)
