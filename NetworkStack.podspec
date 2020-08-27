@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.authors            = { "Niji" => "" }
   s.social_media_url   = "https://twitter.com/niji_digital"
 
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "10.0"
 
   s.source       = { :git => "https://github.com/NijiDigital/NetworkStack.git", :tag => s.version.to_s }
 
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.ios.framework  = 'CoreServices'
 
-  s.dependency 'Alamofire', '~> 4.0'
-  s.dependency 'RxSwift', '~> 4.0'
-  s.dependency 'KeychainAccess', '~> 3.1'
+  s.dependency 'Alamofire', '~> 4.9'
+  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'KeychainAccess', '~> 4.2'
 end

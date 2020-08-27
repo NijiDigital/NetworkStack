@@ -12,7 +12,7 @@
   },
   "social_media_url": "https://twitter.com/niji_digital",
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
   "source": {
     "git": "https://github.com/NijiDigital/NetworkStack.git",
@@ -24,13 +24,13 @@
   },
   "dependencies": {
     "Alamofire": [
-      "~> 4.0"
+      "~> 4.9"
     ],
     "RxSwift": [
-      "~> 4.0"
+      "~> 5"
     ],
     "KeychainAccess": [
-      "~> 3.1"
+      "~> 4.2"
     ]
   }
 }
