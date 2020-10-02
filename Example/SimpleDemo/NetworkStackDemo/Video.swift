@@ -15,25 +15,15 @@
 //
 
 import Foundation
-//import Decodable
-//import protocol Decodable.Decodable
 
 struct Video: Decodable {
   // MARK: Attributes
   let identifier: Int
   let title: String
-	
-		
-		private enum CodingKeys: String, CodingKey {
-			case identifier = "id",
-			title
-		}
-}
-
-extension Video { //: Decodable {
-//  static func decode(_ json: Any) throws -> Video {
-//    return try Video(identifier: json => KeyPath(JSONKeys.identifier),
-//                     title: json => KeyPath(JSONKeys.title)
-//    )
-//  }
+  
+  
+  private enum CodingKeys: String, CodingKey {
+    case identifier = "id",
+         title
+  }
 }

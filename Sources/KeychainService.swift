@@ -50,16 +50,16 @@ open class KeychainService {
       return self.keychain[accessTokenKey]
     }
     set {
-        self.keychain[accessTokenKey] = newValue
+      self.keychain[accessTokenKey] = newValue
     }
   }
 
   public var refreshToken: String? {
     get {
-        return self.keychain[refreshTokenKey]
+      return self.keychain[refreshTokenKey]
     }
     set {
-        self.keychain[refreshTokenKey] = newValue
+      self.keychain[refreshTokenKey] = newValue
     }
   }
   

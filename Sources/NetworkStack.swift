@@ -135,9 +135,9 @@ extension NetworkStack {
       uploadManager.session.invalidateAndCancel()
 
       return Disposables.create()
-      }
-      .map { [weak self] () -> Void in
-        self?.uploadManager = SessionManager(configuration: configuration)
+    }
+    .map { [weak self] () -> Void in
+      self?.uploadManager = SessionManager(configuration: configuration)
     }
   }
 
@@ -287,7 +287,7 @@ extension NetworkStack {
         } else {
           throw error
         }
-    }
+      }
   }
 }
 
@@ -339,38 +339,38 @@ extension NetworkStack {
     alamofireRequest: Alamofire.DataRequest,
     queue: DispatchQueue = DispatchQueue.global(qos: .default),
     responseSerializer: T)
-    -> Observable<(HTTPURLResponse, T.SerializedObject)> {
-      return Observable.create { [unowned self] observer in
-        self.validateRequest(request: alamofireRequest)
-          .response(queue: queue, responseSerializer: responseSerializer) { [unowned self] (packedResponse: DataResponse<T.SerializedObject>) -> Void in
-
-            if let response = packedResponse.response, let request = packedResponse.request {
-              self.delegate?.networkStack(self, didReceiveResponse: response, forRequest: request)
+  -> Observable<(HTTPURLResponse, T.SerializedObject)> {
+    return Observable.create { [unowned self] observer in
+      self.validateRequest(request: alamofireRequest)
+        .response(queue: queue, responseSerializer: responseSerializer) { [unowned self] (packedResponse: DataResponse<T.SerializedObject>) -> Void in
+          
+          if let response = packedResponse.response, let request = packedResponse.request {
+            self.delegate?.networkStack(self, didReceiveResponse: response, forRequest: request)
+          }
+          
+          switch packedResponse.result {
+          case .success(let result):
+            if let httpResponse = packedResponse.response {
+              observer.onNext((httpResponse, result))
+            } else {
+              observer.onError(NetworkStackError.unknown)
             }
-
-            switch packedResponse.result {
-            case .success(let result):
-              if let httpResponse = packedResponse.response {
-                observer.onNext((httpResponse, result))
-              } else {
-                observer.onError(NetworkStackError.unknown)
-              }
-              observer.onCompleted()
-            case .failure(let error):
-              let networkStackError = self.webserviceStackError(error: error, httpURLResponse: packedResponse.response, responseData: packedResponse.data)
-              observer.onError(networkStackError)
-            }
+            observer.onCompleted()
+          case .failure(let error):
+            let networkStackError = self.webserviceStackError(error: error, httpURLResponse: packedResponse.response, responseData: packedResponse.data)
+            observer.onError(networkStackError)
+          }
         }
-        return Disposables.create {
-          alamofireRequest.cancel()
-        }
-        }
-        .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
+      return Disposables.create {
+        alamofireRequest.cancel()
+      }
+    }
+    .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
   }
 
   fileprivate func sendRequest<T: DataResponseSerializerProtocol>(requestParameters: RequestParameters,
-                               queue: DispatchQueue = DispatchQueue.global(qos: .default),
-                               responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
+                                                                  queue: DispatchQueue = DispatchQueue.global(qos: .default),
+                                                                  responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
     if requestParameters.needsAuthorization {
       // Need to pass the parameters directly, because in case of retry, need to build the request again.
       return self.sendAuthenticatedRequest(requestParameters: requestParameters, queue: queue, responseSerializer: responseSerializer)
@@ -399,8 +399,8 @@ extension NetworkStack {
         }
 
         return self.sendRequest(alamofireRequest: request, queue: queue, responseSerializer: responseSerializer)
-        }, renewTokenFunction: { () -> Observable<Void> in
-          return tokenFetcher().map { _ in return }
+      }, renewTokenFunction: { () -> Observable<Void> in
+        return tokenFetcher().map { _ in return }
       })
     } else {
 
@@ -424,9 +424,9 @@ extension NetworkStack {
 extension NetworkStack {
 
   fileprivate func sendUploadRequest<T: DataResponseSerializerProtocol>(uploadRequestParameters: UploadRequestParameters,
-                                     queue: DispatchQueue = DispatchQueue.global(qos: .default),
-                                     responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
-
+                                                                        queue: DispatchQueue = DispatchQueue.global(qos: .default),
+                                                                        responseSerializer: T) -> Observable<(HTTPURLResponse, T.SerializedObject)> {
+    
     let requestHeaders = self.requestHeaders(needsAuthorization: uploadRequestParameters.needsAuthorization,
                                              headers: uploadRequestParameters.headers)
 
@@ -444,22 +444,22 @@ extension NetworkStack {
       uploadManager.upload(multipartFormData: { [weak self] (multipartFormData) in
         self?.enrichMultipartFormData(multipartFormData: multipartFormData,
                                       from: uploadRequestParameters)
-        }, to: requestURL.absoluteString,
-           headers: requestHeaders,
-           encodingCompletion: { (encodingResult) in
-            switch encodingResult {
-            case .success(let uploadRequest, _, _):
-              observer.onNext(uploadRequest)
-              observer.onCompleted()
-            case .failure(let encodingError):
-              observer.onError(encodingError)
-            }
+      }, to: requestURL.absoluteString,
+      headers: requestHeaders,
+      encodingCompletion: { (encodingResult) in
+        switch encodingResult {
+        case .success(let uploadRequest, _, _):
+          observer.onNext(uploadRequest)
+          observer.onCompleted()
+        case .failure(let encodingError):
+          observer.onError(encodingError)
+        }
       })
 
       return Disposables.create()
     })
-      .flatMap { [unowned self] uploadRequest -> Observable<(HTTPURLResponse, T.SerializedObject)> in
-        return self.sendRequest(alamofireRequest: uploadRequest, queue: queue, responseSerializer: responseSerializer)
+    .flatMap { [unowned self] uploadRequest -> Observable<(HTTPURLResponse, T.SerializedObject)> in
+      return self.sendRequest(alamofireRequest: uploadRequest, queue: queue, responseSerializer: responseSerializer)
     }
   }
 
@@ -482,23 +482,23 @@ extension NetworkStack {
 
       uploadManager.upload(multipartFormData: { [weak self] (multipartFormData) in
         self?.enrichMultipartFormData(multipartFormData: multipartFormData, from: uploadRequestParameters)
-        }, to: requestURL.absoluteString,
-           headers: requestHeaders,
-           encodingCompletion: {  (encodingResult) in
-            switch encodingResult {
-            case .success(let uploadRequest, _, _):
-              if let urlSessionTask = uploadRequest.task {
-                observer.onNext(urlSessionTask)
-                observer.onCompleted()
-              }
-            case .failure(let error):
-              observer.onError(error)
-            }
+      }, to: requestURL.absoluteString,
+      headers: requestHeaders,
+      encodingCompletion: {  (encodingResult) in
+        switch encodingResult {
+        case .success(let uploadRequest, _, _):
+          if let urlSessionTask = uploadRequest.task {
+            observer.onNext(urlSessionTask)
+            observer.onCompleted()
+          }
+        case .failure(let error):
+          observer.onError(error)
+        }
       })
 
       return Disposables.create()
     })
-      .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
+    .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
   }
 
   fileprivate func enrichMultipartFormData(multipartFormData: MultipartFormData,
