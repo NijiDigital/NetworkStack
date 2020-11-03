@@ -27,10 +27,10 @@ public class BaseRequestParameters {
   public var headers: Alamofire.HTTPHeaders?
   
   public init(method: Alamofire.HTTPMethod,
-       route: Routable,
-       needsAuthorization: Bool = false,
-       parameters: Alamofire.Parameters? = nil,
-       headers: Alamofire.HTTPHeaders? = nil) {
+              route: Routable,
+              needsAuthorization: Bool = false,
+              parameters: Alamofire.Parameters? = nil,
+              headers: Alamofire.HTTPHeaders? = nil) {
     self.method = method
     self.route = route
     self.needsAuthorization = needsAuthorization

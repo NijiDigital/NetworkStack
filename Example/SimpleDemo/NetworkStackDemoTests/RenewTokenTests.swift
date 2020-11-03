@@ -33,7 +33,7 @@ class RenewTokenTests: NetworkStackTests {
         self.newTokenCount += 1
 
         self.networkStack.updateToken(token: self.newToken)
-        observer.onNext()
+        observer.onNext(())
         observer.onCompleted()
 
         return Disposables.create()
@@ -68,8 +68,8 @@ class RenewTokenTests: NetworkStackTests {
       .subscribe(onNext : {_ in
         promise.fulfill()
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
+    
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send only once.
       XCTAssertEqual(counter, 1)
@@ -109,8 +109,8 @@ class RenewTokenTests: NetworkStackTests {
         }
         promise.fulfill()
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
+    
     waitForExpectations(timeout: kTimeout, handler: { _ in
       // Be sure, the request was send twice.
       XCTAssertEqual(counter, 2)
@@ -149,9 +149,9 @@ class RenewTokenTests: NetworkStackTests {
         promise.fulfill()
       })
       .subscribe()
-      .addDisposableTo(self.disposeBag)
-
-
+      .disposed(by: self.disposeBag)
+    
+    
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(nextCount, 1)
       XCTAssertEqual(counter, 2)
@@ -199,16 +199,16 @@ class RenewTokenTests: NetworkStackTests {
       }, onError: { (error) in
         XCTFail("Encounter error : \(error)")
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
+    
     networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise2.fulfill()
       }, onError: { (error) in
         XCTFail("Encounter error : \(error)")
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
+    
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(counter, 3)
       XCTAssertEqual(counter200, 2)
@@ -259,31 +259,30 @@ class RenewTokenTests: NetworkStackTests {
       })
       .subscribe(onNext: { _ in
       },
-                 onError: { (error) in
-                  XCTFail()
+      onError: { (error) in
+        XCTFail()
       }, onCompleted: {
         promise1.fulfill()
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
+    
     networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise2.fulfill()
       },
-                 onError: { (error) in
-                  XCTFail()
+      onError: { (error) in
+        XCTFail()
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
+    
     networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .subscribe(onNext: { _ in
         promise3.fulfill()
       },
-                 onError: { (error) in
-                  XCTFail()
+      onError: { (error) in
+        XCTFail()
       })
-      .addDisposableTo(self.disposeBag)
-
+      .disposed(by: self.disposeBag)
     waitForExpectations(timeout: kTimeout, handler: { _ in
       XCTAssertEqual(nextCount, 1)
       let nbRequest = 1 + 3 // 1 first request with 401 error, and after the renewToken, the 3 requests finally sent

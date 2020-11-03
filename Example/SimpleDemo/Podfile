@@ -1,14 +1,12 @@
 source "https://github.com/CocoaPods/Specs.git"
 
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 
 # Common Pods
 #----------------------
 def common_core_pods
   pod 'NetworkStack', :path => '../../'
-  pod 'Decodable'
-  pod 'RxSwift'
 end
 
 # Target-Specific Pods

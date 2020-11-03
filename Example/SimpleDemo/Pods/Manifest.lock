@@ -1,47 +1,50 @@
 PODS:
-  - Alamofire (4.5.1)
-  - Decodable (0.6.0)
-  - KeychainAccess (3.1.0)
+  - Alamofire (4.9.1)
+  - KeychainAccess (4.2.0)
   - NetworkStack (0.1.6):
-    - Alamofire (~> 4.0)
-    - KeychainAccess (~> 3.1)
-    - RxSwift (~> 4.0)
-  - OHHTTPStubs (6.0.0):
-    - OHHTTPStubs/Default (= 6.0.0)
-  - OHHTTPStubs/Core (6.0.0)
-  - OHHTTPStubs/Default (6.0.0):
+    - Alamofire (~> 4.9)
+    - KeychainAccess (~> 4.2)
+    - RxSwift (~> 5)
+  - OHHTTPStubs (9.0.0):
+    - OHHTTPStubs/Default (= 9.0.0)
+  - OHHTTPStubs/Core (9.0.0)
+  - OHHTTPStubs/Default (9.0.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (6.0.0):
+  - OHHTTPStubs/JSON (9.0.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (6.0.0):
+  - OHHTTPStubs/NSURLSession (9.0.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (6.0.0)
-  - OHHTTPStubs/Swift (6.0.0):
+  - OHHTTPStubs/OHPathHelpers (9.0.0)
+  - OHHTTPStubs/Swift (9.0.0):
     - OHHTTPStubs/Default
-  - RxSwift (4.0.0)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
-  - Decodable
   - NetworkStack (from `../../`)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
-  - RxSwift
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - KeychainAccess
+    - OHHTTPStubs
+    - RxSwift
 
 EXTERNAL SOURCES:
   NetworkStack:
-    :path: ../../
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  Decodable: f0b95fa2fcf8633dd097aa8f7f09838ab3524f5d
-  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
-  NetworkStack: bf1935d6507b67178cfaed37438568c2c752cf9f
-  OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
+  NetworkStack: 9a2be5f5583b3fef9451f2081476d5390df1595b
+  OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 5addf36061eb4098b19ded3daeb49fa68d9f9aea
+PODFILE CHECKSUM: 3e2df16c98371bf3603777b7ccfcf494f3bf5678
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.9.3

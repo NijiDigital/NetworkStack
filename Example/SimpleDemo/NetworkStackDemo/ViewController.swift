@@ -45,6 +45,6 @@ class ViewController: UIViewController {
         case .error(let error): print("!!!!!! error : \(error) !!! !!!")
         case .completed: print("completed !")
         }
-        }.disposed(by: self.disposebag)
+      }.disposed(by: self.disposebag)
   }
 }

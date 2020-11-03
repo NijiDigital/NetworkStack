@@ -23,17 +23,17 @@ struct VideoWebServiceClient {
   
   func fetchVideo(identifier: Int) -> Observable<Video> {
     let requestParameters = RequestParameters(method: .get,
-                             route: Route.video(identifier: identifier))
+                                              route: Route.video(identifier: identifier))
     
     return self.networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .map({ (_, json: Any) -> Video in
-        return try Video.decode(json)
+        return try JSONDecoder().decode(Video.self, from: json as! Data)
       })
   }
   
   func deleteVideo(identifier: Int) -> Observable<Void> {
     let requestParameters = RequestParameters(method: .delete,
-                             route: Route.video(identifier: identifier))
+                                              route: Route.video(identifier: identifier))
     
     return self.networkStack.sendRequestWithJSONResponse(requestParameters: requestParameters)
       .flatMap({ (_, _) -> Observable<Void> in
