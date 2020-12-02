@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://twitter.com/niji_digital"
 
   s.ios.deployment_target = "10.0"
+  s.swift_versions = ['4.0', '4.2', '5.0']
 
   s.source       = { :git => "https://github.com/NijiDigital/NetworkStack.git", :tag => s.version.to_s }
 

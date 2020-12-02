@@ -14,6 +14,11 @@
   "platforms": {
     "ios": "10.0"
   },
+  "swift_versions": [
+    "4.0",
+    "4.2",
+    "5.0"
+  ],
   "source": {
     "git": "https://github.com/NijiDigital/NetworkStack.git",
     "tag": "0.1.7"
@@ -35,5 +40,6 @@
     "KeychainAccess": [
       "~> 4.2"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
