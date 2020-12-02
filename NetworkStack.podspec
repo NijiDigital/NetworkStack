@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "NetworkStack"
-  s.version      = "0.1.6"
+  s.version      = "0.1.7"
   s.summary      = "A Swift network request manager framework using reactive programming"
 
   s.homepage     = "https://github.com/NijiDigital/NetworkStack"
