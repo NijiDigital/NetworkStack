@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "NetworkStack"
-  s.version      = "0.1.6"
+  s.version      = "0.1.7"
   s.summary      = "A Swift network request manager framework using reactive programming"
 
   s.homepage     = "https://github.com/NijiDigital/NetworkStack"
@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.ios.framework  = 'CoreServices'
 
   s.dependency 'Alamofire', '~> 4.9'
-  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'RxSwift', '~> 5.1'
+  s.dependency 'RxCocoa', '~> 5.1'
   s.dependency 'KeychainAccess', '~> 4.2'
 end
