@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.ios.framework  = 'CoreServices'
 
   s.dependency 'Alamofire', '~> 4.9'
-  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'RxSwift', '~> 5.1'
+  s.dependency 'RxCocoa', '~> 5.1'
   s.dependency 'KeychainAccess', '~> 4.2'
 end
