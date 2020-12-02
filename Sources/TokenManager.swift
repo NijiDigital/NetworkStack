@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 /**
  TokenManager is responsible of token management for the NetworkStack
@@ -23,7 +24,7 @@ class TokenManager {
 
   /// using Rx Variable instead of direct String, 
   /// this way, when you call fetchToken(), access to value is only done at subscribe time
-  private let currentToken: Variable<String?> = Variable<String?>(nil)
+    private let currentToken = BehaviorRelay<String?>(value: nil)
 
   /// Using weak var for this property.
   /// The goal is to automatiquely set back to nil when no more observer subscribe
@@ -55,7 +56,7 @@ class TokenManager {
   }
 
   func invalidateToken() {
-    self.currentToken.value = nil
+    self.currentToken.accept(nil)
   }
 
   // MARK: - Private helpers
@@ -67,7 +68,7 @@ class TokenManager {
   private func sharedTokenRequest() -> Observable<String> {
     return tokenFetcher
       .do(onNext: { [unowned self] token in
-        self.currentToken.value = token
+        self.currentToken.accept(token)
       })
       .share()
   }
