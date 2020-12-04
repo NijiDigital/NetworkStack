@@ -23,8 +23,9 @@ public struct SessionManagerFactory {
   
   // MARK: Request session manager
   
-  static func sessionManager(defaultHTTPHeaders: Alamofire.HTTPHeaders?,
-                             requestTimeout: TimeInterval = 60.0) -> Alamofire.SessionManager {
+  public static func sessionManager(defaultHTTPHeaders: Alamofire.HTTPHeaders?,
+                             requestTimeout: TimeInterval = 60.0,
+                             requestCachePolicy: NSURLRequest.CachePolicy = .useProtocolCachePolicy) -> Alamofire.SessionManager {
     let configuration = URLSessionConfiguration.default
     
     if let defaultHTTPHeaders = defaultHTTPHeaders {
@@ -32,18 +33,19 @@ public struct SessionManagerFactory {
     }
     
     configuration.timeoutIntervalForRequest = requestTimeout
+    configuration.requestCachePolicy = requestCachePolicy
     
     return self.sessionManager(withConfiguration: configuration)
   }
   
   // MARK: Upload session manager
   
-  static func backgroundUploadSessionManager(withIdentifier identifier: String) -> Alamofire.SessionManager {
+  public static func backgroundUploadSessionManager(withIdentifier identifier: String) -> Alamofire.SessionManager {
     let configuration = URLSessionConfiguration.background(withIdentifier: identifier)
     return self.sessionManager(withConfiguration: configuration)
   }
   
-  static func backgroundUploadSessionManager(withAppGroupIdentifier appGroupIdentifier: String) -> Alamofire.SessionManager {
+  public static func backgroundUploadSessionManager(withAppGroupIdentifier appGroupIdentifier: String) -> Alamofire.SessionManager {
     let configuration = URLSessionConfiguration.background(withIdentifier: appGroupIdentifier)
     configuration.sharedContainerIdentifier = appGroupIdentifier
     return self.sessionManager(withConfiguration: configuration)
@@ -51,7 +53,7 @@ public struct SessionManagerFactory {
   
   // MARK: Common
   
-  static func sessionManager(withConfiguration configuration: URLSessionConfiguration) -> Alamofire.SessionManager {
+  public static func sessionManager(withConfiguration configuration: URLSessionConfiguration) -> Alamofire.SessionManager {
     return Alamofire.SessionManager(configuration: configuration)
   }
 }
