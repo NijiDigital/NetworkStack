@@ -18,6 +18,7 @@
 
 import KeychainAccess
 import RxSwift
+import Foundation
 
 open class KeychainService {
   
