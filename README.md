@@ -23,6 +23,10 @@ This library features the following:
 
 # Installation
 
+## Swift Package Manager
+
+Add NetworkStack with the following URL: "https://github.com/NijiDigital/NetworkStack.git"
+
 ## CocoaPods
 
 Using [CocoaPods](https://guides.cocoapods.org) is the recommended way :
