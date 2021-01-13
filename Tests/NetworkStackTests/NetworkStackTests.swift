@@ -2,11 +2,12 @@ import XCTest
 @testable import NetworkStack
 
 final class NetworkStackTests: XCTestCase {
+  
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(NetworkStack().text, "Hello, World!")
+//      XCTAssertEqual(networkStack.text, "Hello, World!")
     }
 
     static var allTests = [
