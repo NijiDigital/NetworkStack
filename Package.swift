@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
   name: "NetworkStack",
-  platforms: [.iOS(.v10)],
+  platforms: [.iOS(.v11)],
   products: [
     // Products define the executables and libraries a package produces, and make them visible to other packages.
     .library(
@@ -14,7 +14,7 @@ let package = Package(
   ],
   dependencies: [
     // Dependencies declare other packages that this package depends on.
-    .package(url: "https://github.com/ReactiveX/RxSwift.git", .exact("5.1.0")),
+    .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.1.0")),
     .package(url: "https://github.com/Alamofire/Alamofire.git", .exact("4.9.0")),
     .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git",
       .exact("4.2.0"))
